@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -11,48 +11,82 @@
 <body>
     <header class="topbar">
         <div class="wrap nav"><a class="brand" href="index.html">HPL <span>ink</span> Software</a>
-            <nav class="navlinks"><a href="index.html">Start</a><a href="enigma2-iptv.html">Enigma2 + IPTV</a><a
-                    href="music.html">Music</a><a href="conventer.html">Conventer</a><a href="tool.html">Tool</a><a
-                    href="index.html#kontakt">Kontakt</a></nav>
+            <nav class="navlinks">
+                <a href="index.html"><span class="lang-en">Home</span><span class="lang-pl">Start</span></a>
+                <a href="enigma2-iptv.html">Enigma2 + IPTV</a>
+                <a href="music.html">Music</a>
+                <a href="conventer.html">Conventer</a>
+                <a href="tool.html">Tool</a>
+                <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-pl">Kontakt</span></a>
+                <span class="lang-switch">
+                    <button type="button" data-setlang="en">EN</button>
+                    <button type="button" data-setlang="pl">PL</button>
+                </span>
+            </nav>
         </div>
     </header>
-    <main class="wrap"><a class="back" href="index.html">← Powrót do strony głównej</a>
-        <section class="page-hero">
+    <main class="wrap"><a class="back" href="index.html"><span class="lang-en">← Back to home page</span><span
+                class="lang-pl">← Powrót do strony głównej</span></a>
+        <section class="page-hero raised">
             <h1>HPL <span>ink</span> Tool</h1>
-            <p>Program narzędziowy dla Windows 11. Miejsce na screeny funkcji systemowych i panelu programu.</p>
+            <p><span class="lang-en">System tools for Windows 11. Shutdown timer, Restart to BIOS, Fast file search
+                    (after indexing), Internet blocking, Simulating mouse movement (ideal for remote work),
+                    etc.</span><span class="lang-pl">Narzędzia systemowe dla Windows 11. Timer wyłączenia komputera,
+                    restart do BIOS, szybkie wyszukiwanie plików (po indeksowaniu), blokowanie internetu, symulowanie
+                    ruchu myszy (idealne do pracy zdalnej) itd.</span></p>
         </section>
-        <section class="product-layout">
-            <aside class="product-icon"><img src="assets/icon-tool.png" alt="Ikona HPL ink Tool"></aside>
+        <section class="product-layout small-icon">
+            <aside class="product-icon"><img src="assets/icon-tool.png" alt="HPL ink Tool icon"></aside>
             <div>
-                <section class="section">
-                    <h2>Grafiki / zdjęcia programu</h2>
+                <section class="section screens-small">
+                    <h2><span class="lang-en">Screenshots</span><span class="lang-pl">Grafiki / zdjęcia
+                            programu</span></h2>
                     <div class="screens">
-                        <div class="screen-slot">Miejsce na grafikę programu 1<br><small>Podmień plik w folderze
-                                screenshots</small></div>
-                        <div class="screen-slot">Miejsce na grafikę programu 2<br><small>Podmień plik w folderze
-                                screenshots</small></div>
-                        <div class="screen-slot">Miejsce na grafikę programu 3<br><small>Podmień plik w folderze
-                                screenshots</small></div>
+                        <div class="screen-slot">
+                            <a class="screen-link" href="screenshots/tool-screen-1.png" target="_blank">
+                                <img src="screenshots/tool-screen-1.png" alt="HPL ink Tool">
+                            </a>
+                        </div>
+                        <div class="screen-slot"><span class="lang-en">Screenshot placeholder 2<br><small>Replace the
+                                    file in the screenshots folder</small></span><span class="lang-pl">Miejsce na
+                                grafikę programu 2<br><small>Podmień plik w folderze screenshots</small></span></div>
+                        <div class="screen-slot"><span class="lang-en">Screenshot placeholder 3<br><small>Replace the
+                                    file in the screenshots folder</small></span><span class="lang-pl">Miejsce na
+                                grafikę programu 3<br><small>Podmień plik w folderze screenshots</small></span></div>
                     </div>
                 </section>
                 <section class="section">
-                    <h2>Wersja testowa do pobrania</h2>
+                    <h2><span class="lang-en">User manual</span><span class="lang-pl">Instrukcja obsługi</span></h2>
                     <div class="download-box">
-                        <p>Wgraj swój plik instalatora do folderu <b>downloads</b> i podmień nazwę linku, jeśli będzie
-                            inna.</p><a class="download-btn" href="downloads/conventer-wersja-testowa.zip" download>
-                            Pobierz wersję testową ZIP
+                        <a class="download-btn" href="downloads/Instrukcja_obslugi_HPL_Tool.pdf" download>
+                            <span class="lang-en">Download user manual (PDF)</span><span class="lang-pl">Pobierz
+                                instrukcję obsługi (PDF)</span>
+                        </a>
+                        <a class="download-btn" href="Instrukcja_obslugi_HPL_Tool_EN.html" target="_blank">
+                            User manual (EN)
+                        </a>
+                        <a class="download-btn" href="Instrukcja_obslugi_HPL_Tool_PL.html" target="_blank">
+                            Instrukcja obsługi (PL)
                         </a>
                     </div>
                 </section>
                 <section class="section">
-                    <h2>Opis programu</h2>
-                    <p class="placeholder">Tutaj wpisz szczegółowy opis funkcji, wymagania systemowe, instrukcję
-                        instalacji i informacje o wersji testowej.</p>
+                    <h2><span class="lang-en">Video — the program in action</span><span class="lang-pl">Film —
+                            program w działaniu</span></h2>
+                    <div class="video-slot">
+                        <video controls preload="metadata" poster="screenshots/tool-screen-1.png">
+                            <source src="assets/tool-demo.mp4" type="video/mp4">
+                            <span class="lang-en">Your browser does not support video playback.</span><span
+                                class="lang-pl">Twoja przeglądarka nie obsługuje odtwarzania wideo.</span>
+                        </video>
+                    </div>
                 </section>
             </div>
         </section>
     </main>
-    <footer class="footer">© HPL ink Software — miejsce na stopkę / prawa autorskie</footer>
+    <footer class="footer">© HPL ink Software — <span class="lang-en">all rights reserved</span><span
+            class="lang-pl">wszelkie prawa zastrzeżone</span></footer>
+    <script src="lang.js"></script>
 </body>
 
 </html>

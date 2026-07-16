@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL ink Enigma2+ IPTV - user manual</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #15171c;
+      --panel2: #1e2128;
+      --ink: #ff315f;
+      --accent: #ff7a1a;
+      --violet: #8d7cff;
+      --cyan: #00d8c9;
+      --green: #39d98a;
+      --warn: #f5b94d;
+      --danger: #ff5246;
+      --text: #e6eaf5;
+      --dim: #9aa1af;
+      --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: 0;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover {
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); }
+    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
+    .brand .e2 { color: #b5aaff; }
+    .brand .plus, .brand .iptv { color: var(--cyan); }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .edition strong { display: block; color: var(--text); font-size: 17px; }
+    .edition span { color: var(--dim); }
+    h2 {
+      margin: 42px 0 18px;
+      padding-bottom: 8px;
+      color: var(--accent);
+      font-size: 27px;
+      border-bottom: 2px solid var(--line);
+      break-after: avoid;
+    }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; }
+    ul, ol { margin: 7px 0 16px 24px; padding: 0; }
+    li { margin: 4px 0; }
+    .settings-list > li { margin: 0 0 18px; padding-left: 3px; break-inside: avoid; }
+    .settings-list > li::marker { color: var(--accent); font-weight: 800; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd {
+      font-family: Consolas, monospace;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: #fff;
+    }
+    kbd { color: var(--warn); }
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 7px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .badge.pro { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
+    .badge.ultra { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .note, .warning, .tip {
+      margin: 15px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--cyan);
+      background: var(--panel);
+      break-inside: avoid;
+    }
+    .warning { border-color: var(--warn); }
+    .tip { border-color: var(--green); }
+    .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc {
+      columns: 2;
+      column-gap: 32px;
+      padding: 15px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; }
+    td { background: #101216; }
+    tr { break-inside: avoid; }
+    .yes { color: var(--green); font-weight: 800; text-align: center; }
+    .no { color: #626a78; text-align: center; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); }
+    .mock-title i { color: var(--ink); }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); }
+    .mock-button.m3u { border-color: var(--green); color: var(--green); }
+    .mock-grid { display: grid; grid-template-columns: 0.8fr 1fr 2fr; gap: 7px; min-height: 230px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: var(--danger); font-weight: 700; }
+    .mock-video { display: flex; align-items: center; justify-content: center; min-height: 145px; background: #000; color: #555; }
+    .mock-epg { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
+    .matrix-small td:first-child { width: 42%; }
+    .page-break { break-before: page; }
+    .section-break { break-before: page; }
+    .language-break { break-before: page; margin-top: 0; }
+    .footer-note { margin-top: 45px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; }
+      .cover { min-height: 250mm; }
+      .brand { font-size: 34pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; }
+      table td { background: #fff; }
+      th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.pro { color: #413477; background: #efedff; }
+      .badge.ultra { color: #251400; background: #ff9a4f; }
+      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      a { color: inherit; }
+      .page-break, .language-break { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="e2">Enigma2</span><span class="plus">+</span><span class="iptv"> IPTV</span></div>
+    <h1>User manual</h1>
+    <p class="subtitle">A guide to the Standard, PRO and ULTRA editions. Polska wersja instrukcji jest dostępna jako osobny dokument.</p>
+    <div class="edition-strip">
+      <div class="edition"><strong>Standard / bez PRO</strong><span>last release: v3.63</span></div>
+      <div class="edition"><strong>PRO</strong><span>last release: v4.03</span></div>
+      <div class="edition"><strong>ULTRA</strong><span>described release: v4.14 AUTO</span></div>
+    </div>
+    <div class="note"><strong>Label rule:</strong> no label next to a feature means it is available in all three compared editions. <span class="badge pro">PRO + ULTRA</span> means the feature is not available in Standard. <span class="badge ultra">ULTRA ONLY</span> marks features exclusive to the ULTRA line.</div>
+  </section>
+
+  <section id="en" class="page-break">
+    <h2>English user manual</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#en-editions">Editions and labels</a></li>
+        <li><a href="#en-start">Startup and configuration</a></li>
+        <li><a href="#en-gui">Main window</a></li>
+        <li><a href="#en-e2">Enigma2</a></li>
+        <li><a href="#en-iptv">IPTV and M3U</a></li>
+        <li><a href="#en-vod">IPTV movies and series</a></li>
+        <li><a href="#en-epg">EPG</a></li>
+        <li><a href="#en-record">Recording and timeshift</a></li>
+        <li><a href="#en-playback">Playback and video modes</a></li>
+        <li><a href="#en-cast">DLNA, Chromecast and M3U TV</a></li>
+        <li><a href="#en-tools">Tools</a></li>
+        <li><a href="#en-settings">Settings</a></li>
+        <li><a href="#en-files">Files, logos and picons</a></li>
+        <li><a href="#en-shortcuts">Keyboard shortcuts</a></li>
+        <li><a href="#en-help">Troubleshooting</a></li>
+      </ol>
+    </div>
+
+    <h2 id="en-editions">1. Editions and feature labels</h2>
+    <table>
+      <thead><tr><th>Edition</th><th>Reference version</th><th>Scope</th></tr></thead>
+      <tbody>
+        <tr><td>Standard / no PRO</td><td>v3.63</td><td>Enigma2 and IPTV playback, M3U, EPG, remote control, casting, PiP, audio/subtitle tracks and core tools.</td></tr>
+        <tr><td>PRO</td><td>v4.03</td><td>Adds recording, Enigma2 reconnect, advanced settings, IPTV movies/series, TMDb, PL/EN language and two visual themes.</td></tr>
+        <tr><td>ULTRA</td><td>v4.14 AUTO</td><td>Adds automatic GPU/CPU selection, timeshift, recording library, picons, signal meter, IPTV reconnect, local logos and stability fixes.</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Label rule:</strong> no label means that the feature is available in all three compared editions. <span class="badge pro">PRO + ULTRA</span> means it is absent from Standard. <span class="badge ultra">ULTRA ONLY</span> means that it is exclusive to ULTRA.</div>
+
+    <h2 id="en-start">2. Startup and initial configuration</h2>
+    <h3>Requirements</h3>
+    <ul>
+      <li>64-bit Windows 11.</li>
+      <li>An Enigma2 receiver with OpenWebif enabled, on the same network as the PC.</li>
+      <li>An M3U/M3U8 playlist when IPTV is required.</li>
+      <li>64-bit VLC when the external VLC button or functions requesting its location are used.</li>
+      <li>A TMDb API key for movie/series details and posters. <span class="badge pro">PRO + ULTRA</span> Create or sign in to a TMDb account, open <a href="https://www.themoviedb.org/settings/api">Account settings → API</a> on a desktop browser, accept the terms and request a developer key. Official guide: <a href="https://developer.themoviedb.org/docs/getting-started">TMDb Getting Started</a>.</li>
+    </ul>
+    <h3>Portable operation</h3>
+    <ol>
+      <li>Extract the complete program folder. Do not move the EXE away from its libraries and subfolders.</li>
+      <li>Run <code>HplEnigma2IptvWinUI.exe</code>.</li>
+      <li>If the application folder is writable, data is stored next to the EXE. Otherwise, the program uses <code>%LocalAppData%\HplEnigma2Iptv</code>.</li>
+    </ol>
+    <h3>Connecting to Enigma2</h3>
+    <div class="workflow">
+      <div class="step"><b>1. IP</b>Enter the receiver address on the local network.</div>
+      <div class="step"><b>2. USER/PASS</b>Enter OpenWebif credentials when authentication is enabled.</div>
+      <div class="step"><b>3. PORT/WEB</b>Typical values are stream 8001 and OpenWebif 80.</div>
+      <div class="step"><b>4. Save</b>Save the configuration and select Bouquets.</div>
+    </div>
+    <p><strong>Locate VLC</strong> selects the VLC executable. <strong>VLC</strong> opens the current stream in the external player and is useful for diagnostics.</p>
+
+    <h2 id="en-gui">3. Main window</h2>
+    <p>The following drawing is a privacy-safe UI diagram. It contains no IP address, login or user-specific path.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> Enigma2+ IPTV &nbsp; | &nbsp; Favourites &nbsp; History &nbsp; Receivers &nbsp; Shortcuts &nbsp; Tools &nbsp; Settings</div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Save</span><span class="mock-button hot">Bouquets</span><span class="mock-button m3u">M3U</span><span class="mock-button">EPG XML</span><span class="mock-button hot">Download EPG</span><span class="mock-button m3u">M3U TV</span><span class="mock-button">DLNA</span><span class="mock-button">Chromecast</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Remote</span><span class="mock-button">Bouquet EPG</span><span class="mock-button">Search</span><span class="mock-button">PiP</span><span class="mock-button m3u">M3U Ed.</span><span class="mock-button">Tracks</span><span class="mock-button">VIDEO</span><span class="mock-button">Cinema</span><span class="mock-button hot">Stop</span>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>ENIGMA 2</h5><div class="mock-list">Search...<br><span class="folder">Bouquets / folders</span><br>• Channels in bouquet</div></div>
+        <div class="mock-pane"><h5>IPTV</h5><div class="mock-list">Search...<br><span class="folder">M3U groups</span><br>• IPTV channels</div></div>
+        <div class="mock-pane"><h5>PLAYBACK</h5><div class="mock-video">Enigma2 video area</div><div class="mock-epg">NOW / NEXT / EPG progress bar</div></div>
+      </div>
+    </div>
+    <ul>
+      <li><strong>Always on top</strong> keeps application windows above other windows.</li>
+      <li><strong>Favourites, Recent, History</strong> open stored playback entries.</li>
+      <li><strong>Receivers</strong> manages saved Enigma2 devices.</li>
+      <li><strong>Shortcuts</strong> displays and edits keyboard bindings.</li>
+      <li><strong>Tools</strong> opens diagnostics and additional functions.</li>
+      <li><strong>Settings</strong> opens advanced configuration. <span class="badge pro">PRO + ULTRA</span></li>
+    </ul>
+
+    <h2 id="en-e2">4. Enigma2</h2>
+    <h3>Loading and playing channels</h3>
+    <ol>
+      <li>Complete the connection fields and select <strong>Save</strong>.</li>
+      <li>Select <strong>Bouquets</strong>. Red bold entries represent bouquets/folders.</li>
+      <li>Select a bouquet and double-click a channel.</li>
+      <li>Current and next EPG appears below the video when the receiver supplies it.</li>
+    </ol>
+    <p>The channel context menu provides Play, Add to favourites, Show EPG and Copy URL. The bouquet context menu loads the bouquet or copies its service reference.</p>
+    <h3>Remote control</h3>
+    <p><strong>Remote</strong> opens the virtual Enigma2 remote, including navigation, number, media and REC keys. Commands are sent through OpenWebif.</p>
+    <h3>Enigma2 reconnect <span class="badge pro">PRO + ULTRA</span></h3>
+    <p>After a stream failure, the program attempts to resume playback. Manual Stop prevents reconnect for the stopped channel. The function can be disabled in Settings.</p>
+    <h3>Channel picons <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>Picons appear in the E2 list and above the player. They can be placed in <code>Picon\Enigma2</code> next to the EXE or downloaded from the receiver with Picon manager.</p>
+    <h3>Signal strength <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>Select <strong>Tools → Signal strength</strong>. The window shows SNR, SNR dB, AGC, BER and lock state for the current E2 service, refreshing every two seconds.</p>
+
+    <h2 id="en-iptv">5. IPTV and M3U playlists</h2>
+    <h3>Loading a playlist</h3>
+    <ol>
+      <li>Select <strong>M3U</strong> and open an <code>.m3u</code> or <code>.m3u8</code> file.</li>
+      <li>Groups appear in the IPTV panel. <strong>All</strong> displays all live TV channels.</li>
+      <li>Select a group and double-click a channel.</li>
+      <li>IPTV opens in a separate window and can run concurrently with Enigma2.</li>
+    </ol>
+    <div class="tip"><strong>Privacy:</strong> loading or browsing a playlist does not open every stream URL. A provider connection is made when a selected item is played or a referenced resource such as a logo is fetched.</div>
+    <h3>M3U editor</h3>
+    <p><strong>M3U Ed.</strong> edits channel name, group, URL and logo. Auto logo assigns available graphics. PRO and ULTRA can rebuild the editable list from the currently loaded playlist. <span class="badge pro">PRO + ULTRA</span></p>
+    <h3>Custom group order <span class="badge pro">PRO + ULTRA</span></h3>
+    <p>Right-click a group and choose <strong>Move up</strong> or <strong>Move down</strong>. All remains pinned at the top.</p>
+    <h3>IPTV player</h3>
+    <p>The window includes Pause/Play, Stop, Video, Cinema, volume control, current EPG and a channel logo when available. Closing IPTV does not close the main program.</p>
+    <h3>IPTV reconnect <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>Live channels receive up to three reconnect attempts at five-second intervals. VOD movies and series are not restarted after their natural end.</p>
+
+    <h2 id="en-vod">6. IPTV Movies and IPTV Series <span class="badge pro">PRO + ULTRA</span></h2>
+    <h3>Requirements</h3>
+    <ul>
+      <li>The M3U playlist should identify media through paths or metadata such as <code>/movie/</code> and <code>/series/</code>.</li>
+      <li>Enter a TMDb API key in Settings.</li>
+      <li>The provider account must allow the selected movie or episode to play.</li>
+    </ul>
+    <h3>IPTV Movies</h3>
+    <ol>
+      <li>Load M3U and select <strong>IPTV Movies</strong>.</li>
+      <li>Open a movie folder to display the poster wall and search box.</li>
+      <li>Select <strong>Download posters</strong> to cache missing images.</li>
+      <li>Open a movie to see poster, year, rating, director and overview, then select Play.</li>
+    </ol>
+    <h3>IPTV Series</h3>
+    <p>Items are organised as <strong>series → season → episode</strong>. Select an episode and start playback.</p>
+    <h3>Resume VOD <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>ULTRA stores the position of movies, series and local recordings. The next session can continue or use <strong>Start over</strong>.</p>
+
+    <h2 id="en-epg">7. EPG</h2>
+    <h3>EPG XML</h3>
+    <p><strong>EPG XML</strong> loads a local XMLTV file. Gzip-compressed data is also supported. Entries are matched to IPTV channel names.</p>
+    <h3>Download EPG</h3>
+    <p><strong>Download EPG</strong> opens the download window. Enter the source address and destination, normally <code>epg.xml</code>. “Valid until” reflects the actual final programme in the data.</p>
+    <h3>Bouquet EPG</h3>
+    <p>Select an Enigma2 bouquet first, then <strong>Bouquet EPG</strong>. The window displays programmes for channels in that bouquet.</p>
+    <h3>Record from EPG <span class="badge pro">PRO + ULTRA</span></h3>
+    <p>Use <strong>Record</strong> for the selected programme. Depending on the command and window, the program creates an Enigma2 timer or starts a local recording.</p>
+    <h3>EPG reminders <span class="badge pro">PRO + ULTRA</span></h3>
+    <p>Enable reminders in Settings, select 5-15 minutes, optionally restrict to Favourites and enter comma-separated keywords.</p>
+
+    <h2 id="en-record">8. Recording and timeshift</h2>
+    <h3>Record and recording schedule <span class="badge pro">PRO + ULTRA</span></h3>
+    <p><strong>Record</strong> saves the current Enigma2 stream in <code>Recorded</code> next to the EXE. Press Record again or Stop to finish. The schedule window reads Enigma2 timers and requires receiver confirmation when deleting one.</p>
+    <h3>Recording library <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p><strong>Tools → Recording library</strong> lists TS, MP4, MKV and AVI files in Recorded. It supports playback, rename, delete, size and date information.</p>
+    <h3>Recording monitor <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>Displays elapsed time, file size, write speed and free disk space.</p>
+    <h3>Timeshift <span class="badge ultra">ULTRA ONLY</span></h3>
+    <ol>
+      <li>Start an Enigma2 channel and select <strong>Timeshift</strong>.</li>
+      <li>The live stream is buffered to a temporary file.</li>
+      <li>Pause and seek within the available buffer.</li>
+      <li>Return to LIVE or stop timeshift. The temporary file is removed.</li>
+    </ol>
+
+    <h2 id="en-playback">9. Playback and video modes</h2>
+    <h3>VIDEO</h3>
+    <p>In the main window, VIDEO enlarges the Enigma2 video area and hides control panels. ULTRA requires an active E2 channel and displays a message otherwise. <span class="badge ultra">ULTRA ONLY: no-source guard</span></p>
+    <h3>Cinema / F11</h3>
+    <p>Enters full screen. <kbd>Esc</kbd> returns to the GUI and restores the default window size.</p>
+    <h3>PiP</h3>
+    <p>Opens a small MiniPlayer window. Closing PiP does not close the application.</p>
+    <h3>Tracks</h3>
+    <p>Displays VLC audio and subtitle tracks available for the current item. The active track is highlighted.</p>
+    <h3>Audio</h3>
+    <p>Audio-only mode hides video while keeping sound, for example for radio services.</p>
+    <h3>Stop</h3>
+    <p>Stops Enigma2 in the main window. Stop in IPTV affects only the IPTV window.</p>
+
+    <h2 id="en-cast">10. Canal+ Online, DLNA, Chromecast and M3U TV</h2>
+    <h3>Canal+ Online and Polsat Box</h3>
+    <p>Opens the integrated HPL Streaming module. <strong>Run</strong> opens operator pages in the original Microsoft Edge browser and displays My List. Authentication takes place on the operator website.</p>
+    <h3>DLNA</h3>
+    <p>Select <strong>DLNA</strong>, set the search duration and choose <strong>Search devices</strong>. VPN, Wi-Fi client isolation and firewall rules can block SSDP discovery.</p>
+    <h3>Chromecast</h3>
+    <p>Select Chromecast, the target device and source. The IPTV context menu also provides <strong>Send to Chromecast</strong>. The receiving device must be able to reach the source URL.</p>
+    <h3>M3U TV</h3>
+    <p>Starts a local HTTP server for the loaded playlist. Load M3U first. The window shows server URL, status and request count.</p>
+
+    <h2 id="en-tools" class="section-break">11. Tools</h2>
+    <table class="matrix-small">
+      <thead><tr><th>Tool</th><th>Standard</th><th>PRO</th><th>ULTRA</th></tr></thead>
+      <tbody>
+        <tr><td>Global E2 + IPTV search</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Connection diagnostics</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Signal strength</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Recording library and monitor</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Picon manager</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Encrypted profile / backup</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Legacy JSON profile</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      </tbody>
+    </table>
+    <h3>Connection diagnostics</h3>
+    <p>Shows the portable data directory, receiver IP, ports, VLC, EPG state, M3U server and an OpenWebif test. The password is not displayed.</p>
+    <h3>Profiles and backup</h3>
+    <p>An encrypted profile protects its data with a password. Legacy JSON may contain the receiver password in plain text and must be stored carefully.</p>
+
+    <h2 id="en-settings" class="section-break">12. Settings - every option from top to bottom <span class="badge pro">PRO + ULTRA</span></h2>
+    <p>Select <strong>Settings</strong> in the upper-right corner. The controls appear in the following order from the top. Scroll vertically and select <strong>Save settings</strong> when finished.</p>
+    <ol class="settings-list">
+      <li><strong>Language and theme.</strong>
+        <ul>
+          <li><strong>Interface language</strong> - select Polski (PL) or English (EN). Restart the program to apply it.</li>
+          <li><strong>GUI theme</strong> - Black (classic) or Futuristic HUD. Restart to apply the new appearance.</li>
+        </ul>
+      </li>
+      <li><strong>Startup profile.</strong>
+        <ul>
+          <li><strong>Auto-connect to receiver</strong> - automatically uses the active Enigma2 receiver after startup.</li>
+          <li><strong>Play last channel</strong> - attempts to resume the most recently watched item.</li>
+          <li><strong>Window at startup</strong> - None, Streaming Canal+/Polsat, Remote control or Download EPG.</li>
+          <li><strong>Network quality preset</strong> - LAN uses the smallest buffer, WiFi a medium buffer and Mobile the largest, safest buffer for weaker connections.</li>
+          <li><strong>Network/live buffer (ms)</strong> - range 150-10000 ms. A larger value usually reduces interruptions but increases startup time and live delay.</li>
+        </ul>
+      </li>
+      <li><strong>EPG reminders.</strong>
+        <ul>
+          <li><strong>Enabled</strong> - turns programme reminders on.</li>
+          <li><strong>Minutes before the programme</strong> - select 5 to 15 minutes.</li>
+          <li><strong>Favourites only</strong> - limits reminders to favourite channels.</li>
+          <li><strong>EPG keywords</strong> - enter comma-separated phrases, for example <code>movie, match, news</code>. The programme title and channel name are checked.</li>
+        </ul>
+      </li>
+      <li><strong>Parental lock.</strong>
+        <ul>
+          <li><strong>Enabled</strong> - activates access control.</li>
+          <li><strong>New PIN</strong> - enter at least four digits and select <strong>Set PIN</strong>.</li>
+          <li><strong>Locked M3U groups</strong> - enter exact IPTV group names separated by commas.</li>
+          <li><strong>Locked Enigma2 bouquets</strong> - enter exact E2 bouquet names separated by commas.</li>
+        </ul>
+      </li>
+      <li><strong>Backup.</strong>
+        <ul>
+          <li><strong>Backup .hplbackup</strong> - enter a password of at least four characters and choose where to save the encrypted configuration backup.</li>
+          <li><strong>Restore backup</strong> - enter the password and select an <code>.hplbackup</code> file. A wrong password or damaged file displays an error instead of closing the program.</li>
+        </ul>
+      </li>
+      <li><strong>Other.</strong>
+        <ul>
+          <li><strong>Enigma2 video decoding</strong> - Auto, GPU or CPU. AUTO starts with GPU and switches the machine to CPU when audio is detected without video. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>Reset saved AUTO choice</strong> - removes the GPU/CPU decision stored for this PC so detection runs again. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>Audio-only mode (radio)</strong> - disables video and keeps audio.</li>
+          <li><strong>Automatic Enigma2 reconnect</strong> - attempts to restart the current channel after a stream failure.</li>
+          <li><strong>Automatic IPTV reconnect</strong> - up to three attempts every five seconds for live channels; VOD is excluded. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>TMDb API key</strong> - paste the v3 API key used by IPTV Movies/Series for details and posters. To obtain one, create or sign in to an account, open <a href="https://www.themoviedb.org/settings/api">TMDb → Settings → API</a> in a desktop browser, accept the terms and complete the short developer application. See the <a href="https://developer.themoviedb.org/docs/getting-started">official TMDb guide</a>. <span class="badge pro">PRO + ULTRA</span></li>
+          <li><strong>Enigma2 picon folder (FTP)</strong> - enter the remote path, for example <code>/media/usb/pICON</code>. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>Receiver FTP port</strong> - normally 21; change it only if the receiver FTP server uses another port. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>Timeshift buffer folder</strong> - choose a fast drive with plenty of free space. An empty field uses the default application data folder. <span class="badge ultra">ULTRA ONLY</span></li>
+          <li><strong>Local channel logo folder</strong> - select a folder containing files named exactly like IPTV channels. <span class="badge ultra">ULTRA ONLY</span></li>
+        </ul>
+      </li>
+      <li><strong>Save settings.</strong> The bottom button stores all changes and closes the window. Language and theme changes require a program restart.</li>
+    </ol>
+
+    <h2 id="en-files" class="section-break">13. Program files, logos and picons</h2>
+    <h3>Data directory</h3>
+    <p>Portable mode stores data next to the EXE. When that folder is not writable, the program uses <code>%LocalAppData%\HplEnigma2Iptv</code>.</p>
+    <table>
+      <thead><tr><th>File/folder</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>config.json</code></td><td>Enigma2 connection and VLC path; the password is protected.</td></tr>
+        <tr><td><code>app_settings.json</code></td><td>Advanced settings, receivers, shortcuts and preferences.</td></tr>
+        <tr><td><code>m3u_channels.json</code></td><td>M3U editor changes. <span class="badge ultra">ULTRA v4.13+ ONLY</span></td></tr>
+        <tr><td><code>favorites_e2.json</code>, <code>history.json</code>, <code>last_played.json</code></td><td>Favourites and playback history.</td></tr>
+        <tr><td><code>epg.xml</code>, <code>epg_info.json</code></td><td>EPG data and metadata.</td></tr>
+        <tr><td><code>Recorded</code></td><td>Local Enigma2 recordings. <span class="badge pro">PRO + ULTRA</span></td></tr>
+        <tr><td><code>Posters\Movies</code></td><td>Poster cache in M3U group subfolders. <span class="badge pro">PRO + ULTRA</span></td></tr>
+        <tr><td><code>Picon\Enigma2</code></td><td>Local E2 picons. <span class="badge ultra">ULTRA ONLY</span></td></tr>
+      </tbody>
+    </table>
+    <h3>Local channel logo folder <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>A file name must match the channel, for example <code>TVP 1 HD.png</code>. Supported formats are PNG, JPG, JPEG, WEBP and ICO. Priority: M3U <code>tvg-logo</code> → EPG icon → local folder.</p>
+    <h3>Picon names <span class="badge ultra">ULTRA ONLY</span></h3>
+    <p>The file name is the E2 service reference with colons replaced by underscores, for example <code>1_0_19_290E_1EDC_71_820000_0_0_0.png</code>. PNG, JPG and JPEG are supported.</p>
+
+    <h2 id="en-shortcuts" class="section-break">14. Keyboard shortcuts</h2>
+    <table>
+      <thead><tr><th>Default key</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>F11</kbd></td><td>Cinema mode</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Mute</td></tr>
+        <tr><td><kbd>Ctrl+V</kbd></td><td>Video mode</td></tr>
+        <tr><td><kbd>Ctrl+F</kbd></td><td>Global search</td></tr>
+        <tr><td><kbd>Ctrl+P</kbd></td><td>MiniPlayer PiP</td></tr>
+        <tr><td><kbd>Ctrl+A</kbd></td><td>Audio-only mode</td></tr>
+        <tr><td><kbd>Ctrl+R</kbd></td><td>Recently watched</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Stop playback</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Return from Video/Cinema to the GUI</td></tr>
+      </tbody>
+    </table>
+    <p>The Shortcuts window lets the user select an action, enter a new binding and save it. ULTRA does not trigger global bindings while a text input has focus.</p>
+
+    <h2 id="en-help">15. Troubleshooting</h2>
+    <h3>Bouquets and EPG work, but Enigma2 has audio only</h3>
+    <ol>
+      <li>Test the same stream with the VLC button.</li>
+      <li>Check the stream port, usually 8001, and WEB port, usually 80.</li>
+      <li>In PRO, use the alternative GPU/CPU build. <span class="badge pro">PRO</span></li>
+      <li>In ULTRA, select AUTO or CPU decoding and reset the saved AUTO choice. <span class="badge ultra">ULTRA ONLY</span></li>
+      <li>Select a larger buffer preset when sound or video is interrupted.</li>
+    </ol>
+    <h3>Live IPTV works, but a movie does not</h3>
+    <p>Test the URL in VLC, verify account validity and concurrent connection limits. VOD uses LibVLC while live channels may use another playback engine.</p>
+    <h3>Posters are missing</h3>
+    <p>Check the TMDb key, internet connection and cleaned title. Open the movie folder and select Download posters.</p>
+    <h3>DLNA or Chromecast is not found</h3>
+    <p>The PC and device must be on the same network. Temporarily disable VPN, check Wi-Fi client isolation and allow private-network firewall access.</p>
+    <h3>Temporary directory warning</h3>
+    <p>“Failed to remove temporary directory” usually comes from an installer or updater. Close processes using TEMP, restart Windows and delete only the specified unused temporary folder.</p>
+    <h3>Settings are not stored next to the EXE</h3>
+    <p>Move the program to a user-writable folder or check <code>%LocalAppData%\HplEnigma2Iptv</code>.</p>
+    <div class="footer-note">HPL ink Enigma2+ IPTV - user manual - 16.07.2026</div>
+  </section>
+</main>
+</body>
+</html>
