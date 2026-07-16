@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL ink Music - user manual</title>
+  <style>
+    :root {
+      --bg: #0b0c0f; --panel: #15171c; --panel2: #1e2128;
+      --ink: #ff315f; --accent: #ff7a1a; --violet: #8d7cff;
+      --cyan: #00d8c9; --green: #39d98a; --warn: #f5b94d;
+      --danger: #ff5246; --text: #e6eaf5; --dim: #9aa1af; --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; line-height: 1.52; letter-spacing: 0; }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover { min-height: 720px; display: flex; flex-direction: column; justify-content: center; border-top: 8px solid var(--accent); border-bottom: 1px solid var(--line); }
+    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); } .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; } .brand .music { color: #b5aaff; }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 780px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition { border: 1px solid var(--line); background: var(--panel); padding: 15px; border-radius: 6px; }
+    .edition strong { display: block; color: var(--text); font-size: 17px; } .edition span { color: var(--dim); }
+    h2 { margin: 42px 0 18px; padding-bottom: 8px; color: var(--accent); font-size: 27px; border-bottom: 2px solid var(--line); break-after: avoid; }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; } ul, ol { margin: 7px 0 16px 24px; padding: 0; } li { margin: 4px 0; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd { font-family: Consolas, monospace; background: var(--panel2); border: 1px solid var(--line); border-radius: 3px; padding: 1px 5px; color: #fff; }
+    kbd { color: var(--warn); }
+    .badge { display: inline-block; vertical-align: 2px; margin-left: 7px; padding: 2px 7px; border-radius: 3px; font-size: 11px; font-weight: 800; line-height: 1.3; white-space: nowrap; }
+    .badge.online { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
+    .badge.optional { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .note, .warning, .tip { margin: 15px 0; padding: 12px 14px; border-left: 4px solid var(--cyan); background: var(--panel); break-inside: avoid; }
+    .warning { border-color: var(--warn); } .tip { border-color: var(--green); } .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc { columns: 2; column-gap: 32px; padding: 15px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; } th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; } td { background: #101216; } tr { break-inside: avoid; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); } .mock-title i { color: var(--ink); }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); } .mock-button.play { border-color: var(--green); color: var(--green); }
+    .mock-grid { display: grid; grid-template-columns: 0.8fr 2.2fr; gap: 7px; min-height: 230px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; } .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: var(--danger); font-weight: 700; }
+    .mock-table { display: grid; grid-template-columns: .6fr 1.5fr 1.2fr 1.2fr .6fr .8fr .7fr 1.4fr; gap: 4px; font-size: 10px; color: var(--dim); }
+    .mock-table b { color: var(--accent); }
+    .page-break { break-before: page; } .section-break { break-before: page; }
+    #pl-help ~ h3, #en-help ~ h3 { margin-top: 18px; margin-bottom: 5px; font-size: 17px; }
+    #pl-help ~ p, #en-help ~ p { margin-top: 4px; margin-bottom: 8px; }
+    .footer-note { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; } .cover { min-height: 250mm; } .brand { font-size: 34pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; } h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; } table td { background: #fff; } th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.online { color: #413477; background: #efedff; } .badge.optional { color: #251400; background: #ff9a4f; }
+      .mock-window { border-color: #555; background: #050505; color: #eee; } a { color: inherit; }
+    }
+</style>
+</head>
+<body>
+<main>
+
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="music">Music</span></div>
+    <h1>User manual</h1>
+    <p class="subtitle">A detailed guide to library indexing, artwork, playback, EQ visualization, Chromecast, Internet radio and audio output selection.</p>
+    <div class="edition-strip"><div class="edition"><strong>Application version</strong><span>v1.50 dated 12 July 2026</span></div><div class="edition"><strong>Platform</strong><span>Windows x64, WinUI 3</span></div><div class="edition"><strong>Distribution</strong><span>portable, self-contained</span></div></div>
+    <div class="note"><strong>Manual scope:</strong> this document describes <code>HPL ink Music v 1.50 [12.07.2026]</code>. Items marked <span class="badge online">INTERNET</span> need a network connection, while <span class="badge optional">OPTIONAL</span> components are only required in specific scenarios.</div>
+  </section>
+  <section class="page-break">
+    <h2>English user manual</h2>
+    <div class="toc"><ol><li><a href="#en-version">Version and purpose</a></li><li><a href="#en-start">Requirements and startup</a></li><li><a href="#en-gui">Main window</a></li><li><a href="#en-index">Indexing the library</a></li><li><a href="#en-browse">Browsing and searching</a></li><li><a href="#en-meta">Editing metadata</a></li><li><a href="#en-covers">Downloading covers</a></li><li><a href="#en-player">Player</a></li><li><a href="#en-eq">Equalizer and mini mode</a></li><li><a href="#en-cast">Chromecast</a></li><li><a href="#en-radio">Internet radio</a></li><li><a href="#en-bt">Bluetooth and audio output</a></li><li><a href="#en-ui">Language and appearance</a></li><li><a href="#en-files">Program files and formats</a></li><li><a href="#en-actions">Quick operations</a></li><li><a href="#en-help">Troubleshooting</a></li></ol></div>
+    <h2 id="en-version">1. Version and purpose</h2>
+    <table><thead><tr><th>Item</th><th>Information</th></tr></thead><tbody><tr><td>Full name</td><td>HPL ink Music v 1.50 [12.07.2026]</td></tr><tr><td>Main purpose</td><td>Build a local music index, find recordings and play files without moving them from their existing folders.</td></tr><tr><td>Additional features</td><td>Metadata, covers, EQ visualization, Chromecast, Internet radio, audio output selection and a PL/EN interface.</td></tr><tr><td>Installation model</td><td>Portable. The complete application folder is required and the application stores its databases next to the EXE.</td></tr></tbody></table>
+    <div class="warning"><strong>Important:</strong> the index contains information about the audio files; it is not a copy of the music. Re-index after moving or deleting recordings outside the application.</div>
+    <h2 id="en-start">2. Requirements and startup</h2>
+    <h3>Requirements</h3><ul><li>Windows 10 version 2004 (build 19041) or newer; Windows 11 and a 64-bit system are recommended.</li><li>The complete application directory. Do not copy and run <code>HPLMusicWinUI.exe</code> without its libraries, <code>Assets</code> folder and FFmpeg tools.</li><li>Write access to the application folder for the index, settings, radio stations and covers.</li><li>Internet access only for online covers, radio and Chromecast. <span class="badge online">INTERNET</span></li></ul>
+    <h3>First run</h3><ol><li>Extract the complete application folder.</li><li>Run <code>HPLMusicWinUI.exe</code>.</li><li>On the first run, select a music folder and index it.</li><li>On later runs, an existing <code>hpl_music_index.sqlite</code> is loaded automatically.</li></ol>
+    <div class="note"><strong>Computer authorization:</strong> a licensed build may enforce MAC-address authorization. If the application reports that the computer is not authorized, contact the application supplier.</div>
+    <h2 id="en-gui">3. Main window</h2>
+    <p>The diagram below shows the layout without private paths or filenames.</p>
+    <div class="mock-window"><div class="mock-title"><b>HPL</b> <i>ink</i> Music &nbsp; | &nbsp; Language: EN &nbsp; GUI style: Current &nbsp; Light mode</div><div class="mock-toolbar"><span class="mock-button">Select folder</span><span class="mock-button hot">Index</span></div><div class="mock-toolbar"><span class="mock-button">Download covers</span><span class="mock-button play">PLAY</span><span class="mock-button">Chromecast</span><span class="mock-button">Radio</span><span class="mock-button">Bluetooth</span><span class="mock-button">Search</span><span class="mock-button">Type</span><span class="mock-button">Duplicates</span><span class="mock-button">Clear</span></div><div class="mock-grid"><div class="mock-pane"><h5>FOLDERS</h5><div class="mock-list"><span class="folder">Main library</span><br>├ Albums<br>├ Live<br>└ Compilations</div></div><div class="mock-pane"><h5>FILES</h5><div class="mock-table"><b>FORMAT</b><b>TITLE</b><b>ARTIST</b><b>ALBUM</b><b>YEAR</b><b>GENRE</b><b>DURATION</b><b>FILENAME</b><span>FLAC</span><span>Track</span><span>Artist</span><span>Album</span><span>2026</span><span>Rock</span><span>4:12</span><span>track.flac</span></div></div></div></div>
+    <h3>Window bands</h3><ul><li><strong>Top bar:</strong> PL/EN language, GUI style, light/dark switch and logo.</li><li><strong>Folder bar:</strong> library path, folder picker and <strong>Index</strong>.</li><li><strong>Tool bar:</strong> covers, playback, Chromecast, radio, Bluetooth, search, type filter, duplicates and filter reset.</li><li><strong>Left:</strong> folder tree with counts. <strong>Right:</strong> recording table.</li><li><strong>Bottom:</strong> status, indexing progress and the double-click hint.</li></ul>
+    <h2 id="en-index">4. Indexing the library</h2>
+    <div class="workflow"><div class="step"><b>1. Select folder</b>Choose the parent folder that contains the music.</div><div class="step"><b>2. Index</b>The application scans it and every subfolder.</div><div class="step"><b>3. Wait</b>Status shows the processed and total file counts.</div><div class="step"><b>4. Select a branch</b>Click a folder in the tree to display recordings.</div></div>
+    <p>Indexing reads title, artist, album, year, genre, duration, format, size and path. Inaccessible folders are skipped instead of stopping the full scan. The result is saved in a local SQLite database.</p>
+    <h3>Extensions included in a scan</h3><p><code>.aac</code> <code>.ac3</code> <code>.aiff</code> <code>.dts</code> <code>.flac</code> <code>.m4a</code> <code>.mp3</code> <code>.ogg</code> <code>.opus</code> <code>.wav</code> <code>.wma</code></p>
+    <div class="tip"><strong>Good practice:</strong> re-index after adding, removing, moving or renaming a significant number of files.</div>
+    <h2 id="en-browse">5. Browsing, searching and organizing</h2>
+    <h3>Folders and table</h3><p>Click a folder in the left tree. The right-hand list shows files from that branch and its subfolders. Click <strong>Format, Title, Artist, Album, Year, Genre, Duration</strong> or <strong>Filename</strong> to sort; click the same header again to reverse the order.</p>
+    <h3>Search</h3><ol><li>Enter one or more terms.</li><li>Press <kbd>Enter</kbd> or click <strong>Search</strong>.</li><li>Every term must occur in the file data. The search covers title, artist, album, year, genre, filename, folder and full path.</li><li>Optionally select an extension in <strong>Type</strong>. The type filter works alone or together with text.</li></ol>
+    <h3>Duplicates</h3><p><strong>Duplicates</strong> lists files with the same filename and the same size. The application never deletes them automatically. Compare the paths and remove an unwanted copy in Windows File Explorer.</p><p><strong>Clear</strong> removes search text, the type filter and result mode, then restores the library tree.</p>
+    <h2 id="en-meta">6. Editing metadata</h2><ol><li>Right-click a file.</li><li>Select <strong>Edit metadata</strong>.</li><li>Edit the title, artist, album, year or genre.</li><li>Click <strong>Save</strong>.</li></ol>
+    <div class="warning"><strong>Caution:</strong> saving changes the tags in the original audio file. Back up important files before bulk editing. Some formats or file variants do not support reliable tag writing; the application then displays an error.</div>
+    <h2 id="en-covers">7. Downloading covers <span class="badge online">INTERNET FOR SOURCE 2</span></h2>
+    <ol><li>Click <strong>Download covers</strong>.</li><li>Select an indexed folder.</li><li>Choose a source:<ul><li><strong>Source 1: from files</strong> reads artwork embedded in audio tags.</li><li><strong>Source 2: online for missing</strong> searches MusicBrainz and downloads artwork from Cover Art Archive.</li></ul></li><li>Wait for the found, skipped, missing and error summary.</li></ol>
+    <p>Existing assignments are skipped. Images are saved in <code>hpl_music_covers</code> and mappings in <code>hpl_music_covers.sqlite</code>. An orange dot in the player means a real cover was found; no dot means the fallback image is shown.</p>
+    <h2 id="en-player" class="section-break">8. Player</h2>
+    <h3>Starting playback</h3><ol><li>Select a folder or search result set.</li><li>Select a recording.</li><li>Click the green <strong>PLAY</strong> button or double-click the row.</li></ol><p>The visible list becomes the player playlist and the selected file becomes its starting item. The main window is hidden; <strong>Show GUI</strong> brings it back without closing the player.</p>
+    <table><thead><tr><th>Control</th><th>Action</th></tr></thead><tbody><tr><td>Previous / Next</td><td>Moves through the current playlist and wraps at either end.</td></tr><tr><td>Play / Pause</td><td>Starts, pauses or resumes standard formats.</td></tr><tr><td>Stop</td><td>Stops playback and resets the position.</td></tr><tr><td>Progress slider</td><td>Seeks when duration is known and the active engine supports seeking.</td></tr><tr><td>Volume / Mute</td><td>Controls output level; Mute is available in mini mode.</td></tr><tr><td>Show/Hide playlist</td><td>Resizes the window. Double-click an item to play it immediately.</td></tr><tr><td>Always on top</td><td>Keeps the full player above other windows.</td></tr></tbody></table>
+    <h3>AC3 and DTS <span class="badge optional">FFPLAY</span></h3><p><code>.ac3</code> and <code>.dts</code> are played through <code>ffplay.exe</code>. Duration may remain at <code>0:00</code>, seeking and conventional pause are unavailable, and Play acts as stop/restart. When playback ends naturally, the player advances to the next item.</p>
+    <h2 id="en-eq">9. Equalizer and mini mode</h2>
+    <h3>Visualizer types</h3><p>Choose <strong>Bars</strong>, <strong>Neon LED reflection</strong>, <strong>Rainbow segments</strong> or <strong>Soundwave neon</strong>. The color can be multicolor or a single purple, light purple, neon red, turquoise, cyan, blue, green, yellow, orange or white.</p><p>The selection is saved and used in full and mini player views. Radio keeps its own independent EQ type and color.</p>
+    <h3>Mini mode</h3><p>Click <strong>Minimize</strong> for a wide compact panel with track information, controls, artwork and EQ. Click <strong>GUI</strong> to restore the full player. Closing the player stops music and reopens the main window.</p>
+    <h2 id="en-cast">10. Chromecast <span class="badge online">LOCAL NETWORK</span></h2>
+    <ol><li>Connect the computer and Chromecast to the same network.</li><li>Click <strong>Chromecast</strong>; discovery takes several seconds.</li><li>If several receivers are found, choose one and confirm.</li><li>After the connection message, select a file and use the normal <strong>PLAY</strong> button.</li></ol>
+    <p>MP3, WAV, FLAC, AAC and M4A are served directly. Other supported formats are transcoded to MP3 by the local <code>ffmpeg.exe</code>. The application starts a temporary HTTP server, so Windows Firewall may ask for private-network access.</p>
+    <div class="warning"><strong>Important:</strong> keep both the application and computer running. Guest Wi-Fi, client isolation, VPN or firewall rules can prevent discovery or block the stream.</div><p>The player supports pause, resume, seek, volume and automatic next-track behavior. Click <strong>Disconnect Cast</strong> in the main window to end the session.</p>
+    <h2 id="en-radio" class="section-break">11. Internet radio <span class="badge online">INTERNET</span></h2>
+    <h3>Playback</h3><ol><li>Click <strong>Radio</strong>.</li><li>Select a station.</li><li>Click Play or double-click the row.</li><li>Adjust volume and EQ independently from file playback.</li></ol>
+    <p>When no user database exists, the application provides starter stations. Search filters name, country, genre and URL; the genre list narrows the result. A station may link to audio directly or to an M3U, M3U8 or PLS playlist; the application attempts to resolve its first stream URL.</p>
+    <h3>Add and edit</h3><p><strong>Add station</strong> and <strong>Edit</strong> provide name, stream URL, country, genre and logo URL fields. Name and URL are required. <strong>Delete</strong> asks for confirmation and saves the change.</p>
+    <h3>M3U import and export</h3><ul><li><strong>Load M3U</strong> accepts <code>.m3u</code> and <code>.m3u8</code>. Entries with URLs already stored are skipped.</li><li><strong>Export M3U</strong> saves the currently visible stations. If a filter is active, only that filtered set is exported.</li></ul>
+    <h3>Mini view and playlist</h3><p><strong>Minimize</strong> switches radio to a wide mini panel. <strong>Hide/Show playlist</strong> works in both views. Closing the radio window stops the stream.</p>
+    <h2 id="en-bt">12. Bluetooth and audio output</h2>
+    <p><strong>Bluetooth</strong> chooses the output device for both player and radio. It does not pair Bluetooth hardware.</p><ol><li>If the device is not paired, click <strong>Open Windows BT settings</strong> and pair it in Windows.</li><li>Return and click <strong>Refresh</strong>.</li><li>Select the device or <strong>Windows default device</strong>.</li><li>Click <strong>Set as active</strong> or double-click the row.</li></ol><p>The choice is saved and applied immediately to an open player and radio. If the device disappears, select the Windows default output and refresh the list.</p>
+    <h2 id="en-ui">13. Language, theme and GUI style</h2>
+    <table><thead><tr><th>Option</th><th>Action</th></tr></thead><tbody><tr><td>PL / EN language</td><td>Changes labels in the main window, player, radio and Bluetooth window. The choice is saved.</td></tr><tr><td>GUI style: Current</td><td>Classic application appearance. The main window offers a light/dark switch.</td></tr><tr><td>GUI style: Black Glass</td><td>Forces the dark glass variant in all windows. The light/dark button is disabled in this style.</td></tr></tbody></table>
+    <h2 id="en-files" class="section-break">14. Program files and supported formats</h2>
+    <table><thead><tr><th>File or folder</th><th>Purpose</th></tr></thead><tbody><tr><td><code>hpl_music_index.sqlite</code></td><td>Library index and remembered root path.</td></tr><tr><td><code>hpl_music_settings.json</code></td><td>Language, appearance, EQ and selected audio output.</td></tr><tr><td><code>hpl_music_covers.sqlite</code></td><td>File-to-cover mappings.</td></tr><tr><td><code>hpl_music_covers</code></td><td>Local cover image cache.</td></tr><tr><td><code>hpl_music_radio.json</code></td><td>User radio stations.</td></tr><tr><td><code>hpl_music_winui_crash.log</code></td><td>Last unhandled crash report, if one occurred.</td></tr><tr><td><code>ffplay.exe</code></td><td>AC3/DTS playback.</td></tr><tr><td><code>ffmpeg.exe</code></td><td>Chromecast transcoding.</td></tr><tr><td><code>Assets</code></td><td>Application icon and artwork.</td></tr></tbody></table>
+    <div class="tip"><strong>Backup:</strong> copy the full application directory, or at least the data files above and the cover cache, to preserve settings, radio, covers and index.</div>
+    <h2 id="en-actions">15. Quick operations</h2>
+    <table><thead><tr><th>Operation</th><th>Result</th></tr></thead><tbody><tr><td><kbd>Enter</kbd> in search</td><td>Runs the search.</td></tr><tr><td>Double-click a file</td><td>Plays the selected recording.</td></tr><tr><td>Right-click a file</td><td>Opens metadata editing.</td></tr><tr><td>Click a table header</td><td>Sorts ascending; click again for descending.</td></tr><tr><td>Double-click a playlist item</td><td>Switches to that track or station.</td></tr><tr><td>Double-click an audio device</td><td>Sets it as active.</td></tr></tbody></table>
+    <h2 id="en-help">16. Troubleshooting</h2>
+    <h3>The list is empty after startup</h3><p>Select a valid folder and click <strong>Index</strong>. After completion, click a folder in the left tree. Loading an index intentionally leaves the file table empty until a folder or search result is selected.</p>
+    <h3>The index or settings are not saved</h3><p>Data is stored next to the EXE. Move the complete directory to a user-writable location outside <code>Program Files</code>, then index again. Do not run a copied EXE on its own.</p>
+    <h3>A file is missing</h3><p>Check that its extension is supported and re-index. A folder without access permission may have been skipped.</p>
+    <h3>No online cover is found</h3><p>Correct the artist, album or title, check the Internet connection and retry. Not every release has artwork in MusicBrainz/Cover Art Archive.</p>
+    <h3>AC3 or DTS does not play</h3><p>Ensure <code>ffplay.exe</code> is in the application folder. The program can also search PATH and several common locations, but the local copy is recommended.</p>
+    <h3>Chromecast is not found or does not play</h3><p>Check the shared network, disable client isolation and VPN, allow private-network access in Windows Firewall, and ensure <code>ffmpeg.exe</code> exists for formats that need transcoding.</p>
+    <h3>Radio does not play</h3><p>Check Internet access and the station URL. The provider may have changed or blocked the stream. Test another station, then edit or delete the broken entry.</p>
+    <h3>A Bluetooth device is missing</h3><p>Pair and power on the device in Windows, click <strong>Refresh</strong>, and choose its audio profile. The application does not pair devices itself.</p>
+    <h3>The application closed after an error</h3><p>Check <code>hpl_music_winui_crash.log</code> in the application directory and provide it to support with a description of the last action.</p>
+    <div class="footer-note">HPL ink Music v 1.50 [12.07.2026] - manual generated 16 July 2026.</div>
+  </section>
+</main>
+</body>
+</html>
