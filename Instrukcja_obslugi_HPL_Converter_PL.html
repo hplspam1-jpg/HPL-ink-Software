@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL Converter v3.13 - instrukcja obslugi (PL)</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #15171c;
+      --panel2: #1e2128;
+      --ink: #ff315f;
+      --accent: #ff7a1a;
+      --violet: #8d7cff;
+      --cyan: #00d8c9;
+      --green: #39d98a;
+      --warn: #f5b94d;
+      --danger: #ff5246;
+      --text: #e6eaf5;
+      --dim: #9aa1af;
+      --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: 0;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover {
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); }
+    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
+    .brand .conv { color: var(--cyan); }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .edition strong { display: block; color: var(--text); font-size: 17px; }
+    .edition span { color: var(--dim); }
+    h2 {
+      margin: 42px 0 18px;
+      padding-bottom: 8px;
+      color: var(--accent);
+      font-size: 27px;
+      border-bottom: 2px solid var(--line);
+      break-after: avoid;
+    }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; }
+    ul, ol { margin: 7px 0 16px 24px; padding: 0; }
+    li { margin: 4px 0; }
+    .settings-list > li { margin: 0 0 18px; padding-left: 3px; break-inside: avoid; }
+    .settings-list > li::marker { color: var(--accent); font-weight: 800; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd {
+      font-family: Consolas, monospace;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: #fff;
+    }
+    kbd { color: var(--warn); }
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 7px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .badge.num { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
+    .badge.new { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .note, .warning, .tip {
+      margin: 15px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--cyan);
+      background: var(--panel);
+      break-inside: avoid;
+    }
+    .warning { border-color: var(--warn); }
+    .tip { border-color: var(--green); }
+    .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc {
+      columns: 2;
+      column-gap: 32px;
+      padding: 15px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; }
+    td { background: #101216; }
+    tr { break-inside: avoid; }
+    .yes { color: var(--green); font-weight: 800; text-align: center; }
+    .no { color: #626a78; text-align: center; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); }
+    .mock-title i { color: var(--ink); }
+    .mock-tabs { display: flex; gap: 5px; padding: 8px 0 2px; }
+    .mock-tab { padding: 5px 14px; background: #8f0f26; color: #ffd6dc; border-radius: 3px 3px 0 0; font-size: 11px; font-weight: 700; }
+    .mock-tab.active { background: #ff1744; color: #fff; }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); }
+    .mock-button.m3u { border-color: var(--green); color: var(--green); }
+    .mock-button.amber { border-color: var(--warn); color: var(--warn); }
+    .mock-grid { display: grid; grid-template-columns: 1fr; gap: 7px; min-height: 180px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: #7fdfff; font-weight: 700; }
+    .mock-status { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
+    .matrix-small td:first-child { width: 42%; }
+    .page-break { break-before: page; }
+    .section-break { break-before: page; }
+    .language-break { break-before: page; margin-top: 0; }
+    .footer-note { margin-top: 45px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; }
+      .cover { min-height: 250mm; }
+      .brand { font-size: 34pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; }
+      table td { background: #fff; }
+      th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.num { color: #413477; background: #efedff; }
+      .badge.new { color: #251400; background: #ff9a4f; }
+      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      a { color: inherit; }
+      .page-break, .language-break { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="conv">Converter</span></div>
+    <h1>Instrukcja obsługi</h1>
+    <p class="subtitle">Przewodnik po programie do konwersji i porządkowania list kanałów IPTV oraz bukietów Enigma2.</p>
+    <div class="edition-strip">
+      <div class="edition"><strong>HPL Converter</strong><span>opisywane wydanie: v3.13</span></div>
+      <div class="edition"><strong>Data wydania</strong><span>05.07.2026</span></div>
+      <div class="edition"><strong>Platforma</strong><span>Windows 10 / 11 (aplikacja okienkowa)</span></div>
+    </div>
+    <div class="note"><strong>Zasada oznaczeń:</strong> większość przycisków w programie ma stały numer w nawiasie, np. <em>Wczytaj m3u (1)</em>. Instrukcja odwołuje się do tych numerów zapisem <span class="badge num">(1)</span> - dzięki temu opis jednoznacznie wskazuje element interfejsu. Pełna tabela numerów 1-22 znajduje się w rozdziale 14.</div>
+  </section>
+
+  <section id="pl" class="page-break">
+    <h2>Spis treści</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#pl-about">O programie</a></li>
+        <li><a href="#pl-start">Uruchomienie i zabezpieczenie dostępu</a></li>
+        <li><a href="#pl-gui">Główne okno</a></li>
+        <li><a href="#pl-load">Wczytywanie list kanałów</a></li>
+        <li><a href="#pl-convert">Konwersja do formatu Enigma2</a></li>
+        <li><a href="#pl-hpl">Wzór listy HPL i sortowanie</a></li>
+        <li><a href="#pl-jason">Listy Jason</a></li>
+        <li><a href="#pl-edit">Edycja listy kanałów</a></li>
+        <li><a href="#pl-tools">Narzędzia</a></li>
+        <li><a href="#pl-test">Test strumieni</a></li>
+        <li><a href="#pl-xtream">Xtream Codes</a></li>
+        <li><a href="#pl-tv">M3U TV - serwer lokalny</a></li>
+        <li><a href="#pl-download">Pobieranie .m3u</a></li>
+        <li><a href="#pl-files">Numeracja przycisków i pliki programu</a></li>
+        <li><a href="#pl-help">Rozwiązywanie problemów</a></li>
+      </ol>
+    </div>
+
+    <h2 id="pl-about">1. O programie</h2>
+    <p><strong>HPL Converter v3.13 [05.07.2026]</strong> to narzędzie dla systemu Windows, które w jednym oknie łączy najważniejsze operacje na listach kanałów telewizyjnych:</p>
+    <ul>
+      <li>wczytywanie list <strong>M3U / M3U8</strong> z pliku lub bezpośrednio z adresu URL,</li>
+      <li>logowanie do serwerów <strong>Xtream Codes</strong> i wczytywanie kanałów Live, VOD oraz seriali,</li>
+      <li><strong>konwersję listy do formatu bukietu Enigma2</strong> (usługi typu 4097 dla odbiorników satelitarnych),</li>
+      <li>sortowanie kanałów według zapisanego <strong>wzoru listy HPL</strong> z inteligentnym dopasowaniem nazw,</li>
+      <li>obsługę list <strong>Jason</strong> (numerowane listy kanałów w formacie JSON),</li>
+      <li>pełną edycję listy: katalogi, przenoszenie, zmiana nazw, duplikaty, masowa zmiana nazw, cofanie zmian,</li>
+      <li>szybki <strong>test strumieni</strong> z kolorowym oznaczeniem wyników,</li>
+      <li><strong>lokalny serwer M3U TV</strong>, który udostępnia wczytaną listę telewizorowi w sieci domowej,</li>
+      <li>pobieranie pełnych list <strong>.m3u (LIVE + VOD + Seriale)</strong> przez <code>player_api.php</code> z wyborem kategorii seriali.</li>
+    </ul>
+    <p>Interfejs jest dostępny w języku <strong>polskim i angielskim</strong> (przełącznik PL / EN w prawym górnym rogu) i używa ciemnego, futurystycznego motywu „glass cockpit" z czerwonymi zakładkami i neonowym cyjanem.</p>
+    <h3>Wymagania</h3>
+    <ul>
+      <li>Windows 10 lub 11.</li>
+      <li>Dostęp do internetu dla funkcji sieciowych (URL, Xtream, pobieranie list, test strumieni).</li>
+      <li>Wolny port <code>8899</code> oraz zgoda zapory systemowej, jeśli używany będzie serwer M3U TV.</li>
+      <li>Telewizor / aplikacja IPTV w tej samej sieci lokalnej co komputer, jeśli lista ma być udostępniana przez M3U TV.</li>
+    </ul>
+
+    <h2 id="pl-start">2. Uruchomienie i zabezpieczenie dostępu</h2>
+    <h3>Pierwsze uruchomienie</h3>
+    <ol>
+      <li>Uruchom program (plik <code>hpl_converter.pyw</code> lub dostarczony plik wykonywalny).</li>
+      <li>Otworzy się główne okno o rozmiarze 1280x880 (minimalnie 980x620) z zakładką <strong>M3U / URL</strong>.</li>
+      <li>Program startuje w języku polskim. Przyciskiem <strong>EN</strong> w prawym górnym rogu można natychmiast przełączyć cały interfejs na angielski (i z powrotem przyciskiem <strong>PL</strong>).</li>
+    </ol>
+    <div class="note"><strong>Uwaga:</strong> program nie zapisuje ustawień między uruchomieniami - po ponownym starcie język, zawartość pól i wczytana lista wracają do wartości domyślnych.</div>
+    <h3>Zabezpieczenie MAC / MachineGuid</h3>
+    <p>Program może być powiązany z konkretnymi komputerami. O dostępie decydują dwie listy skonfigurowane w dystrybucji programu (każda może zawierać maksymalnie 5 pozycji):</p>
+    <ul>
+      <li><strong>Lista adresów MAC</strong> - przy starcie program odczytuje adresy MAC kart sieciowych komputera,</li>
+      <li><strong>Lista identyfikatorów MachineGuid</strong> - unikatowy identyfikator systemu Windows z rejestru (<code>HKLM\SOFTWARE\Microsoft\Cryptography → MachineGuid</code>).</li>
+    </ul>
+    <table>
+      <thead><tr><th>Konfiguracja list</th><th>Warunek uruchomienia</th></tr></thead>
+      <tbody>
+        <tr><td>Obie listy puste</td><td>Zabezpieczenie wyłączone - program uruchomi się na każdym komputerze.</td></tr>
+        <tr><td>Tylko lista MAC</td><td>Przynajmniej jeden adres MAC komputera musi znajdować się na liście.</td></tr>
+        <tr><td>Tylko lista MachineGuid</td><td>MachineGuid komputera musi znajdować się na liście.</td></tr>
+        <tr><td>Obie listy wypełnione</td><td>Muszą pasować <strong>oba</strong> składniki: MAC oraz MachineGuid.</td></tr>
+      </tbody>
+    </table>
+    <p>Jeśli komputer nie jest uprawniony, zamiast programu pojawi się okno <strong>„Brak uprawnień"</strong> z listą wykrytych adresów MAC i identyfikatorem MachineGuid - te dane wystarczy przekazać dostawcy programu, aby dopisał komputer do listy.</p>
+    <div class="tip"><strong>Odczyt MachineGuid:</strong> na komputerze klienta wykonaj w wierszu poleceń: <code>reg query HKLM\SOFTWARE\Microsoft\Cryptography /v MachineGuid</code></div>
+
+    <h2 id="pl-gui">3. Główne okno</h2>
+    <p>Poniższy rysunek jest bezpiecznym schematem GUI. Nie zawiera adresów IP, loginów ani innych danych użytkownika.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>≡ HPL</b> <i>Converter</i> v3.13 &nbsp; | &nbsp; Odbiornik Enigma2: [ Adres IP ] &nbsp; | &nbsp; [ PL | EN ]</div>
+      <div class="mock-tabs">
+        <span class="mock-tab active">M3U / URL</span><span class="mock-tab">Xtream Codes</span><span class="mock-tab">M3U TV / Serwer</span><span class="mock-tab">Pobieranie .m3u</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Wczytaj m3u (1)</span><span class="mock-button m3u">Zapisz m3u (2)</span><span class="mock-button hot">Konwertuj -&gt; Enigma2 (3)</span><span class="mock-button">Zapisz jako... (4)</span><span class="mock-button">Wczytaj z URL (5)</span><span class="mock-button">⌕ Szukaj kanału...</span><span class="mock-button">Wyczyść (20)</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Wczytaj Enigma2 (6)</span><span class="mock-button">Zapis wzór listy (7)</span><span class="mock-button">Wczytaj wzór listy (8)</span><span class="mock-button">Sortuj kanały m3u (9)</span><span class="mock-button amber">Sortuj Jason (12)</span><span class="mock-button amber">Zapisz Jason (11)</span><span class="mock-button amber">Wczytaj Jason (10)</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Zaznacz wszystko (13)</span><span class="mock-button">Odznacz wszystko (14)</span><span class="mock-button">Przesuń w górę (15)</span><span class="mock-button">Przesuń w dół (16)</span><span class="mock-button hot">Usuń zaznaczone (17)</span><span class="mock-button">Narzędzia (18)</span><span class="mock-button m3u">Test strumieni (19)</span>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>LISTA KANAŁÓW &nbsp; | &nbsp; NAZWA &nbsp; URL &nbsp; ✓</h5>
+          <div class="mock-list"><span class="folder">▸ Grupa / katalog (liczba kanałów)</span><br>&nbsp;&nbsp;• Kanał 1 &nbsp;&nbsp; http://... &nbsp;&nbsp; ✓<br>&nbsp;&nbsp;• Kanał 2 &nbsp;&nbsp; http://...<br><span class="folder">▸ Kolejna grupa (liczba kanałów)</span></div>
+          <div class="mock-status">Gotowy &nbsp; | &nbsp; pasek postępu operacji &nbsp; | &nbsp; liczba kanałów / grup</div>
+        </div>
+      </div>
+    </div>
+    <h3>Elementy stałe okna</h3>
+    <ul>
+      <li><strong>Pasek tytułu programu</strong> - logo, pełna nazwa i wersja programu.</li>
+      <li><strong>Adres IP (Odbiornik Enigma2)</strong> - pole informacyjne na adres tunera w sieci lokalnej (domyślnie 192.168.1.4). Służy jako podręczna notatka przy pracy z bukietami; konwersja i zapis plików nie wysyłają niczego na ten adres.</li>
+      <li><strong>PL / EN</strong> - natychmiastowe przełączenie języka całego interfejsu.</li>
+      <li><strong>Cztery czerwone zakładki</strong> - M3U / URL (główna praca z listą), Xtream Codes, M3U TV / Serwer, Pobieranie .m3u.</li>
+      <li><strong>Pasek stanu</strong> na dole - komunikaty operacji po lewej, licznik kanałów i grup po prawej.</li>
+      <li><strong>Wysuwany pasek postępu</strong> - podczas dłuższych operacji (wczytywanie, konwersja, test, pobieranie) nad paskiem stanu pojawia się panel z nazwą operacji i procentem ukończenia.</li>
+    </ul>
+    <h3>Drzewo kanałów</h3>
+    <p>Lista jest prezentowana jako drzewo: <strong>grupy (katalogi)</strong> z licznikiem kanałów oraz kanały z kolumnami <strong>NAZWA</strong>, <strong>URL</strong> i kolumną zaznaczeń <strong>✓</strong>. Grupy są wyróżnione kolorem i pogrubieniem. Kliknięcie w kolumnę ✓ lub dwuklik na pozycji przełącza zaznaczenie; zaznaczenie grupy zaznacza wszystkie jej kanały.</p>
+
+    <h2 id="pl-load">4. Wczytywanie list kanałów</h2>
+    <h3>Wczytaj m3u <span class="badge num">(1)</span></h3>
+    <ol>
+      <li>Kliknij <strong>Wczytaj m3u (1)</strong> i wskaż plik <code>.m3u</code>, <code>.m3u8</code> lub <code>.txt</code>.</li>
+      <li>Program odczyta wpisy <code>#EXTINF</code> (nazwa z <code>tvg-name</code> lub tytułu, grupa z <code>group-title</code>) oraz adresy <code>http/https/rtmp/rtsp</code>.</li>
+      <li>Kanały bez grupy trafiają do katalogu <code>Ungrouped</code>.</li>
+    </ol>
+    <h3>Wczytaj z URL <span class="badge num">(5)</span></h3>
+    <ol>
+      <li>Kliknij <strong>Wczytaj z URL (5)</strong>. Otworzy się okno z polem na link do listy m3u.</li>
+      <li>Adres musi zaczynać się od <code>http://</code> albo <code>https://</code>.</li>
+      <li>Pole <strong>User-Agent (opcjonalnie)</strong> jest wstępnie wypełnione identyfikatorem popularnej aplikacji IPTV - niektórzy dostawcy wymagają konkretnego User-Agenta i bez niego zwracają pustą odpowiedź.</li>
+      <li>Kliknij <strong>Pobierz</strong>. Pobieranie działa w tle (obsługiwana jest kompresja gzip/deflate), a po zakończeniu lista wypełnia drzewo.</li>
+    </ol>
+    <h3>Wczytaj Enigma2 <span class="badge num">(6)</span></h3>
+    <p>Przycisk <strong>Wczytaj Enigma2 (6)</strong> otwiera plik bukietu / listy Enigma2 (<code>.tv</code>, <code>.radio</code>, <code>.txt</code>, <code>.epl</code>, <code>.lst</code>). Program odczytuje nazwy usług z linii <code>#SERVICE</code> / <code>#DESCRIPTION</code> i umieszcza je w katalogu <strong>Enigma2</strong> (bez adresów URL). Tak wczytana lista służy przede wszystkim jako <strong>źródło wzoru kolejności kanałów</strong> - patrz rozdział 6.</p>
+    <div class="tip"><strong>Wskazówka:</strong> plik bukietu (np. <code>userbouquet.xxx.tv</code>) można pobrać z odbiornika przez FTP z katalogu <code>/etc/enigma2</code>.</div>
+    <h3>Inne źródła</h3>
+    <p>Listę można też wczytać przez zakładkę <strong>Xtream Codes</strong> (rozdział 11) albo pobrać w całości do pliku w zakładce <strong>Pobieranie .m3u</strong> (rozdział 13), a następnie otworzyć przyciskiem (1). Listy Jason opisuje rozdział 7.</p>
+    <div class="warning"><strong>Ważne:</strong> wczytanie nowej listy zastępuje bieżącą zawartość drzewa. Niezapisane zmiany zostaną utracone.</div>
+
+    <h2 id="pl-convert">5. Konwersja do formatu Enigma2</h2>
+    <div class="workflow">
+      <div class="step"><b>1. Wczytaj</b>Wczytaj listę M3U przyciskiem (1), (5) albo z Xtream (21).</div>
+      <div class="step"><b>2. Uporządkuj</b>Opcjonalnie posortuj i wyedytuj listę (rozdziały 6-9).</div>
+      <div class="step"><b>3. Konwertuj</b>Kliknij Konwertuj -&gt; Enigma2 (3). Pasek postępu pokaże przebieg.</div>
+      <div class="step"><b>4. Zapisz</b>Kliknij Zapisz jako... (4) i zapisz plik bukietu.</div>
+    </div>
+    <p>Konwersja tworzy w pamięci bukiet IPTV w formacie Enigma2. Każdy kanał staje się usługą strumieniową typu <code>4097</code>:</p>
+    <p><code>#NAME IPTV</code><br>
+    <code>#SERVICE 4097:0:1:2:0:0:0:0:0:0:http%3a//adres/strumienia:Nazwa kanału</code><br>
+    <code>#DESCRIPTION Nazwa kanału</code></p>
+    <ul>
+      <li>Dwukropki w adresie URL są zamieniane na <code>%3a</code>, zgodnie z wymogiem formatu bukietów.</li>
+      <li>Identyfikatory usług są nadawane automatycznie (2, 4, 6, ...).</li>
+      <li><strong>Zapisz jako... (4)</strong> zapisuje wynik konwersji do pliku tekstowego. Bez wcześniejszej konwersji przycisk zgłosi komunikat „Brak danych - najpierw konwertuj".</li>
+    </ul>
+    <div class="tip"><strong>Użycie na odbiorniku:</strong> zapisany plik wgraj przez FTP do katalogu <code>/etc/enigma2</code> jako np. <code>userbouquet.iptv.tv</code>, dopisz go do <code>bouquets.tv</code> (lub użyj edytora bukietów), a następnie przeładuj listę kanałów w odbiorniku.</div>
+    <h3>Zapis listy jako M3U <span class="badge num">(2)</span></h3>
+    <p><strong>Zapisz m3u (2)</strong> zapisuje aktualną zawartość drzewa (po wszystkich zmianach) jako standardowy plik <code>.m3u</code> z wpisami <code>#EXTINF</code> i grupami <code>group-title</code>. To zalecany sposób utrwalenia uporządkowanej listy dla innych aplikacji IPTV.</p>
+
+    <h2 id="pl-hpl">6. Wzór listy HPL i sortowanie</h2>
+    <p>Wzór listy to zapamiętana <strong>kolejność nazw kanałów</strong>, według której program potrafi posortować dowolną inną listę - nawet jeśli nazwy różnią się szczegółami (HD/FHD/4K, przedrostki „PL:", znaki diakrytyczne itd.).</p>
+    <h3>Utworzenie wzoru</h3>
+    <ol>
+      <li>Wczytaj listę wzorcową przyciskiem <strong>Wczytaj Enigma2 (6)</strong> - np. bukiet z ulubioną kolejnością kanałów z odbiornika.</li>
+      <li>Kliknij <strong>Zapis wzór listy (7)</strong>. Program zapisze unikatowe nazwy kanałów do pliku <code>channel_template.hpl</code> obok programu i wyświetli liczbę zapisanych pozycji.</li>
+    </ol>
+    <h3>Wczytanie wzoru <span class="badge num">(8)</span></h3>
+    <p><strong>Wczytaj wzór listy (8)</strong> otwiera zapisany wcześniej wzór (<code>.hpl</code>, <code>.json</code> albo zwykły plik tekstowy z jedną nazwą kanału w każdej linii).</p>
+    <h3>Sortowanie kanałów m3u <span class="badge num">(9)</span></h3>
+    <ol>
+      <li>Wczytaj listę M3U i wzór (6 lub 8).</li>
+      <li>Zaznacz w drzewie <strong>dokładnie jedną grupę</strong> (albo dowolny kanał w tej grupie).</li>
+      <li>Kliknij <strong>Sortuj kanały m3u (9)</strong>.</li>
+      <li>Kanały dopasowane do wzoru zostaną ustawione na górze grupy w kolejności wzoru; pozostałe trafią pod nie w dotychczasowej kolejności.</li>
+    </ol>
+    <h3>Jak działa dopasowanie nazw</h3>
+    <ul>
+      <li>Nazwy są normalizowane: wielkie litery, usunięcie znaków diakrytycznych, usunięcie oznaczeń <code>PL, HD, FHD, UHD, 4K, SD, HEVC, VIP, RAW</code> oraz przedrostków typu <code>XX:</code>.</li>
+      <li>Podobieństwo nazw jest oceniane algorytmem porównywania tekstu; wymagany próg dopasowania to <strong>0.88</strong>, dzięki czemu program nie łączy przypadkowych kanałów.</li>
+      <li>Kanały <strong>CANAL+</strong> mają dodatkowe reguły: porównywane są numery (CANAL+ 1, CANAL+ SPORT 3...), człony SPORT / PREMIUM / FILM / SERIALE / DOKUMENT, co zapobiega pomyłkom wewnątrz rodziny kanałów.</li>
+    </ul>
+    <div class="tip"><strong>Wskazówka:</strong> operację sortowania można wycofać poleceniem <strong>Narzędzia (18) → Cofnij ostatnią zmianę</strong>.</div>
+
+    <h2 id="pl-jason">7. Listy Jason</h2>
+    <p>Lista Jason to numerowana lista kanałów w formacie JSON (rozszerzenie <code>.jason</code> lub <code>.json</code>), w której każda pozycja ma pola <code>name</code>, <code>link</code>, <code>icon</code> i <code>target</code>:</p>
+    <p><code>{ "1": { "name": "Kanał", "link": "http://...", "icon": "http://...", "target": "POLSAT" }, "2": { ... } }</code></p>
+    <h3>Operacje</h3>
+    <ul>
+      <li><strong>Wczytaj Jason (10)</strong> - otwiera plik i pokazuje pozycje w katalogu <strong>Jason</strong> jako listę numerowaną (<code>001. Nazwa</code>). Pozycje są czytane w kolejności numerów.</li>
+      <li><strong>Zapisz Jason (11)</strong> - zapisuje aktualną kolejność z drzewa, nadając pozycjom nowe numery 1...N. Pola icon i target są zachowywane.</li>
+      <li><strong>Sortuj Jason (12)</strong> - sortuje listę według wczytanego wzoru HPL (rozdział 6). Przy kilku pozycjach o identycznej nazwie preferowana jest pozycja z <code>target = POLSAT</code>.</li>
+    </ul>
+    <div class="note"><strong>Uwaga:</strong> podczas edycji listy Jason numeracja widoczna w drzewie jest odświeżana automatycznie po przeniesieniu, usunięciu, wycięciu i wklejeniu pozycji.</div>
+
+    <h2 id="pl-edit" class="section-break">8. Edycja listy kanałów</h2>
+    <h3>Zaznaczanie</h3>
+    <ul>
+      <li>Kolumna <strong>✓</strong>: kliknięcie w komórkę ✓ lub dwuklik na pozycji przełącza zaznaczenie. Zaznaczenie grupy obejmuje wszystkie jej kanały.</li>
+      <li><strong>Zaznacz wszystko (13)</strong> / <strong>Odznacz wszystko (14)</strong> działają na całej liście.</li>
+      <li>Niezależnie od ✓ działa zwykłe podświetlenie wierszy (klik, <kbd>Ctrl</kbd>+klik, <kbd>Shift</kbd>+klik) używane m.in. przy przenoszeniu i teście strumieni.</li>
+    </ul>
+    <h3>Przenoszenie i usuwanie</h3>
+    <ul>
+      <li><strong>Przesuń w górę (15)</strong> / <strong>Przesuń w dół (16)</strong> - przesuwa podświetlone pozycje o jedno miejsce w obrębie katalogu.</li>
+      <li><strong>Usuń zaznaczone (17)</strong> - usuwa podświetlone oraz odhaczone (✓) pozycje po potwierdzeniu. Usunięcie grupy usuwa jej kanały.</li>
+    </ul>
+    <h3>Menu podręczne (prawy przycisk myszy)</h3>
+    <table>
+      <thead><tr><th>Polecenie</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>Zmień nazwę</td><td>Zmienia nazwę pojedynczego kanału (okno z polem tekstowym, <kbd>Enter</kbd> zatwierdza).</td></tr>
+        <tr><td>Zmień nazwę katalogu</td><td>Zmienia nazwę grupy, w której znajduje się zaznaczona pozycja.</td></tr>
+        <tr><td>Przenieś do katalogu...</td><td>Przenosi podświetlone kanały do wybranej grupy z listy.</td></tr>
+        <tr><td>Wytnij / Wklej tutaj</td><td>Wycina pozycje (także całe grupy z zawartością) do schowka programu i wkleja je za wskazaną pozycją.</td></tr>
+        <tr><td>Usuń</td><td>Działa jak przycisk (17).</td></tr>
+      </tbody>
+    </table>
+    <h3>Wyszukiwarka <span class="badge num">(20)</span></h3>
+    <p>Pole <strong>Szukaj kanału...</strong> w prawym górnym rogu zakładki M3U / URL filtruje listę po fragmencie nazwy kanału lub nazwy grupy (zatwierdzenie klawiszem <kbd>Enter</kbd>). Przycisk <strong>Wyczyść (20)</strong> przywraca pełną listę. Operacje edycyjne wykonane na wyniku wyszukiwania są automatycznie przenoszone na pełną listę.</p>
+
+    <h2 id="pl-tools">9. Narzędzia <span class="badge num">(18)</span></h2>
+    <p>Przycisk <strong>Narzędzia (18)</strong> rozwija menu z funkcjami porządkowymi:</p>
+    <table class="matrix-small">
+      <thead><tr><th>Funkcja</th><th>Opis</th></tr></thead>
+      <tbody>
+        <tr><td>Utwórz katalog</td><td>Dodaje nową, pustą grupę o podanej nazwie.</td></tr>
+        <tr><td>Scal katalogi</td><td>Przenosi wszystkie kanały z katalogu źródłowego do docelowego (wybór z listy).</td></tr>
+        <tr><td>Usuń puste katalogi</td><td>Usuwa wszystkie grupy bez kanałów i pokazuje ich liczbę.</td></tr>
+        <tr><td>Znajdź duplikaty</td><td>Wyświetla raport par duplikatów. Duplikat jest wykrywany po znormalizowanej nazwie, po adresie URL albo po obu naraz.</td></tr>
+        <tr><td>Usuń duplikaty</td><td>Zostawia pierwsze wystąpienie każdego kanału, usuwa kolejne powtórzenia i pokazuje ich liczbę.</td></tr>
+        <tr><td>Masowa zmiana nazw</td><td>Usuwa lub zamienia podany fragment tekstu we wszystkich nazwach kanałów (np. usunięcie przedrostka „PL: "). Nadmiarowe spacje są porządkowane automatycznie.</td></tr>
+        <tr><td>Automatyczne porządkowanie</td><td>Rozdziela kanały do katalogów tematycznych na podstawie nazw: Sport, Film, Seriale, Dzieci, Dokument, Informacje, Muzyka, Rozrywka, Inne.</td></tr>
+        <tr><td>Eksport raportu</td><td>Zapisuje listę do pliku <code>.csv</code> (kolumny: group, name, url) albo ostatni raport tekstowy do <code>.txt</code>.</td></tr>
+        <tr><td>Cofnij ostatnią zmianę</td><td>Przywraca stan listy sprzed ostatniej operacji edycyjnej (wielopoziomowa historia zmian).</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pl-test">10. Test strumieni <span class="badge num">(19)</span></h2>
+    <ol>
+      <li>Podświetl w drzewie kanały albo całe grupy do sprawdzenia.</li>
+      <li>Kliknij <strong>Test strumieni (19)</strong>. Test działa w tle, a pasek postępu pokazuje przebieg.</li>
+      <li>Każdy kanał jest odpytywany krótkim zapytaniem HTTP (limit 5 sekund) i otrzymuje kolor:</li>
+    </ol>
+    <table>
+      <thead><tr><th>Kolor</th><th>Wynik</th><th>Znaczenie</th></tr></thead>
+      <tbody>
+        <tr><td class="yes">zielony</td><td>OK</td><td>Serwer odpowiedział poprawnie w limicie czasu.</td></tr>
+        <tr><td style="color:#fcd34d">bursztynowy</td><td>WARN</td><td>Serwer odpowiedział kodem 401 / 403 / 405 (odmawia testu, ale strumień może działać w odtwarzaczu) albo odpowiadał wolno.</td></tr>
+        <tr><td style="color:#fca5a5">czerwony</td><td>FAIL</td><td>Brak odpowiedzi, błąd połączenia albo pusty adres URL.</td></tr>
+      </tbody>
+    </table>
+    <p>Po zakończeniu pasek stanu pokazuje podsumowanie, np. <code>Test strumieni zakończony: 42 OK, 3 WARN, 5 FAIL</code>.</p>
+    <div class="note"><strong>Uwaga:</strong> test sprawdza wyłącznie odpowiedź serwera - nie odtwarza obrazu i nie zużywa znaczącego transferu. Wynik WARN nie przesądza, że kanał nie działa.</div>
+
+    <h2 id="pl-xtream" class="section-break">11. Xtream Codes <span class="badge num">(21)</span></h2>
+    <ol>
+      <li>Przejdź na zakładkę <strong>Xtream Codes</strong>.</li>
+      <li>Wpisz <strong>Host</strong> w formacie <code>http://twoj-serwer.com:port</code>, <strong>Użytkownika</strong> i <strong>Hasło</strong> (pole hasła jest maskowane).</li>
+      <li>Zaznacz, co ma zostać wczytane: <strong>Live TV</strong>, <strong>VOD</strong>, <strong>Seriale</strong> (co najmniej jedno).</li>
+      <li>Kliknij <strong>Połącz i wczytaj (21)</strong>.</li>
+    </ol>
+    <p>Program loguje się przez <code>player_api.php</code>, a po udanym logowaniu pokazuje status w formie <code>Zalogowano: nazwa | Wygasa: data</code>. Kanały trafiają do głównego drzewa (program sam przełącza na zakładkę M3U / URL) w grupach z przedrostkami:</p>
+    <ul>
+      <li><code>[LIVE] Nazwa kategorii</code> - kanały na żywo,</li>
+      <li><code>[VOD] Nazwa kategorii</code> - filmy,</li>
+      <li><code>[SERIES] Nazwa kategorii</code> - pozycje serialowe.</li>
+    </ul>
+    <p>Tak wczytaną listę można normalnie edytować, sortować, konwertować do Enigma2 (3), zapisać jako m3u (2) albo udostępnić przez M3U TV.</p>
+    <div class="warning"><strong>Ważne:</strong> dane logowania nie są nigdzie zapisywane - po zamknięciu programu trzeba je wpisać ponownie. Adresy wygenerowanych strumieni zawierają login i hasło konta, dlatego zapisane pliki m3u należy przechowywać ostrożnie.</div>
+
+    <h2 id="pl-tv">12. M3U TV - serwer lokalny <span class="badge num">(22)</span></h2>
+    <p>Zakładka <strong>M3U TV / Serwer</strong> udostępnia wczytaną listę kanałów w sieci domowej - telewizorowi, dekoderowi lub aplikacji IPTV - bez kopiowania plików.</p>
+    <ol>
+      <li>Wczytaj listę kanałów (zakładka M3U / URL albo Xtream).</li>
+      <li>Kliknij <strong>Uruchom serwer (22)</strong>. Program pokaże status <strong>Serwer działa</strong> oraz adres playlisty w formie <code>http://adres-IP-komputera:8899/iptv.m3u</code>.</li>
+      <li>Przyciskiem <strong>Kopiuj URL</strong> skopiuj adres i wpisz go w aplikacji IPTV na telewizorze jako <em>„Import m3u-file from URL"</em>.</li>
+      <li>Karty pod adresem pokazują liczbę <strong>udostępnianych kanałów</strong> i <strong>port</strong> (8899).</li>
+      <li>Ten sam przycisk zatrzymuje serwer (<strong>Zatrzymaj serwer (22)</strong>).</li>
+    </ol>
+    <ul>
+      <li>Serwer udostępnia zawsze aktualny stan listy - zmiany w drzewie (edycja, sortowanie) są widoczne przy kolejnym pobraniu playlisty.</li>
+      <li>Pod adresem <code>/status</code> serwer zwraca krótki tekst diagnostyczny z liczbą kanałów.</li>
+      <li>Pozycje bez adresu URL (np. wczytane z pliku Enigma2) są pomijane w udostępnianej liście.</li>
+    </ul>
+    <div class="warning"><strong>Ważne:</strong> komputer i telewizor muszą być w tej samej sieci lokalnej, a program musi pozostać uruchomiony. Przy pierwszym starcie serwera zapora Windows może zapytać o zgodę - zezwól na dostęp w sieci prywatnej.</div>
+
+    <h2 id="pl-download">13. Pobieranie .m3u <span class="badge new">LIVE + VOD + SERIALE</span></h2>
+    <p>Czwarta zakładka pobiera z serwera Xtream <strong>kompletną listę</strong> i zapisuje ją bezpośrednio do plików na dysku: kanały LIVE i filmy VOD do jednego pliku, a odcinki seriali do osobnego. Lista jest budowana lokalnie przez <code>player_api.php</code> - żaden skrypt z serwera nie jest uruchamiany.</p>
+    <h3>Krok po kroku</h3>
+    <ol class="settings-list">
+      <li><strong>Dane logowania.</strong>
+        <ul>
+          <li>Najszybciej: wklej pełny adres listy (link typu <code>get.php / m3u_plus</code>) w górne pole i kliknij <strong>Wczytaj z URL</strong> - host, użytkownik i hasło wypełnią się automatycznie.</li>
+          <li>Albo wpisz ręcznie <strong>Host</strong> (<code>http://serwer:port</code>), <strong>Użytkownika</strong> i <strong>Hasło</strong>.</li>
+        </ul>
+      </li>
+      <li><strong>Zakres pobierania.</strong> Zaznacz <strong>Live TV</strong>, <strong>VOD</strong> i/lub <strong>Seriale</strong> (domyślnie wszystkie).</li>
+      <li><strong>Kategorie seriali.</strong> Przy zaznaczonych Serialach kliknij <strong>Wybierz kategorie seriali...</strong>:
+        <ul>
+          <li>okno pobierze listę kategorii z serwera,</li>
+          <li>w polu filtru wpisz np. <code>PL</code> i użyj <strong>Zaznacz pasujące</strong> (albo <strong>Zaznacz wszystkie</strong> / <strong>Wyczyść zaznaczenie</strong>),</li>
+          <li>zatwierdź przyciskiem <strong>Zatwierdź wybór</strong>. Etykieta pod przyciskiem pokaże np. „Kategorie seriali: wybrano 12 z 96".</li>
+        </ul>
+      </li>
+      <li><strong>Pliki wynikowe.</strong> Wskaż plik <strong>LIVE + VOD</strong> (domyślnie <code>playlist.m3u</code> obok programu) i plik <strong>SERIALE</strong> (domyślnie <code>playlist_series.m3u</code>).</li>
+      <li><strong>Pobierz listę.</strong> Program sprawdza konto, po czym kolejno pobiera LIVE, VOD i odcinki wybranych seriali. Postęp widać na pasku, a szczegóły w oknie logu z godzinami. Przycisk <strong>Przerwij</strong> zatrzymuje operację w dowolnym momencie.</li>
+      <li><strong>Podsumowanie.</strong> Na końcu pojawia się okno z liczbą pozycji LIVE / VOD / odcinków seriali oraz ścieżkami zapisanych plików. Gotowe pliki można od razu otworzyć przyciskiem <strong>Wczytaj m3u (1)</strong>.</li>
+    </ol>
+    <ul>
+      <li>Grupy w pliku wynikowym: kanały LIVE zachowują nazwę kategorii, filmy dostają przedrostek <code>VOD - </code>, seriale <code>SERIES - </code>.</li>
+      <li>Wpisy zawierają metadane <code>tvg-id</code>, <code>tvg-name</code>, <code>tvg-logo</code> i <code>group-title</code>.</li>
+      <li>Przy problemach z połączeniem program automatycznie ponawia zapytania z innymi identyfikatorami User-Agent.</li>
+    </ul>
+    <div class="note"><strong>Uwaga:</strong> pobieranie seriali wymaga osobnego zapytania o każdy tytuł, więc przy dużej liczbie wybranych kategorii może potrwać kilka-kilkanaście minut. Log pokazuje postęp co 200 tytułów.</div>
+
+    <h2 id="pl-files" class="section-break">14. Numeracja przycisków i pliki programu</h2>
+    <h3>Numeracja przycisków 1-22</h3>
+    <table>
+      <thead><tr><th>Nr</th><th>Przycisk (PL)</th><th>Funkcja</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Wczytaj m3u</td><td>Wczytanie listy z pliku .m3u / .m3u8 / .txt</td></tr>
+        <tr><td>2</td><td>Zapisz m3u</td><td>Zapis aktualnej listy do pliku .m3u</td></tr>
+        <tr><td>3</td><td>Konwertuj -&gt; Enigma2</td><td>Konwersja listy do bukietu Enigma2 (usługi 4097)</td></tr>
+        <tr><td>4</td><td>Zapisz jako...</td><td>Zapis wyniku konwersji do pliku tekstowego</td></tr>
+        <tr><td>5</td><td>Wczytaj z URL</td><td>Pobranie listy m3u z internetu (z polem User-Agent)</td></tr>
+        <tr><td>6</td><td>Wczytaj Enigma2</td><td>Wczytanie bukietu / listy Enigma2 (źródło wzoru)</td></tr>
+        <tr><td>7</td><td>Zapis wzór listy</td><td>Zapis wzoru kolejności do channel_template.hpl</td></tr>
+        <tr><td>8</td><td>Wczytaj wzór listy</td><td>Wczytanie wzoru z pliku .hpl / .json / .txt</td></tr>
+        <tr><td>9</td><td>Sortuj kanały m3u</td><td>Sortowanie wybranej grupy według wzoru</td></tr>
+        <tr><td>10</td><td>Wczytaj Jason</td><td>Wczytanie numerowanej listy .jason / .json</td></tr>
+        <tr><td>11</td><td>Zapisz Jason</td><td>Zapis listy Jason z nową numeracją</td></tr>
+        <tr><td>12</td><td>Sortuj Jason</td><td>Sortowanie listy Jason według wzoru</td></tr>
+        <tr><td>13</td><td>Zaznacz wszystko</td><td>Odhaczenie ✓ wszystkich pozycji</td></tr>
+        <tr><td>14</td><td>Odznacz wszystko</td><td>Zdjęcie ✓ ze wszystkich pozycji</td></tr>
+        <tr><td>15</td><td>Przesuń w górę</td><td>Przesunięcie podświetlonych pozycji w górę</td></tr>
+        <tr><td>16</td><td>Przesuń w dół</td><td>Przesunięcie podświetlonych pozycji w dół</td></tr>
+        <tr><td>17</td><td>Usuń zaznaczone</td><td>Usunięcie podświetlonych i odhaczonych pozycji</td></tr>
+        <tr><td>18</td><td>Narzędzia</td><td>Menu funkcji porządkowych (rozdział 9)</td></tr>
+        <tr><td>19</td><td>Test strumieni</td><td>Test dostępności strumieni z kolorowym wynikiem</td></tr>
+        <tr><td>20</td><td>Wyczyść</td><td>Wyczyszczenie wyszukiwarki i powrót do pełnej listy</td></tr>
+        <tr><td>21</td><td>Połącz i wczytaj</td><td>Logowanie Xtream Codes i wczytanie kanałów</td></tr>
+        <tr><td>22</td><td>Uruchom / Zatrzymaj serwer (M3U TV)</td><td>Start i stop lokalnego serwera playlisty</td></tr>
+      </tbody>
+    </table>
+    <h3>Pliki tworzone przez program</h3>
+    <table>
+      <thead><tr><th>Plik</th><th>Przeznaczenie</th></tr></thead>
+      <tbody>
+        <tr><td><code>channel_template.hpl</code></td><td>Wzór kolejności kanałów zapisywany obok programu przyciskiem (7). Format JSON: <code>{"format": "HPL_LIST", "source": "ENIGMA2", "channels": [...]}</code>.</td></tr>
+        <tr><td><code>playlist.m3u</code></td><td>Domyślny plik wynikowy LIVE + VOD zakładki Pobieranie .m3u (obok programu).</td></tr>
+        <tr><td><code>playlist_series.m3u</code></td><td>Domyślny plik wynikowy odcinków seriali (obok programu).</td></tr>
+        <tr><td>pliki <code>.m3u</code>, <code>.txt</code>, <code>.csv</code>, <code>.jason</code></td><td>Zapisywane wyłącznie w miejscach wskazanych przez użytkownika (przyciski 2, 4, 11 oraz Eksport raportu).</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Uwaga:</strong> program nie tworzy plików konfiguracyjnych ani wpisów w rejestrze (poza odczytem MachineGuid na potrzeby zabezpieczenia). Usunięcie katalogu programu usuwa go w całości.</div>
+
+    <h2 id="pl-help">15. Rozwiązywanie problemów</h2>
+    <h3>Program nie startuje - okno „Brak uprawnień"</h3>
+    <p>Komputer nie znajduje się na liście dozwolonych maszyn (rozdział 2). Prześlij dostawcy programu wykryte adresy MAC i MachineGuid pokazane w oknie błędu.</p>
+    <h3>Wczytaj z URL zwraca błąd albo pustą odpowiedź</h3>
+    <ol>
+      <li>Sprawdź, czy adres zaczyna się od <code>http://</code> lub <code>https://</code> i czy działa w przeglądarce / VLC.</li>
+      <li>Niektórzy dostawcy wymagają konkretnego User-Agenta - zostaw wartość domyślną albo wpisz identyfikator swojej aplikacji IPTV.</li>
+      <li>Sprawdź, czy konto u dostawcy jest aktywne i czy nie przekroczono limitu jednoczesnych połączeń.</li>
+    </ol>
+    <h3>Sortowanie (9) lub (12) nie działa</h3>
+    <ul>
+      <li><em>„Wczytaj Wzór Listy (6 lub 8)"</em> - najpierw wczytaj wzór: bukiet Enigma2 (6) + Zapis wzoru (7), albo gotowy plik wzoru (8).</li>
+      <li><em>„Wybierz jedną grupę M3U do sortowania"</em> - zaznacz w drzewie dokładnie jedną grupę (dotyczy przycisku 9).</li>
+      <li><em>„Nie znaleziono pasujących kanałów"</em> - nazwy na liście za bardzo odbiegają od wzoru (próg dopasowania 0.88). Ujednolić nazwy pomoże <strong>Masowa zmiana nazw</strong> w Narzędziach.</li>
+    </ul>
+    <h3>„Brak danych - najpierw konwertuj"</h3>
+    <p>Przycisk <strong>Zapisz jako... (4)</strong> zapisuje wynik konwersji - kliknij najpierw <strong>Konwertuj -&gt; Enigma2 (3)</strong>.</p>
+    <h3>Serwer M3U TV nie startuje albo TV nie widzi listy</h3>
+    <ol>
+      <li>Najpierw wczytaj listę kanałów - pusty program nie ma czego udostępniać.</li>
+      <li>Port <code>8899</code> może być zajęty przez inny program - zamknij go albo uruchom ponownie komputer.</li>
+      <li>Zezwól programowi na dostęp do sieci prywatnej w zaporze Windows.</li>
+      <li>Telewizor musi być w tej samej sieci; wyłącz izolację klientów w routerze / Wi-Fi gościnnym.</li>
+      <li>Program musi pozostać uruchomiony przez cały czas korzystania z listy na TV.</li>
+    </ol>
+    <h3>Test strumieni pokazuje same FAIL / WARN</h3>
+    <p>Część serwerów IPTV odrzuca krótkie zapytania testowe (WARN przy kodach 401/403/405) - kanał może mimo to działać w odtwarzaczu. Sprawdź też ważność konta i limit połączeń u dostawcy.</p>
+    <h3>Logowanie Xtream nie powiodło się</h3>
+    <ol>
+      <li>Host podaj z portem, np. <code>http://serwer.com:8080</code> (bez końcowego ukośnika).</li>
+      <li>Sprawdź login i hasło; komunikat <code>auth=0</code> oznacza odrzucenie danych logowania albo wygaśnięcie konta.</li>
+      <li>Zaznacz co najmniej jeden typ danych: Live TV, VOD lub Seriale.</li>
+    </ol>
+    <h3>„Niepoprawny format pliku Jason"</h3>
+    <p>Plik musi być poprawnym JSON-em o strukturze opisanej w rozdziale 7 (słownik numerowanych pozycji z polami name / link / icon / target).</p>
+    <div class="footer-note">HPL Converter v3.13 [05.07.2026] - instrukcja obsługi - 17.07.2026</div>
+  </section>
+
+  </main>
+</body>
+</html>
