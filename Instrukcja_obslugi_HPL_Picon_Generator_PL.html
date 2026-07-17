@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL ink Picon Generator (Enigma2) v1.35 - instrukcja obslugi (PL)</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #15171c;
+      --panel2: #1e2128;
+      --ink: #ff315f;
+      --accent: #ff7a1a;
+      --violet: #8d7cff;
+      --cyan: #00d8c9;
+      --green: #39d98a;
+      --warn: #f5b94d;
+      --danger: #ff5246;
+      --text: #e6eaf5;
+      --dim: #9aa1af;
+      --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: 0;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover {
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); }
+    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
+    .brand .conv { color: var(--cyan); }
+    .brand .e2 { color: #b5aaff; font-size: 34px; }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .edition strong { display: block; color: var(--text); font-size: 17px; }
+    .edition span { color: var(--dim); }
+    h2 {
+      margin: 42px 0 18px;
+      padding-bottom: 8px;
+      color: var(--accent);
+      font-size: 27px;
+      border-bottom: 2px solid var(--line);
+      break-after: avoid;
+    }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; }
+    ul, ol { margin: 7px 0 16px 24px; padding: 0; }
+    li { margin: 4px 0; }
+    .settings-list > li { margin: 0 0 18px; padding-left: 3px; break-inside: avoid; }
+    .settings-list > li::marker { color: var(--accent); font-weight: 800; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd {
+      font-family: Consolas, monospace;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: #fff;
+    }
+    kbd { color: var(--warn); }
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 7px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .badge.num { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
+    .badge.new { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .note, .warning, .tip {
+      margin: 15px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--cyan);
+      background: var(--panel);
+      break-inside: avoid;
+    }
+    .warning { border-color: var(--warn); }
+    .tip { border-color: var(--green); }
+    .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc {
+      columns: 2;
+      column-gap: 32px;
+      padding: 15px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; }
+    td { background: #101216; }
+    tr { break-inside: avoid; }
+    .yes { color: var(--green); font-weight: 800; text-align: center; }
+    .no { color: #626a78; text-align: center; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); }
+    .mock-title i { color: var(--ink); }
+    .mock-tabs { display: flex; gap: 5px; padding: 8px 0 2px; }
+    .mock-tab { padding: 5px 14px; background: #2a2416; color: #ffd9a8; border-radius: 3px 3px 0 0; font-size: 11px; font-weight: 700; }
+    .mock-tab.active { background: var(--accent); color: #201400; }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); }
+    .mock-button.m3u { border-color: var(--green); color: var(--green); }
+    .mock-button.amber { border-color: var(--warn); color: var(--warn); }
+    .mock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; min-height: 180px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: #7fdfff; font-weight: 700; }
+    .mock-status { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
+    .matrix-small td:first-child { width: 42%; }
+    .page-break { break-before: page; }
+    .section-break { break-before: page; }
+    .language-break { break-before: page; margin-top: 0; }
+    .footer-note { margin-top: 45px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; }
+      .cover { min-height: 250mm; }
+      .brand { font-size: 34pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; }
+      table td { background: #fff; }
+      th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.num { color: #413477; background: #efedff; }
+      .badge.new { color: #251400; background: #ff9a4f; }
+      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      a { color: inherit; }
+      .page-break, .language-break { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="conv">Picon Generator</span> <span class="e2">(Enigma2)</span></div>
+    <h1>Instrukcja obsługi</h1>
+    <p class="subtitle">Przewodnik po programie do projektowania i masowego generowania piconów - ikon kanałów dla odbiorników Enigma2.</p>
+    <div class="edition-strip">
+      <div class="edition"><strong>HPL ink Picon Generator</strong><span>opisywane wydanie: v1.35</span></div>
+      <div class="edition"><strong>Data wydania</strong><span>14.07.2026</span></div>
+      <div class="edition"><strong>Platforma</strong><span>Windows 10 / 11 (aplikacja okienkowa)</span></div>
+    </div>
+    <div class="note"><strong>Zasada opisu:</strong> program ma dwie zakładki - <em>Generator</em> i <em>Picon Sort</em>. Opis zakładki Generator odwołuje się do czterech kolumn interfejsu zapisem <span class="badge num">kolumna 1</span> … <span class="badge num">kolumna 4</span> (od lewej do prawej). Etykieta <span class="badge new">NOWE v1.35</span> oznacza funkcje dodane w opisywanym wydaniu.</div>
+  </section>
+
+  <section id="pl" class="page-break">
+    <h2>Spis treści</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#pl-about">O programie</a></li>
+        <li><a href="#pl-start">Uruchomienie i zabezpieczenie dostępu</a></li>
+        <li><a href="#pl-gui">Główne okno</a></li>
+        <li><a href="#pl-presets">Wzory (presety)</a></li>
+        <li><a href="#pl-bg">Tło i kompozycja - kolumna 1</a></li>
+        <li><a href="#pl-text">Tekst 1 / 2 / 3 i efekty - kolumna 2</a></li>
+        <li><a href="#pl-preview">Podgląd, zapis, ramka, watermark i logo - kolumna 4</a></li>
+        <li><a href="#pl-batch">Batch - masowe generowanie - kolumna 3</a></li>
+        <li><a href="#pl-ftp">Wyślij na tuner (FTP)</a></li>
+        <li><a href="#pl-sort">Zakładka Picon Sort</a></li>
+        <li><a href="#pl-report">Raport braków i most do Generatora</a></li>
+        <li><a href="#pl-undo">Cofanie zmian i automatyczny podgląd</a></li>
+        <li><a href="#pl-workflow">Przykładowy przepływ pracy</a></li>
+        <li><a href="#pl-files">Sekcje interfejsu i pliki programu</a></li>
+        <li><a href="#pl-help">Rozwiązywanie problemów</a></li>
+      </ol>
+    </div>
+
+    <h2 id="pl-about">1. O programie</h2>
+    <p><strong>HPL ink Picon Generator (Enigma2) v1.35 [14.07.2026]</strong> to narzędzie dla systemu Windows, które w jednym oknie łączy projektowanie pojedynczych piconów i ich masową produkcję dla całej listy kanałów:</p>
+    <ul>
+      <li>projektowanie picona na żywo: tło (kolory, gradienty, obraz z pliku), do trzech niezależnych tekstów, ramka, dekoracje, logo i watermark,</li>
+      <li>ponad <strong>130 efektów tekstu</strong> w 8 kategoriach - cienie, 3D, neony i poświaty, obrysy, gradienty, wzory oraz efekty specjalne,</li>
+      <li><strong>25 typów tła / gradientu</strong>, w tym sceny neonowe, Aurora, Bokeh, siatka retro-wave i włókno węglowe,</li>
+      <li>zapisywanie kompletnych ustawień jako <strong>wzory (presety)</strong> z miniaturą, eksportem i importem do pliku .json,</li>
+      <li><strong>batch</strong>: wczytanie listy kanałów Enigma2 (.txt) i automatyczne wygenerowanie picona PNG dla każdego kanału - z nazwą pliku zgodną z referencją #SERVICE,</li>
+      <li>wysyłkę gotowych piconów bezpośrednio <strong>na tuner przez FTP</strong>,</li>
+      <li>zakładkę <strong>Picon Sort</strong> - dopasowanie istniejących plików PNG do listy kanałów, raport braków i przekazanie brakujących pozycji do generatora,</li>
+      <li>historię zmian z przyciskiem <strong>Cofnij</strong> i skrótem <kbd>Ctrl+Z</kbd> (do 30 kroków).</li>
+    </ul>
+    <p>Interfejs używa ciemnego motywu z pomarańczowym akcentem; wyniki generowane są w formacie <strong>PNG</strong> (podgląd można też zapisać jako JPG).</p>
+    <h3>Wymagania</h3>
+    <ul>
+      <li>Windows 10 lub 11.</li>
+      <li>Przy uruchamianiu z pliku <code>.py</code>: Python 3 z biblioteką <strong>Pillow (PIL)</strong>. Wersja EXE zawiera wszystkie zależności.</li>
+      <li>Biblioteka <strong>NumPy</strong> jest opcjonalna - gdy jest dostępna, tła i gradienty renderują się wyraźnie szybciej; bez niej program automatycznie używa wolniejszego trybu zgodności.</li>
+      <li>Dostęp do sieci lokalnej i konto FTP tunera (port 21), jeśli picony mają być wysyłane na odbiornik.</li>
+      <li>Czcionki systemowe Windows - program sam buduje katalog wykrytych czcionek (rejestr + pliki fontów).</li>
+    </ul>
+
+    <h2 id="pl-start">2. Uruchomienie i zabezpieczenie dostępu</h2>
+    <h3>Pierwsze uruchomienie</h3>
+    <ol>
+      <li>Uruchom program (plik <code>hpl_picon_generator.py</code> lub dostarczony plik wykonywalny).</li>
+      <li>Okno otwiera się wyśrodkowane, w rozmiarze dopasowanym do ekranu (maksymalnie 1860x760), z aktywną zakładką <strong>Generator</strong>.</li>
+      <li>Program od razu generuje pierwszy podgląd z ustawieniami domyślnymi (napis „HPL" + „HD").</li>
+    </ol>
+    <h3>Zabezpieczenie adresem MAC</h3>
+    <p>Program może być powiązany z konkretnymi komputerami. W dystrybucji programu można skonfigurować listę maksymalnie <strong>5 adresów MAC</strong>. Przy starcie program odczytuje adresy kart sieciowych komputera trzema niezależnymi metodami (psutil, getmac oraz identyfikator systemowy), dzięki czemu wykrywanie działa także w skompilowanym pliku EXE.</p>
+    <table>
+      <thead><tr><th>Konfiguracja listy MAC</th><th>Warunek uruchomienia</th></tr></thead>
+      <tbody>
+        <tr><td>Lista pusta</td><td>Zabezpieczenie wyłączone - program uruchomi się na każdym komputerze.</td></tr>
+        <tr><td>Lista wypełniona</td><td>Przynajmniej jeden adres MAC komputera musi znajdować się na liście.</td></tr>
+      </tbody>
+    </table>
+    <div class="warning"><strong>Brak autoryzacji:</strong> jeśli komputer nie znajduje się na liście, program wyświetla komunikat „Ten adres MAC nie jest autoryzowany" i kończy działanie. W takiej sytuacji skontaktuj się z dostawcą programu, podając adres MAC komputera.</div>
+
+    <h2 id="pl-gui">3. Główne okno</h2>
+    <p>Poniższy rysunek jest bezpiecznym schematem GUI. Nie zawiera adresów IP, haseł ani innych danych użytkownika.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> Picon Generator (Enigma2) &nbsp;|&nbsp; v1.35 &nbsp; 14.07.2026</div>
+      <div class="mock-tabs"><span class="mock-tab active">Generator</span><span class="mock-tab">Picon Sort</span></div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>KOLUMNA 1 - TŁO I WZORY</h5><div class="mock-list"><span class="folder">Wzory (presety)</span><br>Rozmiar grafiki<br>Tło i gradient<br>Tło z pliku<br>Overlay (przyciemnienie)<br>Winieta i blask<br>Dekoracja (kształt)</div></div>
+        <div class="mock-pane"><h5>KOLUMNA 2 - TEKST</h5><div class="mock-list"><span class="folder">Tekst 1 | Tekst 2 | Tekst 3</span><br>Napis, czcionka, rozmiar<br>Kategoria → Efekt<br>Parametry efektu<br>Offset w strefie</div></div>
+        <div class="mock-pane"><h5>KOLUMNA 3 - BATCH + FTP</h5><div class="mock-list"><span class="folder">Batch generowanie</span><br>Wczytaj listę .txt<br>Wzór, folder wyjściowy<br>Podgląd batch (12)<br>Generuj batch<br><span class="folder">Wyślij na tuner (FTP)</span></div></div>
+        <div class="mock-pane"><h5>KOLUMNA 4 - PODGLĄD</h5><div class="mock-list"><span class="folder">Podgląd na żywo</span><br>Cofnij | Generuj podgląd<br>Zapisz PNG | Zapisz JPG<br>Ramka<br>Watermark<br>Grafika (logo)</div></div>
+      </div>
+      <div class="mock-status">Gotowy &nbsp;|&nbsp; HPL ink Picon Generator (Enigma2) v1.35 14.07.2026</div>
+    </div>
+    <ul>
+      <li><strong>Nagłówek</strong> zawiera kolorowy baner z nazwą programu oraz numer wersji i datę wydania.</li>
+      <li><strong>Zakładki</strong> przełączają między projektowaniem i generowaniem (<em>Generator</em>) a porządkowaniem gotowych plików (<em>Picon Sort</em>).</li>
+      <li><strong>Kolumny 1-3</strong> przewijają się pionowo - kółko myszy przewija kolumnę, nad którą znajduje się kursor; nad listami (czcionki, wzory) kółko przewija samą listę.</li>
+      <li><strong>Pasek statusu</strong> na dole pokazuje wynik ostatniej operacji, postęp batch oraz komunikaty FTP.</li>
+    </ul>
+    <div class="tip"><strong>Podgląd na żywo:</strong> niemal każda zmiana ustawień (suwak, pole, kolor, efekt) automatycznie odświeża podgląd po chwili bezczynności. Nie trzeba za każdym razem klikać „Generuj podgląd".</div>
+
+    <h2 id="pl-presets">4. Wzory (presety)</h2>
+    <p>Sekcja <strong>Wzory (presety)</strong> na górze kolumny 1 zapisuje i przywraca <em>komplet</em> ustawień: rozmiar, tło (w tym ścieżkę obrazu tła), teksty 1-3 z efektami, ramkę, dekorację, winietę, watermark i logo.</p>
+    <h3>Praca ze wzorami</h3>
+    <ul>
+      <li><strong>Lista wzorów</strong> - zaznaczenie wzoru pokazuje pod listą wygenerowaną miniaturę presetu. <span class="badge new">NOWE v1.35</span></li>
+      <li><strong>Wczytaj</strong> - przywraca ustawienia zaznaczonego wzoru (kategorie efektów i widoczność sekcji parametrów ustawiają się automatycznie).</li>
+      <li><strong>Zapisz wzor</strong> - zapisuje bieżące ustawienia pod nazwą z pola <strong>Nazwa</strong>. Zapis pod istniejącą nazwą nadpisuje wzór.</li>
+      <li><strong>Usun</strong> - usuwa zaznaczony wzór.</li>
+      <li><strong>Losuj styl</strong> - losuje tło, gradient, kolory i efekt Tekstu 1; wygodny start do szybkiego prototypowania.</li>
+      <li><strong>Eksport / Import</strong> - zapis wszystkich wzorów do wybranego pliku <code>.json</code> oraz wczytanie wzorów z pliku (przy duplikatach program pyta o nadpisanie).</li>
+    </ul>
+    <h3>Wzory wbudowane</h3>
+    <table>
+      <thead><tr><th>Wzór</th><th>Opis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CANAL+ 360 neon</strong></td><td>Neonowa scena z gradientowym konturem liter - styl picona CANAL+ 360. Działa też w batch (nazwa kanału trafia w miejsce napisu „360").</td></tr>
+        <tr><td><strong>Codex Sol</strong> <span class="badge new">NOWE v1.35</span></td><td>Kompozycja na tle „Studio neonowe - mokra podłoga" z efektem „Neon dwustrefowy + odbicie", belką neonową u góry i trzecim tekstem „CANAL+".</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Bezpieczny zapis:</strong> plik wzorów <code>hpl_picon_presets.json</code> jest zapisywany atomowo (najpierw plik tymczasowy, potem podmiana). Jeśli plik wzorów okaże się uszkodzony, program tworzy kopię <code>.bak</code> zamiast po cichu nadpisać dane. Komunikat o udanym zapisie pojawia się wyłącznie po faktycznym zapisaniu pliku.</div>
+
+    <h2 id="pl-bg" class="section-break">5. Tło i kompozycja - kolumna 1</h2>
+    <h3>Rozmiar grafiki</h3>
+    <p>Do wyboru jest 11 rozmiarów: <code>100x60</code>, <code>128x128</code>, <code>220x132</code>, <code>256x256</code>, <code>320x180</code>, <code>400x240</code> (domyślny), <code>512x512</code>, <code>600x360</code>, <code>800x450</code>, <code>1280x720</code> oraz <code>1920x1080</code> px.</p>
+    <h3>Tło i gradient</h3>
+    <p>Tło budują maksymalnie trzy kolory (<strong>Kolor tła #1 / #2 / #3</strong>) oraz <strong>Typ gradientu</strong> - 25 wariantów:</p>
+    <ul>
+      <li>klasyczne: jednolite tło, gradient poziomy, pionowy, ukośny (\ oraz /), radialny (środek / róg / elipsa), wielo-stop 3 kolory, diamentowy, stożkowy, fala,</li>
+      <li>teksturalne: paski poziome i pionowe, promienie, szachownica, marmur, plasma, szum (noise), spirala / vortex,</li>
+      <li>sceniczne: <strong>Scena neonowa (3 kolory)</strong>, <strong>Studio neonowe - mokra podłoga (3 kolory)</strong> z mgłą, horyzontem i odbiciami <span class="badge new">NOWE v1.35</span>, <strong>Aurora / Zorza (3 kolory)</strong>, <strong>Bokeh</strong>, <strong>Siatka retro-wave</strong>, <strong>Carbon (włókno węglowe)</strong>.</li>
+    </ul>
+    <h3>Tło z pliku</h3>
+    <ol>
+      <li>Zaznacz <strong>Włącz tło z pliku</strong> i kliknij <strong>Wczytaj obraz</strong> (PNG/JPG).</li>
+      <li>Dopasuj <strong>Krycie tła</strong> (0-100%), <strong>Zoom tła</strong> (0.1-5.0x) oraz <strong>Offset X / Y</strong> (±2000 px).</li>
+      <li><strong>Krycie grad. na tle</strong> określa, jak mocno gradient kolorów przykrywa obraz.</li>
+      <li>Najwygodniej pozycjonować obraz bezpośrednio w podglądzie: <strong>przeciągnięcie myszą przesuwa tło, kółko myszy zmienia zoom</strong>.</li>
+      <li><strong>Usun tlo</strong> odłącza obraz od projektu.</li>
+    </ol>
+    <h3>Overlay, winieta i blask</h3>
+    <ul>
+      <li><strong>Overlay (przyciemnienie)</strong> - kolor + krycie 0-100%; jednolita warstwa na całym tle, np. do przygaszenia zdjęcia pod tekstem.</li>
+      <li><strong>Przyciemnij rogi</strong> - winieta działająca na każdym tle, także na obrazie z pliku.</li>
+      <li><strong>Rozjaśnij środek</strong> - delikatny blask w centrum picona.</li>
+    </ul>
+    <h3>Dekoracja (kształt)</h3>
+    <p>Ozdobny kształt rysowany na tle: <em>Pasek ukośny, Pasek poziomy (dół), Pasek pionowy (lewa), Koło (róg), Łuk (dół), Linia akcentowa (róg), Trójkąt (róg)</em> oraz <em>Belka neonowa (góra)</em> z dwukolorowym obrysem i poświatą <span class="badge new">NOWE v1.35</span>. Dla kształtu ustawia się kolor, krycie, rozmiar oraz opcję <strong>Za tekstem</strong>.</p>
+
+    <h2 id="pl-text" class="section-break">6. Tekst 1 / 2 / 3 i efekty - kolumna 2</h2>
+    <h3>Trzy niezależne teksty</h3>
+    <table>
+      <thead><tr><th>Zakładka</th><th>Przeznaczenie</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tekst 1</strong> (pomarańczowa)</td><td>Główny napis picona (domyślnie „HPL"). W batch podmieniany na nazwę kanału.</td></tr>
+        <tr><td><strong>Tekst 2</strong> (zielona)</td><td>Dopisek, domyślnie „HD". W batch podmieniany na „HD", gdy nazwa kanału kończy się na HD.</td></tr>
+        <tr><td><strong>Tekst 3</strong> (niebieska)</td><td>Wolna pozycja - centrowany na całym obrazie i przesuwany polami Offset X/Y; domyślnie pusty. Idealny na stały dopisek, np. nazwę platformy.</td></tr>
+      </tbody>
+    </table>
+    <p>Przycisk <strong>Przenieś do Tekst 2</strong> kopiuje ustawienia z Tekstu 1 (bez napisu, rozmiaru i koloru czcionki) - najszybszy sposób na spójny styl obu tekstów.</p>
+    <h3>Napis i czcionka</h3>
+    <ul>
+      <li><strong>Napis</strong> - pole wielolinijkowe; Enter tworzy kolejną linię napisu.</li>
+      <li><strong>Rodzina</strong> - lista czcionek wykrytych w systemie z polem filtrowania (program pokazuje liczbę wykrytych czcionek). Style Bold/Kursywa używają prawdziwych odmian czcionki, a gdy ich brak - pochylenia i pogrubienia syntetycznego.</li>
+      <li><strong>Rozmiar</strong> 6-300 px, <strong>Bold</strong>, <strong>Kursywa</strong>, <strong>Kolor tekstu</strong>, <strong>Przezroczystość</strong> 0-100%, <strong>Obrót tekstu</strong> ±180°.</li>
+    </ul>
+    <h3>Efekt tekstu - wybór dwupoziomowy</h3>
+    <p>Zamiast jednej listy ponad 130 pozycji efekt wybiera się w dwóch krokach: <strong>Kategoria</strong> → <strong>Efekt</strong>.</p>
+    <table class="matrix-small">
+      <thead><tr><th>Kategoria</th><th>Przykładowe efekty</th></tr></thead>
+      <tbody>
+        <tr><td>Cienie</td><td>Cień klasyczny, miękki, perspektywiczny, długi (long shadow), gradientowy, lustrzany dolny, rzucany na podłogę.</td></tr>
+        <tr><td>3D</td><td>3D warstwowy, z gradientem boku, ekstrudowany, chromowany.</td></tr>
+        <tr><td>Poświaty</td><td>Glow, neon podwójny, neon rurka, neon cyberpunk, UV / blacklight, łuk elektryczny, glow tęczowy, neon pęknięty, <strong>Neon dwustrefowy</strong> i <strong>Neon dwustrefowy + odbicie</strong> <span class="badge new">NOWE v1.35</span>.</td></tr>
+        <tr><td>Obrysy</td><td>Obrys, obrys wielokrotny, neonowy, kontur (pusty środek), neon kontur gradientowy, kontur podwójny dwukolorowy.</td></tr>
+        <tr><td>Gradienty na tekście</td><td>Ponad 40 palet: tęcza, ocean, matrix, aurora, lawa, złoto, chrom, miedź, tytan, chrom tęczowy (oil slick) i inne.</td></tr>
+        <tr><td>Wzory na tekście</td><td>Paski, skanlinie, piksel / 8-bit, siatka, kropki, hex, halftone, pop art, cegły, marmur, kamuflaż.</td></tr>
+        <tr><td>Specjalne</td><td>Ogień, lód, hologram, glitch RGB, komiks, knockout (napis z tła), plakietka neonowa, sticker / naklejka, wypalenie / scorch, szkło 3D (glassmorphism), duotone, neon migotający.</td></tr>
+      </tbody>
+    </table>
+    <h3>Parametry kontekstowe</h3>
+    <p>Pod listą efektów pojawiają się wyłącznie sekcje parametrów, których wybrany efekt faktycznie używa:</p>
+    <ul>
+      <li><strong>Cień</strong> - kolor, odległość 1-40 px, kąt 0-359°, rozmycie 0-30 px,</li>
+      <li><strong>Obrys</strong> - kolor i szerokość 1-12 px,</li>
+      <li><strong>Glow / Neon</strong> - kolor i promień 2-40 px,</li>
+      <li><strong>3D</strong> - kolor boku i głębokość 1-20 px,</li>
+      <li><strong>Kolory efektu</strong> - Kolor #1 / #2 / #3 dla gradientów i wzorów,</li>
+      <li><strong>Kierunek gradientu</strong> - 10 kierunków (pionowy, poziomy, ukośne, radialne, diamentowy, stożkowy, fala, plasma) oraz suwak <strong>Przesun. gradientu</strong> 0-100%, który cyklicznie przesuwa fazę palety, tworząc nowe warianty każdego gradientu.</li>
+    </ul>
+    <p>Sekcja <strong>Offset w strefie</strong> (X/Y, ±500 px) przesuwa tekst względem jego domyślnej pozycji.</p>
+
+    <h2 id="pl-preview" class="section-break">7. Podgląd, zapis, ramka, watermark i logo - kolumna 4</h2>
+    <h3>Podgląd</h3>
+    <ul>
+      <li>Przeciągnięcie <strong>lewym</strong> przyciskiem myszy przesuwa tło z pliku; <strong>kółko</strong> zmienia zoom tła.</li>
+      <li>Przeciągnięcie <strong>prawym</strong> przyciskiem myszy przesuwa logo.</li>
+    </ul>
+    <h3>Przyciski</h3>
+    <ul>
+      <li><strong>Cofnij</strong> - przywraca stan sprzed ostatniej zmiany (szczegóły w rozdziale 12).</li>
+      <li><strong>Generuj podgląd</strong> - wymusza natychmiastowe przerysowanie.</li>
+      <li><strong>Zapisz PNG</strong> / <strong>Zapisz JPG</strong> - zapis bieżącego podglądu do pliku (JPG w jakości 95). Przy braku wygenerowanego podglądu program poprosi o jego wykonanie.</li>
+    </ul>
+    <h3>Ramka</h3>
+    <p>Po zaznaczeniu <strong>Włącz ramkę</strong> dostępnych jest 8 stylów: <em>Pełna, Zaokrąglona, Podwójna, Przerywana, Tylko naróżniki, Neon (poświata), Fazowana 3D, Gradient</em>. Wspólne parametry to kolor, szerokość 1-20 px i odstęp od krawędzi 0-30 px. Parametry kontekstowe pojawiają się tylko dla stylów, które ich używają: zaokrąglenie 0-40 px, a dla stylu Gradient dodatkowo Kolor #2 i kierunek gradientu ramki (poziomy, pionowy, ukośny, obwodowy).</p>
+    <h3>Watermark</h3>
+    <p>Znak „<em>ink</em>" (czerwona kursywa) w rogu picona. Można go <strong>włączać i wyłączać</strong>, a ustawienie zapisuje się we wzorze <span class="badge new">NOWE v1.35</span>. <strong>Róg watermarka</strong> do wyboru: prawy dolny lub lewy dolny.</p>
+    <h3>Grafika (logo)</h3>
+    <ol>
+      <li>Zaznacz <strong>Włącz</strong> i kliknij <strong>Wczytaj grafikę</strong> (PNG/JPG z przezroczystością).</li>
+      <li>Ustaw <strong>Skalę logo</strong> 5-100%, <strong>Pozycję X / Y</strong>, <strong>Krycie logo</strong> oraz opcję <strong>Za tekstem</strong>.</li>
+      <li>Logo można też przesuwać przeciąganiem <strong>prawym przyciskiem myszy</strong> w podglądzie.</li>
+    </ol>
+    <div class="note"><strong>Ścieżki we wzorach:</strong> wzór zapamiętuje ścieżki do plików tła i logo. Batch użyje tych plików, o ile nadal istnieją na dysku.</div>
+
+    <h2 id="pl-batch" class="section-break">8. Batch - masowe generowanie - kolumna 3</h2>
+    <h3>Format listy kanałów</h3>
+    <p>Batch przyjmuje pliki <code>.txt</code> w formacie list Enigma2 - pary linii <code>#SERVICE</code> i <code>#DESCRIPTION</code>. Parser obsługuje:</p>
+    <ul>
+      <li>nazwę kanału osadzoną w samej linii <code>#SERVICE</code> (zakończenie <code>::nazwa</code>),</li>
+      <li>linie <code>#SERVICE</code> bez nazwy (pojedynczy dwukropek na końcu - typowe bukiety Enigma2; nazwa pobierana z <code>#DESCRIPTION</code>),</li>
+      <li><code>#DESCRIPTION</code> występujące zarówno <em>po</em>, jak i <em>przed</em> linią <code>#SERVICE</code>.</li>
+    </ul>
+    <p>Dla każdego kanału program tworzy plik <code>PNG</code> o nazwie równej referencji #SERVICE z dwukropkami zamienionymi na podkreślenia, np. <code>1_0_1_3DEA_640_13E_820000_0_0_0.png</code>.</p>
+    <div class="tip"><strong>Automatyczne teksty:</strong> nazwa kanału jest zapisywana WIELKIMI literami jako Tekst 1; jeśli kończy się na „HD", końcówka trafia do Tekstu 2. Program automatycznie dopasowuje rozmiar czcionki Tekstu 1 do strefy tekstu i w razie potrzeby łamie długie nazwy na maksymalnie dwie linie.</div>
+    <h3>Krok po kroku</h3>
+    <ol>
+      <li><strong>Wczytaj listę .txt</strong> - etykieta obok przycisku pokaże liczbę odczytanych kanałów.</li>
+      <li>Wybierz <strong>Wzór do użycia</strong> z listy rozwijanej (wzory zapisane + wbudowane).</li>
+      <li><strong>Wybierz folder</strong> wyjściowy na pliki PNG.</li>
+      <li>Opcjonalnie zaznacz <strong>Pomijaj istniejące pliki</strong> - przydatne przy wznawianiu przerwanej produkcji.</li>
+      <li><strong>Podgląd batch (12 pierwszych)</strong> - okno z siatką miniatur pierwszych 12 kanałów wygenerowanych wybranym wzorem; pozwala ocenić styl przed pełnym przebiegiem.</li>
+      <li><strong>Generuj batch</strong> - generowanie działa w tle; pasek postępu pokazuje procent, licznik plików oraz <strong>szacowany czas zakończenia (ETA)</strong> liczony z realnie wygenerowanych plików.</li>
+    </ol>
+    <div class="note"><strong>Błędy pojedynczych kanałów</strong> nie przerywają batcha - po zakończeniu program zapisuje log <code>_batch_errors.txt</code> w folderze wyjściowym i pokazuje liczbę błędów na pasku statusu.</div>
+
+    <h2 id="pl-ftp">9. Wyślij na tuner (FTP)</h2>
+    <p>Sekcja w dolnej części kolumny 3 wysyła wygenerowane picony bezpośrednio na odbiornik Enigma2.</p>
+    <ol>
+      <li>Wpisz <strong>Host / IP</strong> tunera, <strong>Login</strong> (domyślnie <code>root</code>) i <strong>Hasło</strong> (maskowane; tunery VU+ zawsze wymagają hasła).</li>
+      <li>Wybierz lub wpisz <strong>ścieżkę piconów na tunerze</strong>. Lista podpowiada trzy typowe lokalizacje: <code>/usr/share/enigma2/picon</code>, <code>/media/hdd/picon</code>, <code>/media/usb/picon</code>.</li>
+      <li><strong>Testuj połączenie</strong> - loguje się na FTP (port 21), wchodzi do wskazanego folderu i pokazuje liczbę znajdujących się tam plików PNG. Udany test zapisuje konfigurację.</li>
+      <li><strong>Wyślij na tuner</strong> - wysyła wszystkie pliki PNG z folderu wyjściowego batch. Postęp („Wysyłanie X / Y...") widać przy sekcji FTP, a wynik także na pasku statusu.</li>
+    </ol>
+    <div class="note"><strong>Bezpieczeństwo hasła:</strong> konfiguracja FTP jest zapisywana w pliku <code>hpl_picon_ftp.json</code>, a hasło jest chronione mechanizmem <strong>Windows DPAPI</strong> - odczyta je tylko ten sam użytkownik na tym samym komputerze. Starsza konfiguracja (base64) jest przy pierwszym uruchomieniu automatycznie migrowana.</div>
+    <div class="warning"><strong>Wymagania wysyłki:</strong> przed wysyłką musi istnieć folder wyjściowy batch zawierający pliki PNG. Po wgraniu piconów odśwież listę kanałów lub zrestartuj GUI Enigma2, aby tuner odczytał nowe ikony.</div>
+
+    <h2 id="pl-sort" class="section-break">10. Zakładka Picon Sort</h2>
+    <p><strong>Picon Sort</strong> porządkuje istniejące kolekcje piconów: dopasowuje pliki PNG do listy kanałów i wskazuje braki.</p>
+    <ol>
+      <li>Wybierz <strong>Folder z ikonami PNG</strong> (np. rozpakowaną paczkę piconów).</li>
+      <li>Wybierz <strong>Plik listy .txt</strong> (ta sama składnia co w batch - rozdział 8).</li>
+      <li>Kliknij <strong>Dopasuj i kopiuj</strong>.</li>
+    </ol>
+    <p>Program szuka dla każdego kanału pliku <code>&lt;ID_z_podkreślnikami&gt;.png</code> i kopiuje znalezione do podfolderu <strong>Znalezione</strong> w katalogu programu. Wyniki trafiają do tabeli:</p>
+    <table>
+      <thead><tr><th>Kolumna</th><th>Zawartość</th></tr></thead>
+      <tbody>
+        <tr><td>Status</td><td><span style="color:#39d98a;font-weight:700">OK</span> - plik znaleziony i skopiowany; <span style="color:#ff5246;font-weight:700">BRAK</span> - brak pliku dla kanału.</td></tr>
+        <tr><td>Nazwa kanału</td><td>Nazwa z listy (#DESCRIPTION lub #SERVICE).</td></tr>
+        <tr><td>Plik</td><td>Oczekiwana nazwa pliku PNG.</td></tr>
+        <tr><td>Info</td><td>Szczegóły operacji (skopiowano / nie znaleziono).</td></tr>
+      </tbody>
+    </table>
+    <p>Nad tabelą wyświetla się podsumowanie: <em>Znaleziono / Brakuje / Skopiowano</em>.</p>
+
+    <h2 id="pl-report">11. Raport braków i most do Generatora</h2>
+    <p>Przycisk <strong>Raport braków (N)</strong> otwiera okno na prawej połowie ekranu z listą pozycji bez pliku PNG: numer pozycji, nazwa kanału, identyfikator z podkreślnikami i oczekiwana nazwa pliku.</p>
+    <ul>
+      <li><strong>Kopiuj identyfikator</strong> - kopiuje ID zaznaczonej pozycji do schowka (np. do ręcznego wyszukania picona w internecie).</li>
+      <li><strong>Generuj brakujące piconi</strong> - najważniejsza funkcja raportu: przenosi wszystkie brakujące pozycje wprost do listy batch Generatora (z regułami WIELKIE litery + „HD" → Tekst 2) i przełącza program na zakładkę Generator. Wystarczy wybrać wzór i folder, a następnie kliknąć <strong>Generuj batch</strong>, aby dorobić wyłącznie brakujące picony.</li>
+    </ul>
+
+    <h2 id="pl-undo">12. Cofanie zmian i automatyczny podgląd</h2>
+    <ul>
+      <li>Historia obejmuje <strong>do 30 kroków</strong> i zapamiętuje pełny stan ustawień, łącznie z wczytanymi plikami tła i logo.</li>
+      <li>Stan zapisuje się automatycznie po każdym udanym wygenerowaniu podglądu; seria szybkich zmian (np. przeciąganie suwaka) jest scalana w jeden krok historii.</li>
+      <li>Cofnąć można przyciskiem <strong>Cofnij</strong> obok „Generuj podgląd" albo skrótem <kbd>Ctrl+Z</kbd>.</li>
+      <li>Skrót <kbd>Ctrl+Z</kbd> jest nieaktywny podczas pisania w polach tekstowych - nie koliduje z systemowym cofaniem tekstu.</li>
+      <li>Gdy historia jest pusta, przycisk Cofnij pozostaje wyszarzony.</li>
+    </ul>
+
+    <h2 id="pl-workflow" class="section-break">13. Przykładowy przepływ pracy</h2>
+    <p>Typowy scenariusz: komplet piconów dla własnej listy kanałów w jednym stylu.</p>
+    <div class="workflow">
+      <div class="step"><b>1. Styl</b>W zakładce Generator zaprojektuj picon albo wczytaj wzór (np. „Codex Sol") i dostrój kolory.</div>
+      <div class="step"><b>2. Wzór</b>Zapisz ustawienia przyciskiem „Zapisz wzor" pod własną nazwą.</div>
+      <div class="step"><b>3. Batch</b>Wczytaj listę .txt, wybierz wzór i folder, sprawdź „Podgląd batch", uruchom „Generuj batch".</div>
+      <div class="step"><b>4. Tuner</b>W sekcji FTP przetestuj połączenie i wyślij picony na tuner.</div>
+    </div>
+    <p>Wariant porządkowy: najpierw <strong>Picon Sort</strong> dopasowuje istniejącą paczkę piconów do listy, a raport braków przyciskiem <strong>Generuj brakujące piconi</strong> dorabia w Generatorze tylko brakujące ikony - w tym samym stylu co reszta.</p>
+
+    <h2 id="pl-files">14. Sekcje interfejsu i pliki programu</h2>
+    <h3>Ściąga sekcji</h3>
+    <table class="matrix-small">
+      <thead><tr><th>Sekcja</th><th>Miejsce</th></tr></thead>
+      <tbody>
+        <tr><td>Wzory (presety), Rozmiar grafiki, Tło i gradient, Tło z pliku, Overlay, Winieta i blask, Dekoracja</td><td>Generator - kolumna 1</td></tr>
+        <tr><td>Tekst 1 / Tekst 2 / Tekst 3, Czcionka, Efekt tekstu, parametry, Offset w strefie</td><td>Generator - kolumna 2</td></tr>
+        <tr><td>Batch generowanie, Wyślij na tuner (FTP)</td><td>Generator - kolumna 3</td></tr>
+        <tr><td>Podgląd, Cofnij / Generuj podgląd / Zapisz PNG / JPG, Ramka, Watermark, Grafika (logo)</td><td>Generator - kolumna 4</td></tr>
+        <tr><td>Dopasuj i kopiuj, Raport braków, tabela wyników</td><td>zakładka Picon Sort</td></tr>
+      </tbody>
+    </table>
+    <h3>Pliki programu</h3>
+    <p>Wszystkie pliki powstają w katalogu programu (obok pliku <code>.py</code> / <code>.exe</code>):</p>
+    <table>
+      <thead><tr><th>Plik / katalog</th><th>Przeznaczenie</th></tr></thead>
+      <tbody>
+        <tr><td><code>hpl_picon_presets.json</code></td><td>Zapisane wzory (presety). Przy uszkodzeniu pliku tworzona jest kopia <code>.bak</code>.</td></tr>
+        <tr><td><code>hpl_picon_ftp.json</code></td><td>Konfiguracja FTP; hasło chronione Windows DPAPI.</td></tr>
+        <tr><td><code>Znalezione</code></td><td>Podfolder z piconami skopiowanymi przez Picon Sort.</td></tr>
+        <tr><td><code>_batch_errors.txt</code></td><td>Log błędów ostatniego batcha - w folderze wyjściowym batch.</td></tr>
+        <tr><td><code>icon.ico</code></td><td>Ikona okna programu (opcjonalna).</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pl-help" class="section-break">15. Rozwiązywanie problemów</h2>
+    <h3>„Ten adres MAC nie jest autoryzowany"</h3>
+    <p>Komputer nie znajduje się na liście autoryzowanych adresów MAC. Skontaktuj się z dostawcą programu i podaj adres MAC (w wierszu poleceń: <code>getmac</code>).</p>
+    <h3>Podgląd generuje się wolno</h3>
+    <p>Zainstaluj bibliotekę NumPy (<code>pip install numpy</code>) - tła i gradienty renderują się wtedy wielokrotnie szybciej. Duże rozmiary (1280x720, 1920x1080) i efekty z rozmyciem zawsze liczą się dłużej; do prób używaj mniejszego rozmiaru, a docelowy ustaw przed batchem.</p>
+    <h3>Przycisk „Generuj batch" nie startuje</h3>
+    <p>Sprawdź trzy warunki: wczytana lista kanałów (etykieta pokazuje liczbę kanałów), wybrany wzór z listy rozwijanej oraz wybrany folder wyjściowy. Program pokazuje komunikat wskazujący brakujący element.</p>
+    <h3>Batch zgłasza błędy pojedynczych plików</h3>
+    <p>Otwórz <code>_batch_errors.txt</code> w folderze wyjściowym - każda linia zawiera nazwę kanału, identyfikator i przyczynę. Najczęstsze przyczyny to niedostępna ścieżka tła/logo zapisana we wzorze albo brak wybranej czcionki w systemie.</p>
+    <h3>FTP: „Błąd logowania/ścieżki" lub „Błąd połączenia"</h3>
+    <ol>
+      <li>Sprawdź IP tunera i to, czy tuner jest włączony (nie w głębokim standby).</li>
+      <li>Login to zwykle <code>root</code>; hasło jest wymagane - ustawia się je w menu tunera (np. OpenWebif / ustawienia sieci).</li>
+      <li>Sprawdź, czy ścieżka piconów istnieje na tunerze; w razie potrzeby utwórz folder <code>picon</code>.</li>
+      <li>Zapora sieciowa na komputerze nie może blokować połączeń wychodzących na port 21.</li>
+    </ol>
+    <h3>Picon Sort niczego nie znajduje</h3>
+    <p>Nazwy plików w folderze muszą mieć postać identyfikatora #SERVICE z podkreślnikami (np. <code>1_0_1_3DEA_640_13E_820000_0_0_0.png</code>). Jeśli paczka piconów używa nazw kanałów zamiast identyfikatorów, dopasowanie po ID nie jest możliwe - wygeneruj picony batchem.</p>
+    <h3>Tekst 2 nie pojawia się w batch</h3>
+    <p>Tekst 2 jest wypełniany tylko wtedy, gdy nazwa kanału kończy się słowem „HD". Pozostała treść pola Tekst 2 z wzoru jest w batch nadpisywana.</p>
+    <h3>Niepoprawny kolor w polu</h3>
+    <p>Kolory zapisuje się w formacie <code>#RRGGBB</code>. Nieprawidłowy lub pusty zapis program zamienia na kolor biały zamiast zgłaszać błąd.</p>
+    <h3>Wzory zniknęły po awarii</h3>
+    <p>Sprawdź, czy obok <code>hpl_picon_presets.json</code> istnieje kopia <code>hpl_picon_presets.json.bak</code> - zawiera ostatnią wersję sprzed uszkodzenia; wystarczy usunąć rozszerzenie <code>.bak</code>.</p>
+    <div class="footer-note">HPL ink Picon Generator (Enigma2) v1.35 [14.07.2026] - instrukcja obsługi - 17.07.2026</div>
+  </section>
+</main>
+</body>
+</html>
