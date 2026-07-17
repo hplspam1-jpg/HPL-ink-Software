@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL Tool Ultimate ver.3.09 - instrukcja obslugi (PL)</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #15171c;
+      --panel2: #1e2128;
+      --ink: #ff315f;
+      --accent: #ff7a1a;
+      --violet: #8d7cff;
+      --cyan: #00d8c9;
+      --green: #39d98a;
+      --warn: #f5b94d;
+      --danger: #ff5246;
+      --text: #e6eaf5;
+      --dim: #9aa1af;
+      --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: 0;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover {
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); }
+    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
+    .brand .conv { color: var(--cyan); }
+    .brand .e2 { color: #b5aaff; font-size: 34px; }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .edition strong { display: block; color: var(--text); font-size: 17px; }
+    .edition span { color: var(--dim); }
+    h2 {
+      margin: 42px 0 18px;
+      padding-bottom: 8px;
+      color: var(--accent);
+      font-size: 27px;
+      border-bottom: 2px solid var(--line);
+      break-after: avoid;
+    }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; }
+    ul, ol { margin: 7px 0 16px 24px; padding: 0; }
+    li { margin: 4px 0; }
+    .settings-list > li { margin: 0 0 18px; padding-left: 3px; break-inside: avoid; }
+    .settings-list > li::marker { color: var(--accent); font-weight: 800; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd {
+      font-family: Consolas, monospace;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: #fff;
+    }
+    kbd { color: var(--warn); }
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 7px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .badge.num { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
+    .badge.new { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .badge.admin { color: #ffe3e0; border: 1px solid var(--danger); background: #5b1210; }
+    .note, .warning, .tip {
+      margin: 15px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--cyan);
+      background: var(--panel);
+      break-inside: avoid;
+    }
+    .warning { border-color: var(--warn); }
+    .tip { border-color: var(--green); }
+    .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc {
+      columns: 2;
+      column-gap: 32px;
+      padding: 15px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; }
+    td { background: #101216; }
+    tr { break-inside: avoid; }
+    .yes { color: var(--green); font-weight: 800; text-align: center; }
+    .no { color: #626a78; text-align: center; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); }
+    .mock-title i { color: var(--ink); }
+    .mock-tabs { display: flex; gap: 5px; padding: 8px 0 2px; }
+    .mock-tab { padding: 5px 14px; background: #2a2416; color: #ffd9a8; border-radius: 3px 3px 0 0; font-size: 11px; font-weight: 700; }
+    .mock-tab.active { background: var(--accent); color: #201400; }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); }
+    .mock-button.m3u { border-color: var(--green); color: var(--green); }
+    .mock-button.amber { border-color: var(--warn); color: var(--warn); }
+    .mock-button.red { border-color: var(--danger); color: var(--danger); }
+    .mock-grid { display: grid; grid-template-columns: 1fr; gap: 7px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: #7fdfff; font-weight: 700; }
+    .mock-status { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
+    .matrix-small td:first-child { width: 42%; }
+    .page-break { break-before: page; }
+    .section-break { break-before: page; }
+    .language-break { break-before: page; margin-top: 0; }
+    .footer-note { margin-top: 45px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; }
+      .cover { min-height: 250mm; }
+      .brand { font-size: 34pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; }
+      table td { background: #fff; }
+      th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.num { color: #413477; background: #efedff; }
+      .badge.new { color: #251400; background: #ff9a4f; }
+      .badge.admin { color: #7f1d1d; background: #ffe3e0; }
+      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      a { color: inherit; }
+      .page-break, .language-break { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="conv">Tool</span> <span class="ink">Ultimate</span></div>
+    <h1>Instrukcja obsługi</h1>
+    <p class="subtitle">Przewodnik po wielofunkcyjnym narzędziu serwisowym Windows: timer zasilania, zarządzanie siecią, firewall, diagnostyka i szybka wyszukiwarka plików.</p>
+    <div class="edition-strip">
+      <div class="edition"><strong>HPL Tool Ultimate</strong><span>opisywane wydanie: ver.3.09</span></div>
+      <div class="edition"><strong>Data wydania</strong><span>2026-07-12</span></div>
+      <div class="edition"><strong>Platforma</strong><span>Windows 10 / 11 (aplikacja okienkowa)</span></div>
+    </div>
+    <div class="note"><strong>Zasada oznaczeń:</strong> interfejs dzieli się na cztery ponumerowane sekcje (1 - Zasilanie, 2 - Sieć, 3 - Narzędzia, 4 - Wyszukiwarka). Etykieta <span class="badge admin">ADMIN</span> oznacza funkcję, która działa poprawnie <strong>tylko po uruchomieniu programu jako administrator</strong>. Etykieta <span class="badge num">PIN</span> oznacza funkcję chronioną kodem PIN programu.</div>
+  </section>
+
+  <section id="pl" class="page-break">
+    <h2>Spis treści</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#pl-about">O programie</a></li>
+        <li><a href="#pl-start">Uruchomienie, PIN i uprawnienia administratora</a></li>
+        <li><a href="#pl-gui">Główne okno</a></li>
+        <li><a href="#pl-power">Sekcja 1 - Zasilanie i timer</a></li>
+        <li><a href="#pl-mydata">Moje dane</a></li>
+        <li><a href="#pl-net">Sekcja 2 - Sieć: interfejs, ping, DNS</a></li>
+        <li><a href="#pl-scan">Skaner sieci lokalnej</a></li>
+        <li><a href="#pl-tools">Sekcja 3 - Narzędzia systemowe</a></li>
+        <li><a href="#pl-clip">Historia schowka</a></li>
+        <li><a href="#pl-fw">Blokada aplikacji w firewallu</a></li>
+        <li><a href="#pl-search">Sekcja 4 - Wyszukiwarka plików</a></li>
+        <li><a href="#pl-search2">Wyszukiwanie łączone, w treści i menu wyników</a></li>
+        <li><a href="#pl-dupes">Duplikaty plików</a></li>
+        <li><a href="#pl-rename">Hurtowa zmiana nazw i pliki programu</a></li>
+        <li><a href="#pl-help">Rozwiązywanie problemów</a></li>
+      </ol>
+    </div>
+
+    <h2 id="pl-about">1. O programie</h2>
+    <p><strong>HPL Tool Ultimate ver.3.09 [2026-07-12]</strong> to wielofunkcyjne narzędzie serwisowe dla systemu Windows, które w jednym oknie łączy:</p>
+    <ul>
+      <li><strong>timer zasilania</strong> z komunikatami głosowymi i wyborem akcji (wyłączenie, restart, hibernacja, uśpienie, wylogowanie),</li>
+      <li>zarządzanie <strong>siecią</strong>: włączanie/wyłączanie interfejsu, stały monitor ping, szybka zmiana DNS (presety Google, Cloudflare, Quad9, DHCP),</li>
+      <li><strong>skaner sieci lokalnej</strong> z rozpoznawaniem producenta urządzenia po adresie MAC (pełna baza IEEE OUI, ok. 40 tys. wpisów) <span class="badge new">NOWE v3.09</span>,</li>
+      <li>okno <strong>Moje dane</strong> - komplet informacji o połączeniu (IP publiczne i lokalne, MAC, brama, DNS, testy ping),</li>
+      <li><strong>blokowanie aplikacjom dostępu do internetu</strong> przez reguły Zapory Windows,</li>
+      <li>narzędzia serwisowe: aktywne połączenia TCP/UDP z nazwami procesów, raport systemu (CPU, RAM, płyta główna, dyski + SMART), czyszczenie TEMP, DISKPART, Keep Awake,</li>
+      <li><strong>historię schowka</strong> z przypinaniem wpisów,</li>
+      <li>bardzo szybką <strong>wyszukiwarkę plików</strong> opartą na indeksie: po nazwie, rozmiarze, dacie, rozszerzeniu, kryteriach łączonych i w treści plików, z wykrywaniem duplikatów i hurtową zmianą nazw.</li>
+    </ul>
+    <p>Interfejs jest dostępny w języku <strong>polskim i angielskim</strong> (przełącznik PL / EN w prawym górnym rogu, zmiana natychmiastowa) i używa ciemnego motywu „Windows 11 Dark Industrial" z akcentem morskim (teal).</p>
+    <h3>Wymagania</h3>
+    <ul>
+      <li>Windows 10 lub 11.</li>
+      <li>Przy uruchamianiu z pliku <code>.py</code>: Python 3 z bibliotekami <strong>pyautogui</strong>, <strong>pyttsx3</strong> i <strong>Pillow</strong>. Wersja EXE zawiera wszystkie zależności.</li>
+      <li>Dostęp do internetu dla funkcji sieciowych (IP publiczne, ping, DNS).</li>
+      <li>Głośniki/wyjście audio dla komunikatów głosowych (syntezator mowy Windows SAPI).</li>
+      <li><strong>Uprawnienia administratora</strong> dla części funkcji - pełna lista w rozdziale 2.</li>
+    </ul>
+
+    <h2 id="pl-start">2. Uruchomienie, PIN i uprawnienia administratora</h2>
+    <h3>Uruchomienie programu</h3>
+    <ol>
+      <li>Uruchom program (plik <code>hpl_tool_search.py</code> lub dostarczony plik wykonywalny).</li>
+      <li>Okno otwiera się w rozmiarze 1480x1000 (minimalnie 1100x700) z czterema sekcjami.</li>
+      <li>Aby korzystać z funkcji oznaczonych <span class="badge admin">ADMIN</span>, zamknij program i uruchom go ponownie <strong>prawym przyciskiem myszy → „Uruchom jako administrator"</strong> (i zatwierdź okno UAC).</li>
+    </ol>
+    <h3>Funkcje wymagające uprawnień administratora</h3>
+    <div class="warning"><strong>Ważne:</strong> poniższe funkcje wykonują polecenia systemowe (<code>netsh</code>, <code>shutdown /fw</code>, <code>diskpart</code>), które Windows dopuszcza wyłącznie z podniesionymi uprawnieniami. Bez trybu administratora program wyświetli komunikat błędu w stylu „Uruchom program jako administrator".</div>
+    <table>
+      <thead><tr><th>Funkcja</th><th>Sekcja</th><th>Bez administratora</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WYŁĄCZ SIEĆ / WŁĄCZ SIEĆ</strong> <span class="badge admin">ADMIN</span></td><td>2 - Sieć</td><td>polecenie jest ignorowane - interfejs nie zmienia stanu</td></tr>
+        <tr><td><strong>USTAW DNS</strong> <span class="badge admin">ADMIN</span></td><td>2 - Sieć</td><td>komunikat „Błąd - uruchom jako administrator"</td></tr>
+        <tr><td><strong>RESTART DO BIOS</strong> <span class="badge admin">ADMIN</span></td><td>1 - Zasilanie</td><td>polecenie <code>shutdown /r /fw</code> kończy się odmową dostępu</td></tr>
+        <tr><td><strong>Firewall: ZABLOKUJ / ODBLOKUJ / USUŃ regułę</strong> <span class="badge admin">ADMIN</span></td><td>3 - Narzędzia</td><td>komunikat „Błąd podczas tworzenia/usuwania reguły"</td></tr>
+        <tr><td><strong>DISKPART</strong> <span class="badge admin">ADMIN</span></td><td>3 - Narzędzia</td><td>diskpart odmówi pracy w nieuniesionej konsoli</td></tr>
+        <tr><td><strong>WYCZYŚĆ TEMP</strong> - część <code>C:\Windows\Temp</code> <span class="badge admin">ADMIN</span></td><td>3 - Narzędzia</td><td>czyszczony jest tylko TEMP użytkownika i Kosz; pliki systemowe zwiększają licznik błędów</td></tr>
+      </tbody>
+    </table>
+    <p>Pozostałe funkcje (timer, ping, skaner sieci, Moje dane, połączenia, raport systemu, schowek, cała wyszukiwarka) działają bez uprawnień administratora. Przeglądanie listy reguł firewalla również nie wymaga administratora - tylko ich usuwanie.</p>
+    <h3>Kod PIN</h3>
+    <p>Wrażliwe operacje są dodatkowo chronione kodem PIN <span class="badge num">PIN</span>. Domyślny PIN to <code>0000</code> - zmień go przyciskiem <strong>ZMIEŃ PIN</strong> w sekcji 3.</p>
+    <ul>
+      <li>PIN chroni: <strong>zamknięcie programu</strong>, anulowanie timera, restart do BIOS, włączenie/wyłączenie sieci, zmianę DNS, czyszczenie TEMP, blokady firewalla oraz usuwanie duplikatów do kosza.</li>
+      <li>Po <strong>3 błędnych próbach</strong> wprowadzanie PIN jest blokowane na <strong>5 minut</strong>.</li>
+      <li>PIN jest zapisany w pliku <code>pin.dat</code> jako skrót SHA-256 (nie da się go odczytać z pliku).</li>
+    </ul>
+    <div class="tip"><strong>Zapomniany PIN:</strong> zamknij program (np. przez Menedżer zadań), usuń plik <code>pin.dat</code> z katalogu programu i uruchom program ponownie - PIN wróci do <code>0000</code>.</div>
+
+    <h2 id="pl-gui">3. Główne okno</h2>
+    <p>Poniższy rysunek jest bezpiecznym schematem GUI. Nie zawiera adresów IP ani innych danych użytkownika.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> Tool <i>Ultimate</i> &nbsp;|&nbsp; ver.3.09 [2026-07-12] &nbsp;|&nbsp; PL / EN</div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>1 - ZASILANIE / POWER</h5><div class="mock-toolbar"><span class="mock-button">00:00:00</span><span class="mock-button">Akcja: Wyłączenie ▾</span><span class="mock-button hot">START TIMER WYŁĄCZENIA PC</span><span class="mock-button m3u">ANULUJ WYŁĄCZENIE</span><span class="mock-button red">RESTART DO BIOS</span><span class="mock-button">MOJE DANE</span></div></div>
+        <div class="mock-pane"><h5>2 - SIEĆ / NETWORK</h5><div class="mock-toolbar"><span class="mock-button">Interfejs ▾</span><span class="mock-button red">WYŁĄCZ SIEĆ</span><span class="mock-button m3u">WŁĄCZ SIEĆ</span><span class="mock-button">Ping: [____] START PING</span><span class="mock-button">SKANER SIECI</span><span class="mock-button amber">DNS ▾ USTAW DNS</span></div></div>
+        <div class="mock-pane"><h5>3 - NARZĘDZIA / TOOLS</h5><div class="mock-toolbar"><span class="mock-button">DISKPART</span><span class="mock-button">KEEP AWAKE</span><span class="mock-button">ZMIEŃ PIN</span><span class="mock-button">POŁĄCZENIA</span><span class="mock-button">RAPORT SYSTEMU</span><span class="mock-button red">WYCZYŚĆ TEMP</span><span class="mock-button">SCHOWEK (HISTORIA)</span><span class="mock-button amber">Aplikacja: [____] ZABLOKUJ / ODBLOKUJ / REGUŁY</span></div></div>
+        <div class="mock-pane"><h5>4 - WYSZUKIWARKA / FILE SEARCH</h5><div class="mock-list"><span class="folder">Dyski: ☑C: ☑D: ...</span> &nbsp; BUDUJ INDEKS | WYBIERZ FOLDER | ZMIEŃ NAZWY<br>Rozszerzenie | SZUKAJ ŁĄCZONE | DUPLIKATY PLIKÓW | W treści<br>SZUKAJ PO NAZWIE &nbsp;•&nbsp; ROZMIAR (MIN. MB) &nbsp;•&nbsp; DATA (RRRR-MM-DD)<br>listy wyników (podwójne kliknięcie otwiera plik)</div></div>
+      </div>
+      <div class="mock-status">Gotowy &nbsp;|&nbsp; HPL Tool Ultimate ver.3.09 [2026-07-12]</div>
+    </div>
+    <ul>
+      <li><strong>Pasek tytułu</strong> zawiera logo HPL, nazwę programu i przełącznik języka <strong>PL / EN</strong> (zmiana działa natychmiast, bez restartu).</li>
+      <li>Sekcje 1-3 przewijają się w górnym obszarze okna (kółko myszy), sekcja 4 zajmuje resztę okna.</li>
+      <li><strong>Zamknięcie okna (X) wymaga podania PIN</strong> - program jest pomyślany także jako blokada rodzicielska / serwisowa.</li>
+    </ul>
+
+    <h2 id="pl-power" class="section-break">4. Sekcja 1 - Zasilanie i timer</h2>
+    <h3>Timer zasilania</h3>
+    <ol>
+      <li>Z listy <strong>Akcja</strong> wybierz, co ma się stać po odliczeniu: <em>Wyłączenie, Restart, Hibernacja, Uśpienie</em> albo <em>Wylogowanie</em>.</li>
+      <li>Kliknij <strong>START TIMER WYŁĄCZENIA PC</strong> i podaj czas w minutach (1-1440, czyli do 24 godzin).</li>
+      <li>Duży zegar odlicza czas w formacie <code>GG:MM:SS</code>, a przycisk zmienia się w „⏱ TIMER AKTYWNY".</li>
+      <li>Program <strong>mówi</strong> komunikaty głosowe: na 3 minuty przed końcem, na 1 minutę przed końcem oraz w chwili wykonania akcji (po polsku lub angielsku, zależnie od języka interfejsu).</li>
+    </ol>
+    <p><strong>ANULUJ WYŁĄCZENIE</strong> <span class="badge num">PIN</span> przerywa odliczanie i dodatkowo wykonuje <code>shutdown /a</code>, więc anuluje także wyłączenie zaplanowane poza programem. Podwójne uruchomienie timera jest zablokowane.</p>
+    <h3>RESTART DO BIOS <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
+    <p>Natychmiast restartuje komputer bezpośrednio do ustawień UEFI/BIOS (<code>shutdown /r /fw /t 0</code>). Wymaga płyty z UEFI oraz uruchomienia programu jako administrator.</p>
+    <div class="warning"><strong>Uwaga:</strong> restart następuje od razu, bez pytania o zapisanie otwartych dokumentów.</div>
+
+    <h2 id="pl-mydata">5. Moje dane</h2>
+    <p>Przycisk <strong>MOJE DANE</strong> w sekcji 1 zbiera w tle komplet informacji o połączeniu (kilka sekund) i otwiera okno z wierszami do kopiowania:</p>
+    <table class="matrix-small">
+      <thead><tr><th>Pozycja</th><th>Opis</th></tr></thead>
+      <tbody>
+        <tr><td>Status internetu</td><td>OK / Offline - test pobrania IP publicznego.</td></tr>
+        <tr><td>Ping rutera / Ping DNS / Ping internetu</td><td>Trzy niezależne testy osiągalności: brama domyślna, pierwszy serwer DNS, serwer 8.8.8.8.</td></tr>
+        <tr><td>IP publiczne / IP lokalne / Maska podsieci</td><td>Adresy komputera widziane z internetu i w sieci lokalnej.</td></tr>
+        <tr><td>MAC komputera / Nazwa komputera</td><td>Identyfikacja sprzętu w sieci.</td></tr>
+        <tr><td>Brama domyślna / MAC rutera / Serwery DNS</td><td>Dane rutera i aktualnie używane serwery DNS.</td></tr>
+      </tbody>
+    </table>
+    <p>Każdy wiersz ma przycisk <strong>KOPIUJ</strong>; <strong>KOPIUJ WSZYSTKO</strong> kopiuje cały raport - wygodne przy zgłoszeniach do pomocy technicznej.</p>
+
+    <h2 id="pl-net">6. Sekcja 2 - Sieć: interfejs, ping, DNS</h2>
+    <h3>Włączanie i wyłączanie sieci <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
+    <p>Z listy <strong>Interfejs</strong> wybierz kartę sieciową (program wykrywa aktywne interfejsy), a następnie użyj <strong>WYŁĄCZ SIEĆ</strong> lub <strong>WŁĄCZ SIEĆ</strong>. To twarde wyłączenie karty na poziomie systemu - komputer traci łączność do chwili ponownego włączenia.</p>
+    <h3>Monitor ping</h3>
+    <ol>
+      <li>Wpisz adres (domyślnie <code>8.8.8.8</code>) i kliknij <strong>START PING</strong>.</li>
+      <li>Program pinguje adres co sekundę i pokazuje czas odpowiedzi w kolorze: <span style="color:#2ecc71;font-weight:700">zielony</span> poniżej 50 ms, <span style="color:#00c2a8;font-weight:700">morski</span> poniżej 150 ms, <span style="color:#e8622a;font-weight:700">pomarańczowy</span> powyżej, <span style="color:#e74c3c;font-weight:700">TIMEOUT</span> czerwony przy braku odpowiedzi.</li>
+      <li><strong>STOP PING</strong> zatrzymuje monitor.</li>
+    </ol>
+    <h3>Szybka zmiana DNS <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
+    <p>Wybierz preset z listy <strong>DNS</strong> i kliknij <strong>USTAW DNS</strong>. Dostępne presety:</p>
+    <ul>
+      <li><strong>Automatyczny (DHCP)</strong> - powrót do serwerów przydzielanych przez ruter,</li>
+      <li><strong>Google</strong> (8.8.8.8 / 8.8.4.4), <strong>Cloudflare</strong> (1.1.1.1 / 1.0.0.1), <strong>Quad9</strong> (9.9.9.9 / 149.112.112.112).</li>
+    </ul>
+    <p>Zmiana dotyczy interfejsu wybranego na liście <strong>Interfejs</strong>. Wynik operacji („OK: …" lub błąd) pojawia się obok przycisku.</p>
+
+    <h2 id="pl-scan" class="section-break">7. Skaner sieci lokalnej</h2>
+    <p>Przycisk <strong>SKANER SIECI</strong> w sekcji 2 wyszukuje wszystkie urządzenia w sieci lokalnej (podsieć /24, do 254 adresów). Skanowanie trwa kilka-kilkanaście sekund:</p>
+    <ol>
+      <li>Program pinguje równolegle całą podsieć (partiami po 64 adresy), wypełniając systemową tablicę ARP.</li>
+      <li>Z tablicy ARP odczytuje pary IP + MAC (z pominięciem adresów broadcast/multicast).</li>
+      <li>Nazwy urządzeń ustala dwuetapowo: najpierw DNS, potem NetBIOS (<code>nbtstat</code>) dla komputerów Windows bez wpisu DNS.</li>
+      <li>Producenta urządzenia rozpoznaje po prefiksie MAC z pełnej bazy <strong>IEEE OUI</strong> (plik <code>oui_db.txt</code>, ok. 40 tys. wpisów); bez pliku używa wbudowanej listy najpopularniejszych producentów (Raspberry Pi, Espressif/smart home, TP-Link, Apple, Samsung, MikroTik, Ubiquiti i inne). <span class="badge new">NOWE v3.09</span></li>
+    </ol>
+    <p>Wyniki trafiają do tabeli <strong>IP | MAC | Nazwa | Producent</strong>. Nagłówki kolumn są klikalne - sortowanie rosnąco/malejąco ze strzałką kierunku <span class="badge new">NOWE v3.09</span>. Każdy wiersz można skopiować przyciskiem <strong>KOPIUJ</strong>, a całą listę - przyciskiem <strong>KOPIUJ WSZYSTKO</strong>.</p>
+    <div class="tip"><strong>Wskazówka:</strong> własny komputer zawsze pojawia się na liście (ARP go nie pokazuje, program dodaje go sam). Jeśli lista jest podejrzanie krótka, sprawdź izolację klientów Wi-Fi na ruterze i wyłącz VPN.</div>
+
+    <h2 id="pl-tools">8. Sekcja 3 - Narzędzia systemowe</h2>
+    <h3>DISKPART <span class="badge admin">ADMIN</span></h3>
+    <p>Otwiera okno konsoli z narzędziem <code>diskpart</code> do zarządzania dyskami i partycjami. Diskpart wymaga uprawnień administratora.</p>
+    <h3>KEEP AWAKE</h3>
+    <p>Zapobiega uśpieniu komputera i wygaszaczowi: co 30 sekund delikatnie przesuwa kursor myszy w losowe miejsce. Ponowne kliknięcie wyłącza funkcję (przycisk zmienia kolor, gdy jest aktywna).</p>
+    <h3>ZMIEŃ PIN <span class="badge num">PIN</span></h3>
+    <p>Po podaniu dotychczasowego PIN pozwala ustawić nowy.</p>
+    <h3>POŁĄCZENIA</h3>
+    <p>Okno <strong>Aktywne połączenia</strong> pokazuje wszystkie połączenia TCP i UDP (<code>netstat</code>): protokół, adres lokalny, adres zdalny, stan oraz <strong>nazwę procesu</strong>, który nawiązał połączenie. Przydatne do szybkiego sprawdzenia, „co łączy się z internetem".</p>
+    <h3>RAPORT SYSTEMU</h3>
+    <p>Serwisowy raport komputera: system operacyjny (z numerem kompilacji), procesor, ilość RAM, model i numer seryjny płyty głównej oraz lista dysków fizycznych z rozmiarem i <strong>stanem SMART / kondycją</strong> (OK, Healthy, Warning…).</p>
+    <h3>WYCZYŚĆ TEMP <span class="badge num">PIN</span> <span class="badge admin">ADMIN — częściowo</span></h3>
+    <p>Po potwierdzeniu usuwa pliki tymczasowe z <code>%TEMP%</code>, <code>C:\Windows\Temp</code> oraz opróżnia <strong>Kosz</strong>. Wynik („Usunięto: N plików | Błędy: M") pojawia się obok przycisku. Czyszczenie <code>C:\Windows\Temp</code> w pełni działa tylko w trybie administratora; pliki aktualnie używane przez programy są pomijane i zwiększają licznik błędów - to normalne.</p>
+
+    <h2 id="pl-clip">9. Historia schowka</h2>
+    <p>Program stale monitoruje schowek tekstowy (co ok. 0,8 s) i zapisuje historię do pliku <code>clipboard.json</code>. Przycisk <strong>SCHOWEK (HISTORIA)</strong> otwiera menedżer:</p>
+    <ul>
+      <li>przechowywanych jest <strong>30 ostatnich wpisów</strong> plus wpisy <strong>przypięte 📌</strong> (bez limitu) - przypięte nie znikają przy przepełnieniu historii,</li>
+      <li><strong>📌</strong> przypina/odpina wpis (przypięte są zawsze na górze listy),</li>
+      <li><strong>KOPIUJ</strong> wstawia wpis z powrotem do schowka i zamyka okno,</li>
+      <li><strong>✕</strong> usuwa pojedynczy wpis, a <strong>WYCZYŚĆ HISTORIĘ (BEZ PRZYPIĘTYCH)</strong> kasuje wszystko poza przypiętymi,</li>
+      <li>skopiowanie tekstu, który już jest w historii, przenosi go na górę i zachowuje przypięcie.</li>
+    </ul>
+
+    <h2 id="pl-fw" class="section-break">10. Blokada aplikacji w firewallu</h2>
+    <p>Wiersz <strong>Aplikacja</strong> w sekcji 3 blokuje wybranemu programowi dostęp do internetu przez reguły Zapory Windows Defender.</p>
+    <h3>Blokowanie <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
+    <ol>
+      <li>Kliknij <strong>PRZEGLĄDAJ</strong> i wskaż plik <code>.exe</code> aplikacji (albo wpisz pełną ścieżkę ręcznie).</li>
+      <li>Kliknij <strong>ZABLOKUJ</strong>. Program utworzy dwie reguły zapory - dla ruchu wychodzącego i przychodzącego - o nazwach <code>HPL_BLOCK_&lt;nazwa&gt;_OUT</code> i <code>HPL_BLOCK_&lt;nazwa&gt;_IN</code>.</li>
+      <li><strong>ODBLOKUJ</strong> usuwa obie reguły dla wskazanej aplikacji.</li>
+    </ol>
+    <h3>Przegląd reguł</h3>
+    <p><strong>REGUŁY</strong> otwiera listę wszystkich reguł <code>HPL_BLOCK_*</code> istniejących w zaporze. Samo przeglądanie nie wymaga administratora; przycisk <strong>USUŃ</strong> przy regule <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span> kasuje ją pojedynczo.</p>
+    <div class="note"><strong>Uwaga:</strong> reguły zapory pozostają w systemie także po zamknięciu programu - zablokowana aplikacja nie ma internetu, dopóki reguły nie zostaną usunięte (przyciskiem ODBLOKUJ, z listy REGUŁY albo ręcznie w Zaporze Windows).</div>
+
+    <h2 id="pl-search">11. Sekcja 4 - Wyszukiwarka plików</h2>
+    <h3>Dwa tryby pracy</h3>
+    <table>
+      <thead><tr><th>Tryb</th><th>Kiedy działa</th><th>Charakterystyka</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Indeks</strong></td><td>gdy nie wybrano folderu (etykieta „Cały system")</td><td>Błyskawiczne wyniki z wcześniej zbudowanego indeksu wszystkich zaznaczonych dysków.</td></tr>
+        <tr><td><strong>Na żywo</strong></td><td>po kliknięciu <strong>WYBIERZ FOLDER</strong></td><td>Przeszukuje wskazany folder bezpośrednio na dysku - zawsze aktualne, wolniejsze. Przycisk <strong>✕</strong> wraca do trybu indeksu.</td></tr>
+      </tbody>
+    </table>
+    <h3>Budowanie indeksu</h3>
+    <ol>
+      <li>Zaznacz dyski do zindeksowania (checkboxy przy „Dyski:"; wykrywane są też dyski sieciowe).</li>
+      <li>Kliknij <strong>BUDUJ INDEKS</strong>. Program skanuje dyski w tle i zapisuje spis wszystkich plików (ścieżka, rozmiar, data) do pliku <code>index.json</code>.</li>
+      <li>Po zakończeniu pojawia się komunikat z liczbą plików i głosowe „Indexing complete".</li>
+    </ol>
+    <div class="tip"><strong>Wskazówka:</strong> indeks to migawka - nowe lub usunięte pliki nie są w nim widoczne, dopóki nie zbudujesz go ponownie. Przy dużych zmianach na dysku odśwież indeks.</div>
+    <h3>Podstawowe wyszukiwania</h3>
+    <ul>
+      <li><strong>SZUKAJ NAZWY</strong> - fraza w nazwie pliku; obsługuje maski z gwiazdką, np. <code>*.iso</code> albo <code>raport*2026*</code>. Wyniki w lewej liście.</li>
+      <li><strong>FILTRUJ ROZMIAR</strong> - pliki większe od podanego progu w MB (domyślnie 500). Wyniki z rozmiarem <code>[MB/GB]</code> w prawej liście.</li>
+      <li><strong>SZUKAJ PO DACIE</strong> - pliki zmodyfikowane w podanym dniu <em>lub nowsze</em> (format RRRR-MM-DD).</li>
+      <li><strong>SZUKAJ ROZSZERZENIA</strong> - wszystkie pliki o podanym rozszerzeniu (np. <code>mkv</code>).</li>
+    </ul>
+    <p>Po zakończeniu każdego wyszukiwania program mówi „Search complete".</p>
+
+    <h2 id="pl-search2" class="section-break">12. Wyszukiwanie łączone, w treści i menu wyników</h2>
+    <h3>SZUKAJ ŁĄCZONE</h3>
+    <p>Łączy <strong>wszystkie wypełnione</strong> kryteria naraz (AND): frazę z pola nazwy, rozszerzenie, minimalny rozmiar i datę. Przykład: <code>*.mkv</code> + min. 4000 MB + data 2026-01-01 znajdzie duże filmy dodane w tym roku. Puste pole = kryterium pomijane.</p>
+    <h3>SZUKAJ W TREŚCI</h3>
+    <ol>
+      <li>Najpierw <strong>WYBIERZ FOLDER</strong> - szukanie w treści działa tylko w wybranym folderze.</li>
+      <li>Wpisz frazę w polu „W treści:" i kliknij <strong>SZUKAJ W TREŚCI</strong>.</li>
+      <li>Program przeszukuje pliki tekstowe (txt, log, ini, cfg, csv, xml, json, md, py, bat, ps1, html, css, js, sql, yaml, srt, nfo, reg i inne), pomijając pliki większe niż 20 MB; limit wyników to 1000 trafień.</li>
+      <li>Wyniki w lewej liście są pogrupowane po plikach, z numerem linii i podglądem treści; podwójne kliknięcie otwiera plik.</li>
+    </ol>
+    <h3>Praca z wynikami</h3>
+    <ul>
+      <li><strong>Podwójne kliknięcie</strong> otwiera plik w domyślnym programie.</li>
+      <li><strong>Prawy przycisk</strong> na wyniku otwiera menu: otwórz plik, <strong>otwórz folder zawierający</strong> (z zaznaczeniem pliku w Eksploratorze) oraz <strong>właściwości pliku</strong>.</li>
+    </ul>
+
+    <h2 id="pl-dupes">13. Duplikaty plików</h2>
+    <p><strong>DUPLIKATY PLIKÓW</strong> analizuje indeks i grupuje pliki o <strong>identycznej nazwie i identycznym rozmiarze</strong>. Wymaga zbudowanego indeksu.</p>
+    <ol>
+      <li>Okno otwiera się na prawej połowie ekranu; grupy są posortowane od największych plików (wyświetlane maks. 200 grup).</li>
+      <li>Każda grupa pokazuje nazwę, rozmiar i liczbę kopii; <strong>ZAZNACZ KOPIE</strong> zaznacza wszystkie pliki grupy <em>poza pierwszym</em> (oryginał zostaje).</li>
+      <li>Licznik na dole sumuje zaznaczone pliki i ich rozmiar.</li>
+      <li><strong>USUŃ DO KOSZA</strong> <span class="badge num">PIN</span> przenosi zaznaczone pliki do Kosza systemowego (można je przywrócić). Program weryfikuje, co faktycznie zniknęło z dysku, aktualizuje indeks i odświeża widok.</li>
+    </ol>
+    <div class="warning"><strong>Uwaga:</strong> kryterium nazwa+rozmiar nie porównuje zawartości plików. Przed usunięciem upewnij się, że zaznaczone pozycje to rzeczywiście kopie.</div>
+
+    <h2 id="pl-rename">14. Hurtowa zmiana nazw i pliki programu</h2>
+    <h3>ZMIEŃ NAZWY</h3>
+    <ol>
+      <li>Najpierw <strong>WYBIERZ FOLDER</strong> - zmiana nazw działa na plikach wybranego folderu (bez podfolderów).</li>
+      <li>Ustaw operacje: <strong>Zamień</strong> tekst na inny, dodaj <strong>Prefiks</strong> i/lub <strong>Sufiks</strong>, opcjonalnie <strong>Numeruj (001, 002…)</strong>.</li>
+      <li>Podgląd <strong>STARA → NOWA</strong> na żywo pokazuje wynik dla każdego pliku; rozszerzenia pozostają nienaruszone.</li>
+      <li>Zatwierdź przyciskiem zmiany nazw - program wypisze liczbę przemianowanych plików.</li>
+    </ol>
+    <h3>Pliki programu</h3>
+    <table>
+      <thead><tr><th>Plik</th><th>Przeznaczenie</th></tr></thead>
+      <tbody>
+        <tr><td><code>pin.dat</code></td><td>Skrót SHA-256 kodu PIN. Usunięcie pliku przywraca PIN <code>0000</code>.</td></tr>
+        <tr><td><code>index.json</code></td><td>Indeks plików wyszukiwarki (ścieżki, rozmiary, daty). Aktualizowany przy usuwaniu duplikatów.</td></tr>
+        <tr><td><code>clipboard.json</code></td><td>Historia schowka (zapis atomowy - plik nie ulega uszkodzeniu przy awarii).</td></tr>
+        <tr><td><code>oui_db.txt</code></td><td>Pełna baza producentów IEEE OUI dla skanera sieci (opcjonalny; bez niego działa lista wbudowana).</td></tr>
+        <tr><td><code>icon.ico</code>, <code>logo3_HPLInk.jpg</code></td><td>Ikona okna i logo w sekcji 1 (opcjonalne).</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pl-help" class="section-break">15. Rozwiązywanie problemów</h2>
+    <h3>„Błąd - uruchom jako administrator" (DNS, firewall, sieć)</h3>
+    <p>Funkcja wymaga podniesionych uprawnień. Zamknij program (PIN) i uruchom go ponownie prawym przyciskiem myszy → <strong>„Uruchom jako administrator"</strong>. Pełna lista funkcji wymagających administratora znajduje się w rozdziale 2.</p>
+    <h3>WYŁĄCZ SIEĆ nie działa</h3>
+    <p>Polecenie <code>netsh interface set interface</code> bez uprawnień administratora jest po cichu odrzucane przez system. Uruchom program jako administrator. Sprawdź też, czy na liście wybrany jest właściwy interfejs.</p>
+    <h3>Zapomniałem PIN / PIN zablokowany</h3>
+    <p>Po 3 błędnych próbach odczekaj 5 minut. Jeśli PIN został zapomniany - usuń plik <code>pin.dat</code> z katalogu programu (program trzeba wcześniej zamknąć np. Menedżerem zadań); PIN wróci do <code>0000</code>.</p>
+    <h3>Wyszukiwarka pokazuje „Nie znaleziono indeksu"</h3>
+    <p>W trybie „Cały system" wyszukiwanie korzysta z indeksu - kliknij najpierw <strong>BUDUJ INDEKS</strong>. Alternatywnie wybierz folder przyciskiem <strong>WYBIERZ FOLDER</strong>, aby szukać na żywo bez indeksu.</p>
+    <h3>Wyniki wyszukiwania są nieaktualne</h3>
+    <p>Indeks to migawka z chwili budowania. Zbuduj indeks ponownie po większych zmianach na dyskach.</p>
+    <h3>Skaner sieci znajduje mało urządzeń</h3>
+    <p>Wyłącz na próbę VPN, sprawdź izolację klientów (AP isolation) na ruterze i powtórz skanowanie - tablica ARP wypełnia się z każdym przebiegiem. Urządzenia uśpione mogą nie odpowiadać na ping.</p>
+    <h3>Brak komunikatów głosowych</h3>
+    <p>Sprawdź wyjście audio i głośność systemu. Syntezator korzysta z głosów Windows (SAPI) - w Ustawieniach Windows sprawdź, czy głosy mowy są zainstalowane.</p>
+    <h3>WYCZYŚĆ TEMP zgłasza błędy</h3>
+    <p>Pliki używane w danej chwili przez uruchomione programy nie mogą zostać usunięte - licznik „Błędy" jest wtedy normalny. Pełne czyszczenie <code>C:\Windows\Temp</code> wymaga trybu administratora.</p>
+    <h3>RESTART DO BIOS zwraca błąd</h3>
+    <p>Funkcja wymaga uruchomienia jako administrator oraz płyty głównej z UEFI. Na starszych komputerach (BIOS legacy) polecenie <code>shutdown /r /fw</code> nie jest obsługiwane.</p>
+    <h3>Zablokowana aplikacja nadal ma internet</h3>
+    <p>Sprawdź w oknie <strong>REGUŁY</strong>, czy reguły <code>HPL_BLOCK_*</code> istnieją (jeśli nie - blokada nie powstała, najpewniej przez brak uprawnień administratora). Upewnij się też, że zablokowana została właściwa ścieżka <code>.exe</code> - niektóre programy mają kilka plików wykonywalnych.</p>
+    <div class="footer-note">HPL Tool Ultimate ver.3.09 [2026-07-12] - instrukcja obsługi - 17.07.2026</div>
+  </section>
+</main>
+</body>
+</html>
