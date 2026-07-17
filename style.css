@@ -137,7 +137,7 @@ a {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 22px;
   padding: 30px 0 54px
 }
