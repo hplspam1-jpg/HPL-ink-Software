@@ -349,6 +349,10 @@ a {
   .screens {
     grid-template-columns: 1fr
   }
+
+  .editions {
+    grid-template-columns: 1fr
+  }
 }
 
 @media(max-width:520px) {
@@ -467,4 +471,59 @@ body:not(.pl) .lang-pl {
 
 body.pl .lang-en {
     display: none !important;
+}
+/* --- Wydania programu: Standard / PRO / ULTRA (plakietki jak w instrukcji) --- */
+.editions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.edition {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(0, 0, 0, .28);
+}
+
+.edition-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    white-space: nowrap;
+}
+
+.edition-badge.standard {
+    color: #e6eaf5;
+    border: 1px solid var(--line);
+    background: #2a2a3d;
+}
+
+.edition-badge.pro {
+    color: #ebe8ff;
+    border: 1px solid #8d7cff;
+    background: #2c274a;
+}
+
+.edition-badge.ultra {
+    color: #251400;
+    border: 1px solid #ff7a1a;
+    background: #ff7a1a;
+}
+
+.edition-ver {
+    display: block;
+    margin: 12px 0 8px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.edition p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
 }
