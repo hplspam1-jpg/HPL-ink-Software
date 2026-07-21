@@ -565,3 +565,10 @@ body.pl .lang-en {
     transform: none;
     box-shadow: none;
 }
+
+.download-count {
+    display: block;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 13px;
+}
