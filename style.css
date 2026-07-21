@@ -527,3 +527,41 @@ body.pl .lang-en {
     font-size: 14px;
     line-height: 1.5;
 }
+
+/* --- Status wersji Trial: dostepna / wkrotce --- */
+.trial-status {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 11px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    vertical-align: 6px;
+    white-space: nowrap;
+}
+
+.trial-status.ready {
+    color: #05291a;
+    border: 1px solid #39d98a;
+    background: #39d98a;
+}
+
+.trial-status.soon {
+    color: #f5b94d;
+    border: 1px solid #f5b94d;
+    background: rgba(245, 185, 77, .12);
+}
+
+.download-btn.disabled {
+    background: #2f2f42;
+    color: var(--muted);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.download-btn.disabled:hover {
+    background: #2f2f42;
+    transform: none;
+    box-shadow: none;
+}
