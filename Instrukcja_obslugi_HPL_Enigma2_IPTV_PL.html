@@ -247,16 +247,10 @@
       <div class="step"><b>4. Activation code</b>Otrzymany kod wklej w pole <strong>Activation code</strong> i wybierz <strong>Activate</strong>.</div>
     </div>
     <p>Po poprawnej aktywacji pojawia się komunikat <em>Activation completed. The program will start normally.</em> i program przechodzi do zwykłego uruchomienia. Przy kolejnych startach aktywacja nie jest powtarzana.</p>
-    <h3>Identyfikator komputera</h3>
-    <p>Okno pokazuje skrócony identyfikator w formacie <code>HPL-XXXX-XXXX-XXXX</code>. Jest on wyliczany z identyfikatora Windows, numeru seryjnego BIOS/UEFI oraz pierwszego wykrytego adresu MAC. Licencja jest przypisana do tej kombinacji, dlatego kod aktywacyjny z jednego komputera nie zadziała na innym.</p>
     <h3>Zakres licencji</h3>
     <ul>
-      <li>Kod aktywacyjny jest podpisany kryptograficznie i weryfikowany lokalnie, bez połączenia z internetem.</li>
       <li>Licencja może być bezterminowa albo ważna do wskazanej daty. Po upływie terminu okno aktywacji pojawia się ponownie.</li>
-      <li>Stan licencji jest zapisywany równolegle w rejestrze użytkownika i w trzech ukrytych plikach pomocniczych, w postaci zaszyfrowanej z kontrolą integralności.</li>
-      <li>Cofnięcie zegara systemowego jest wykrywane; tolerancja wynosi 2 minuty.</li>
     </ul>
-    <div class="warning"><strong>Ważne:</strong> ręczna edycja lub usunięcie danych licencji jest wykrywane jako naruszenie stanu i powoduje ponowne zablokowanie programu. Wymiana płyty głównej, karty sieciowej lub reinstalacja systemu może zmienić identyfikator komputera i wymagać nowego kodu aktywacyjnego.</div>
     <p class="muted">Pozostałe wersje programu: <a href="https://hplspam1-jpg.github.io/HPL-ink-Software/index.html">hplspam1-jpg.github.io/HPL-ink-Software</a></p>
 
     <h2 id="pl-start">3. Uruchomienie i pierwsza konfiguracja</h2>
@@ -736,7 +730,7 @@
         <tr><td><code>Sounds</code></td><td>Komunikaty dźwiękowe programu.</td></tr>
       </tbody>
     </table>
-    <div class="note"><strong>PRIVE:</strong> dane aktywacji licencji nie są zapisywane w katalogu programu. Znajdują się w rejestrze użytkownika oraz w ukrytych plikach pomocniczych w katalogach systemowych, w postaci zaszyfrowanej. Menedżer danych portable nie eksportuje licencji. <span class="badge prive">TYLKO PRIVE</span></div>
+    <div class="note"><strong>PRIVE:</strong> dane aktywacji licencji nie są zapisywane w katalogu programu, a Menedżer danych portable ich nie eksportuje. <span class="badge prive">TYLKO PRIVE</span></div>
     <h3>Folder lokalnych logo <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>Plik powinien mieć nazwę identyczną jak kanał, np. <code>TVP 1 HD.png</code>. Obsługiwane rozszerzenia: PNG, JPG, JPEG, WEBP i ICO. Kolejność źródeł: <code>tvg-logo</code> z M3U → ikona EPG → lokalny folder.</p>
     <h3>Nazwy piconów <span class="badge ultra">TYLKO ULTRA</span></h3>
@@ -793,10 +787,8 @@
     <p>Przenieś katalog programu do miejsca, w którym użytkownik ma prawo zapisu, albo sprawdź <code>%LocalAppData%\HplEnigma2Iptv</code>. W PRIVE aktualny tryb pokazuje <strong>Narzędzia → Menedżer danych portable</strong>.</p>
     <h3>Program prosi o aktywację mimo wcześniejszej aktywacji <span class="badge prive">TYLKO PRIVE</span></h3>
     <ol>
-      <li>Sprawdź, czy data i godzina systemowa nie zostały cofnięte.</li>
-      <li>Sprawdź, czy nie zmieniono podzespołów wpływających na identyfikator komputera — płyty głównej, dysku systemowego lub karty sieciowej.</li>
-      <li>Programy czyszczące rejestr i pliki tymczasowe mogą usunąć dane licencji. Porównaj identyfikator w oknie aktywacji z poprzednim.</li>
-      <li>Jeżeli identyfikator się nie zmienił, wyślij nowy request code na adres podany w oknie aktywacji.</li>
+      <li>Programy czyszczące rejestr i pliki tymczasowe mogą usunąć dane licencji.</li>
+      <li>Wyślij nowy request code na adres podany w oknie aktywacji.</li>
     </ol>
     <h3>Kanał IPTV przełącza się na inne źródło <span class="badge prive">TYLKO PRIVE</span></h3>
     <p>Status <strong>Alternatywne źródło</strong> oznacza, że watchdog wykrył brak obrazu lub postępu danych i przeszedł do źródła zapasowego. Listę i priorytety źródeł zmienisz w menu prawego przycisku kanału → <strong>Alternatywne źródła</strong>. Status <strong>Brak działającego źródła</strong> oznacza, że żaden adres nie odpowiedział.</p>
@@ -808,7 +800,7 @@
     <table>
       <thead><tr><th>Wersja</th><th>Najważniejsze zmiany</th></tr></thead>
       <tbody>
-        <tr><td>v4.38</td><td>Obowiązkowa aktywacja licencji przed pierwszym uruchomieniem GUI, osobny identyfikator produktu, szyfrowany i redundantny zapis licencji, podpisywanie kodów RSA.</td></tr>
+        <tr><td>v4.38</td><td>Obowiązkowa aktywacja licencji przed pierwszym uruchomieniem GUI, osobny identyfikator produktu.</td></tr>
         <tr><td>v4.35 - v4.37</td><td>Wideo Mode i tryb Kinowy Enigma2 zgodne 1:1 z oknem IPTV: górny i dolny HUD, automatyczne ukrywanie OSD, skalowanie obrazu. Watchdog IPTV i przełączanie na źródło zapasowe. Neonowo-żółte godziny audycji w widokach EPG. Tryb TV zamykany przy zmianie trybu odtwarzania.</td></tr>
         <tr><td>v4.33</td><td>Usunięcie pozycji „Wszystkie” z przewodników EPG, okna EPG w rozmiarze GUI, pełnoekranowy tryb telewizyjny, pilot przez telefon z sesją PIN i kodem QR, ochrona zamykania podczas nagrywania, raport reguł EPG.</td></tr>
         <tr><td>v4.32</td><td>Osobne przewodniki EPG Enigma2 i EPG IPTV z grupami, piconami, Teraz/Następna, wyszukiwaniem, filtrem ulubionych i nagrywaniem wyłącznie dla Enigma2.</td></tr>

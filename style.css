@@ -475,7 +475,7 @@ body.pl .lang-en {
 /* --- Wydania programu: Standard / PRO / ULTRA (plakietki jak w instrukcji) --- */
 .editions {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
     gap: 14px;
 }
 
@@ -512,6 +512,12 @@ body.pl .lang-en {
     color: #251400;
     border: 1px solid #ff7a1a;
     background: #ff7a1a;
+}
+
+.edition-badge.prive {
+    color: #00201d;
+    border: 1px solid #00d8c9;
+    background: #00d8c9;
 }
 
 .edition-ver {

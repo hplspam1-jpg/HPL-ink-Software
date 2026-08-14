@@ -233,16 +233,10 @@
       <div class="step"><b>4. Activation code</b>Paste the code you receive into <strong>Activation code</strong> and select <strong>Activate</strong>.</div>
     </div>
     <p>A successful activation shows <em>Activation completed. The program will start normally.</em> and the program continues to its normal startup. Later sessions do not repeat the activation.</p>
-    <h3>Computer ID</h3>
-    <p>The window displays a short identifier in the form <code>HPL-XXXX-XXXX-XXXX</code>, derived from the Windows machine identifier, the BIOS/UEFI serial number and the first detected MAC address. A license is bound to that combination, so an activation code issued for one computer will not work on another.</p>
     <h3>License scope</h3>
     <ul>
-      <li>The activation code is cryptographically signed and verified locally, without an internet connection.</li>
       <li>A license can be perpetual or valid until a given date. After it expires, the activation window appears again.</li>
-      <li>The license state is stored in parallel in the user registry and in three hidden helper files, encrypted and integrity-checked.</li>
-      <li>System clock rollback is detected; the tolerance is two minutes.</li>
     </ul>
-    <div class="warning"><strong>Important:</strong> editing or deleting the license data manually is detected as tampering and locks the program again. Replacing the mainboard or network adapter, or reinstalling Windows, can change the computer ID and require a new activation code.</div>
     <p class="muted">Other editions of the program: <a href="https://hplspam1-jpg.github.io/HPL-ink-Software/index.html">hplspam1-jpg.github.io/HPL-ink-Software</a></p>
 
     <h2 id="en-start">3. Startup and initial configuration</h2>
@@ -721,7 +715,7 @@
         <tr><td><code>Sounds</code></td><td>Spoken status messages used by the program.</td></tr>
       </tbody>
     </table>
-    <div class="note"><strong>PRIVE:</strong> license data is not stored in the program folder. It lives in the user registry and in hidden helper files inside system folders, in encrypted form. The portable data manager does not export the license. <span class="badge prive">PRIVE ONLY</span></div>
+    <div class="note"><strong>PRIVE:</strong> license data is not stored in the program folder, and the portable data manager does not export it. <span class="badge prive">PRIVE ONLY</span></div>
     <h3>Local channel logo folder <span class="badge ultra">ULTRA ONLY</span></h3>
     <p>A file name must match the channel, for example <code>TVP 1 HD.png</code>. Supported formats are PNG, JPG, JPEG, WEBP and ICO. Priority: M3U <code>tvg-logo</code> → EPG icon → local folder.</p>
     <h3>Picon names <span class="badge ultra">ULTRA ONLY</span></h3>
@@ -778,10 +772,8 @@
     <p>Move the program to a user-writable folder or check <code>%LocalAppData%\HplEnigma2Iptv</code>. In PRIVE, <strong>Tools → Portable data manager</strong> reports the current mode.</p>
     <h3>The program asks for activation again <span class="badge prive">PRIVE ONLY</span></h3>
     <ol>
-      <li>Check whether the system date and time have been moved backwards.</li>
-      <li>Check whether hardware affecting the computer ID has changed — mainboard, system disk or network adapter.</li>
-      <li>Registry and temporary-file cleaners can delete the license data. Compare the identifier in the activation window with the previous one.</li>
-      <li>If the identifier is unchanged, send a new request code to the address shown in the activation window.</li>
+      <li>Registry and temporary-file cleaners can delete the license data.</li>
+      <li>Send a new request code to the address shown in the activation window.</li>
     </ol>
     <h3>An IPTV channel switches to another source <span class="badge prive">PRIVE ONLY</span></h3>
     <p>The <strong>Alternate source</strong> status means the watchdog detected missing video or stalled data and moved to a backup source. Edit the list and priorities from the channel context menu → <strong>Alternate sources</strong>. <strong>No working source</strong> means no address responded.</p>
@@ -793,7 +785,7 @@
     <table>
       <thead><tr><th>Version</th><th>Key changes</th></tr></thead>
       <tbody>
-        <tr><td>v4.38</td><td>Mandatory license activation before the main GUI starts, a separate product identifier, encrypted redundant license storage and RSA-signed activation codes.</td></tr>
+        <tr><td>v4.38</td><td>Mandatory license activation before the main GUI starts, a separate product identifier.</td></tr>
         <tr><td>v4.35 - v4.37</td><td>Enigma2 Video and Cinema modes matching the IPTV window one to one: top and bottom HUD, automatic OSD hiding, picture scaling. IPTV watchdog and failover to backup sources. Neon yellow programme times across EPG views. TV mode closing on playback changes.</td></tr>
         <tr><td>v4.33</td><td>Removal of the “All” entry from the EPG guides, guide windows at GUI size, full-screen TV mode, phone remote with a PIN session and QR code, shutdown protection during recording, EPG rule reports.</td></tr>
         <tr><td>v4.32</td><td>Separate Enigma2 EPG and IPTV EPG guides with groups, picons, Now/Next, search, favourites filter and recording for Enigma2 only.</td></tr>
