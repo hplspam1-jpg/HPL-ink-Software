@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HPL ink Enigma2+ IPTV - instrukcja obslugi</title>
+  <title>HPL ink Enigma2+ IPTV TV PRIVE - instrukcja obslugi / user manual</title>
   <style>
     :root {
       --bg: #0b0c0f;
@@ -47,7 +47,7 @@
     .brand .plus, .brand .iptv { color: var(--cyan); }
     .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
     .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
-    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 28px 0; }
     .edition {
       border: 1px solid var(--line);
       background: var(--panel);
@@ -94,6 +94,8 @@
     }
     .badge.pro { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
     .badge.ultra { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
+    .badge.prive { color: #00201d; border: 1px solid var(--cyan); background: var(--cyan); }
+    .badge.new { color: #041c10; border: 1px solid var(--green); background: var(--green); }
     .note, .warning, .tip {
       margin: 15px 0;
       padding: 12px 14px;
@@ -160,6 +162,9 @@
       code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
       .badge.pro { color: #413477; background: #efedff; }
       .badge.ultra { color: #251400; background: #ff9a4f; }
+      .badge.prive { color: #00201d; background: #7bece2; }
+      .badge.new { color: #041c10; background: #93e9bd; }
+      .edition-strip { grid-template-columns: repeat(2, 1fr); }
       .mock-window { border-color: #555; background: #050505; color: #eee; }
       a { color: inherit; }
       .page-break, .language-break { break-before: page; }
@@ -169,15 +174,17 @@
 <body>
 <main>
   <section class="cover">
-    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="e2">Enigma2</span><span class="plus">+</span><span class="iptv"> IPTV</span></div>
-    <h1>Instrukcja obsługi</h1>
-    <p class="subtitle">Przewodnik po wydaniach Standard, PRO i ULTRA. English version of this manual is available as a separate document.</p>
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="e2">Enigma2</span><span class="plus">+</span><span class="iptv"> IPTV</span><span class="iptv"> TV</span></div>
+    <h1>Instrukcja obsługi / User manual</h1>
+    <p class="subtitle">Dwujęzyczny przewodnik po wydaniach Standard, PRO, ULTRA i PRIVE TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
       <div class="edition"><strong>Standard / bez PRO</strong><span>ostatnie wydanie: v3.63</span></div>
       <div class="edition"><strong>PRO</strong><span>ostatnie wydanie: v4.03</span></div>
-      <div class="edition"><strong>ULTRA</strong><span>opisywane wydanie: v4.14 AUTO</span></div>
+      <div class="edition"><strong>ULTRA</strong><span>ostatnie wydanie: v4.14 AUTO</span></div>
+      <div class="edition"><strong>PRIVE TV</strong><span>opisywane wydanie: v4.38</span></div>
     </div>
-    <div class="note"><strong>Zasada oznaczeń:</strong> brak etykiety przy funkcji oznacza dostępność we wszystkich trzech porównywanych wydaniach. <span class="badge pro">PRO + ULTRA</span> oznacza brak funkcji w Standard. <span class="badge ultra">TYLKO ULTRA</span> oznacza funkcję wyłącznie linii ULTRA.</div>
+    <div class="note"><strong>Zasada oznaczeń:</strong> brak etykiety przy funkcji oznacza dostępność we wszystkich czterech porównywanych wydaniach. <span class="badge pro">PRO + ULTRA</span> oznacza brak funkcji w Standard. <span class="badge ultra">TYLKO ULTRA</span> oznacza funkcję linii ULTRA, która została przeniesiona również do PRIVE. <span class="badge prive">TYLKO PRIVE</span> oznacza funkcję dostępną wyłącznie w linii PRIVE TV.</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta wersja instrukcji obejmuje wszystkie zmiany linii PRIVE od v4.15 do <strong>v4.38 PRIVE TV</strong> z 13.08.2026. Wcześniejsze wydanie instrukcji nie opisywało wersji PRIVE.</div>
   </section>
 
   <section id="pl" class="page-break">
@@ -185,6 +192,7 @@
     <div class="toc">
       <ol>
         <li><a href="#pl-wersje">Wersje i oznaczenia</a></li>
+        <li><a href="#pl-aktywacja">Aktywacja programu (PRIVE)</a></li>
         <li><a href="#pl-start">Uruchomienie i konfiguracja</a></li>
         <li><a href="#pl-gui">Główne okno</a></li>
         <li><a href="#pl-e2">Enigma2</a></li>
@@ -193,12 +201,14 @@
         <li><a href="#pl-epg">EPG</a></li>
         <li><a href="#pl-record">Nagrywanie i timeshift</a></li>
         <li><a href="#pl-playback">Odtwarzanie i tryby obrazu</a></li>
+        <li><a href="#pl-tvmode">Tryb telewizyjny i pilot przez telefon</a></li>
         <li><a href="#pl-cast">DLNA, Chromecast i M3U TV</a></li>
         <li><a href="#pl-tools">Narzędzia</a></li>
         <li><a href="#pl-settings">Ustawienia</a></li>
         <li><a href="#pl-files">Pliki, logo i picony</a></li>
         <li><a href="#pl-shortcuts">Skróty klawiszowe</a></li>
         <li><a href="#pl-help">Rozwiązywanie problemów</a></li>
+        <li><a href="#pl-zmiany">Nowości linii PRIVE</a></li>
       </ol>
     </div>
 
@@ -209,11 +219,47 @@
         <tr><td>Standard / bez PRO</td><td>v3.63</td><td>Odtwarzanie Enigma2 i IPTV, M3U, EPG, pilot, przesyłanie obrazu, PiP, ścieżki audio/napisów i podstawowe narzędzia.</td></tr>
         <tr><td>PRO</td><td>v4.03</td><td>Rozszerza Standard o nagrywanie, reconnect Enigma2, rozbudowane ustawienia, filmy i seriale IPTV, TMDb, język PL/EN oraz dwa motywy.</td></tr>
         <tr><td>ULTRA</td><td>v4.14 AUTO</td><td>Dodaje automatyczny dobór GPU/CPU, timeshift, bibliotekę nagrań, picony, miernik sygnału, reconnect IPTV, lokalne logo i poprawki stabilności.</td></tr>
+        <tr><td>PRIVE TV</td><td>v4.38</td><td>Zawiera wszystko z linii ULTRA i dodaje aktywację licencji, tryb ZGODNOŚĆ, profile urządzeń, bazę SQLite, profile dostawców IPTV z alternatywnymi źródłami, osobne przewodniki EPG Enigma2 i EPG IPTV, zaawansowane reguły nagrywania, panel tunerów, tryb telewizyjny, pilota przez telefon, ikonę zasobnika i konfigurowalną belkę narzędzi.</td></tr>
       </tbody>
     </table>
-    <div class="warning"><strong>Ważne:</strong> etykiety opisują dostępność funkcji w ostatnim wydaniu danej linii, nie moment jej pierwszego pojawienia się w historii wersji.</div>
+    <div class="warning"><strong>Ważne:</strong> etykiety opisują dostępność funkcji w ostatnim wydaniu danej linii, nie moment jej pierwszego pojawienia się w historii wersji. Funkcje oznaczone <span class="badge ultra">TYLKO ULTRA</span> są obecne również w PRIVE TV.</div>
+    <h3>Co odróżnia PRIVE od ULTRA <span class="badge prive">TYLKO PRIVE</span></h3>
+    <ul>
+      <li>Obowiązkowa aktywacja licencji dla danego komputera przed pierwszym uruchomieniem GUI.</li>
+      <li>Tryb obrazu <strong>ZGODNOŚĆ</strong> dla komputerów, na których Enigma2 dawała dźwięk bez obrazu.</li>
+      <li>Profil ustawień zapamiętywany osobno dla każdego komputera oraz kreator zgodności.</li>
+      <li>Baza SQLite <code>hpl_media.db</code> dla list M3U, EPG, historii i profili dostawców.</li>
+      <li>Profile dostawców IPTV, alternatywne źródła kanału i automatyczne przełączanie po awarii.</li>
+      <li>Osobne, pełnoekranowe przewodniki <strong>EPG Enigma2</strong> i <strong>EPG IPTV</strong> zamiast okna EPG Bukietu.</li>
+      <li>Reguły automatycznego nagrywania z EPG, panel tunerów Enigma2 i powiadomienia Windows 11.</li>
+      <li>Pełnoekranowy tryb telewizyjny i pilot obsługiwany przez przeglądarkę telefonu.</li>
+      <li>Ikona zasobnika systemowego, konfigurowalna belka narzędzi i responsywne, zawijane paski przycisków.</li>
+      <li>Przebudowany odtwarzacz IPTV oraz tryby WIDEO i Kinowy Enigma2 o identycznym układzie HUD.</li>
+    </ul>
 
-    <h2 id="pl-start">2. Uruchomienie i pierwsza konfiguracja</h2>
+    <h2 id="pl-aktywacja" class="section-break">2. Aktywacja programu <span class="badge prive">TYLKO PRIVE</span></h2>
+    <p>Wersja PRIVE TV wymaga aktywacji licencji dla konkretnego komputera. Do czasu wprowadzenia prawidłowego kodu aktywacyjnego główne okno programu nie zostanie uruchomione — po starcie pojawia się wyłącznie okno <strong>Program activation required</strong>. Okno aktywacji jest w języku angielskim.</p>
+    <h3>Procedura krok po kroku</h3>
+    <div class="workflow">
+      <div class="step"><b>1. Request code</b>W oknie aktywacji wybierz <strong>Copy code</strong>. Kod żądania zostanie skopiowany do schowka.</div>
+      <div class="step"><b>2. Wyślij</b>Wyślij skopiowany kod na adres <code>hplink.soft@proton.me</code>.</div>
+      <div class="step"><b>3. Temat</b>W temacie wiadomości wpisz pełną nazwę programu, np. <code>HPL ink Enigma2+ IPTV PRIVE TV v4.38</code>.</div>
+      <div class="step"><b>4. Activation code</b>Otrzymany kod wklej w pole <strong>Activation code</strong> i wybierz <strong>Activate</strong>.</div>
+    </div>
+    <p>Po poprawnej aktywacji pojawia się komunikat <em>Activation completed. The program will start normally.</em> i program przechodzi do zwykłego uruchomienia. Przy kolejnych startach aktywacja nie jest powtarzana.</p>
+    <h3>Identyfikator komputera</h3>
+    <p>Okno pokazuje skrócony identyfikator w formacie <code>HPL-XXXX-XXXX-XXXX</code>. Jest on wyliczany z identyfikatora Windows, numeru seryjnego BIOS/UEFI oraz pierwszego wykrytego adresu MAC. Licencja jest przypisana do tej kombinacji, dlatego kod aktywacyjny z jednego komputera nie zadziała na innym.</p>
+    <h3>Zakres licencji</h3>
+    <ul>
+      <li>Kod aktywacyjny jest podpisany kryptograficznie i weryfikowany lokalnie, bez połączenia z internetem.</li>
+      <li>Licencja może być bezterminowa albo ważna do wskazanej daty. Po upływie terminu okno aktywacji pojawia się ponownie.</li>
+      <li>Stan licencji jest zapisywany równolegle w rejestrze użytkownika i w trzech ukrytych plikach pomocniczych, w postaci zaszyfrowanej z kontrolą integralności.</li>
+      <li>Cofnięcie zegara systemowego jest wykrywane; tolerancja wynosi 2 minuty.</li>
+    </ul>
+    <div class="warning"><strong>Ważne:</strong> ręczna edycja lub usunięcie danych licencji jest wykrywane jako naruszenie stanu i powoduje ponowne zablokowanie programu. Wymiana płyty głównej, karty sieciowej lub reinstalacja systemu może zmienić identyfikator komputera i wymagać nowego kodu aktywacyjnego.</div>
+    <p class="muted">Pozostałe wersje programu: <a href="https://hplspam1-jpg.github.io/HPL-ink-Software/index.html">hplspam1-jpg.github.io/HPL-ink-Software</a></p>
+
+    <h2 id="pl-start">3. Uruchomienie i pierwsza konfiguracja</h2>
     <h3>Wymagania</h3>
     <ul>
       <li>Windows 11, system 64-bitowy.</li>
@@ -227,7 +273,9 @@
       <li>Rozpakuj cały katalog programu. Nie uruchamiaj EXE bez pozostałych bibliotek i podfolderów.</li>
       <li>Uruchom <code>HplEnigma2IptvWinUI.exe</code>.</li>
       <li>Jeśli katalog programu jest zapisywalny, konfiguracja znajduje się obok EXE. Gdy program nie ma prawa zapisu, używa <code>%LocalAppData%\HplEnigma2Iptv</code>.</li>
+      <li>W PRIVE aktualny tryb, katalog danych i rozmiar bazy SQLite pokazuje <strong>Narzędzia → Menedżer danych portable</strong>. To samo okno pozwala wyeksportować i zaimportować komplet danych programu. <span class="badge prive">TYLKO PRIVE</span></li>
     </ol>
+    <div class="note"><strong>PRIVE:</strong> przed pierwszym uruchomieniem głównego okna program wymaga aktywacji licencji — patrz rozdział <a href="#pl-aktywacja">2. Aktywacja programu</a>. Dane licencji nie są przechowywane w katalogu programu, więc skopiowanie folderu portable na inny komputer nie przenosi aktywacji. <span class="badge prive">TYLKO PRIVE</span></div>
     <h3>Połączenie z Enigma2</h3>
     <div class="workflow">
       <div class="step"><b>1. IP</b>Wpisz adres tunera, np. adres z sieci lokalnej.</div>
@@ -237,7 +285,7 @@
     </div>
     <p>Przycisk <strong>Wskaż VLC</strong> wybiera plik wykonywalny VLC. Przycisk <strong>VLC</strong> otwiera aktualny strumień w zewnętrznym odtwarzaczu i jest przydatny do diagnostyki.</p>
 
-    <h2 id="pl-gui">3. Główne okno programu</h2>
+    <h2 id="pl-gui">4. Główne okno programu</h2>
     <p>Poniższy rysunek jest bezpiecznym schematem GUI. Nie zawiera adresów IP, loginów ani innych danych użytkownika.</p>
     <div class="mock-window">
       <div class="mock-title"><b>HPL</b> <i>ink</i> Enigma2+ IPTV &nbsp; | &nbsp; Ulubione &nbsp; Historia &nbsp; Dekodery &nbsp; Skróty &nbsp; Narzędzia &nbsp; Ustawienia</div>
@@ -245,14 +293,19 @@
         <span class="mock-button hot">Zapisz</span><span class="mock-button hot">Bukiety</span><span class="mock-button m3u">M3U</span><span class="mock-button">EPG XML</span><span class="mock-button hot">Pobierz EPG</span><span class="mock-button m3u">M3U TV</span><span class="mock-button">DLNA</span><span class="mock-button">Chromecast</span>
       </div>
       <div class="mock-toolbar">
-        <span class="mock-button">Pilot</span><span class="mock-button">EPG Bukietu</span><span class="mock-button">Szukaj</span><span class="mock-button">PiP</span><span class="mock-button m3u">M3U Ed.</span><span class="mock-button">Ścieżki</span><span class="mock-button">WIDEO</span><span class="mock-button">Kinowy</span><span class="mock-button hot">Stop</span>
+        <span class="mock-button">Pilot</span><span class="mock-button">EPG Enigma2</span><span class="mock-button">EPG IPTV</span><span class="mock-button">Szukaj</span><span class="mock-button">PiP</span><span class="mock-button m3u">M3U Ed.</span><span class="mock-button">Nagrania</span><span class="mock-button">Ścieżki</span><span class="mock-button">Audio</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Film IPTV</span><span class="mock-button">Serial IPTV</span><span class="mock-button">Timeshift</span><span class="mock-button">WIDEO</span><span class="mock-button">Kinowy</span><span class="mock-button hot">Stop</span>
       </div>
       <div class="mock-grid">
         <div class="mock-pane"><h5>ENIGMA 2</h5><div class="mock-list">Szukaj...<br><span class="folder">Bukiety / katalogi</span><br>• Kanały w bukiecie</div></div>
         <div class="mock-pane"><h5>IPTV</h5><div class="mock-list">Szukaj...<br><span class="folder">Grupy M3U</span><br>• Kanały IPTV</div></div>
         <div class="mock-pane"><h5>ODTWARZANIE</h5><div class="mock-video">obszar wideo Enigma2</div><div class="mock-epg">TERAZ / NASTĘPNIE / pasek postępu EPG</div></div>
       </div>
+      <div class="mock-epg">PASEK STANU: E2 &nbsp;•&nbsp; Internet &nbsp;•&nbsp; VLC &nbsp;•&nbsp; EPG &nbsp;•&nbsp; M3U</div>
     </div>
+    <p class="muted">Trzeci wiersz przycisków, pasek stanu oraz przyciski EPG Enigma2, EPG IPTV i Nagrania występują w wersji PRIVE. <span class="badge prive">TYLKO PRIVE</span></p>
     <h3>Górny pasek</h3>
     <ul>
       <li><strong>Na wierzchu</strong> utrzymuje okna programu nad innymi oknami.</li>
@@ -263,7 +316,23 @@
       <li><strong>Ustawienia</strong> otwiera konfigurację rozszerzoną. <span class="badge pro">PRO + ULTRA</span></li>
     </ul>
 
-    <h2 id="pl-e2">4. Enigma2</h2>
+    <h3>Belka poleceń w PRIVE <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>W PRIVE przyciski są rozmieszczone w kilku wierszach, które zawijają się automatycznie przy zmianie szerokości okna. Wiersz zaczynający się od <strong>Na wierzchu</strong> oraz ostatni wiersz zaczynający się od <strong>WIDEO</strong> są wyrównane do prawej, a wiersz z regulacją głośności do lewej. Układ jest zachowywany również po zawinięciu.</p>
+    <p>Przycisk <strong>EPG Bukietu</strong> został zastąpiony dwoma osobnymi przyciskami: <strong>EPG Enigma2</strong> i <strong>EPG IPTV</strong>. Dodano też przyciski <strong>Nagrania</strong>, <strong>Timeshift</strong>, <strong>Film IPTV</strong> i <strong>Serial IPTV</strong>.</p>
+    <h4>Konfigurowalna belka narzędzi</h4>
+    <p>Wybierz <strong>Narzędzia → Konfigurowalna belka narzędzi</strong>. Okno zawiera listę wszystkich poleceń z polami wyboru. Odznaczone polecenia znikają z belki. Przycisk <strong>Pokaż wszystkie</strong> przywraca komplet przycisków, a nowy układ obowiązuje po ponownym uruchomieniu programu.</p>
+    <p>Polecenia możliwe do ukrycia: Zawsze na wierzchu, Ulubione, Ostatnio, Historia, Dekodery, Skróty, Narzędzia, Ustawienia, Zapisz, Bukiety, M3U, EPG XML, Pobierz EPG, M3U TV, DLNA, Chromecast, Pilot, EPG Enigma2, EPG IPTV, Szukaj, PiP, Edytor M3U, Nagrania, Ścieżki, Audio, Wideo, Kinowy, Record, Stop, Timeshift, Film IPTV, Serial IPTV.</p>
+
+    <h3>Pasek stanu <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Na dole okna znajdują się wskaźniki <strong>E2</strong>, <strong>Internet</strong>, <strong>VLC</strong>, <strong>EPG</strong> i <strong>M3U</strong>. Kolor wskaźnika informuje o stanie danego elementu, a wskaźnik EPG dodatkowo rozróżnia dane aktualne, wygasające, wygasłe i nieskonfigurowane.</p>
+
+    <h3>Ikona zasobnika systemowego <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Program dodaje ikonę w obszarze powiadomień Windows. Menu prawego przycisku zawiera polecenia <strong>Pokaż program</strong>, <strong>Przywróć wszystkie okna</strong>, <strong>Zatrzymaj odtwarzanie</strong> i <strong>Zamknij program</strong>. Okna są przywracane na aktualnie używany pulpit wirtualny Windows.</p>
+
+    <h3>Skala GUI i profil komputera <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Rozmiar okna, skala interfejsu, tryb dekodowania, profil sieci, bufor i głośność startowa są zapisywane osobno dla każdego komputera. Ustawienia znajdują się w sekcji <strong>Profil tego komputera</strong> w oknie Ustawień i zaczynają obowiązywać po ponownym uruchomieniu programu. Domyślna szerokość okna wynosi 1700 pikseli, a kolumny Enigma2 i IPTV mają jednakową szerokość.</p>
+
+    <h2 id="pl-e2">5. Enigma2</h2>
     <h3>Wczytywanie i odtwarzanie</h3>
     <ol>
       <li>Uzupełnij połączenie i wybierz <strong>Zapisz</strong>.</li>
@@ -280,8 +349,20 @@
     <p>Picony są wyświetlane na liście E2 i nad odtwarzaczem. Mogą znajdować się w <code>Picon\Enigma2</code> obok EXE albo zostać pobrane z tunera przez Menedżer piconów.</p>
     <h3>Siła sygnału <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>Wybierz <strong>Narzędzia → Siła sygnału</strong>. Okno pokazuje SNR, SNR dB, AGC, BER i stan blokady dla aktualnie odtwarzanego kanału E2. Dane odświeżają się automatycznie co 2 sekundy.</p>
+    <h3>EPG na liście kanałów <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Lista kanałów Enigma2 pokazuje tytuł bieżącej audycji w kolorze neonowozielonym. Dane są pobierane zbiorczo dla całego bukietu po jego wybraniu i odświeżane automatycznie co 60 sekund.</p>
+    <h3>Panel tunerów Enigma2 <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Wybierz <strong>Narzędzia → Panel tunerów Enigma2</strong>. Okno pokazuje stan tunerów dekodera wraz z czasem ostatniej aktualizacji i przyciskiem <strong>Odśwież</strong>. Gdy odbiornik nie udostępnia danych o tunerach, wyświetlany jest odpowiedni komunikat.</p>
+    <h3>Tryb ZGODNOŚĆ <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Tryb <strong>ZGODNOŚĆ</strong> jest przeznaczony dla komputerów, na których Enigma2 odtwarzała dźwięk bez obrazu. Obraz jest wtedy wyświetlany w natywnym oknie VLC (HWND) z programowym dekodowaniem, z pominięciem ścieżki WinUI VideoView i Direct3D11.</p>
+    <ul>
+      <li>Ustawienie <strong>AUTO (GPU → ZGODNOŚĆ)</strong> rozpoczyna od GPU i samo przełącza komputer na tryb zgodności, gdy nie pojawiają się klatki obrazu.</li>
+      <li>Działający tryb jest zapamiętywany w profilu komputera i używany przy kolejnych uruchomieniach.</li>
+      <li>W zwykłym widoku GUI natywne okno obrazu jest przycinane do panelu EPG i go nie zasłania. W trybie WIDEO i Kinowym wykorzystuje pełny obszar odtwarzacza.</li>
+      <li><strong>Narzędzia → Parametry odtwarzania</strong> pokazuje, którą ścieżką wyświetlany jest obraz.</li>
+    </ul>
 
-    <h2 id="pl-iptv">5. IPTV i listy M3U</h2>
+    <h2 id="pl-iptv">6. IPTV i listy M3U</h2>
     <h3>Wczytanie listy</h3>
     <ol>
       <li>Wybierz <strong>M3U</strong> i wskaż plik <code>.m3u</code> lub <code>.m3u8</code>.</li>
@@ -299,7 +380,53 @@
     <h3>Reconnect IPTV <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>Dla kanału na żywo wykonywane są maksymalnie 3 próby co 5 sekund. Filmy i seriale VOD nie są automatycznie uruchamiane ponownie po naturalnym zakończeniu.</p>
 
-    <h2 id="pl-vod">6. Film IPTV i Serial IPTV <span class="badge pro">PRO + ULTRA</span></h2>
+    <h3>Profile dostawców IPTV <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Wybierz <strong>Narzędzia → Profile dostawców IPTV</strong>. Profil łączy listę M3U z przypisanym plikiem EPG, dzięki czemu przełączanie między dostawcami nie wymaga ponownego wskazywania plików.</p>
+    <ol>
+      <li><strong>Dodaj</strong> — utwórz profil i podaj jego nazwę.</li>
+      <li><strong>Dodaj M3U</strong> — wskaż plik listy kanałów dla tego profilu.</li>
+      <li><strong>Wskaż EPG</strong> — przypisz plik lub adres EPG.</li>
+      <li><strong>Ustaw aktywny</strong> — oznacz profil jako domyślny.</li>
+      <li><strong>Wczytaj profil</strong> — natychmiast załaduj kanały i EPG wybranego profilu.</li>
+    </ol>
+    <p>Dane profili, kanałów M3U, EPG i historii są przechowywane w bazie SQLite <code>hpl_media.db</code>, co przyspiesza wczytywanie dużych list.</p>
+
+    <h3>Alternatywne źródła kanału <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Kliknij kanał IPTV prawym przyciskiem i wybierz <strong>Alternatywne źródła</strong>. Dla jednego kanału można zapisać kilka adresów zapasowych, każdy z własną nazwą i priorytetem.</p>
+    <ul>
+      <li><strong>Dodaj</strong> zapisuje nowe źródło; nieprawidłowy adres jest odrzucany komunikatem.</li>
+      <li><strong>Odtwórz zaznaczone</strong> uruchamia wybrane źródło ręcznie.</li>
+      <li>Watchdog wykrywa brak obrazu lub brak postępu danych i samoczynnie przełącza kanał na kolejne źródło według priorytetu.</li>
+      <li>Po przełączeniu odtwarzacz pokazuje status <strong>Alternatywne źródło</strong> bez zmiany nazwy kanału. Gdy żadne źródło nie działa, pojawia się status <strong>Brak działającego źródła</strong>.</li>
+    </ul>
+
+    <h3>Logo kanałów <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Logo kanału IPTV jest wybierane w kolejności: ikona z EPG/XMLTV → pole <code>tvg-logo</code> z listy M3U → lokalny folder logo. Kolejność obowiązuje zarówno na liście kanałów, jak i w oknie odtwarzania. EPG wyświetlane przy kanałach na liście M3U ma kolor neonowoniebieski <code>#00d4ff</code>.</p>
+
+    <h3>Odtwarzacz IPTV w PRIVE <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Okno IPTV ma czarny HUD nakładany na obraz. Górna część pokazuje logo, nazwę kanału, stan odtwarzania i zegar, dolna — EPG <strong>TERAZ NA ANTENIE</strong> i <strong>NASTĘPNA</strong>, pasek postępu oraz komplet kontrolek. HUD znika po 3 sekundach od rozpoczęcia odtwarzania i wraca po ruchu myszy.</p>
+    <table>
+      <thead><tr><th>Element</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>Pauza / Play</td><td>Wstrzymuje i wznawia odtwarzanie. Klawisz <kbd>Spacja</kbd>.</td></tr>
+        <tr><td>Cofnij / Do przodu 15 s</td><td>Przewijanie materiału VOD. Klawisze <kbd>←</kbd> i <kbd>→</kbd>.</td></tr>
+        <tr><td>Stop, Uruchom ponownie</td><td>Zatrzymuje strumień lub ponawia połączenie.</td></tr>
+        <tr><td>Głośność, Wycisz</td><td>Suwak głośności, przycisk wyciszenia i regulacja kółkiem myszy.</td></tr>
+        <tr><td>Proporcje</td><td>Auto, 16:9, 4:3, Dopasuj i Wypełnij.</td></tr>
+        <tr><td>A/V</td><td>Wybór ścieżki dźwiękowej i napisów bezpośrednio dla materiału odtwarzanego przez LibVLC.</td></tr>
+        <tr><td>Informacje techniczne</td><td>Silnik, stan, rozdzielczość, kodek, bitrate, bufor, dostępne ścieżki i bieżący czas materiału.</td></tr>
+        <tr><td>Tryb Wideo, Kinowy</td><td>Powiększenie obrazu i pełny ekran. <kbd>F11</kbd> i <kbd>Esc</kbd>.</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Dwuklik na obrazie przełącza pełny ekran, a kursor znika po 2 sekundach bezczynności w trybie kinowym.</li>
+      <li>Pozycja materiałów VOD jest zapisywana; przy ponownym otwarciu dostępne są <strong>Od początku</strong> i wznowienie.</li>
+      <li>Rozmiar i pozycja okna IPTV są zapamiętywane osobno dla każdego komputera.</li>
+      <li>Opcja <strong>Na wierzchu</strong> obejmuje również okno IPTV.</li>
+      <li>W motywie Black wszystkie powierzchnie okna mają czerń <code>#000000</code>.</li>
+    </ul>
+
+    <h2 id="pl-vod">7. Film IPTV i Serial IPTV <span class="badge pro">PRO + ULTRA</span></h2>
     <h3>Warunki działania</h3>
     <ul>
       <li>Lista M3U musi rozróżniać materiały za pomocą ścieżek lub metadanych typu <code>/movie/</code> i <code>/series/</code>.</li>
@@ -317,20 +444,52 @@
     <p>Okno porządkuje pozycje w układzie <strong>serial → sezon → odcinek</strong>. Wybierz odcinek i uruchom odtwarzanie.</p>
     <h3>Wznawianie VOD <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>ULTRA zapisuje pozycję filmu, serialu lub lokalnego nagrania. Przy kolejnym otwarciu można kontynuować albo użyć polecenia <strong>Od początku</strong>.</p>
+    <h3>Zmiany w PRIVE <span class="badge prive">TYLKO PRIVE</span></h3>
+    <ul>
+      <li><strong>Serial IPTV</strong> otwiera się na pierwszym poziomie katalogów z listy M3U, analogicznie do Film IPTV: katalogi → seriale → sezony → odcinki.</li>
+      <li>Ściana plakatów obejmuje wszystkie filmy i ma filtrowanie po roku, sortowanie oraz regulację gęstości kafelków.</li>
+      <li>Plakat jest pobierany najpierw z pola <code>tvg-logo</code> listy M3U; brakujący lub niedziałający odsyłacz automatycznie przełącza obraz na cache lokalny albo TMDb.</li>
+      <li>Biblioteka VOD ma filtry obejrzane / nieobejrzane / Do obejrzenia oraz ręczną korektę zapytania TMDb.</li>
+    </ul>
 
-    <h2 id="pl-epg">7. EPG</h2>
+    <h2 id="pl-epg">8. EPG</h2>
     <h3>EPG XML</h3>
     <p><strong>EPG XML</strong> wczytuje lokalny plik XMLTV. Program obsługuje również skompresowane dane gzip. Po wczytaniu informacje są dopasowywane do nazw kanałów IPTV.</p>
     <h3>Pobierz EPG</h3>
     <p><strong>Pobierz EPG</strong> otwiera okno pobierania. Wskaż adres źródła i miejsce zapisu, zwykle <code>epg.xml</code>. Data „ważne do” pochodzi z faktycznego końca danych w pliku.</p>
     <h3>EPG Bukietu</h3>
     <p>Najpierw wybierz bukiet Enigma2, potem <strong>EPG Bukietu</strong>. Okno pokazuje audycje dla kanałów z wybranego bukietu.</p>
+    <div class="note"><strong>PRIVE:</strong> przycisk EPG Bukietu został zastąpiony dwoma osobnymi przewodnikami — <strong>EPG Enigma2</strong> i <strong>EPG IPTV</strong> — opisanymi poniżej. <span class="badge prive">TYLKO PRIVE</span></div>
+
+    <h3>Przewodniki EPG Enigma2 i EPG IPTV <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Oba okna mają identyczny układ i rozmiar głównego GUI, otwierają się po prawej stronie pulpitu i używają czcionek powiększonych o jeden stopień.</p>
+    <ul>
+      <li>Po lewej stronie znajduje się lista <strong>Bukietów</strong> (Enigma2) albo <strong>Grup</strong> (IPTV). Pozycja „Wszystkie” została usunięta, ponieważ obciążała pamięć.</li>
+      <li>Każdy kanał pokazuje picon, pozycję na liście, audycję <strong>TERAZ</strong> i <strong>NASTĘPNA</strong>, opis oraz pasek postępu. Godziny bieżących audycji są wyświetlane neonowo-żółtą czcionką.</li>
+      <li>Pole <strong>Szukaj kanału</strong> filtruje listę po fragmencie nazwy, a przełącznik <strong>tylko ulubione</strong> ogranicza widok do ulubionych.</li>
+      <li>Przyciski <strong>◀ wcześniej</strong>, <strong>▶ TERAZ</strong> i <strong>dalej ▶</strong> przesuwają oś czasu.</li>
+      <li>Kliknięcie kanału otwiera <strong>EPG kanału</strong> z pełnym harmonogramem i opisami audycji.</li>
+      <li><strong>Odtwórz</strong> uruchamia kanał zgodnie z zasadami danego źródła. <strong>Nagraj</strong> jest dostępne wyłącznie w przewodniku EPG Enigma2.</li>
+    </ul>
+
+    <h3>Profile źródeł EPG <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Okno <strong>Pobierz EPG</strong> zostało rozszerzone o <strong>Źródła i mapowanie EPG</strong>. Wybierz gotowy <strong>Profil źródeł</strong> albo wpisz <strong>Własny adres URL (.xml / .gz)</strong> i użyj <strong>Pobierz i sprawdź</strong>.</p>
+    <ul>
+      <li>Nowy plik jest najpierw parsowany i sprawdzany, a dopiero potem zastępuje działający <code>epg.xml</code>.</li>
+      <li>Gdy źródło zawiedzie, program automatycznie przechodzi do kolejnego źródła zapasowego z profilu.</li>
+      <li>Ważność EPG jest wyliczana z rzeczywistych dat audycji i pokrycia kanałów. Status rozróżnia dane aktualne, wygasające, wygasłe i nieskonfigurowane.</li>
+      <li>Wygasłe EPG jest pobierane automatycznie, jeżeli program ma zapisany adres URL.</li>
+      <li>Obsługiwane są strefy czasowe XMLTV, w tym offsety <code>+HHMM</code> i UTC, oraz pliki spakowane gzip niezależnie od rozszerzenia.</li>
+    </ul>
+
+    <h3>Raport mapowania EPG <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Przycisk <strong>Raport mapowania</strong> otwiera zestawienie dopasowania kanałów M3U do XMLTV. Program używa kolejno <code>tvg-id</code>, <code>tvg-name</code>, aliasów i ostrożnego dopasowania podobnych nazw, a wynik zapisuje w pliku <code>epg_mapping.json</code>. Raport pokazuje pozycje dopasowane, niejednoznaczne i brakujące; dostępne są <strong>Przelicz mapowanie</strong> oraz <strong>Kopiuj raport</strong>.</p>
     <h3>Nagrywanie z EPG <span class="badge pro">PRO + ULTRA</span></h3>
     <p>Przy wybranej audycji można użyć <strong>Nagraj</strong>. Program tworzy timer w Enigma2 albo uruchamia lokalne nagranie, zależnie od użytego okna i polecenia.</p>
     <h3>Przypomnienia EPG <span class="badge pro">PRO + ULTRA</span></h3>
     <p>W Ustawieniach włącz przypomnienia, wybierz 5-15 minut wyprzedzenia, opcjonalnie tylko Ulubione i wpisz słowa kluczowe oddzielone przecinkami.</p>
 
-    <h2 id="pl-record">8. Nagrywanie i timeshift</h2>
+    <h2 id="pl-record">9. Nagrywanie i timeshift</h2>
     <h3>Record i Harmonogram nagrań <span class="badge pro">PRO + ULTRA</span></h3>
     <p><strong>Record</strong> nagrywa aktualny strumień Enigma2 do katalogu <code>Recorded</code> obok EXE. Ponowne użycie przycisku lub Stop kończy nagrywanie. Harmonogram nagrań pobiera timery z Enigma2; usunięcie timera jest potwierdzane przez tuner.</p>
     <h3>Biblioteka nagrań <span class="badge ultra">TYLKO ULTRA</span></h3>
@@ -345,7 +504,27 @@
       <li>Wróć do transmisji LIVE lub zakończ timeshift. Plik tymczasowy jest usuwany.</li>
     </ol>
 
-    <h2 id="pl-playback">9. Odtwarzanie i tryby obrazu</h2>
+    <h3>Zaawansowane nagrywanie z EPG <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Wybierz <strong>Narzędzia → Zaawansowane nagrywanie z EPG</strong>. Okno pozwala zdefiniować reguły, które same wyszukują audycje w EPG i planują nagrania w dekoderze.</p>
+    <ol>
+      <li><strong>Nazwa reguły</strong> — dowolny opis pozwalający rozpoznać regułę na liście.</li>
+      <li><strong>Słowo lub fraza w tytule</strong> — pole obowiązkowe; program porównuje je z tytułami audycji.</li>
+      <li><strong>Kanał (opcjonalnie)</strong> — ogranicza regułę do jednego kanału.</li>
+      <li><strong>Margines przed (min)</strong> i <strong>Margines po (min)</strong> — dodatkowy czas nagrania przed i po audycji.</li>
+      <li><strong>Reguła aktywna</strong> — włącza regułę w skanowaniu.</li>
+      <li><strong>Nie nagrywaj ponownie tego samego tytułu</strong> — pomija powtórki już zaplanowane lub nagrane.</li>
+      <li><strong>Zapisz regułę</strong>, a następnie <strong>Skanuj EPG i zaplanuj</strong>.</li>
+    </ol>
+    <p>Po skanowaniu wyświetlany jest raport: <strong>Znalezione audycje</strong>, <strong>Dodane do harmonogramu</strong>, <strong>Pominięte jako duplikaty</strong> oraz <strong>Błędy</strong>. Przycisk <strong>Harmonogram dekodera</strong> otwiera listę timerów Enigma2. Skanowanie wymaga aktywnej reguły i wczytanego bukietu Enigma2.</p>
+
+    <h3>Powiadomienia i ochrona nagrań <span class="badge prive">TYLKO PRIVE</span></h3>
+    <ul>
+      <li>Powiadomienia Windows 11 informują o rozpoczęciu i zakończeniu nagrania. Można je wyłączyć w Ustawieniach.</li>
+      <li>Nagrywanie sprawdza wolne miejsce na dysku i pokazuje prognozowany rozmiar pliku.</li>
+      <li>Próba zamknięcia programu w trakcie lokalnego nagrywania wymaga potwierdzenia i informuje, że timery ustawione w dekoderze mogą nagrywać dalej.</li>
+    </ul>
+
+    <h2 id="pl-playback">10. Odtwarzanie i tryby obrazu</h2>
     <h3>WIDEO</h3>
     <p>W głównym GUI tryb WIDEO powiększa obszar Enigma2 i ukrywa panele sterujące. W ULTRA tryb można uruchomić tylko po rozpoczęciu kanału E2; w przeciwnym razie pojawi się komunikat. <span class="badge ultra">TYLKO ULTRA: blokada bez E2</span></p>
     <h3>Kinowy / F11</h3>
@@ -357,9 +536,39 @@
     <h3>Audio</h3>
     <p>Tryb audio-only wyłącza obraz i pozostawia dźwięk, np. dla kanałów radiowych.</p>
     <h3>Stop</h3>
-    <p>Zatrzymuje odtwarzanie Enigma2 w głównym oknie. Stop w oknie IPTV dotyczy wyłącznie tego okna.</p>
+    <p>Zatrzymuje odtwarzanie Enigma2 w głównym oknie. Stop w oknie IPTV dotyczy wyłącznie tego okna. W PRIVE zatrzymanie działa poza wątkiem interfejsu i ma limit czasu, więc zakleszczony odtwarzacz nie blokuje programu — jest odłączany, a program tworzy nową instancję VLC.</p>
 
-    <h2 id="pl-cast">10. Canal+ Online, DLNA, Chromecast i M3U TV</h2>
+    <h3>Wideo Mode i tryb Kinowy w PRIVE <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Tryby WIDEO i Kinowy dla Enigma2 mają układ zgodny 1:1 z oknem IPTV.</p>
+    <ul>
+      <li>Górny HUD pokazuje picon, nazwę kanału, stan odtwarzania i zegar.</li>
+      <li>Dolny HUD pokazuje EPG, pasek postępu i pełny zestaw kontrolek odtwarzacza: Pauza, przewijanie 15 s, Stop, Uruchom ponownie, Wycisz, głośność, proporcje obrazu, A/V oraz informacje techniczne.</li>
+      <li>OSD znika po 3 sekundach bezczynności i wraca po ruchu kursora — również nad natywnym oknem VLC w trybie ZGODNOŚĆ.</li>
+      <li>Obraz skaluje się razem ze zmianą rozmiaru okna, a dawna belka Enigma2 i pasek statusu GUI są w tym trybie ukryte.</li>
+      <li>Tryby WIDEO i Kinowy wymagają uruchomionego kanału Enigma2; bez źródła program wyświetla komunikat i pozostawia pełne GUI.</li>
+    </ul>
+
+    <h2 id="pl-tvmode" class="section-break">11. Tryb telewizyjny i pilot przez telefon <span class="badge prive">TYLKO PRIVE</span></h2>
+    <h3>Tryb telewizyjny</h3>
+    <p>Wybierz <strong>Narzędzia → Tryb telewizyjny</strong>. Obraz jest odtwarzany bezpośrednio w pełnoekranowym oknie VLC, a lista kanałów i sterowanie stanowią nakładkę.</p>
+    <ul>
+      <li>Tryb uruchamia bieżący kanał od razu po otwarciu.</li>
+      <li>Nakładka zawiera pole <strong>Szukaj kanału</strong>, listę <strong>Kanały</strong> oraz przyciski <strong>Odtwórz</strong> i <strong>Ukryj</strong>.</li>
+      <li>Osobny przycisk pokazuje lub ukrywa całe sterowanie.</li>
+      <li>Tryb zamyka się automatycznie po przejściu do trybu Wideo, Kinowego, po zatrzymaniu odtwarzania albo po wybraniu innego kanału w głównym oknie.</li>
+    </ul>
+
+    <h3>Pilot przez telefon</h3>
+    <p>Wybierz <strong>Narzędzia → Pilot przez telefon</strong>. Program uruchamia lokalny serwer HTTP w sieci LAN, dzięki czemu przeglądarka telefonu działa jak pilot do programu.</p>
+    <ol>
+      <li>Ustaw <strong>Port</strong> i wybierz <strong>Uruchom</strong>.</li>
+      <li>Okno pokazuje adres strony oraz lokalnie wygenerowany kod QR. Przycisk <strong>Kopiuj adres</strong> przenosi adres do schowka.</li>
+      <li>Otwórz adres na telefonie i podaj kod PIN.</li>
+      <li>Autoryzacja jest zapamiętywana w losowej, wygasającej sesji HTTP-only, więc PIN nie jest podawany przy każdym poleceniu.</li>
+    </ol>
+    <div class="warning"><strong>Bezpieczeństwo:</strong> pilot działa wyłącznie w sieci lokalnej. Nie udostępniaj jego portu w internecie i wyłącz serwer, gdy nie jest używany — okno pokazuje wtedy status <strong>Serwer zatrzymany</strong>.</div>
+
+    <h2 id="pl-cast">12. Canal+ Online, DLNA, Chromecast i M3U TV</h2>
     <h3>Canal+ Online i Polsat Box</h3>
     <p>Otwiera zintegrowany moduł HPL Streaming. Polecenie <strong>Uruchom</strong> otwiera strony operatora w oryginalnej przeglądarce Microsoft Edge oraz wyświetla Moją Listę. Logowanie odbywa się na stronie operatora.</p>
     <h3>DLNA</h3>
@@ -369,25 +578,52 @@
     <h3>M3U TV</h3>
     <p>Uruchamia lokalny serwer HTTP udostępniający wczytaną listę. Najpierw wczytaj M3U. Okno pokazuje adres serwera, status i liczbę żądań. Zamknięcie okna zatrzymuje jego timer odświeżania.</p>
 
-    <h2 id="pl-tools" class="section-break">11. Narzędzia</h2>
+    <h2 id="pl-tools" class="section-break">13. Narzędzia</h2>
+    <p>Przycisk <strong>Narzędzia</strong> otwiera listę wyboru. Zaznacz pozycję i wybierz <strong>Otwórz</strong>. Poniższa tabela pokazuje kolejność pozycji w wersji PRIVE oraz dostępność w pozostałych liniach.</p>
     <table class="matrix-small">
-      <thead><tr><th>Opcja</th><th>Standard</th><th>PRO</th><th>ULTRA</th></tr></thead>
+      <thead><tr><th>Opcja</th><th>Standard</th><th>PRO</th><th>ULTRA</th><th>PRIVE</th></tr></thead>
       <tbody>
-        <tr><td>Globalne wyszukiwanie E2 + IPTV</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Diagnostyka połączenia</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Siła sygnału</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
-        <tr><td>Biblioteka i monitor nagrywania</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
-        <tr><td>Menedżer piconów</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
-        <tr><td>Profil szyfrowany / backup</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><td>Profil legacy JSON</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Globalne wyszukiwanie E2 + IPTV</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Diagnostyka połączenia</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Kreator zgodności komputera</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Parametry odtwarzania</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Siła sygnału</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Panel tunerów Enigma2</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Zaawansowane nagrywanie z EPG</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Biblioteka i monitor nagrywania</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Tryb telewizyjny</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Pilot przez telefon</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Profile dostawców IPTV</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Menedżer piconów</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Menedżer danych portable</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Konfigurowalna belka narzędzi</td><td class="no">-</td><td class="no">-</td><td class="no">-</td><td class="yes">✓</td></tr>
+        <tr><td>Profil szyfrowany / backup</td><td class="no">-</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Profil legacy JSON</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
       </tbody>
     </table>
     <h3>Diagnostyka połączenia</h3>
     <p>Pokazuje katalog danych, IP tunera, porty, VLC, stan EPG, serwera M3U i test OpenWebif. Hasło nie jest prezentowane.</p>
+    <h4>Diagnostyka Enigma2 i odtwarzania <span class="badge prive">TYLKO PRIVE</span></h4>
+    <p>Przycisk <strong>Uruchom pełny test</strong> sprawdza sieć, OpenWebif, LibVLC, obraz i dźwięk. Wynik zawiera kartę graficzną, wersję sterownika, aktywny tryb dekodowania i faktyczne wyjście obrazu.</p>
+    <ul>
+      <li><strong>Zastosuj zalecany profil</strong> zapisuje dla tego komputera zalecany tryb GPU/CPU/ZGODNOŚĆ oraz wielkość bufora i przełącza aktywny tor od razu.</li>
+      <li><strong>Utwórz pakiet ZIP</strong> zapisuje bezpieczny pakiet diagnostyczny.</li>
+    </ul>
+    <div class="tip"><strong>Prywatność:</strong> pakiet diagnostyczny nie zawiera haseł, klucza TMDb ani adresów strumieni z listy M3U.</div>
+
+    <h3>Kreator zgodności komputera <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Kreator analizuje komputer i podaje <strong>Zalecane dekodowanie</strong>, <strong>Zalecany bufor</strong> i <strong>Zalecaną skalę GUI</strong>. Przycisk <strong>Zastosuj zalecenia</strong> zapisuje je w profilu tego komputera, a <strong>Uruchom ponownie</strong> powtarza analizę.</p>
+
+    <h3>Parametry odtwarzania <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Panel aktualizowany na żywo pokazuje: kanał, źródło, silnik, stan, tryb dekodowania, wyjście obrazu, rozdzielczość, kodek, bufor, liczbę klatek wyświetlonych i zgubionych, dane audio zdekodowane i zgubione oraz liczbę ścieżek dźwiękowych i napisów.</p>
+
+    <h3>Menedżer danych portable <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Okno pokazuje tryb pracy (<em>portable — dane obok EXE</em> albo <em>LocalAppData — katalog EXE jest tylko do odczytu</em>), katalog programu, katalog danych, ścieżkę i rozmiar bazy SQLite oraz listę wszystkich plików danych. Dostępne są <strong>Otwórz katalog danych</strong>, <strong>Eksportuj dane</strong>, <strong>Importuj dane</strong> i <strong>Odśwież</strong>. Po imporcie program trzeba uruchomić ponownie.</p>
+
     <h3>Profile i backup</h3>
     <p>Profil szyfrowany chroni dane hasłem. Legacy JSON może zawierać hasło tunera w postaci jawnej, dlatego należy przechowywać go ostrożnie.</p>
 
-    <h2 id="pl-settings" class="section-break">12. Ustawienia - wszystkie opcje krok po kroku <span class="badge pro">PRO + ULTRA</span></h2>
+    <h2 id="pl-settings" class="section-break">14. Ustawienia - wszystkie opcje krok po kroku <span class="badge pro">PRO + ULTRA</span></h2>
     <p>Wybierz przycisk <strong>Ustawienia</strong> w prawym górnym rogu. Opcje w oknie występują w poniższej kolejności, licząc od góry. Przewijaj zawartość pionowo, a po zakończeniu wybierz <strong>Zapisz ustawienia</strong>.</p>
     <ol class="settings-list">
       <li><strong>Język i motyw.</strong>
@@ -396,13 +632,24 @@
           <li><strong>Motyw GUI</strong> - Czarny (klasyczny) albo Futurystyczny HUD. Nowy wygląd jest stosowany po restarcie.</li>
         </ul>
       </li>
+      <li><strong>Profil tego komputera.</strong> <span class="badge prive">TYLKO PRIVE</span>
+        <ul>
+          <li><strong>Automatycznie stosuj profil urządzenia</strong> - po starcie program używa ustawień zapisanych dla tego konkretnego komputera.</li>
+          <li><strong>Dekodowanie dla tego komputera</strong> - AUTO (GPU → ZGODNOŚĆ), GPU, CPU albo ZGODNOŚĆ.</li>
+          <li><strong>Profil sieci</strong> i <strong>Bufor odtwarzania (ms)</strong> - ustawienia toru transmisji dla tego komputera.</li>
+          <li><strong>Skala GUI</strong>, <strong>Szerokość okna</strong> i <strong>Wysokość okna</strong> - rozmiar i skala interfejsu; obowiązują po ponownym uruchomieniu programu.</li>
+          <li><strong>Głośność startowa</strong> - poziom dźwięku ustawiany po starcie programu.</li>
+        </ul>
+      </li>
       <li><strong>Profil startowy.</strong>
         <ul>
           <li><strong>Auto-połącz z dekoderem</strong> - program po uruchomieniu automatycznie użyje aktywnego tunera Enigma2.</li>
           <li><strong>Odtwórz ostatni kanał</strong> - po starcie spróbuje ponownie uruchomić ostatnio oglądaną pozycję.</li>
+          <li><strong>Przywróć ostatnią sesję i otwarte narzędzia</strong> - odtwarza tryb Wideo, głośność i okna narzędzi z poprzedniego uruchomienia. <span class="badge prive">TYLKO PRIVE</span></li>
           <li><strong>Okno przy starcie</strong> - wybierz Brak, Streaming Canal+/Polsat, Pilot albo Pobierz EPG.</li>
           <li><strong>Preset jakości sieci</strong> - LAN ma najmniejszy bufor, WiFi średni, a Mobile największy i jest najbezpieczniejszy przy słabszym połączeniu.</li>
           <li><strong>Bufor sieci/live (ms)</strong> - zakres 150-10000 ms. Większa wartość zwykle ogranicza przerwy dźwięku i obrazu, ale wydłuża start i opóźnia transmisję.</li>
+          <li><strong>Automatycznie dopasuj bufor do jakości strumienia</strong> - włącza bufor adaptacyjny. Pola <strong>Minimalny bufor (ms)</strong> i <strong>Maksymalny bufor (ms)</strong> wyznaczają zakres, a <strong>Aktualny bufor</strong> pokazuje wartość używaną w danej chwili. <span class="badge prive">TYLKO PRIVE</span></li>
         </ul>
       </li>
       <li><strong>Przypomnienia EPG.</strong>
@@ -411,6 +658,28 @@
           <li><strong>Minut przed audycją</strong> - wybierz wartość od 5 do 15 minut.</li>
           <li><strong>Tylko ulubione</strong> - ogranicza przypomnienia do kanałów zapisanych jako ulubione.</li>
           <li><strong>Słowa kluczowe EPG</strong> - wpisz hasła oddzielone przecinkami, np. <code>film, mecz, wiadomości</code>. Program sprawdza tytuł audycji i nazwę kanału.</li>
+        </ul>
+      </li>
+      <li><strong>Automatyczne aktualizacje.</strong> <span class="badge prive">TYLKO PRIVE</span>
+        <ul>
+          <li><strong>Włącz automatyczne odświeżanie w tle</strong> - harmonogram odświeża dane bez udziału użytkownika.</li>
+          <li><strong>Interwał (minuty)</strong> - co ile minut wykonywane jest odświeżanie.</li>
+          <li>Zakres odświeżania: <strong>EPG XMLTV</strong>, <strong>Lista M3U z ostatnio wskazanego pliku</strong>, <strong>Bukiety Enigma2</strong> i <strong>Brakujące picony Enigma2</strong>.</li>
+          <li>Odświeżanie korzysta wyłącznie z wcześniej zapisanych źródeł i nie otwiera okien wyboru plików.</li>
+        </ul>
+      </li>
+      <li><strong>Pamięć podręczna.</strong> <span class="badge prive">TYLKO PRIVE</span>
+        <ul>
+          <li><strong>Automatycznie porządkuj cache raz dziennie</strong> - włącza codzienne sprzątanie danych tymczasowych.</li>
+          <li><strong>Limit plakatów (MB)</strong> - maksymalny rozmiar cache plakatów Film IPTV / Serial IPTV.</li>
+          <li><strong>Limit pakietów diagnostycznych (MB)</strong> - maksymalny rozmiar katalogu z pakietami ZIP.</li>
+          <li><strong>Przechowywanie logów (dni)</strong> - po ilu dniach logi są usuwane.</li>
+          <li><strong>Wyczyść teraz</strong> - natychmiastowe porządkowanie; program podaje liczbę usuniętych plików.</li>
+        </ul>
+      </li>
+      <li><strong>Odtwarzanie i powiadomienia.</strong> <span class="badge prive">TYLKO PRIVE</span>
+        <ul>
+          <li><strong>Powiadomienia Windows 11</strong> - systemowe komunikaty o nagraniach i zdarzeniach odtwarzania.</li>
         </ul>
       </li>
       <li><strong>Blokada rodzicielska.</strong>
@@ -429,7 +698,7 @@
       </li>
       <li><strong>Inne.</strong>
         <ul>
-          <li><strong>Dekodowanie obrazu Enigma2</strong> - Auto, GPU albo CPU. AUTO rozpoczyna od GPU i przełącza komputer na CPU, gdy wykryje dźwięk bez obrazu. <span class="badge ultra">TYLKO ULTRA</span></li>
+          <li><strong>Dekodowanie obrazu Enigma2</strong> - Auto, GPU albo CPU. AUTO rozpoczyna od GPU i przełącza komputer na CPU, gdy wykryje dźwięk bez obrazu. <span class="badge ultra">TYLKO ULTRA</span> W PRIVE lista zawiera dodatkowo tryb <strong>ZGODNOŚĆ</strong>, a pozycja AUTO ma postać <strong>AUTO (GPU → ZGODNOŚĆ)</strong>. <span class="badge prive">TYLKO PRIVE</span></li>
           <li><strong>Resetuj zapamiętany wybór AUTO</strong> - usuwa decyzję GPU/CPU zapisaną dla tego komputera, aby program ponownie przeprowadził wykrywanie. <span class="badge ultra">TYLKO ULTRA</span></li>
           <li><strong>Tryb audio-only (radio)</strong> - wyłącza obraz i pozostawia dźwięk.</li>
           <li><strong>Automatyczne wznawianie Enigma2</strong> - po zerwaniu streamu próbuje ponownie uruchomić aktualny kanał.</li>
@@ -444,7 +713,7 @@
       <li><strong>Zapisz ustawienia.</strong> Przycisk na dole zapisuje wszystkie zmiany i zamyka okno. Opcje języka i motywu wymagają ponownego uruchomienia programu.</li>
     </ol>
 
-    <h2 id="pl-files" class="section-break">13. Pliki programu, logo i picony</h2>
+    <h2 id="pl-files" class="section-break">15. Pliki programu, logo i picony</h2>
     <h3>Katalog danych</h3>
     <p>W trybie portable pliki są zapisywane obok EXE. Gdy katalog nie jest zapisywalny, program używa <code>%LocalAppData%\HplEnigma2Iptv</code>.</p>
     <table>
@@ -458,14 +727,22 @@
         <tr><td><code>Recorded</code></td><td>Lokalne nagrania Enigma2. <span class="badge pro">PRO + ULTRA</span></td></tr>
         <tr><td><code>Posters\Movies</code></td><td>Cache plakatów w podfolderach grup M3U. <span class="badge pro">PRO + ULTRA</span></td></tr>
         <tr><td><code>Picon\Enigma2</code></td><td>Lokalne picony E2. <span class="badge ultra">TYLKO ULTRA</span></td></tr>
+        <tr><td><code>hpl_media.db</code></td><td>Baza SQLite: kanały M3U, EPG, historia, profile dostawców IPTV i alternatywne źródła. <span class="badge prive">TYLKO PRIVE</span></td></tr>
+        <tr><td><code>epg_sources.json</code>, <code>epg_mapping.json</code></td><td>Profile źródeł EPG oraz cache dopasowania kanałów M3U do XMLTV. <span class="badge prive">TYLKO PRIVE</span></td></tr>
+        <tr><td><code>session_state.json</code></td><td>Ostatnia sesja i lista otwartych narzędzi. <span class="badge prive">TYLKO PRIVE</span></td></tr>
+        <tr><td><code>vod_library.json</code>, <code>vod_progress.json</code></td><td>Biblioteka VOD i zapamiętane pozycje odtwarzania. <span class="badge prive">TYLKO PRIVE</span></td></tr>
+        <tr><td><code>Diagnostics</code></td><td>Pakiety diagnostyczne ZIP i logi. <span class="badge prive">TYLKO PRIVE</span></td></tr>
+        <tr><td><code>Timeshift</code></td><td>Bufor timeshiftu, jeśli nie wskazano własnego folderu. <span class="badge ultra">TYLKO ULTRA</span></td></tr>
+        <tr><td><code>Sounds</code></td><td>Komunikaty dźwiękowe programu.</td></tr>
       </tbody>
     </table>
+    <div class="note"><strong>PRIVE:</strong> dane aktywacji licencji nie są zapisywane w katalogu programu. Znajdują się w rejestrze użytkownika oraz w ukrytych plikach pomocniczych w katalogach systemowych, w postaci zaszyfrowanej. Menedżer danych portable nie eksportuje licencji. <span class="badge prive">TYLKO PRIVE</span></div>
     <h3>Folder lokalnych logo <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>Plik powinien mieć nazwę identyczną jak kanał, np. <code>TVP 1 HD.png</code>. Obsługiwane rozszerzenia: PNG, JPG, JPEG, WEBP i ICO. Kolejność źródeł: <code>tvg-logo</code> z M3U → ikona EPG → lokalny folder.</p>
     <h3>Nazwy piconów <span class="badge ultra">TYLKO ULTRA</span></h3>
     <p>Nazwa pliku odpowiada referencji E2 z dwukropkami zamienionymi na podkreślenia, np. <code>1_0_19_290E_1EDC_71_820000_0_0_0.png</code>. Obsługiwane są PNG, JPG i JPEG.</p>
 
-    <h2 id="pl-shortcuts" class="section-break">14. Skróty klawiszowe</h2>
+    <h2 id="pl-shortcuts" class="section-break">16. Skróty klawiszowe</h2>
     <table>
       <thead><tr><th>Skrót domyślny</th><th>Akcja</th></tr></thead>
       <tbody>
@@ -480,15 +757,28 @@
         <tr><td><kbd>Esc</kbd></td><td>Wyjście z Wideo/Kinowego do GUI</td></tr>
       </tbody>
     </table>
-    <p>W oknie Skróty można wybrać akcję, wpisać nowe przypisanie i zapisać. W ULTRA skróty nie przechwytują liter ani kombinacji, gdy fokus znajduje się w polu tekstowym.</p>
+    <p>W oknie Skróty można wybrać akcję, wpisać nowe przypisanie i zapisać. W ULTRA i PRIVE skróty nie przechwytują liter ani kombinacji, gdy fokus znajduje się w polu tekstowym.</p>
+    <h3>Klawisze okien odtwarzania <span class="badge prive">TYLKO PRIVE</span></h3>
+    <table>
+      <thead><tr><th>Klawisz</th><th>Działanie w oknie IPTV oraz w trybie WIDEO/Kinowym</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>Spacja</kbd></td><td>Pauza / wznowienie</td></tr>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Przewijanie o 15 sekund (materiały VOD)</td></tr>
+        <tr><td><kbd>F11</kbd></td><td>Pełny ekran</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Powrót do okna lub do GUI</td></tr>
+        <tr><td>Kółko myszy</td><td>Regulacja głośności</td></tr>
+        <tr><td>Dwuklik</td><td>Przełączenie pełnego ekranu</td></tr>
+      </tbody>
+    </table>
 
-    <h2 id="pl-help">15. Rozwiązywanie problemów</h2>
+    <h2 id="pl-help">17. Rozwiązywanie problemów</h2>
     <h3>EPG i bukiety działają, ale brak obrazu Enigma2</h3>
     <ol>
       <li>Sprawdź ten sam URL przyciskiem VLC.</li>
       <li>Sprawdź port streamu, zwykle 8001, i port WEB, zwykle 80.</li>
       <li>W PRO przełącz wariant programu GPU/CPU. <span class="badge pro">PRO</span></li>
       <li>W ULTRA ustaw Dekodowanie na AUTO lub CPU i zresetuj zapamiętany wybór AUTO. <span class="badge ultra">TYLKO ULTRA</span></li>
+      <li>W PRIVE ustaw tryb <strong>ZGODNOŚĆ</strong> albo uruchom <strong>Narzędzia → Kreator zgodności komputera</strong> i wybierz <strong>Zastosuj zalecenia</strong>. <span class="badge prive">TYLKO PRIVE</span></li>
       <li>Zwiększ preset bufora, jeśli dźwięk lub obraz są przerywane.</li>
     </ol>
     <h3>IPTV TV działa, ale film nie</h3>
@@ -500,8 +790,37 @@
     <h3>Błąd katalogu tymczasowego</h3>
     <p>Komunikat „Failed to remove temporary directory” zwykle pochodzi z instalatora lub aktualizatora innego komponentu. Zamknij procesy korzystające z folderu TEMP, uruchom ponownie Windows i usuń wyłącznie wskazany, nieużywany katalog tymczasowy.</p>
     <h3>Program nie zapisuje ustawień obok EXE</h3>
-    <p>Przenieś katalog programu do miejsca, w którym użytkownik ma prawo zapisu, albo sprawdź <code>%LocalAppData%\HplEnigma2Iptv</code>.</p>
-    <div class="footer-note">HPL ink Enigma2+ IPTV - instrukcja obsługi - 16.07.2026</div>
+    <p>Przenieś katalog programu do miejsca, w którym użytkownik ma prawo zapisu, albo sprawdź <code>%LocalAppData%\HplEnigma2Iptv</code>. W PRIVE aktualny tryb pokazuje <strong>Narzędzia → Menedżer danych portable</strong>.</p>
+    <h3>Program prosi o aktywację mimo wcześniejszej aktywacji <span class="badge prive">TYLKO PRIVE</span></h3>
+    <ol>
+      <li>Sprawdź, czy data i godzina systemowa nie zostały cofnięte.</li>
+      <li>Sprawdź, czy nie zmieniono podzespołów wpływających na identyfikator komputera — płyty głównej, dysku systemowego lub karty sieciowej.</li>
+      <li>Programy czyszczące rejestr i pliki tymczasowe mogą usunąć dane licencji. Porównaj identyfikator w oknie aktywacji z poprzednim.</li>
+      <li>Jeżeli identyfikator się nie zmienił, wyślij nowy request code na adres podany w oknie aktywacji.</li>
+    </ol>
+    <h3>Kanał IPTV przełącza się na inne źródło <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Status <strong>Alternatywne źródło</strong> oznacza, że watchdog wykrył brak obrazu lub postępu danych i przeszedł do źródła zapasowego. Listę i priorytety źródeł zmienisz w menu prawego przycisku kanału → <strong>Alternatywne źródła</strong>. Status <strong>Brak działającego źródła</strong> oznacza, że żaden adres nie odpowiedział.</p>
+    <h3>Brak dopasowania EPG do kanałów IPTV <span class="badge prive">TYLKO PRIVE</span></h3>
+    <p>Otwórz <strong>Pobierz EPG → Raport mapowania</strong>. Sprawdź pozycje niejednoznaczne i brakujące, popraw nazwy kanałów w edytorze M3U albo dodaj alias, a następnie wybierz <strong>Przelicz mapowanie</strong>.</p>
+
+    <h2 id="pl-zmiany" class="section-break">18. Nowości linii PRIVE <span class="badge prive">TYLKO PRIVE</span></h2>
+    <p>Zestawienie zmian wprowadzonych po wydaniu ULTRA v4.14, które nie były opisane w poprzedniej instrukcji.</p>
+    <table>
+      <thead><tr><th>Wersja</th><th>Najważniejsze zmiany</th></tr></thead>
+      <tbody>
+        <tr><td>v4.38</td><td>Obowiązkowa aktywacja licencji przed pierwszym uruchomieniem GUI, osobny identyfikator produktu, szyfrowany i redundantny zapis licencji, podpisywanie kodów RSA.</td></tr>
+        <tr><td>v4.35 - v4.37</td><td>Wideo Mode i tryb Kinowy Enigma2 zgodne 1:1 z oknem IPTV: górny i dolny HUD, automatyczne ukrywanie OSD, skalowanie obrazu. Watchdog IPTV i przełączanie na źródło zapasowe. Neonowo-żółte godziny audycji w widokach EPG. Tryb TV zamykany przy zmianie trybu odtwarzania.</td></tr>
+        <tr><td>v4.33</td><td>Usunięcie pozycji „Wszystkie” z przewodników EPG, okna EPG w rozmiarze GUI, pełnoekranowy tryb telewizyjny, pilot przez telefon z sesją PIN i kodem QR, ochrona zamykania podczas nagrywania, raport reguł EPG.</td></tr>
+        <tr><td>v4.32</td><td>Osobne przewodniki EPG Enigma2 i EPG IPTV z grupami, piconami, Teraz/Następna, wyszukiwaniem, filtrem ulubionych i nagrywaniem wyłącznie dla Enigma2.</td></tr>
+        <tr><td>v4.30 - v4.31</td><td>Kreator zgodności, centralny kontroler odtwarzania, bufor adaptacyjny, baza SQLite, profile dostawców IPTV, zaawansowane reguły nagrywania EPG, panel tunerów, powiadomienia Windows 11, menedżer danych portable, responsywne GUI i konfigurowalna belka narzędzi.</td></tr>
+        <tr><td>v4.28 - v4.29</td><td>Kolejność źródeł logo kanałów IPTV oraz plakatów Film IPTV z użyciem pola tvg-logo i fallbackiem na cache/TMDb.</td></tr>
+        <tr><td>v4.23 - v4.27</td><td>Tryb ZGODNOŚĆ z natywnym oknem VLC, bezpieczne zatrzymywanie odtwarzania, przycinanie obrazu do panelu EPG, rozszerzona diagnostyka obrazu.</td></tr>
+        <tr><td>v4.20 - v4.22</td><td>Profile źródeł EPG, walidacja pobranego pliku, mapowanie kanałów z raportem, obsługa stref czasowych XMLTV, status ważności EPG, EPG na liście kanałów Enigma2.</td></tr>
+        <tr><td>v4.19</td><td>Ikona zasobnika, panel parametrów odtwarzania, przywracanie ostatniej sesji, kontrola miejsca na dysku przy nagrywaniu, limity cache i logów.</td></tr>
+        <tr><td>v4.15 - v4.17</td><td>Diagnostyka Enigma2/VLC z zalecanym profilem, profile urządzeń, pasek stanu, globalna wyszukiwarka, harmonogram odświeżania w tle, przebudowany odtwarzacz IPTV z HUD, proporcjami obrazu, selektorem ścieżek i paskiem czasu VOD.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer-note">Koniec części polskiej. Pełna instrukcja angielska rozpoczyna się na następnej stronie.</div>
   </section>
 </main>
 </body>
