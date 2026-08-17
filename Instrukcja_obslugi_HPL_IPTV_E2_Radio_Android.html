@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HPL ink IPTV E2+ Radio Android - instrukcja obslugi / user manual</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #15171c;
+      --panel2: #1e2128;
+      --ink: #ff315f;
+      --accent: #ff7a1a;
+      --violet: #8d7cff;
+      --cyan: #00d8c9;
+      --green: #39d98a;
+      --warn: #f5b94d;
+      --danger: #ff5246;
+      --text: #e6eaf5;
+      --dim: #9aa1af;
+      --line: #383d49;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: 0;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 42px 70px; }
+    .cover {
+      min-height: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 48px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--violet); }
+    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
+    .brand .e2 { color: #b5aaff; }
+    .brand .plus, .brand .iptv { color: var(--cyan); }
+    .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
+    .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
+    .edition-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 28px 0; }
+    .edition {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .edition strong { display: block; color: var(--text); font-size: 17px; }
+    .edition span { color: var(--dim); }
+    h2 {
+      margin: 42px 0 18px;
+      padding-bottom: 8px;
+      color: var(--accent);
+      font-size: 27px;
+      border-bottom: 2px solid var(--line);
+      break-after: avoid;
+    }
+    h3 { margin: 27px 0 9px; color: var(--cyan); font-size: 19px; break-after: avoid; }
+    h4 { margin: 20px 0 7px; color: var(--text); font-size: 16px; break-after: avoid; }
+    p { margin: 7px 0 12px; }
+    ul, ol { margin: 7px 0 16px 24px; padding: 0; }
+    li { margin: 4px 0; }
+    .settings-list > li { margin: 0 0 18px; padding-left: 3px; break-inside: avoid; }
+    .settings-list > li::marker { color: var(--accent); font-weight: 800; }
+    a { color: var(--cyan); text-decoration: none; }
+    code, kbd {
+      font-family: Consolas, monospace;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: #fff;
+    }
+    kbd { color: var(--warn); }
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 7px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .badge.tv { color: #041c10; border: 1px solid var(--green); background: var(--green); }
+    .badge.web { color: #00201d; border: 1px solid var(--cyan); background: var(--cyan); }
+    .note, .warning, .tip {
+      margin: 15px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--cyan);
+      background: var(--panel);
+      break-inside: avoid;
+    }
+    .warning { border-color: var(--warn); }
+    .tip { border-color: var(--green); }
+    .note strong, .warning strong, .tip strong { color: #fff; }
+    .toc {
+      columns: 2;
+      column-gap: 32px;
+      padding: 15px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .toc li { break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 23px; break-inside: auto; }
+    thead { display: table-header-group; }
+    th, td { border: 1px solid var(--line); padding: 8px 9px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel2); font-weight: 700; }
+    td { background: #101216; }
+    tr { break-inside: avoid; }
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
+    .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
+    .step b { display: block; color: var(--accent); margin-bottom: 4px; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
+    .mock-title b { color: var(--violet); }
+    .mock-title i { color: var(--ink); }
+    .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
+    .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
+    .mock-button.hot { border-color: var(--accent); color: var(--accent); }
+    .mock-button.m3u { border-color: var(--green); color: var(--green); }
+    .mock-grid { display: grid; grid-template-columns: 0.8fr 1fr 2fr; gap: 7px; min-height: 230px; }
+    .mock-grid-2 { display: grid; grid-template-columns: 1fr 1.4fr; gap: 7px; min-height: 200px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
+    .mock-list .folder { color: var(--danger); font-weight: 700; }
+    .mock-video { display: flex; align-items: center; justify-content: center; min-height: 145px; background: #000; color: #555; }
+    .mock-epg { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
+    .page-break { break-before: page; }
+    .section-break { break-before: page; }
+    .language-break { break-before: page; margin-top: 0; }
+    .footer-note { margin-top: 45px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; }
+    .muted { color: var(--dim); }
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    @media print {
+      body { background: #fff; color: #17191d; font-size: 10.2pt; }
+      main { max-width: none; padding: 0; }
+      .cover { min-height: 250mm; }
+      .brand { font-size: 30pt; }
+      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #007f78; }
+      .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
+      table th { background: #eceef1; color: #9c3f00; }
+      table td { background: #fff; }
+      th, td { border-color: #bbb; }
+      code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
+      .badge.tv { color: #041c10; background: #93e9bd; }
+      .badge.web { color: #00201d; background: #7bece2; }
+      .edition-strip { grid-template-columns: repeat(2, 1fr); }
+      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      a { color: inherit; }
+      .page-break, .language-break { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="cover">
+    <div class="brand"><span class="hpl">HPL</span><span class="ink">ink</span><span class="iptv"> IPTV</span><span class="e2"> E2</span><span class="plus">+</span><span class="iptv"> Radio</span></div>
+    <h1>Instrukcja obsługi / User manual</h1>
+    <p class="subtitle">Dwujęzyczny przewodnik po programie na Android TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
+    <div class="edition-strip">
+      <div class="edition"><strong>Platforma</strong><span>Android TV / Google TV</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v1.87 &nbsp; 17.08.2026</span></div>
+      <div class="edition"><strong>Źródła</strong><span>M3U, Xtream, Enigma2, radio</span></div>
+      <div class="edition"><strong>Sterowanie</strong><span>pilot TV + panel w przeglądarce</span></div>
+    </div>
+    <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge tv">TV</span> oznacza czynność na telewizorze. <span class="badge web">PANEL</span> oznacza czynność w przeglądarce komputera lub telefonu, na adresie pokazanym na ekranie TV.</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v1.87</strong> z 17.08.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
+  </section>
+
+  <section id="pl" class="page-break">
+    <h2>Instrukcja po polsku</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#pl-co">Czym jest program</a></li>
+        <li><a href="#pl-aktywacja">Aktywacja programu</a></li>
+        <li><a href="#pl-start">Pierwsze uruchomienie</a></li>
+        <li><a href="#pl-zrodla">Ekran źródeł</a></li>
+        <li><a href="#pl-kanaly">Lista kanałów</a></li>
+        <li><a href="#pl-player">Odtwarzacz</a></li>
+        <li><a href="#pl-radio">Radio internetowe</a></li>
+        <li><a href="#pl-epg-tv">Program na telewizorze</a></li>
+        <li><a href="#pl-panel">Panel w przeglądarce</a></li>
+        <li><a href="#pl-dodaj">Dodawanie źródeł</a></li>
+        <li><a href="#pl-vod">Filmy i seriale</a></li>
+        <li><a href="#pl-pilot">Pilot na telefonie</a></li>
+        <li><a href="#pl-klawisze">Klawisze pilota</a></li>
+        <li><a href="#pl-ustawienia">Ustawienia panelu</a></li>
+        <li><a href="#pl-mapowanie">Ręczne dopasowanie EPG</a></li>
+        <li><a href="#pl-help">Rozwiązywanie problemów</a></li>
+      </ol>
+    </div>
+
+    <h2 id="pl-co">1. Czym jest program</h2>
+    <p><strong>HPL IPTV E2+ Radio</strong> to aplikacja na telewizor z Android TV. Odtwarza kanały IPTV, tunery Enigma2 i radio internetowe. Listy, EPG, filmy i ustawienia dodaje się z komputera albo telefonu przez panel w przeglądarce — ten sam komputer, na którym stoi program PC HPL ink Enigma2+ IPTV, albo dowolna inna przeglądarka w sieci domowej.</p>
+    <ul>
+      <li>Playlista M3U / M3U8 z adresu URL.</li>
+      <li>Konto Xtream Codes (serwer, port, użytkownik, hasło).</li>
+      <li>Tuner Enigma2 z OpenWebif — bukiety, strumień i program z tunera.</li>
+      <li>Radio internetowe z playlisty M3U (adres albo plik z komputera).</li>
+      <li>Przewodnik XMLTV, filmy i seriale z playlisty, ulubione, historia, przypomnienia i kopia zapasowa.</li>
+    </ul>
+    <div class="tip"><strong>Sieć:</strong> telewizor, komputer i telefon muszą być w tej samej sieci lokalnej. Panel i strona aktywacji nie są stroną internetową w sieci publicznej — działają tylko w domu, pod adresem pokazanym na TV.</div>
+
+    <h3>Co nowego od wersji 1.77</h3>
+    <table>
+      <thead><tr><th>Nowość</th><th>Gdzie</th><th>Opis w instrukcji</th></tr></thead>
+      <tbody>
+        <tr><td>Proporcje obrazu — trzy tryby pod przytrzymaniem <kbd>OK</kbd></td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-proporcje">rozdział 6</a></td></tr>
+        <tr><td>Wykrywanie zamarcia obrazu, także gdy dźwięk leci dalej</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-obraz-stoi">rozdział 6</a></td></tr>
+        <tr><td>Czekanie na powrót sieci zamiast komunikatu o padniętym kanale</td><td>Odtwarzacz i radio <span class="badge tv">TV</span></td><td><a href="#pl-obraz-stoi">rozdział 6</a></td></tr>
+        <tr><td>W OSD widać, która playlista gra</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
+        <tr><td>Przerwany import EPG nie kasuje już posiadanego programu</td><td>Program <span class="badge tv">TV</span></td><td><a href="#pl-epg-tv">rozdział 8</a></td></tr>
+        <tr><td>Ręczne przypisanie kanału do pozycji XMLTV</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-mapowanie">rozdział 15</a></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Aktywacja, dodawanie źródeł, pilot na telefonie i zakładki panelu działają tak samo jak w wersji 1.77.</p>
+
+    <h2 id="pl-aktywacja" class="section-break">2. Aktywacja programu</h2>
+    <p>Przy pierwszym uruchomieniu program nie otwiera listy źródeł. Na telewizorze pojawia się wyłącznie ekran <strong>ACTIVATION REQUIRED</strong>. Ten ekran jest po angielsku. Do czasu wpisania prawidłowego kodu aktywacyjnego reszta programu pozostaje zamknięta.</p>
+    <p>Kod aktywacyjny z jednego telewizora nie zadziała na innym.</p>
+    <h3>Najwygodniejsza droga — komputer</h3>
+    <p>Kod aktywacyjny jest długi. Wklejenie go w przeglądarce na komputerze jest prostsze niż wpisywanie pilota na TV.</p>
+    <div class="workflow">
+      <div class="step"><b>1. Adres</b>Na TV odczytaj linię <strong>OPEN THIS ADDRESS ON A COMPUTER</strong>, np. <code>http://192.168.1.50:8091/activate</code>.</div>
+      <div class="step"><b>2. Request code</b>Otwórz adres w przeglądarce i wybierz <strong>Copy code</strong>.</div>
+      <div class="step"><b>3. Wyślij</b>Wyślij skopiowany kod na <code>hplink.soft@proton.me</code>.</div>
+      <div class="step"><b>4. Activate</b>Otrzymany kod wklej w pole <strong>ACTIVATION CODE</strong> i wybierz <strong>Activate</strong>.</div>
+    </div>
+    <p>W temacie wiadomości wpisz dokładnie:</p>
+    <p><code>HPL IPTV E2+ Radio activation</code></p>
+    <p>Po poprawnej aktywacji strona pokazuje <em>Activated. The program is starting on the TV.</em> Telewizor sam przechodzi do zwykłego ekranu źródeł. Przy kolejnych startach ten ekran się nie pojawia.</p>
+    <h3>Ta sama czynność na telewizorze</h3>
+    <p>Gdy nie masz komputera pod ręką, te same pola są na ekranie TV:</p>
+    <ul>
+      <li><strong>DEVICE ID</strong> — krótki identyfikator w postaci <code>HPL-XXXX-XXXX-XXXX</code>.</li>
+      <li><strong>REQUEST CODE</strong> — długi kod do wysłania.</li>
+      <li><strong>Copy code</strong> — kopiuje request code (gdy telewizor ma schowek).</li>
+      <li><strong>ACTIVATION CODE</strong> — pole na otrzymany kod.</li>
+      <li><strong>Activate</strong> — zatwierdza kod.</li>
+      <li><strong>Close program</strong> — zamyka aplikację.</li>
+    </ul>
+    <p>Komunikat <em>This code is not valid for this device.</em> oznacza, że wklejony kod nie pasuje do tego telewizora. Sprawdź, czy wysłałeś request code właśnie z tego urządzenia i czy wkleiłeś cały otrzymany kod, bez obcięcia.</p>
+    <p class="muted">Pozostałe wersje programu: <a href="https://hplspam1-jpg.github.io/HPL-ink-Software/index.html">hplspam1-jpg.github.io/HPL-ink-Software</a></p>
+    <div class="note"><strong>Sieć przy aktywacji:</strong> adres <code>/activate</code> działa tylko wtedy, gdy telewizor ma połączenie z siecią lokalną. Gdy TV pokazuje <code>no network connection</code>, podłącz Wi-Fi albo kabel i uruchom program ponownie.</div>
+
+    <h2 id="pl-start">3. Pierwsze uruchomienie</h2>
+    <h3>Wymagania</h3>
+    <ul>
+      <li>Telewizor albo dekoder z Android TV / Google TV, system Android 8.0 lub nowszy.</li>
+      <li>Ta sama sieć lokalna dla telewizora, komputera i telefonu.</li>
+      <li>Dla IPTV: playlista M3U/M3U8 albo dane Xtream Codes od dostawcy.</li>
+      <li>Dla Enigma2: tuner z włączonym OpenWebif w tej samej sieci.</li>
+      <li>Dla radia: playlista M3U pod adresem URL albo plik <code>.m3u</code> z komputera (najwyżej 6 MB).</li>
+      <li>Opcjonalnie klucz API TMDb v3 — wyłącznie do opisów, ocen i tytułu oryginalnego filmów. Plakaty biorą się z playlisty.</li>
+    </ul>
+    <h3>Po aktywacji</h3>
+    <ol>
+      <li>Na TV zostaje ekran źródeł i duży adres panelu, np. <code>http://192.168.1.50:8091/?token=…</code>.</li>
+      <li>Skopiuj <strong>cały</strong> adres, razem z parametrem <code>token</code>.</li>
+      <li>Otwórz go w przeglądarce na komputerze.</li>
+      <li>W panelu, w <strong>Ustawieniach</strong>, dodaj pierwsze źródło.</li>
+      <li>Wróć na telewizor i wejdź w to źródło, aby wczytać listę.</li>
+    </ol>
+    <div class="warning"><strong>Ważne:</strong> adres bez <code>token</code> nie otworzy panelu. Przy dodawaniu drugiego telewizora wklejaj zawsze pełny adres z jego ekranu.</div>
+
+    <h2 id="pl-zrodla">4. Ekran źródeł <span class="badge tv">TV</span></h2>
+    <p>To pierwszy ekran po aktywacji. Poniższy rysunek jest schematem GUI i nie zawiera prawdziwego adresu ani tokenu.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v1.87 — IPTV, Enigma2 i Radio</div>
+      <div class="mock-pane">
+        <h5>PANEL STEROWANIA W PRZEGLĄDARCE</h5>
+        <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Odśwież ekran</span>
+        <span class="mock-button">Wyczyść picony</span>
+        <span class="mock-button m3u">Filtr VOD</span>
+      </div>
+      <div class="mock-list" style="padding:8px">
+        Playlista M3U<br>
+        Xtream Codes<br>
+        Tuner Enigma2<br>
+        Radio internetowe M3U
+      </div>
+    </div>
+    <ul>
+      <li><strong>Odśwież ekran</strong> — ponownie wczytuje listę źródeł.</li>
+      <li><strong>Wyczyść picony</strong> — usuwa zapamiętane logo kanałów z pamięci telewizora.</li>
+      <li><strong>Filtr VOD</strong> — ukrywa albo pokazuje pozycje filmów i seriali na liście kanałów. Ten sam przełącznik jest w panelu.</li>
+      <li><kbd>OK</kbd> otwiera źródło. Przytrzymanie <kbd>OK</kbd> pyta o usunięcie źródła.</li>
+      <li><kbd>INFO</kbd> albo <kbd>ZIELONY</kbd> sprawdza połączenie zaznaczonego źródła.</li>
+    </ul>
+    <p>Dopóki nie dodasz źródła w panelu, lista jest pusta. Źródła nie dodaje się na telewizorze.</p>
+
+    <h2 id="pl-kanaly">5. Lista kanałów <span class="badge tv">TV</span></h2>
+    <p>Po wejściu w źródło IPTV, Xtream albo Enigma2 widać grupy po lewej i kanały po prawej. Przy kanale może pojawić się bieżąca audycja, jeśli jest EPG.</p>
+    <table>
+      <thead><tr><th>Klawisz</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>OK</kbd></td><td>Odtwarzaj zaznaczony kanał.</td></tr>
+        <tr><td>Szukaj</td><td>Szuka nazwy kanału albo tytułu audycji w przewodniku (7 dni).</td></tr>
+        <tr><td><kbd>ZIELONY</kbd></td><td>Import EPG (XMLTV) dla tego źródła. Tuner Enigma2 podaje program sam i importu nie potrzebuje.</td></tr>
+        <tr><td><kbd>NIEBIESKI</kbd></td><td>Pobiera playlistę od dostawcy od nowa.</td></tr>
+        <tr><td><kbd>ŻÓŁTY</kbd></td><td>Dodaje albo usuwa kanał z ulubionych. Grupa ★ Ulubione pojawia się na liście grup.</td></tr>
+        <tr><td><kbd>INFO</kbd> albo <kbd>CZERWONY</kbd></td><td>Otwiera program wybranego kanału. Gdy nie ma EPG, TV podpowie import XMLTV.</td></tr>
+      </tbody>
+    </table>
+    <p>Wyszukiwanie na TV ma dwa tryby: <strong>Kanału</strong> (nazwy) oraz <strong>W programie</strong> (tytuły audycji na 7 dni). <kbd>OK</kbd> na polu otwiera klawiaturę, <kbd>WSTECZ</kbd> ją chowa.</p>
+
+    <h2 id="pl-player">6. Odtwarzacz <span class="badge tv">TV</span></h2>
+    <p>Kanał otwiera się na pełnym ekranie. OSD pokazuje nazwę, stan, godziny audycji i pasek postępu. Znika po chwili i wraca po <kbd>OK</kbd> albo <kbd>INFO</kbd>.</p>
+    <p>W dolnym wierszu OSD widać, <strong>z której playlisty</strong> leci obraz: napis <code>IPTV</code> i dwa pierwsze człony nazwy źródła, np. źródło „TV VOD 12.2026” daje <code>IPTV TV VOD</code>. Przy tunerze widnieje samo <code>Enigma2</code>. Obok stoi podpowiedź kolorowych klawiszy i pozycja <strong>OK dłużej — obraz</strong>.</p>
+    <table>
+      <thead><tr><th>Klawisz</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>CH+</kbd> / <kbd>CH−</kbd> albo góra / dół</td><td>Następny / poprzedni kanał.</td></tr>
+        <tr><td><kbd>OK</kbd> / <kbd>INFO</kbd></td><td>OSD. Przy filmie dodatkowo pauza i wznowienie. Działanie następuje po <strong>puszczeniu</strong> klawisza, żeby nie kolidowało z przytrzymaniem.</td></tr>
+        <tr><td>Przytrzymanie <kbd>OK</kbd></td><td>Wybór proporcji obrazu.</td></tr>
+        <tr><td>Lewo</td><td>Lista kanałów (zapper). Przy filmie — cofnięcie o 30 s.</td></tr>
+        <tr><td>Prawo</td><td>Przy filmie — do przodu o 30 s.</td></tr>
+        <tr><td><kbd>CZERWONY</kbd></td><td>Powrót na poprzednio oglądany kanał.</td></tr>
+        <tr><td><kbd>ZIELONY</kbd></td><td>Wybór ścieżki audio.</td></tr>
+        <tr><td><kbd>ŻÓŁTY</kbd></td><td>Pełny opis bieżącej audycji. Góra / dół przewija opis.</td></tr>
+        <tr><td><kbd>NIEBIESKI</kbd></td><td>Wybór napisów.</td></tr>
+        <tr><td><kbd>WSTECZ</kbd></td><td>Zamyka nakładkę, a gdy żadnej nie ma — odtwarzacz.</td></tr>
+      </tbody>
+    </table>
+    <p>Na liście zappera góra / dół wybiera pozycję, <kbd>OK</kbd> włącza kanał, lewo zamyka listę.</p>
+    <ul>
+      <li>Zerwany strumień jest ponawiany kilka razy. Gdy w tym samym katalogu jest zapasowe łącze, program przełącza się na nie i pokazuje komunikat o innym łączu. Gdy zamiennika nie ma, mówi to wprost: <em>brak zapasowego łącza dla tego kanału</em>.</li>
+      <li>Pozycja filmu jest zapamiętywana. Przy ponownym otwarciu odtwarzanie wznawia się od tego miejsca.</li>
+      <li>Gdy obraz zamarza albo kanał nie odpowiada po kolejnych próbach, pojawia się komunikat z liczbą prób.</li>
+      <li>Minuta spokojnego obrazu kasuje pamięć nieudanych łączy — po chwilowym przeciążeniu sieci program znów ma dokąd się przełączyć.</li>
+    </ul>
+
+    <h3 id="pl-proporcje">Proporcje obrazu</h3>
+    <p>Przytrzymanie <kbd>OK</kbd> otwiera okno <strong>Proporcje obrazu</strong> — takie samo jak wybór ścieżki audio. Działa przy kanale na żywo i przy filmie. Aktywny tryb jest zaznaczony.</p>
+    <table>
+      <thead><tr><th>Tryb</th><th>Co robi</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Rozciągnij (jak dotąd)</strong></td><td>Obraz wypełnia cały ekran. Ustawienie domyślne i zachowanie znane z wcześniejszych wersji.</td></tr>
+        <tr><td><strong>Dopasuj — cały obraz</strong></td><td>Cały kadr jest widoczny, z pasami u góry i u dołu albo po bokach.</td></tr>
+        <tr><td><strong>Powiększ — bez pasów</strong></td><td>Ekran wypełniony bez zniekształcenia; brzegi kadru wychodzą poza ekran.</td></tr>
+      </tbody>
+    </table>
+    <p>Wybór jest zapamiętywany, wspólny dla wszystkich kanałów, przeżywa zmianę kanału i ponowne uruchomienie programu.</p>
+    <div class="note"><strong>Materiał 16:9 wygląda tak samo we wszystkich trybach</strong> — nie ma tam czego dopasowywać. Różnicę widać na filmach kinowych i na starych kanałach 4:3.</div>
+
+    <h3 id="pl-obraz-stoi">Gdy obraz stanie albo zniknie sieć</h3>
+    <ul>
+      <li><strong>Obraz zamarł, a dźwięk leci dalej.</strong> Program liczy klatki faktycznie wyrysowane na ekranie. Gdy przez kilkanaście sekund nie przybywa żadna, pokazuje <em>Wykryto brak obrazu. Przywracam obraz</em> i sam odbudowuje połączenie. Wcześniej takie zamrożenie przechodziło niezauważone, bo licznik czasu rósł razem z dźwiękiem.</li>
+      <li><strong>Zerwana sieć.</strong> Po utracie Wi-Fi albo restarcie routera na ekranie staje <em>Brak sieci · czekam na połączenie</em>. Program nie wypala wtedy prób i nie oznajmia padniętego kanału. Po powrocie sieci pokazuje <em>Sieć wróciła · wznawiam odtwarzanie</em> i sam wraca do obrazu — bez wychodzenia z kanału. Tak samo działa radio, a panel w przeglądarce podnosi się po zmianie adresu telewizora.</li>
+    </ul>
+
+    <h2 id="pl-radio">7. Radio internetowe <span class="badge tv">TV</span></h2>
+    <p>Źródło typu radio otwiera listę stacji, nie listę kanałów TV.</p>
+    <ul>
+      <li><kbd>OK</kbd> — słuchaj zaznaczonej stacji.</li>
+      <li><kbd>NIEBIESKI</kbd> — odśwież playlistę.</li>
+      <li><kbd>ŻÓŁTY</kbd> — ulubione.</li>
+    </ul>
+    <p>W odtwarzaczu radia: <kbd>OK</kbd> pauza, góra / dół zmiana stacji, lewo / prawo głośność, <kbd>WSTECZ</kbd> powrót do listy. Na ekranie widać zegar oraz bitrate, gdy stacja go podaje.</p>
+    <p>Radio reaguje na sieć tak samo jak odtwarzacz kanałów: po zerwaniu połączenia czeka z komunikatem <em>Brak sieci · czekam na połączenie</em>, a po powrocie sieci samo wznawia stację.</p>
+
+    <h2 id="pl-epg-tv">8. Program na telewizorze <span class="badge tv">TV</span></h2>
+    <p>Pełny harmonogram jednego kanału otwiera <kbd>INFO</kbd> na liście. Audycje są pogrupowane według dnia. <kbd>OK</kbd> na audycji pozwala oglądać kanał teraz albo ustawić przypomnienie. Przypomnienie może też przełączyć telewizor o godzinie startu.</p>
+    <p>Import XMLTV uruchamia się klawiszem <kbd>ZIELONY</kbd> na liście kanałów albo przyciskiem w panelu. Pobranie, dopasowanie nazw i zapis odbywają się na telewizorze, w tle, i mogą potrwać kilka minut. Tuner Enigma2 nie wymaga importu — program bierze z OpenWebif. Radio nie korzysta z telewizyjnego EPG.</p>
+    <div class="tip"><strong>Przerwany import nie kasuje już programu.</strong> Nowe audycje trafiają najpierw do zapasu, a stary przewodnik żyje do chwili, gdy cały plik zostanie poprawnie wczytany. Podmiana jest jednorazowa. Zerwana sieć albo uszkodzony plik XMLTV zostawia więc program taki, jaki był — a nie pusty albo połowiczny. Przy okazji importu program sprząta audycje starsze niż pół dnia i dalsze niż osiem dni.</div>
+    <p>Kanał, którego automat nie potrafi rozpoznać po nazwie, można przypisać do pozycji XMLTV ręcznie, z panelu — patrz <a href="#pl-mapowanie">rozdział 15</a>.</p>
+
+    <h2 id="pl-panel">9. Panel w przeglądarce <span class="badge web">PANEL</span></h2>
+    <p>Panel to strona otwierana adresem z ekranu TV. Język panelu jest taki sam jak język aplikacji na telewizorze, nie język przeglądarki.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> &nbsp; IPTV E2+ Radio</div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Start</span>
+        <span class="mock-button">Kanały / Radio</span>
+        <span class="mock-button">Program</span>
+        <span class="mock-button">Filmy</span>
+        <span class="mock-button">Seriale</span>
+        <span class="mock-button">Historia</span>
+        <span class="mock-button">Ustawienia</span>
+        <span class="mock-button m3u">Pilot</span>
+        <span class="mock-button">Odśwież</span>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>GRUPY</h5><div class="mock-list"><span class="folder">★ Ulubione</span><br>Grupa 1<br>Grupa 2</div></div>
+        <div class="mock-pane"><h5>KANAŁY</h5><div class="mock-list">Szukaj…<br>• Kanał<br>• Kanał</div></div>
+        <div class="mock-pane"><h5>PASEK TV</h5><div class="mock-video">kanał · TERAZ / NASTĘPNIE</div><div class="mock-epg">⏮ ↺ ⏯ ↻ ⏭ ⏹ &nbsp; głośność &nbsp; ⓘ</div></div>
+      </div>
+    </div>
+    <h3>Zakładki</h3>
+    <ul>
+      <li><strong>Start</strong> — kontynuacja oglądania, do obejrzenia, seriale w trakcie, teraz na ulubionych, ostatnio dodane.</li>
+      <li><strong>Kanały / Radio</strong> — grupy, lista, filtr ulubionych i przełącznik wszystkich źródeł.</li>
+      <li><strong>Program</strong> — siatka EPG, przesuwanie osi czasu, szukanie audycji na 7 dni.</li>
+      <li><strong>Filmy</strong> i <strong>Seriale</strong> — ściana plakatów z playlisty.</li>
+      <li><strong>Historia</strong> — ostatnio oglądane pozycje, z możliwością wyczyszczenia.</li>
+      <li><strong>Ustawienia</strong> — źródła, telewizory, EPG, kopia zapasowa, TMDb, pilot QR.</li>
+    </ul>
+    <h3>Pasek telewizora</h3>
+    <p>Górny pasek pokazuje wybrany TV, bieżący kanał, audycję i znacznik nagrywania na tunerze Enigma2. Przyciski: poprzedni / następny kanał, cofnij i do przodu 30 s (filmy), pauza, stop, głośność, wyciszenie oraz <strong>ⓘ</strong> — pokaż panel na TV. Suwak czasu pojawia się tylko przy filmach.</p>
+    <p>Lista rozwijana <strong>Źródło</strong> przełącza playlistę. <strong>Odśwież</strong> pobiera listę z telewizora ponownie do przeglądarki. Szukaj wszędzie (<kbd>Ctrl+K</kbd>) obejmuje kanały, filmy i seriale. Przycisk mikrofonu uruchamia sterowanie głosem w przeglądarce, która to obsługuje.</p>
+    <div class="tip"><strong>Kilka telewizorów:</strong> jeden panel może sterować wieloma TV. Przełączenie telewizora zmienia też listy i program, bo każdy TV ma własne źródła.</div>
+
+    <h2 id="pl-dodaj">10. Dodawanie źródeł <span class="badge web">PANEL</span></h2>
+    <p>W <strong>Ustawienia → Źródła → Dodaj źródło</strong> wybierz rodzaj i uzupełnij pola. Po dodaniu wejdź w źródło na telewizorze, żeby wczytać listę.</p>
+    <h3>Playlista M3U</h3>
+    <ol>
+      <li>Rodzaj: <strong>Playlista M3U</strong>.</li>
+      <li>Nazwa, np. „Domowa lista”.</li>
+      <li>Adres playlisty, np. <code>http://serwer/lista.m3u</code>.</li>
+      <li>Opcjonalnie adres EPG (XMLTV).</li>
+      <li><strong>Dodaj</strong>.</li>
+    </ol>
+    <h3>Xtream Codes</h3>
+    <ol>
+      <li>Rodzaj: <strong>Xtream Codes</strong>.</li>
+      <li>Adres serwera, port (zwykle 80), użytkownik i hasło od dostawcy.</li>
+      <li>Opcjonalnie adres EPG.</li>
+      <li><strong>Dodaj</strong>.</li>
+    </ol>
+    <h3>Tuner Enigma2</h3>
+    <div class="workflow">
+      <div class="step"><b>1. Host</b>Adres tunera w sieci lokalnej.</div>
+      <div class="step"><b>2. Port</b>OpenWebif, zwykle 80. Użytkownik i hasło, jeśli są włączone.</div>
+      <div class="step"><b>3. Strumień</b>Port strumienia, zwykle 8001.</div>
+      <div class="step"><b>4. Dodaj</b>Wejdź w źródło na TV — wczytają się bukiety.</div>
+    </div>
+    <p>Z panelu, przy audycji Enigma2, można zaplanować nagranie na tunerze. Telewizor pyta o potwierdzenie, a tuner musi przyjąć timer.</p>
+    <h3>Radio internetowe</h3>
+    <ul>
+      <li><strong>Adres URL</strong> — playlista M3U w sieci.</li>
+      <li><strong>Plik .m3u z komputera</strong> — plik jest sprawdzany i zapisywany w pamięci aplikacji na telewizorze. Limit 6 MB. Plik musi zawierać prawidłowe wpisy <code>#EXTINF</code>.</li>
+    </ul>
+    <div class="note"><strong>Prywatność:</strong> samo dodanie i przeglądanie listy nie otwiera wszystkich strumieni. Połączenie z dostawcą następuje przy odtwarzaniu albo przy pobraniu playlisty / EPG / logo.</div>
+
+    <h2 id="pl-vod">11. Filmy i seriale <span class="badge web">PANEL</span></h2>
+    <p>Zakładki <strong>Filmy</strong> i <strong>Seriale</strong> pokazują pozycje, które playlista oznacza jako VOD (ścieżki albo metadane typu <code>/movie/</code> i <code>/series/</code>). Plakaty biorą się z playlisty. Klucz TMDb w Ustawieniach dopisuje opis, ocenę i tytuł oryginalny dopiero po otwarciu pozycji.</p>
+    <ul>
+      <li>Sortowanie: najnowsze, najstarsze, kolejność z playlisty, najwięcej odcinków (seriale).</li>
+      <li>Filtry: tylko z plakatem, do obejrzenia.</li>
+      <li>Znaczek ✚ na plakacie oznacza pozycję do obejrzenia.</li>
+      <li>W serialu: katalogi → serial → sezon → odcinek. Przycisk <strong>Następny nieobejrzany</strong> wznawia od pierwszego nieobejrzanego odcinka.</li>
+      <li><strong>Play na telewizorze</strong> uruchamia materiał na wybranym TV.</li>
+    </ul>
+    <p>Filtr VOD na ekranie źródeł TV i w Ustawieniach panelu ukrywa te pozycje na zwykłej liście kanałów, żeby nie mieszały się z telewizją na żywo.</p>
+
+    <h2 id="pl-pilot">12. Pilot na telefonie <span class="badge web">PANEL</span></h2>
+    <p>W <strong>Ustawieniach</strong> jest kod QR. Zeskanuj go telefonem w tej samej sieci — w przeglądarce telefonu otworzy się osobny, wąski pilot.</p>
+    <ul>
+      <li>Wybór telewizora i źródła.</li>
+      <li>Bieżący kanał, EPG i suwak filmu.</li>
+      <li>Poprzedni / następny, pauza, ±30 s, stop, wyciszenie, głośność, panel na TV.</li>
+      <li>Zakładki: ulubione, katalogi, ostatnie, szukaj.</li>
+    </ul>
+    <p>Przycisk <strong>Pilot</strong> w górnym pasku panelu otwiera to samo okno na komputerze.</p>
+
+    <h2 id="pl-klawisze">13. Klawisze pilota — zestawienie</h2>
+    <table>
+      <thead><tr><th>Ekran</th><th>Klawisz</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>Źródła</td><td><kbd>OK</kbd></td><td>Otwórz źródło. Przytrzymaj, aby usunąć.</td></tr>
+        <tr><td>Źródła</td><td><kbd>INFO</kbd> / <kbd>ZIELONY</kbd></td><td>Test połączenia.</td></tr>
+        <tr><td>Kanały</td><td><kbd>OK</kbd></td><td>Odtwarzaj.</td></tr>
+        <tr><td>Kanały</td><td><kbd>ZIELONY</kbd></td><td>Import EPG.</td></tr>
+        <tr><td>Kanały</td><td><kbd>NIEBIESKI</kbd></td><td>Odśwież playlistę.</td></tr>
+        <tr><td>Kanały</td><td><kbd>ŻÓŁTY</kbd></td><td>Ulubione.</td></tr>
+        <tr><td>Kanały</td><td><kbd>INFO</kbd> / <kbd>CZERWONY</kbd></td><td>Program kanału.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Góra / dół / <kbd>CH±</kbd></td><td>Zmiana kanału.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Przytrzymaj <kbd>OK</kbd></td><td>Proporcje obrazu.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Lewo</td><td>Lista kanałów albo −30 s w filmie.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Prawo</td><td>+30 s w filmie.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>CZERWONY</kbd></td><td>Poprzednio oglądany kanał.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>ZIELONY</kbd></td><td>Ścieżka audio.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>ŻÓŁTY</kbd></td><td>Opis audycji.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>NIEBIESKI</kbd></td><td>Napisy.</td></tr>
+        <tr><td>Radio</td><td>Góra / dół</td><td>Stacja.</td></tr>
+        <tr><td>Radio</td><td>Lewo / prawo</td><td>Głośność.</td></tr>
+        <tr><td>Panel WWW</td><td><kbd>Ctrl+K</kbd></td><td>Szukaj wszędzie.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pl-ustawienia">14. Ustawienia panelu <span class="badge web">PANEL</span></h2>
+    <ol class="settings-list">
+      <li><strong>Pilot na telefonie.</strong> Kod QR i adres strony pilota. Telefon musi być w tej samej sieci.</li>
+      <li><strong>Telewizory.</strong> Dodaj kolejny TV, wklejając pełny adres z jego ekranu, razem z <code>token</code>. Telewizor serwujący stronę jest zawsze dostępny jako „Ten telewizor”.</li>
+      <li><strong>Klawisze multimedialne.</strong> Pauza i przewijanie na klawiaturze sterują TV także przy zminimalizowanej przeglądarce. Przejmują te klawisze innym programom — wyłącz, jeśli przeszkadza. Wymaga kliknięcia na stronie, gdy przeglądarka zablokuje dźwięk.</li>
+      <li><strong>Klucz TMDb.</strong> Klucz API v3 do opisów i ocen. Plakaty działają bez klucza.</li>
+      <li><strong>Źródła.</strong> Lista, dodawanie i usuwanie. Usunięcie źródła czyści też jego listę i EPG na telewizorze.</li>
+      <li><strong>Kopia zapasowa.</strong> Pobiera plik JSON ze źródłami, lokalnymi playlistami radiowymi, ulubionymi, historią, pozycjami VOD, ręcznymi dopasowaniami EPG i ustawieniami. Plik zawiera również dane logowania zapisane przy źródłach — przechowuj go bezpiecznie. Przywrócenie zastępuje bieżące dane. Limit pliku: 10 MB.</li>
+      <li><strong>Program telewizyjny.</strong> <strong>Pobierz EPG dla wybranego źródła</strong> uruchamia import XMLTV na TV. Pod spodem leży karta <strong>Ręczne dopasowanie EPG</strong> — opisana w <a href="#pl-mapowanie">rozdziale 15</a>.</li>
+      <li><strong>Lista kanałów.</strong> Ponowne pobranie playlisty od dostawcy (to samo, co niebieski przycisk na pilocie). Ukrywanie VOD na liście kanałów. Czyszczenie pamięci przeglądarki — nie kasuje źródeł na telewizorze, tylko lokalny cache panelu.</li>
+    </ol>
+
+    <h2 id="pl-mapowanie" class="section-break">15. Ręczne dopasowanie EPG <span class="badge web">PANEL</span></h2>
+    <p>Program przypisuje kanał do przewodnika po nazwie. Na większości kanałów to wystarcza, ale zawsze zostaje garstka, której nazwa u dostawcy nie ma nic wspólnego z nazwą w pliku XMLTV — taki kanał pokazuje <em>brak danych EPG</em> mimo poprawnego importu. Od tej wersji można mu wskazać właściwą pozycję ręcznie.</p>
+    <p>Karta <strong>Ręczne dopasowanie EPG</strong> leży w <strong>Ustawienia → Program telewizyjny</strong>, pod przyciskiem importu. Dotyczy źródła wybranego na górnym pasku panelu; radio jej nie używa.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> &nbsp; Ustawienia — Ręczne dopasowanie EPG</div>
+      <div class="mock-list" style="padding:6px 9px">Dopasowano 1312 z 1397 · ręcznie 3</div>
+      <div class="mock-grid-2">
+        <div class="mock-pane"><h5>KANAŁ ZE ŹRÓDŁA</h5><div class="mock-list">Wpisz fragment nazwy kanału<br>• TVP HD → brak dopasowania<br>• TVN HD → TVN (96%)<br><br><span style="color:#39d98a;font-weight:700">Jakość 96% · automatyczne · TVN</span></div></div>
+        <div class="mock-pane"><h5>KANAŁ W XMLTV</h5><div class="mock-list">Wpisz nazwę kanału EPG<br>• TVP HD [tvp.hd.pl]<br>• TVP 1 HD [tvp1.hd.pl]</div><div class="mock-toolbar"><span class="mock-button hot">Zapisz przypisanie</span><span class="mock-button">Przywróć automatyczne</span></div></div>
+      </div>
+    </div>
+    <div class="workflow">
+      <div class="step"><b>1. Znajdź kanał</b>W lewym polu wpisz fragment nazwy. Lista pokazuje, do czego kanał jest przypisany, albo <em>brak dopasowania</em>.</div>
+      <div class="step"><b>2. Sprawdź jakość</b>Pod listą stoi ocena w procentach i sposób dopasowania: <em>dokładne</em>, <em>automatyczne</em> albo <em>ręczne</em>.</div>
+      <div class="step"><b>3. Wskaż pozycję</b>W prawym polu znajdź właściwy kanał XMLTV i wybierz <strong>Zapisz przypisanie</strong>.</div>
+      <div class="step"><b>4. Pobierz EPG</b>Uruchom import ponownie — dopiero wtedy audycje tego kanału trafią do bazy.</div>
+    </div>
+    <ul>
+      <li>Nagłówek karty podaje bilans: ile kanałów źródła ma program i ile z nich przypisano ręcznie.</li>
+      <li>Prawa lista to katalog kanałów z zaimportowanego pliku XMLTV, razem z identyfikatorem w nawiasie kwadratowym. Wyszukiwarka nad nią podpowiada nazwę wybranego kanału.</li>
+      <li><strong>Przywróć automatyczne</strong> kasuje ręczną decyzję dla zaznaczonego kanału i oddaje go automatowi.</li>
+      <li>Ręczne przypisania wygrywają z automatem i <strong>przeżywają kolejne importy EPG</strong>. Kasuje je dopiero usunięcie źródła.</li>
+      <li>Wchodzą też do kopii zapasowej i wracają przy jej przywróceniu.</li>
+    </ul>
+    <div class="note"><strong>Kiedy program pojawi się od razu, a kiedy po imporcie:</strong> kanały HD i SD tego samego nadawcy dzielą jeden komplet audycji. Jeśli wskazana pozycja XMLTV jest już używana przez inny kanał, program widać natychmiast. Jeśli nie — audycje pobierze dopiero najbliższy import.</div>
+
+    <h2 id="pl-help">16. Rozwiązywanie problemów</h2>
+    <h3>Ekran ACTIVATION REQUIRED wraca albo kod jest odrzucany</h3>
+    <ul>
+      <li>Wyślij request code skopiowany z <strong>tego</strong> telewizora.</li>
+      <li>W temacie maila użyj dokładnie <code>HPL IPTV E2+ Radio activation</code>.</li>
+      <li>Wklej cały otrzymany kod, bez spacji na końcu i bez ucięcia.</li>
+      <li>Kod z innego telewizora nie zadziała na tym.</li>
+    </ul>
+    <h3>Panel się nie otwiera</h3>
+    <ol>
+      <li>Sprawdź, czy aplikacja jest uruchomiona na TV — panel działa tylko wtedy.</li>
+      <li>Komputer i telewizor muszą być w tej samej sieci. Wyłącz izolację klientów Wi-Fi w routerze.</li>
+      <li>Wklej cały adres z ekranu, razem z <code>token</code>.</li>
+      <li>Gdy TV pokazuje czerwony komunikat, że panel nie działa, uruchom aplikację ponownie.</li>
+    </ol>
+    <h3>Źródło jest, ale lista jest pusta</h3>
+    <p>Wejdź w źródło na telewizorze albo w panelu użyj <strong>Pobierz wybraną playlistę ponownie</strong>. Panel trzyma kopię listy w przeglądarce; samo dodanie źródła nie wczytuje jeszcze kanałów.</p>
+    <h3>Brak EPG</h3>
+    <ul>
+      <li>IPTV / Xtream: podaj adres XMLTV przy źródle i uruchom import (zielony na TV albo przycisk w Ustawieniach).</li>
+      <li>Enigma2: program powinien przyjść z tunera. Sprawdź OpenWebif i czy bukiet jest wczytany.</li>
+      <li>Radio nie ma telewizyjnego EPG.</li>
+    </ul>
+    <h3>Jeden kanał nie ma programu, a reszta ma</h3>
+    <p>To zwykle nazwa: u dostawcy inna niż w pliku XMLTV, więc automat nie ma po czym rozpoznać kanału. Otwórz <strong>Ustawienia → Program telewizyjny → Ręczne dopasowanie EPG</strong>, wskaż właściwą pozycję i uruchom import jeszcze raz — <a href="#pl-mapowanie">rozdział 15</a>.</p>
+    <h3>Obraz zamarza albo kanał nie odpowiada</h3>
+    <p>Program sam ponawia strumień. Gdy w katalogu jest zapasowe łącze, przełączy się na nie. Sprawdź konto dostawcy, liczbę jednoczesnych połączeń i czy ten sam adres działa w VLC na komputerze.</p>
+    <p>Komunikat <em>Wykryto brak obrazu. Przywracam obraz</em> oznacza, że obraz stanął przy trwającym dźwięku i program właśnie odbudowuje połączenie — nie trzeba nic robić. Komunikat <em>Brak sieci · czekam na połączenie</em> mówi, że problem jest po stronie Wi-Fi albo routera; program wróci do obrazu sam, gdy sieć wróci.</p>
+    <h3>Obraz jest rozciągnięty albo ma pasy</h3>
+    <p>Przytrzymaj <kbd>OK</kbd> w odtwarzaczu i zmień tryb: <strong>Dopasuj</strong> pokazuje cały kadr z pasami, <strong>Powiększ</strong> wypełnia ekran kosztem brzegów, <strong>Rozciągnij</strong> to ustawienie domyślne. Na materiale 16:9 wszystkie trzy tryby dają ten sam obraz.</p>
+    <h3>Film nie startuje, a kanał TV tak</h3>
+    <p>Sprawdź, czy konto obejmuje VOD i czy playlista ma osobne ścieżki filmów. Filtr VOD na TV nie blokuje zakładek Filmy / Seriale w panelu — tylko czyści listę kanałów.</p>
+    <h3>Brak opisów filmów</h3>
+    <p>Plakaty nie wymagają TMDb. Opisy i oceny wymagają klucza API v3 w Ustawieniach oraz internetu w przeglądarce.</p>
+    <h3>Pilot na telefonie nie steruje</h3>
+    <p>Telefon musi być w tej samej sieci. Zeskanuj kod jeszcze raz z aktualnie otwartego panelu. Sprawdź, czy w pilocie wybrany jest właściwy telewizor.</p>
+    <div class="footer-note">Koniec części polskiej. Pełna instrukcja angielska rozpoczyna się na następnej stronie.</div>
+  </section>
+
+  <section id="en" class="language-break">
+    <h2>English user manual</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#en-what">What the program is</a></li>
+        <li><a href="#en-activation">Program activation</a></li>
+        <li><a href="#en-start">First start</a></li>
+        <li><a href="#en-sources">Sources screen</a></li>
+        <li><a href="#en-channels">Channel list</a></li>
+        <li><a href="#en-player">Player</a></li>
+        <li><a href="#en-radio">Internet radio</a></li>
+        <li><a href="#en-epg-tv">Guide on the TV</a></li>
+        <li><a href="#en-panel">Browser panel</a></li>
+        <li><a href="#en-add">Adding sources</a></li>
+        <li><a href="#en-vod">Films and series</a></li>
+        <li><a href="#en-remote">Phone remote</a></li>
+        <li><a href="#en-keys">Remote keys</a></li>
+        <li><a href="#en-settings">Panel settings</a></li>
+        <li><a href="#en-mapping">Manual EPG matching</a></li>
+        <li><a href="#en-help">Troubleshooting</a></li>
+      </ol>
+    </div>
+
+    <h2 id="en-what">1. What the program is</h2>
+    <p><strong>HPL IPTV E2+ Radio</strong> is an Android TV app. It plays IPTV channels, Enigma2 tuners and internet radio. Playlists, EPG, films and settings are added from a computer or phone through a browser panel — the same PC that runs HPL ink Enigma2+ IPTV, or any other browser on the home network.</p>
+    <ul>
+      <li>M3U / M3U8 playlist from a URL.</li>
+      <li>Xtream Codes account (server, port, user, password).</li>
+      <li>Enigma2 tuner with OpenWebif — bouquets, stream and guide from the receiver.</li>
+      <li>Internet radio from an M3U playlist (URL or a file from the computer).</li>
+      <li>XMLTV guide, films and series from the playlist, favourites, history, reminders and backup.</li>
+    </ul>
+    <div class="tip"><strong>Network:</strong> the TV, computer and phone must be on the same local network. The panel and the activation page are not a public website — they work only at home, at the address shown on the TV.</div>
+
+    <h3>What is new since version 1.77</h3>
+    <table>
+      <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
+      <tbody>
+        <tr><td>Picture ratio — three modes under a long press of <kbd>OK</kbd></td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-aspect">chapter 6</a></td></tr>
+        <tr><td>Frozen picture detected even while the sound keeps playing</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-stall">chapter 6</a></td></tr>
+        <tr><td>Waiting for the network to return instead of a dead-channel message</td><td>Player and radio <span class="badge tv">TV</span></td><td><a href="#en-stall">chapter 6</a></td></tr>
+        <tr><td>The OSD shows which playlist is playing</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
+        <tr><td>An interrupted EPG import no longer wipes the guide you have</td><td>Guide <span class="badge tv">TV</span></td><td><a href="#en-epg-tv">chapter 8</a></td></tr>
+        <tr><td>Assigning a channel to an XMLTV entry by hand</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-mapping">chapter 15</a></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Activation, adding sources, the phone remote and the panel tabs work exactly as in version 1.77.</p>
+
+    <h2 id="en-activation" class="section-break">2. Program activation</h2>
+    <p>On the first start the program does not open the source list. The TV shows only the <strong>ACTIVATION REQUIRED</strong> screen. That screen is in English. Until a valid activation code is entered, the rest of the program stays closed.</p>
+    <p>An activation code from one television will not work on another.</p>
+    <h3>Easiest path — a computer</h3>
+    <p>The activation code is long. Pasting it in a computer browser is easier than typing with the TV remote.</p>
+    <div class="workflow">
+      <div class="step"><b>1. Address</b>On the TV, read <strong>OPEN THIS ADDRESS ON A COMPUTER</strong>, e.g. <code>http://192.168.1.50:8091/activate</code>.</div>
+      <div class="step"><b>2. Request code</b>Open the address in a browser and select <strong>Copy code</strong>.</div>
+      <div class="step"><b>3. Send</b>Send the copied code to <code>hplink.soft@proton.me</code>.</div>
+      <div class="step"><b>4. Activate</b>Paste the code you receive into <strong>ACTIVATION CODE</strong> and select <strong>Activate</strong>.</div>
+    </div>
+    <p>Use this exact subject line:</p>
+    <p><code>HPL IPTV E2+ Radio activation</code></p>
+    <p>A successful activation shows <em>Activated. The program is starting on the TV.</em> The television then opens the normal sources screen. Later starts do not show this screen again.</p>
+    <h3>The same steps on the TV</h3>
+    <p>If no computer is at hand, the same fields are on the TV screen:</p>
+    <ul>
+      <li><strong>DEVICE ID</strong> — a short identifier in the form <code>HPL-XXXX-XXXX-XXXX</code>.</li>
+      <li><strong>REQUEST CODE</strong> — the long code to send.</li>
+      <li><strong>Copy code</strong> — copies the request code (when the TV has a clipboard).</li>
+      <li><strong>ACTIVATION CODE</strong> — field for the code you receive.</li>
+      <li><strong>Activate</strong> — submits the code.</li>
+      <li><strong>Close program</strong> — closes the app.</li>
+    </ul>
+    <p><em>This code is not valid for this device.</em> means the pasted code does not match this television. Check that you sent the request code from this device and that you pasted the entire code you received, with nothing cut off.</p>
+    <p class="muted">Other versions: <a href="https://hplspam1-jpg.github.io/HPL-ink-Software/index.html">hplspam1-jpg.github.io/HPL-ink-Software</a></p>
+    <div class="note"><strong>Network during activation:</strong> the <code>/activate</code> address works only when the TV is on the local network. If the TV shows <code>no network connection</code>, connect Wi-Fi or a cable and start the program again.</div>
+
+    <h2 id="en-start">3. First start</h2>
+    <h3>Requirements</h3>
+    <ul>
+      <li>A television or box with Android TV / Google TV, Android 8.0 or newer.</li>
+      <li>The same local network for the TV, computer and phone.</li>
+      <li>For IPTV: an M3U/M3U8 playlist or Xtream Codes details from the provider.</li>
+      <li>For Enigma2: a receiver with OpenWebif enabled on the same network.</li>
+      <li>For radio: an M3U playlist at a URL or a <code>.m3u</code> file from the computer (6 MB maximum).</li>
+      <li>Optional TMDb API v3 key — only for descriptions, ratings and original titles. Posters come from the playlist.</li>
+    </ul>
+    <h3>After activation</h3>
+    <ol>
+      <li>The TV shows the sources screen and a large panel address, e.g. <code>http://192.168.1.50:8091/?token=…</code>.</li>
+      <li>Copy the <strong>entire</strong> address, including the <code>token</code> parameter.</li>
+      <li>Open it in a browser on the computer.</li>
+      <li>In the panel, under <strong>Settings</strong>, add the first source.</li>
+      <li>Go back to the TV and open that source to load the list.</li>
+    </ol>
+    <div class="warning"><strong>Important:</strong> an address without <code>token</code> will not open the panel. When adding a second TV, always paste the full address from its screen.</div>
+
+    <h2 id="en-sources">4. Sources screen <span class="badge tv">TV</span></h2>
+    <p>This is the first screen after activation. The drawing below is a UI diagram and contains no real address or token.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v1.87 — IPTV, Enigma2 and Radio</div>
+      <div class="mock-pane">
+        <h5>BROWSER CONTROL PANEL</h5>
+        <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Refresh screen</span>
+        <span class="mock-button">Clear picons</span>
+        <span class="mock-button m3u">VOD filter</span>
+      </div>
+      <div class="mock-list" style="padding:8px">
+        M3U playlist<br>
+        Xtream Codes<br>
+        Enigma2 tuner<br>
+        Internet radio M3U
+      </div>
+    </div>
+    <ul>
+      <li><strong>Refresh screen</strong> — reloads the source list.</li>
+      <li><strong>Clear picons</strong> — removes cached channel logos from the TV.</li>
+      <li><strong>VOD filter</strong> — hides or shows films and series on the channel list. The same switch is in the panel.</li>
+      <li><kbd>OK</kbd> opens a source. Holding <kbd>OK</kbd> asks to delete it.</li>
+      <li><kbd>INFO</kbd> or <kbd>GREEN</kbd> tests the selected source.</li>
+    </ul>
+    <p>Until you add a source in the panel, the list is empty. Sources are not added on the TV.</p>
+
+    <h2 id="en-channels">5. Channel list <span class="badge tv">TV</span></h2>
+    <p>Opening an IPTV, Xtream or Enigma2 source shows groups on the left and channels on the right. A current programme may appear next to a channel when EPG is available.</p>
+    <table>
+      <thead><tr><th>Key</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>OK</kbd></td><td>Play the selected channel.</td></tr>
+        <tr><td>Search</td><td>Searches a channel name or a programme title in the guide (7 days).</td></tr>
+        <tr><td><kbd>GREEN</kbd></td><td>EPG (XMLTV) import for this source. An Enigma2 tuner provides the guide itself and needs no import.</td></tr>
+        <tr><td><kbd>BLUE</kbd></td><td>Fetches the playlist from the provider again.</td></tr>
+        <tr><td><kbd>YELLOW</kbd></td><td>Adds or removes the channel from favourites. The ★ Favourites group appears in the group list.</td></tr>
+        <tr><td><kbd>INFO</kbd> or <kbd>RED</kbd></td><td>Opens the guide for the selected channel. If there is no EPG, the TV suggests an XMLTV import.</td></tr>
+      </tbody>
+    </table>
+    <p>Search on the TV has two modes: <strong>Channel</strong> (names) and <strong>In the guide</strong> (programme titles for 7 days). <kbd>OK</kbd> on the field opens the keyboard, <kbd>BACK</kbd> hides it.</p>
+
+    <h2 id="en-player">6. Player <span class="badge tv">TV</span></h2>
+    <p>A channel opens full screen. The OSD shows the name, state, programme times and a progress bar. It hides after a moment and returns with <kbd>OK</kbd> or <kbd>INFO</kbd>.</p>
+    <p>The bottom OSD line shows <strong>which playlist</strong> is playing: the word <code>IPTV</code> plus the first two words of the source name — the source “TV VOD 12.2026” gives <code>IPTV TV VOD</code>. A tuner shows just <code>Enigma2</code>. Next to it sit the colour key hints and the item <strong>hold OK — picture</strong>.</p>
+    <table>
+      <thead><tr><th>Key</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>CH+</kbd> / <kbd>CH−</kbd> or up / down</td><td>Next / previous channel.</td></tr>
+        <tr><td><kbd>OK</kbd> / <kbd>INFO</kbd></td><td>OSD. On a film, also pause and resume. It acts on key <strong>release</strong>, so it does not clash with the long press.</td></tr>
+        <tr><td>Hold <kbd>OK</kbd></td><td>Picture ratio selection.</td></tr>
+        <tr><td>Left</td><td>Channel list (zapper). On a film — back 30 s.</td></tr>
+        <tr><td>Right</td><td>On a film — forward 30 s.</td></tr>
+        <tr><td><kbd>RED</kbd></td><td>Return to the previously watched channel.</td></tr>
+        <tr><td><kbd>GREEN</kbd></td><td>Audio track selection.</td></tr>
+        <tr><td><kbd>YELLOW</kbd></td><td>Full description of the current programme. Up / down scrolls the text.</td></tr>
+        <tr><td><kbd>BLUE</kbd></td><td>Subtitle selection.</td></tr>
+        <tr><td><kbd>BACK</kbd></td><td>Closes an overlay; if none is open, closes the player.</td></tr>
+      </tbody>
+    </table>
+    <p>In the zapper list, up / down selects a row, <kbd>OK</kbd> plays it, left closes the list.</p>
+    <ul>
+      <li>A dropped stream is retried several times. If the same folder has a backup link, the program switches to it and shows a failover notice. When there is no replacement it says so: <em>no backup link for this channel</em>.</li>
+      <li>Film position is stored. The next opening resumes from that point.</li>
+      <li>If the picture freezes or the channel does not respond after the retries, a message with the attempt count is shown.</li>
+      <li>A minute of healthy picture clears the memory of failed links — after a short network overload the program has somewhere to switch again.</li>
+    </ul>
+
+    <h3 id="en-aspect">Picture ratio</h3>
+    <p>Holding <kbd>OK</kbd> opens the <strong>Picture ratio</strong> window — the same layout as the audio track selection. It works on a live channel and on a film. The active mode is marked.</p>
+    <table>
+      <thead><tr><th>Mode</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stretch (as before)</strong></td><td>The picture fills the whole screen. The default, and the behaviour known from earlier versions.</td></tr>
+        <tr><td><strong>Fit — whole picture</strong></td><td>The whole frame is visible, with bars at the top and bottom or at the sides.</td></tr>
+        <tr><td><strong>Zoom — no bars</strong></td><td>The screen is filled without distortion; the edges of the frame go past the screen.</td></tr>
+      </tbody>
+    </table>
+    <p>The choice is stored, shared by all channels, and survives a channel change and a restart of the program.</p>
+    <div class="note"><strong>16:9 material looks the same in every mode</strong> — there is nothing to fit. The difference shows on cinema films and on old 4:3 channels.</div>
+
+    <h3 id="en-stall">When the picture stops or the network drops</h3>
+    <ul>
+      <li><strong>The picture froze while the sound keeps playing.</strong> The program counts the frames actually drawn on the screen. When none arrives for a dozen or so seconds it shows <em>No picture detected. Restoring the picture</em> and rebuilds the connection on its own. Such a freeze used to pass unnoticed, because the time counter kept moving along with the sound.</li>
+      <li><strong>The network dropped.</strong> After a lost Wi-Fi connection or a router restart the screen shows <em>No network · waiting for a connection</em>. The program does not burn through its retries and does not declare the channel dead. When the network returns it shows <em>Network is back · resuming playback</em> and picks the picture up again — without leaving the channel. Radio behaves the same way, and the browser panel comes back up after the TV changes address.</li>
+    </ul>
+
+    <h2 id="en-radio">7. Internet radio <span class="badge tv">TV</span></h2>
+    <p>A radio source opens a station list, not a TV channel list.</p>
+    <ul>
+      <li><kbd>OK</kbd> — play the selected station.</li>
+      <li><kbd>BLUE</kbd> — refresh the playlist.</li>
+      <li><kbd>YELLOW</kbd> — favourites.</li>
+    </ul>
+    <p>In the radio player: <kbd>OK</kbd> pause, up / down change station, left / right volume, <kbd>BACK</kbd> return to the list. A clock is shown, and the bitrate when the station provides it.</p>
+    <p>Radio reacts to the network like the channel player: after a lost connection it waits with <em>No network · waiting for a connection</em> and resumes the station by itself once the network is back.</p>
+
+    <h2 id="en-epg-tv">8. Guide on the TV <span class="badge tv">TV</span></h2>
+    <p><kbd>INFO</kbd> on the channel list opens the full schedule for one channel. Programmes are grouped by day. <kbd>OK</kbd> on an item can play the channel now or set a reminder. A reminder can also switch the TV at the start time.</p>
+    <p>XMLTV import is started with <kbd>GREEN</kbd> on the channel list or with the button in the panel. Download, name matching and storage run on the TV in the background and may take a few minutes. An Enigma2 tuner needs no import — the guide comes from OpenWebif. Radio does not use the TV guide.</p>
+    <div class="tip"><strong>An interrupted import no longer wipes the guide.</strong> New programmes go to a holding area first, and the old guide lives until the whole file has been read correctly. The swap happens in one step. A dropped network or a damaged XMLTV file therefore leaves the guide as it was — not empty or half filled. While importing, the program also clears programmes older than half a day and further away than eight days.</div>
+    <p>A channel the automatic matching cannot recognise by name can be assigned to an XMLTV entry by hand, from the panel — see <a href="#en-mapping">chapter 15</a>.</p>
+
+    <h2 id="en-panel">9. Browser panel <span class="badge web">PANEL</span></h2>
+    <p>The panel is the page opened from the address on the TV screen. Its language follows the app language on the television, not the browser language.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> &nbsp; IPTV E2+ Radio</div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Start</span>
+        <span class="mock-button">Channels / Radio</span>
+        <span class="mock-button">Guide</span>
+        <span class="mock-button">Films</span>
+        <span class="mock-button">Series</span>
+        <span class="mock-button">History</span>
+        <span class="mock-button">Settings</span>
+        <span class="mock-button m3u">Remote</span>
+        <span class="mock-button">Refresh</span>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-pane"><h5>GROUPS</h5><div class="mock-list"><span class="folder">★ Favourites</span><br>Group 1<br>Group 2</div></div>
+        <div class="mock-pane"><h5>CHANNELS</h5><div class="mock-list">Search…<br>• Channel<br>• Channel</div></div>
+        <div class="mock-pane"><h5>TV BAR</h5><div class="mock-video">channel · NOW / NEXT</div><div class="mock-epg">⏮ ↺ ⏯ ↻ ⏭ ⏹ &nbsp; volume &nbsp; ⓘ</div></div>
+      </div>
+    </div>
+    <h3>Tabs</h3>
+    <ul>
+      <li><strong>Start</strong> — continue watching, to watch, series in progress, now on favourites, recently added.</li>
+      <li><strong>Channels / Radio</strong> — groups, list, favourites filter and an all-sources switch.</li>
+      <li><strong>Guide</strong> — EPG grid, timeline shift, programme search over 7 days.</li>
+      <li><strong>Films</strong> and <strong>Series</strong> — poster wall from the playlist.</li>
+      <li><strong>History</strong> — recently watched items, with a clear action.</li>
+      <li><strong>Settings</strong> — sources, TV sets, EPG, backup, TMDb, QR remote.</li>
+    </ul>
+    <h3>TV bar</h3>
+    <p>The top bar shows the selected TV, the current channel, the programme and a recording mark when the Enigma2 tuner is recording. Buttons: previous / next channel, back and forward 30 s (films), pause, stop, volume, mute and <strong>ⓘ</strong> — show the panel on the TV. The seek slider appears for films only.</p>
+    <p>The <strong>Source</strong> list switches the playlist. <strong>Refresh</strong> fetches the list from the TV into the browser again. Search everywhere (<kbd>Ctrl+K</kbd>) covers channels, films and series. The microphone button starts voice control in browsers that support it.</p>
+    <div class="tip"><strong>Several TV sets:</strong> one panel can control several televisions. Switching TV also changes lists and the guide, because each TV has its own sources.</div>
+
+    <h2 id="en-add">10. Adding sources <span class="badge web">PANEL</span></h2>
+    <p>In <strong>Settings → Sources → Add a source</strong> choose the type and fill in the fields. After adding, open the source on the TV to load the list.</p>
+    <h3>M3U playlist</h3>
+    <ol>
+      <li>Type: <strong>M3U playlist</strong>.</li>
+      <li>Name, e.g. “Home list”.</li>
+      <li>Playlist address, e.g. <code>http://server/list.m3u</code>.</li>
+      <li>Optional EPG (XMLTV) address.</li>
+      <li><strong>Add</strong>.</li>
+    </ol>
+    <h3>Xtream Codes</h3>
+    <ol>
+      <li>Type: <strong>Xtream Codes</strong>.</li>
+      <li>Server address, port (usually 80), user and password from the provider.</li>
+      <li>Optional EPG address.</li>
+      <li><strong>Add</strong>.</li>
+    </ol>
+    <h3>Enigma2 tuner</h3>
+    <div class="workflow">
+      <div class="step"><b>1. Host</b>Receiver address on the local network.</div>
+      <div class="step"><b>2. Port</b>OpenWebif, usually 80. User and password if authentication is on.</div>
+      <div class="step"><b>3. Stream</b>Stream port, usually 8001.</div>
+      <div class="step"><b>4. Add</b>Open the source on the TV — bouquets will load.</div>
+    </div>
+    <p>From the panel, an Enigma2 programme can be scheduled as a recording on the tuner. The TV asks for confirmation, and the receiver must accept the timer.</p>
+    <h3>Internet radio</h3>
+    <ul>
+      <li><strong>URL address</strong> — an M3U playlist on the network.</li>
+      <li><strong>.m3u file from the computer</strong> — the file is checked and stored in the app on the TV. Limit 6 MB. The file must contain valid <code>#EXTINF</code> entries.</li>
+    </ul>
+    <div class="note"><strong>Privacy:</strong> adding or browsing a list does not open every stream. A provider connection is made when an item is played or when a playlist / EPG / logo is fetched.</div>
+
+    <h2 id="en-vod">11. Films and series <span class="badge web">PANEL</span></h2>
+    <p>The <strong>Films</strong> and <strong>Series</strong> tabs show items that the playlist marks as VOD (paths or metadata such as <code>/movie/</code> and <code>/series/</code>). Posters come from the playlist. A TMDb key in Settings adds the description, rating and original title only after an item is opened.</p>
+    <ul>
+      <li>Sorting: newest, oldest, playlist order, most episodes (series).</li>
+      <li>Filters: with poster only, to watch.</li>
+      <li>The ✚ badge on a poster marks an item to watch.</li>
+      <li>In series: folders → series → season → episode. <strong>Next unwatched</strong> resumes from the first unwatched episode.</li>
+      <li><strong>Play on the TV</strong> starts the item on the selected television.</li>
+    </ul>
+    <p>The VOD filter on the TV sources screen and in panel Settings hides these items on the ordinary channel list so they do not mix with live TV.</p>
+
+    <h2 id="en-remote">12. Phone remote <span class="badge web">PANEL</span></h2>
+    <p><strong>Settings</strong> shows a QR code. Scan it with a phone on the same network — a separate, narrow remote opens in the phone browser.</p>
+    <ul>
+      <li>TV and source selection.</li>
+      <li>Current channel, EPG and a film seek slider.</li>
+      <li>Previous / next, pause, ±30 s, stop, mute, volume, panel on the TV.</li>
+      <li>Tabs: favourites, folders, recent, search.</li>
+    </ul>
+    <p>The <strong>Remote</strong> button in the panel header opens the same window on the computer.</p>
+
+    <h2 id="en-keys">13. Remote keys — summary</h2>
+    <table>
+      <thead><tr><th>Screen</th><th>Key</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Sources</td><td><kbd>OK</kbd></td><td>Open the source. Hold to delete.</td></tr>
+        <tr><td>Sources</td><td><kbd>INFO</kbd> / <kbd>GREEN</kbd></td><td>Connection test.</td></tr>
+        <tr><td>Channels</td><td><kbd>OK</kbd></td><td>Play.</td></tr>
+        <tr><td>Channels</td><td><kbd>GREEN</kbd></td><td>EPG import.</td></tr>
+        <tr><td>Channels</td><td><kbd>BLUE</kbd></td><td>Refresh the playlist.</td></tr>
+        <tr><td>Channels</td><td><kbd>YELLOW</kbd></td><td>Favourites.</td></tr>
+        <tr><td>Channels</td><td><kbd>INFO</kbd> / <kbd>RED</kbd></td><td>Channel guide.</td></tr>
+        <tr><td>Player</td><td>Up / down / <kbd>CH±</kbd></td><td>Change channel.</td></tr>
+        <tr><td>Player</td><td>Hold <kbd>OK</kbd></td><td>Picture ratio.</td></tr>
+        <tr><td>Player</td><td>Left</td><td>Channel list or −30 s in a film.</td></tr>
+        <tr><td>Player</td><td>Right</td><td>+30 s in a film.</td></tr>
+        <tr><td>Player</td><td><kbd>RED</kbd></td><td>Previously watched channel.</td></tr>
+        <tr><td>Player</td><td><kbd>GREEN</kbd></td><td>Audio track.</td></tr>
+        <tr><td>Player</td><td><kbd>YELLOW</kbd></td><td>Programme description.</td></tr>
+        <tr><td>Player</td><td><kbd>BLUE</kbd></td><td>Subtitles.</td></tr>
+        <tr><td>Radio</td><td>Up / down</td><td>Station.</td></tr>
+        <tr><td>Radio</td><td>Left / right</td><td>Volume.</td></tr>
+        <tr><td>Web panel</td><td><kbd>Ctrl+K</kbd></td><td>Search everywhere.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="en-settings">14. Panel settings <span class="badge web">PANEL</span></h2>
+    <ol class="settings-list">
+      <li><strong>Remote on your phone.</strong> QR code and remote page address. The phone must be on the same network.</li>
+      <li><strong>TV sets.</strong> Add another TV by pasting the full address from its screen, including <code>token</code>. The television serving this page is always available as “This TV”.</li>
+      <li><strong>Media keys.</strong> Pause and seek keys on the keyboard control the TV even when the browser is minimised. They take those keys from other programs — turn the option off if that gets in the way. A click on the page may be required if the browser blocked audio.</li>
+      <li><strong>TMDb key.</strong> API v3 key for descriptions and ratings. Posters work without a key.</li>
+      <li><strong>Sources.</strong> List, add and delete. Deleting a source also clears its list and EPG on the TV.</li>
+      <li><strong>Backup.</strong> Downloads a JSON file with sources, local radio playlists, favourites, history, VOD positions, manual EPG matches and program settings. The file also contains the login details stored with your sources — keep it safe. Restore replaces the current data. File limit: 10 MB.</li>
+      <li><strong>TV guide.</strong> <strong>Fetch EPG for the selected source</strong> starts an XMLTV import on the TV. Below it sits the <strong>Manual EPG matching</strong> card — described in <a href="#en-mapping">chapter 15</a>.</li>
+      <li><strong>Channel list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Hide VOD on the channel list. Clear browser storage — this does not delete sources on the TV, only the panel’s local cache.</li>
+    </ol>
+
+    <h2 id="en-mapping" class="section-break">15. Manual EPG matching <span class="badge web">PANEL</span></h2>
+    <p>The program matches a channel to the guide by name. On most channels that is enough, but a handful always remain whose provider name has nothing in common with the name in the XMLTV file — such a channel shows <em>no EPG data</em> even after a correct import. From this version you can point it at the right entry by hand.</p>
+    <p>The <strong>Manual EPG matching</strong> card is in <strong>Settings → TV guide</strong>, below the import button. It applies to the source selected in the panel header; radio does not use it.</p>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>ink</i> &nbsp; Settings — Manual EPG matching</div>
+      <div class="mock-list" style="padding:6px 9px">Matched 1312 of 1397 · manual 3</div>
+      <div class="mock-grid-2">
+        <div class="mock-pane"><h5>CHANNEL FROM THE SOURCE</h5><div class="mock-list">Type part of the channel name<br>• TVP HD → no match<br>• TVN HD → TVN (96%)<br><br><span style="color:#39d98a;font-weight:700">Quality 96% · automatic · TVN</span></div></div>
+        <div class="mock-pane"><h5>CHANNEL IN XMLTV</h5><div class="mock-list">Type the EPG channel name<br>• TVP HD [tvp.hd.pl]<br>• TVP 1 HD [tvp1.hd.pl]</div><div class="mock-toolbar"><span class="mock-button hot">Save mapping</span><span class="mock-button">Restore automatic</span></div></div>
+      </div>
+    </div>
+    <div class="workflow">
+      <div class="step"><b>1. Find the channel</b>Type part of the name in the left field. The list shows what the channel is matched to, or <em>no match</em>.</div>
+      <div class="step"><b>2. Check the quality</b>Below the list is a percentage and the matching method: <em>exact</em>, <em>automatic</em> or <em>manual</em>.</div>
+      <div class="step"><b>3. Point at an entry</b>Find the right XMLTV channel in the right field and select <strong>Save mapping</strong>.</div>
+      <div class="step"><b>4. Fetch the EPG</b>Run the import again — only then do that channel's programmes reach the database.</div>
+    </div>
+    <ul>
+      <li>The card header gives the balance: how many channels of the source have a guide and how many were matched by hand.</li>
+      <li>The right list is the catalogue of channels from the imported XMLTV file, with the identifier in square brackets. The search box above it is pre-filled with the name of the selected channel.</li>
+      <li><strong>Restore automatic</strong> removes the manual decision for the selected channel and hands it back to the automatic matching.</li>
+      <li>Manual assignments win over the automatic ones and <strong>survive later EPG imports</strong>. Only deleting the source clears them.</li>
+      <li>They also go into the backup and come back when it is restored.</li>
+    </ul>
+    <div class="note"><strong>When the guide appears at once and when only after an import:</strong> HD and SD channels of the same broadcaster share one set of programmes. If the XMLTV entry you pick is already used by another channel, the guide shows immediately. If not, the programmes arrive with the next import.</div>
+
+    <h2 id="en-help">16. Troubleshooting</h2>
+    <h3>The ACTIVATION REQUIRED screen returns or the code is rejected</h3>
+    <ul>
+      <li>Send the request code copied from <strong>this</strong> television.</li>
+      <li>Use the exact subject <code>HPL IPTV E2+ Radio activation</code>.</li>
+      <li>Paste the entire code you received, with no trailing space and nothing cut off.</li>
+      <li>A code from another television will not work on this one.</li>
+    </ul>
+    <h3>The panel does not open</h3>
+    <ol>
+      <li>Check that the app is running on the TV — the panel works only then.</li>
+      <li>The computer and the TV must be on the same network. Turn off Wi-Fi client isolation on the router.</li>
+      <li>Paste the full address from the screen, including <code>token</code>.</li>
+      <li>If the TV shows a red message that the panel is not working, start the app again.</li>
+    </ol>
+    <h3>The source is there, but the list is empty</h3>
+    <p>Open the source on the TV or use <strong>Fetch the selected playlist again</strong> in the panel. The panel keeps a copy of the list in the browser; adding a source does not load the channels by itself.</p>
+    <h3>No EPG</h3>
+    <ul>
+      <li>IPTV / Xtream: enter an XMLTV address on the source and run the import (green on the TV or the button in Settings).</li>
+      <li>Enigma2: the guide should come from the receiver. Check OpenWebif and that a bouquet is loaded.</li>
+      <li>Radio has no TV guide.</li>
+    </ul>
+    <h3>One channel has no guide while the rest do</h3>
+    <p>Usually it is the name: different at the provider than in the XMLTV file, so the automatic matching has nothing to recognise the channel by. Open <strong>Settings → TV guide → Manual EPG matching</strong>, point at the right entry and run the import once more — <a href="#en-mapping">chapter 15</a>.</p>
+    <h3>The picture freezes or the channel does not respond</h3>
+    <p>The program retries the stream on its own. If the folder has a backup link, it switches to it. Check the provider account, the number of concurrent connections, and whether the same address plays in VLC on a computer.</p>
+    <p>The message <em>No picture detected. Restoring the picture</em> means the picture stopped while the sound kept playing and the program is rebuilding the connection — nothing to do. The message <em>No network · waiting for a connection</em> means the problem is with Wi-Fi or the router; the program returns to the picture by itself once the network is back.</p>
+    <h3>The picture is stretched or has bars</h3>
+    <p>Hold <kbd>OK</kbd> in the player and change the mode: <strong>Fit</strong> shows the whole frame with bars, <strong>Zoom</strong> fills the screen at the cost of the edges, <strong>Stretch</strong> is the default. On 16:9 material all three modes give the same picture.</p>
+    <h3>A film does not start, but a TV channel does</h3>
+    <p>Check that the account includes VOD and that the playlist has separate film paths. The VOD filter on the TV does not block the Films / Series tabs in the panel — it only cleans the channel list.</p>
+    <h3>Film descriptions are missing</h3>
+    <p>Posters do not need TMDb. Descriptions and ratings need an API v3 key in Settings and internet access in the browser.</p>
+    <h3>The phone remote does not control the TV</h3>
+    <p>The phone must be on the same network. Scan the code again from the panel that is currently open. Check that the remote has the correct television selected.</p>
+    <div class="footer-note">HPL ink IPTV E2+ Radio Android v1.87 — bilingual user manual — 17.08.2026</div>
+  </section>
+</main>
+</body>
+</html>

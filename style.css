@@ -578,3 +578,9 @@ body.pl .lang-en {
     color: var(--muted);
     font-size: 13px;
 }
+
+.trial-status.activation {
+    color: #f5b94d;
+    border: 1px solid #f5b94d;
+    background: rgba(245, 185, 77, .12);
+}
