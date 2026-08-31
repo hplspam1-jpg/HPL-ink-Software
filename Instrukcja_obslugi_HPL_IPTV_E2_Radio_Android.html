@@ -173,12 +173,12 @@
     <p class="subtitle">Dwujęzyczny przewodnik po programie na Android TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
       <div class="edition"><strong>Platforma</strong><span>Android TV / Google TV</span></div>
-      <div class="edition"><strong>Wydanie</strong><span>v1.87 &nbsp; 17.08.2026</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v2.13 &nbsp; 31.08.2026</span></div>
       <div class="edition"><strong>Źródła</strong><span>M3U, Xtream, Enigma2, radio</span></div>
       <div class="edition"><strong>Sterowanie</strong><span>pilot TV + panel w przeglądarce</span></div>
     </div>
     <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge tv">TV</span> oznacza czynność na telewizorze. <span class="badge web">PANEL</span> oznacza czynność w przeglądarce komputera lub telefonu, na adresie pokazanym na ekranie TV.</div>
-    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v1.87</strong> z 17.08.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.13</strong> z 31.08.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
   </section>
 
   <section id="pl" class="page-break">
@@ -215,19 +215,21 @@
     </ul>
     <div class="tip"><strong>Sieć:</strong> telewizor, komputer i telefon muszą być w tej samej sieci lokalnej. Panel i strona aktywacji nie są stroną internetową w sieci publicznej — działają tylko w domu, pod adresem pokazanym na TV.</div>
 
-    <h3>Co nowego od wersji 1.77</h3>
+    <h3>Co nowego od wersji 1.87</h3>
     <table>
       <thead><tr><th>Nowość</th><th>Gdzie</th><th>Opis w instrukcji</th></tr></thead>
       <tbody>
-        <tr><td>Proporcje obrazu — trzy tryby pod przytrzymaniem <kbd>OK</kbd></td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-proporcje">rozdział 6</a></td></tr>
-        <tr><td>Wykrywanie zamarcia obrazu, także gdy dźwięk leci dalej</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-obraz-stoi">rozdział 6</a></td></tr>
-        <tr><td>Czekanie na powrót sieci zamiast komunikatu o padniętym kanale</td><td>Odtwarzacz i radio <span class="badge tv">TV</span></td><td><a href="#pl-obraz-stoi">rozdział 6</a></td></tr>
-        <tr><td>W OSD widać, która playlista gra</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
-        <tr><td>Przerwany import EPG nie kasuje już posiadanego programu</td><td>Program <span class="badge tv">TV</span></td><td><a href="#pl-epg-tv">rozdział 8</a></td></tr>
-        <tr><td>Ręczne przypisanie kanału do pozycji XMLTV</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-mapowanie">rozdział 15</a></td></tr>
+        <tr><td><strong>Prawo</strong> otwiera pasek kafelków z kolejnymi kanałami — picon, nazwa i audycja, która teraz leci</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-kafelki">rozdział 6</a></td></tr>
+        <tr><td><strong>Lewo</strong> otwiera bukiet oglądanego kanału, a lewo / prawo przerzuca między bukietami</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
+        <tr><td>Czerwona kropka pod zegarem w OSD, gdy czeka przypomnienie</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
+        <tr><td>Zapowiedź kolejnej audycji na kilka minut przed jej startem</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
+        <tr><td>Przewodnik importuje się <strong>sam raz na dobę</strong> i ustępuje odtwarzaniu</td><td>Program <span class="badge tv">TV</span></td><td><a href="#pl-epg-tv">rozdział 8</a></td></tr>
+        <tr><td>Kafelki „Wróć do tego” i lista oczekujących przypomnień na stronie Start</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-panel">rozdział 9</a></td></tr>
+        <tr><td>Ukrywanie bukietów, których nigdy nie oglądasz</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
+        <tr><td>Stan przewodnika: ile audycji, do kiedy sięga i przycisk czyszczenia</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
       </tbody>
     </table>
-    <p class="muted">Aktywacja, dodawanie źródeł, pilot na telefonie i zakładki panelu działają tak samo jak w wersji 1.77.</p>
+    <p class="muted">Aktywacja, dodawanie źródeł, pilot na telefonie i zakładki panelu działają tak samo jak w wersji 1.87. Zmienił się wygląd OSD: nazwa kanału jest czerwona, a logotyp stoi pośrodku pola po jej lewej stronie.</p>
 
     <h2 id="pl-aktywacja" class="section-break">2. Aktywacja programu</h2>
     <p>Przy pierwszym uruchomieniu program nie otwiera listy źródeł. Na telewizorze pojawia się wyłącznie ekran <strong>ACTIVATION REQUIRED</strong>. Ten ekran jest po angielsku. Do czasu wpisania prawidłowego kodu aktywacyjnego reszta programu pozostaje zamknięta.</p>
@@ -280,7 +282,7 @@
     <h2 id="pl-zrodla">4. Ekran źródeł <span class="badge tv">TV</span></h2>
     <p>To pierwszy ekran po aktywacji. Poniższy rysunek jest schematem GUI i nie zawiera prawdziwego adresu ani tokenu.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v1.87 — IPTV, Enigma2 i Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.13 — IPTV, Enigma2 i Radio</div>
       <div class="mock-pane">
         <h5>PANEL STEROWANIA W PRZEGLĄDARCE</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -322,7 +324,7 @@
     <p>Wyszukiwanie na TV ma dwa tryby: <strong>Kanału</strong> (nazwy) oraz <strong>W programie</strong> (tytuły audycji na 7 dni). <kbd>OK</kbd> na polu otwiera klawiaturę, <kbd>WSTECZ</kbd> ją chowa.</p>
 
     <h2 id="pl-player">6. Odtwarzacz <span class="badge tv">TV</span></h2>
-    <p>Kanał otwiera się na pełnym ekranie. OSD pokazuje nazwę, stan, godziny audycji i pasek postępu. Znika po chwili i wraca po <kbd>OK</kbd> albo <kbd>INFO</kbd>.</p>
+    <p>Kanał otwiera się na pełnym ekranie. OSD pokazuje logotyp kanału, <strong>jego nazwę na czerwono</strong>, tytuł audycji, godziny nadawania i pasek postępu. Znika po chwili i wraca po <kbd>OK</kbd> albo <kbd>INFO</kbd> — wywołane klawiszem stoi dwa razy dłużej niż to, które pokazuje się samo po zmianie kanału.</p>
     <p>W dolnym wierszu OSD widać, <strong>z której playlisty</strong> leci obraz: napis <code>IPTV</code> i dwa pierwsze człony nazwy źródła, np. źródło „TV VOD 12.2026” daje <code>IPTV TV VOD</code>. Przy tunerze widnieje samo <code>Enigma2</code>. Obok stoi podpowiedź kolorowych klawiszy i pozycja <strong>OK dłużej — obraz</strong>.</p>
     <table>
       <thead><tr><th>Klawisz</th><th>Działanie</th></tr></thead>
@@ -330,8 +332,8 @@
         <tr><td><kbd>CH+</kbd> / <kbd>CH−</kbd> albo góra / dół</td><td>Następny / poprzedni kanał.</td></tr>
         <tr><td><kbd>OK</kbd> / <kbd>INFO</kbd></td><td>OSD. Przy filmie dodatkowo pauza i wznowienie. Działanie następuje po <strong>puszczeniu</strong> klawisza, żeby nie kolidowało z przytrzymaniem.</td></tr>
         <tr><td>Przytrzymanie <kbd>OK</kbd></td><td>Wybór proporcji obrazu.</td></tr>
-        <tr><td>Lewo</td><td>Lista kanałów (zapper). Przy filmie — cofnięcie o 30 s.</td></tr>
-        <tr><td>Prawo</td><td>Przy filmie — do przodu o 30 s.</td></tr>
+        <tr><td>Lewo</td><td>Lista kanałów (zapper) — otwiera się na <strong>bukiecie oglądanego kanału</strong>. Przy filmie — cofnięcie o 30 s.</td></tr>
+        <tr><td>Prawo</td><td>Pasek kafelków z kolejnymi kanałami. Przy filmie — do przodu o 30 s.</td></tr>
         <tr><td><kbd>CZERWONY</kbd></td><td>Powrót na poprzednio oglądany kanał.</td></tr>
         <tr><td><kbd>ZIELONY</kbd></td><td>Wybór ścieżki audio.</td></tr>
         <tr><td><kbd>ŻÓŁTY</kbd></td><td>Pełny opis bieżącej audycji. Góra / dół przewija opis.</td></tr>
@@ -339,7 +341,22 @@
         <tr><td><kbd>WSTECZ</kbd></td><td>Zamyka nakładkę, a gdy żadnej nie ma — odtwarzacz.</td></tr>
       </tbody>
     </table>
-    <p>Na liście zappera góra / dół wybiera pozycję, <kbd>OK</kbd> włącza kanał, lewo zamyka listę.</p>
+    <p>Na liście zappera góra / dół wybiera pozycję, <kbd>OK</kbd> włącza kanał, <strong>lewo i prawo przerzucają na sąsiedni bukiet</strong> — oglądany kanał gra dalej swoje — a <kbd>WSTECZ</kbd> zamyka listę. Podpowiedź z tym zestawem stoi pod nazwą bukietu.</p>
+
+    <h3 id="pl-kafelki">Pasek kafelków — klawisz w prawo</h3>
+    <p>Na kanale na żywo <strong>prawo</strong> wysuwa u dołu ekranu pasek kafelków. Każdy kafelek to logotyp kanału, jego nazwa i audycja, która właśnie na nim leci. Obraz gra dalej pod spodem.</p>
+    <ul>
+      <li><strong>Prawo / lewo</strong> przesuwa zaznaczenie. Przy otwartym pasku lewo <em>nie</em> otwiera listy kanałów.</li>
+      <li><kbd>OK</kbd> włącza zaznaczony kanał, <kbd>WSTECZ</kbd> zamyka pasek.</li>
+      <li>Pasek chodzi po <strong>bieżącym bukiecie</strong> i zatrzymuje się na jego końcach. Po inne bukiety sięgnij listą pod klawiszem w lewo.</li>
+      <li>Otwarcie paska nie pobiera niczego z sieci — logotypy i program pochodzą z pamięci telewizora.</li>
+    </ul>
+
+    <h3>Kropka przypomnienia i zapowiedź audycji</h3>
+    <ul>
+      <li><strong>Czerwona kropka pod zegarem</strong> w OSD znaczy, że czeka co najmniej jedno przypomnienie. Widać ją na każdym kanale i gaśnie dopiero wtedy, gdy ostatnie oczekujące przypomnienie się zrealizuje. Co dokładnie czeka, pokazuje panel na stronie Start.</li>
+      <li><strong>Zapowiedź kolejnej audycji</strong> pojawia się w rogu ekranu na kilka minut przed jej startem. Wyprzedzenie ustawia się w panelu (<a href="#pl-ustawienia">rozdział 14</a>), można ją też wyłączyć.</li>
+    </ul>
     <ul>
       <li>Zerwany strumień jest ponawiany kilka razy. Gdy w tym samym katalogu jest zapasowe łącze, program przełącza się na nie i pokazuje komunikat o innym łączu. Gdy zamiennika nie ma, mówi to wprost: <em>brak zapasowego łącza dla tego kanału</em>.</li>
       <li>Pozycja filmu jest zapamiętywana. Przy ponownym otwarciu odtwarzanie wznawia się od tego miejsca.</li>
@@ -378,7 +395,8 @@
 
     <h2 id="pl-epg-tv">8. Program na telewizorze <span class="badge tv">TV</span></h2>
     <p>Pełny harmonogram jednego kanału otwiera <kbd>INFO</kbd> na liście. Audycje są pogrupowane według dnia. <kbd>OK</kbd> na audycji pozwala oglądać kanał teraz albo ustawić przypomnienie. Przypomnienie może też przełączyć telewizor o godzinie startu.</p>
-    <p>Import XMLTV uruchamia się klawiszem <kbd>ZIELONY</kbd> na liście kanałów albo przyciskiem w panelu. Pobranie, dopasowanie nazw i zapis odbywają się na telewizorze, w tle, i mogą potrwać kilka minut. Tuner Enigma2 nie wymaga importu — program bierze z OpenWebif. Radio nie korzysta z telewizyjnego EPG.</p>
+    <p><strong>Przewodnik odświeża się sam, raz na dobę.</strong> Nigdy w trakcie oglądania — zadanie czeka w kolejce i rusza, gdy nikt nie ogląda. Jeśli import już trwa, a Ty włączysz kanał, kończy się on na najbliższym kroku i wraca do kolejki. Telewizor wyłączony przez kilka dni nadrabia zaległość przy najbliższym uruchomieniu.</p>
+    <p>Ręcznie import XMLTV uruchamia się klawiszem <kbd>ZIELONY</kbd> na liście kanałów albo przyciskiem w panelu. Pobranie, dopasowanie nazw i zapis odbywają się na telewizorze, w tle, i mogą potrwać kilka minut. Tuner Enigma2 nie wymaga importu — program bierze z OpenWebif. Radio nie korzysta z telewizyjnego EPG.</p>
     <div class="tip"><strong>Przerwany import nie kasuje już programu.</strong> Nowe audycje trafiają najpierw do zapasu, a stary przewodnik żyje do chwili, gdy cały plik zostanie poprawnie wczytany. Podmiana jest jednorazowa. Zerwana sieć albo uszkodzony plik XMLTV zostawia więc program taki, jaki był — a nie pusty albo połowiczny. Przy okazji importu program sprząta audycje starsze niż pół dnia i dalsze niż osiem dni.</div>
     <p>Kanał, którego automat nie potrafi rozpoznać po nazwie, można przypisać do pozycji XMLTV ręcznie, z panelu — patrz <a href="#pl-mapowanie">rozdział 15</a>.</p>
 
@@ -405,7 +423,7 @@
     </div>
     <h3>Zakładki</h3>
     <ul>
-      <li><strong>Start</strong> — kontynuacja oglądania, do obejrzenia, seriale w trakcie, teraz na ulubionych, ostatnio dodane.</li>
+      <li><strong>Start</strong> — na górze kafelki <strong>Wróć do tego</strong>: ostatni kanał i ostatnia stacja radiowa, jedno kliknięcie włącza je na telewizorze. Pod nimi lista <strong>oczekujących przypomnień</strong> z krzyżykiem do skasowania — pokazuje się tylko wtedy, gdy coś czeka, czyli wtedy, gdy w OSD świeci czerwona kropka. Dalej: teraz na ulubionych, kontynuacja oglądania, seriale w trakcie, do obejrzenia i ostatnio dodane.</li>
       <li><strong>Kanały / Radio</strong> — grupy, lista, filtr ulubionych i przełącznik wszystkich źródeł.</li>
       <li><strong>Program</strong> — siatka EPG, przesuwanie osi czasu, szukanie audycji na 7 dni.</li>
       <li><strong>Filmy</strong> i <strong>Seriale</strong> — ściana plakatów z playlisty.</li>
@@ -483,8 +501,10 @@
         <tr><td>Kanały</td><td><kbd>INFO</kbd> / <kbd>CZERWONY</kbd></td><td>Program kanału.</td></tr>
         <tr><td>Odtwarzacz</td><td>Góra / dół / <kbd>CH±</kbd></td><td>Zmiana kanału.</td></tr>
         <tr><td>Odtwarzacz</td><td>Przytrzymaj <kbd>OK</kbd></td><td>Proporcje obrazu.</td></tr>
-        <tr><td>Odtwarzacz</td><td>Lewo</td><td>Lista kanałów albo −30 s w filmie.</td></tr>
-        <tr><td>Odtwarzacz</td><td>Prawo</td><td>+30 s w filmie.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Lewo</td><td>Lista kanałów bieżącego bukietu albo −30 s w filmie.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Prawo</td><td>Pasek kafelków albo +30 s w filmie.</td></tr>
+        <tr><td>Lista kanałów w odtwarzaczu</td><td>Lewo / prawo</td><td>Sąsiedni bukiet.</td></tr>
+        <tr><td>Pasek kafelków</td><td>Lewo / prawo, <kbd>OK</kbd>, <kbd>WSTECZ</kbd></td><td>Wybór kanału, włączenie, zamknięcie paska.</td></tr>
         <tr><td>Odtwarzacz</td><td><kbd>CZERWONY</kbd></td><td>Poprzednio oglądany kanał.</td></tr>
         <tr><td>Odtwarzacz</td><td><kbd>ZIELONY</kbd></td><td>Ścieżka audio.</td></tr>
         <tr><td>Odtwarzacz</td><td><kbd>ŻÓŁTY</kbd></td><td>Opis audycji.</td></tr>
@@ -503,8 +523,11 @@
       <li><strong>Klucz TMDb.</strong> Klucz API v3 do opisów i ocen. Plakaty działają bez klucza.</li>
       <li><strong>Źródła.</strong> Lista, dodawanie i usuwanie. Usunięcie źródła czyści też jego listę i EPG na telewizorze.</li>
       <li><strong>Kopia zapasowa.</strong> Pobiera plik JSON ze źródłami, lokalnymi playlistami radiowymi, ulubionymi, historią, pozycjami VOD, ręcznymi dopasowaniami EPG i ustawieniami. Plik zawiera również dane logowania zapisane przy źródłach — przechowuj go bezpiecznie. Przywrócenie zastępuje bieżące dane. Limit pliku: 10 MB.</li>
+      <li><strong>Bukiety.</strong> Lista bukietów wybranego źródła z licznikiem kanałów. Odznaczony bukiet znika z listy kanałów na telewizorze, z przerzucania bukietów w trakcie oglądania i z szyny w zakładce Kanały. Jego kanały <strong>zostają</strong> w wyszukiwaniu, w ulubionych i w Filmach — chodzi o skrócenie list, nie o schowanie części playlisty.</li>
       <li><strong>Program telewizyjny.</strong> <strong>Pobierz EPG dla wybranego źródła</strong> uruchamia import XMLTV na TV. Pod spodem leży karta <strong>Ręczne dopasowanie EPG</strong> — opisana w <a href="#pl-mapowanie">rozdziale 15</a>.</li>
-      <li><strong>Lista kanałów.</strong> Ponowne pobranie playlisty od dostawcy (to samo, co niebieski przycisk na pilocie). Ukrywanie VOD na liście kanałów. Czyszczenie pamięci przeglądarki — nie kasuje źródeł na telewizorze, tylko lokalny cache panelu.</li>
+      <li><strong>Lista kanałów i stacji radiowych.</strong> Ponowne pobranie playlisty od dostawcy (to samo, co niebieski przycisk na pilocie). Pod linią: ukrywanie pozycji VOD na liście kanałów oraz <strong>zapowiedź kolejnej audycji</strong> — na ile minut przed startem ma się pokazać albo „wyłączona”.</li>
+      <li><strong>Przewodnik na telewizorze.</strong> Ile audycji i dla ilu kanałów leży w bazie, ile miejsca zajmuje i <strong>do kiedy sięga program</strong> — czyli kiedy trzeba go odświeżyć. Przycisk <strong>Wyczyść przewodnik</strong> kasuje audycje i dopasowania automatyczne; <strong>ręczne dopasowania zostają</strong> i wracają do gry przy najbliższym imporcie.</li>
+      <li><strong>Pamięć.</strong> Osobno telewizor (logotypy kanałów i plakaty filmów, każde z własnym limitem) i przeglądarka (kopia list, żeby panel otwierał się od razu). Czyszczenie pamięci przeglądarki nie kasuje niczego na telewizorze.</li>
     </ol>
 
     <h2 id="pl-mapowanie" class="section-break">15. Ręczne dopasowanie EPG <span class="badge web">PANEL</span></h2>
@@ -606,19 +629,21 @@
     </ul>
     <div class="tip"><strong>Network:</strong> the TV, computer and phone must be on the same local network. The panel and the activation page are not a public website — they work only at home, at the address shown on the TV.</div>
 
-    <h3>What is new since version 1.77</h3>
+    <h3>What is new since version 1.87</h3>
     <table>
       <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
       <tbody>
-        <tr><td>Picture ratio — three modes under a long press of <kbd>OK</kbd></td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-aspect">chapter 6</a></td></tr>
-        <tr><td>Frozen picture detected even while the sound keeps playing</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-stall">chapter 6</a></td></tr>
-        <tr><td>Waiting for the network to return instead of a dead-channel message</td><td>Player and radio <span class="badge tv">TV</span></td><td><a href="#en-stall">chapter 6</a></td></tr>
-        <tr><td>The OSD shows which playlist is playing</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
-        <tr><td>An interrupted EPG import no longer wipes the guide you have</td><td>Guide <span class="badge tv">TV</span></td><td><a href="#en-epg-tv">chapter 8</a></td></tr>
-        <tr><td>Assigning a channel to an XMLTV entry by hand</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-mapping">chapter 15</a></td></tr>
+        <tr><td><strong>Right</strong> opens a strip of channel tiles — logo, name and the programme on air now</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-strip">chapter 6</a></td></tr>
+        <tr><td><strong>Left</strong> opens the bouquet of the channel you are watching; left / right move between bouquets</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
+        <tr><td>A red dot under the OSD clock when a reminder is waiting</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
+        <tr><td>A heads-up about the next programme a few minutes before it starts</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
+        <tr><td>The guide imports itself <strong>once a day</strong> and yields to playback</td><td>Guide <span class="badge tv">TV</span></td><td><a href="#en-epg-tv">chapter 8</a></td></tr>
+        <tr><td>“Pick up where you left off” tiles and a list of pending reminders on the Start page</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-panel">chapter 9</a></td></tr>
+        <tr><td>Hiding bouquets you never watch</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
+        <tr><td>Guide status: how many programmes, how far ahead it runs, and a clear button</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
       </tbody>
     </table>
-    <p class="muted">Activation, adding sources, the phone remote and the panel tabs work exactly as in version 1.77.</p>
+    <p class="muted">Activation, adding sources, the phone remote and the panel tabs work exactly as in version 1.87. The OSD changed as well: the channel name is red, and the logo now sits in the middle of the field to its left.</p>
 
     <h2 id="en-activation" class="section-break">2. Program activation</h2>
     <p>On the first start the program does not open the source list. The TV shows only the <strong>ACTIVATION REQUIRED</strong> screen. That screen is in English. Until a valid activation code is entered, the rest of the program stays closed.</p>
@@ -671,7 +696,7 @@
     <h2 id="en-sources">4. Sources screen <span class="badge tv">TV</span></h2>
     <p>This is the first screen after activation. The drawing below is a UI diagram and contains no real address or token.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v1.87 — IPTV, Enigma2 and Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.13 — IPTV, Enigma2 and Radio</div>
       <div class="mock-pane">
         <h5>BROWSER CONTROL PANEL</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -713,7 +738,7 @@
     <p>Search on the TV has two modes: <strong>Channel</strong> (names) and <strong>In the guide</strong> (programme titles for 7 days). <kbd>OK</kbd> on the field opens the keyboard, <kbd>BACK</kbd> hides it.</p>
 
     <h2 id="en-player">6. Player <span class="badge tv">TV</span></h2>
-    <p>A channel opens full screen. The OSD shows the name, state, programme times and a progress bar. It hides after a moment and returns with <kbd>OK</kbd> or <kbd>INFO</kbd>.</p>
+    <p>A channel opens full screen. The OSD shows the channel logo, <strong>the channel name in red</strong>, the programme title, broadcast times and a progress bar. It hides after a moment and returns with <kbd>OK</kbd> or <kbd>INFO</kbd> — called up by a key it stays twice as long as the one that appears by itself after a channel change.</p>
     <p>The bottom OSD line shows <strong>which playlist</strong> is playing: the word <code>IPTV</code> plus the first two words of the source name — the source “TV VOD 12.2026” gives <code>IPTV TV VOD</code>. A tuner shows just <code>Enigma2</code>. Next to it sit the colour key hints and the item <strong>hold OK — picture</strong>.</p>
     <table>
       <thead><tr><th>Key</th><th>Action</th></tr></thead>
@@ -721,8 +746,8 @@
         <tr><td><kbd>CH+</kbd> / <kbd>CH−</kbd> or up / down</td><td>Next / previous channel.</td></tr>
         <tr><td><kbd>OK</kbd> / <kbd>INFO</kbd></td><td>OSD. On a film, also pause and resume. It acts on key <strong>release</strong>, so it does not clash with the long press.</td></tr>
         <tr><td>Hold <kbd>OK</kbd></td><td>Picture ratio selection.</td></tr>
-        <tr><td>Left</td><td>Channel list (zapper). On a film — back 30 s.</td></tr>
-        <tr><td>Right</td><td>On a film — forward 30 s.</td></tr>
+        <tr><td>Left</td><td>Channel list (zapper) — it opens on the <strong>bouquet of the channel you are watching</strong>. On a film — back 30 s.</td></tr>
+        <tr><td>Right</td><td>Strip of channel tiles. On a film — forward 30 s.</td></tr>
         <tr><td><kbd>RED</kbd></td><td>Return to the previously watched channel.</td></tr>
         <tr><td><kbd>GREEN</kbd></td><td>Audio track selection.</td></tr>
         <tr><td><kbd>YELLOW</kbd></td><td>Full description of the current programme. Up / down scrolls the text.</td></tr>
@@ -730,7 +755,22 @@
         <tr><td><kbd>BACK</kbd></td><td>Closes an overlay; if none is open, closes the player.</td></tr>
       </tbody>
     </table>
-    <p>In the zapper list, up / down selects a row, <kbd>OK</kbd> plays it, left closes the list.</p>
+    <p>In the zapper list, up / down selects a row, <kbd>OK</kbd> plays it, <strong>left and right move to the neighbouring bouquet</strong> — the channel you are watching keeps playing — and <kbd>BACK</kbd> closes the list. A hint with this set sits under the bouquet name.</p>
+
+    <h3 id="en-strip">Tile strip — the right key</h3>
+    <p>On a live channel <strong>right</strong> slides a strip of tiles in at the bottom of the screen. Each tile carries the channel logo, its name and the programme on air there right now. The picture keeps playing underneath.</p>
+    <ul>
+      <li><strong>Right / left</strong> moves the selection. While the strip is open, left does <em>not</em> open the channel list.</li>
+      <li><kbd>OK</kbd> plays the selected channel, <kbd>BACK</kbd> closes the strip.</li>
+      <li>The strip walks the <strong>current bouquet</strong> and stops at its ends. For other bouquets use the list under the left key.</li>
+      <li>Opening the strip fetches nothing from the network — logos and the guide come from the TV's own memory.</li>
+    </ul>
+
+    <h3>The reminder dot and the next-programme notice</h3>
+    <ul>
+      <li>A <strong>red dot under the clock</strong> in the OSD means at least one reminder is waiting. It shows on every channel and goes out only when the last pending reminder has fired. What exactly is waiting is listed on the panel's Start page.</li>
+      <li>The <strong>next-programme notice</strong> appears in the corner of the screen a few minutes before that programme starts. How far ahead is set in the panel (<a href="#en-settings">chapter 14</a>); it can also be switched off.</li>
+    </ul>
     <ul>
       <li>A dropped stream is retried several times. If the same folder has a backup link, the program switches to it and shows a failover notice. When there is no replacement it says so: <em>no backup link for this channel</em>.</li>
       <li>Film position is stored. The next opening resumes from that point.</li>
@@ -769,7 +809,8 @@
 
     <h2 id="en-epg-tv">8. Guide on the TV <span class="badge tv">TV</span></h2>
     <p><kbd>INFO</kbd> on the channel list opens the full schedule for one channel. Programmes are grouped by day. <kbd>OK</kbd> on an item can play the channel now or set a reminder. A reminder can also switch the TV at the start time.</p>
-    <p>XMLTV import is started with <kbd>GREEN</kbd> on the channel list or with the button in the panel. Download, name matching and storage run on the TV in the background and may take a few minutes. An Enigma2 tuner needs no import — the guide comes from OpenWebif. Radio does not use the TV guide.</p>
+    <p><strong>The guide refreshes itself once a day.</strong> Never while you are watching — the job waits in a queue and starts when nobody is watching. If an import is already running and you start a channel, it stops at the nearest step and returns to the queue. A television switched off for a few days catches up at its next start.</p>
+    <p>A manual XMLTV import is started with <kbd>GREEN</kbd> on the channel list or with the button in the panel. Download, name matching and storage run on the TV in the background and may take a few minutes. An Enigma2 tuner needs no import — the guide comes from OpenWebif. Radio does not use the TV guide.</p>
     <div class="tip"><strong>An interrupted import no longer wipes the guide.</strong> New programmes go to a holding area first, and the old guide lives until the whole file has been read correctly. The swap happens in one step. A dropped network or a damaged XMLTV file therefore leaves the guide as it was — not empty or half filled. While importing, the program also clears programmes older than half a day and further away than eight days.</div>
     <p>A channel the automatic matching cannot recognise by name can be assigned to an XMLTV entry by hand, from the panel — see <a href="#en-mapping">chapter 15</a>.</p>
 
@@ -796,7 +837,7 @@
     </div>
     <h3>Tabs</h3>
     <ul>
-      <li><strong>Start</strong> — continue watching, to watch, series in progress, now on favourites, recently added.</li>
+      <li><strong>Start</strong> — at the top, <strong>Pick up where you left off</strong> tiles: the last channel and the last radio station, one click plays them on the TV. Below them a list of <strong>pending reminders</strong> with a cross to delete one — shown only when something is waiting, which is exactly when the red dot glows in the OSD. Then: now on favourites, continue watching, series in progress, to watch and recently added.</li>
       <li><strong>Channels / Radio</strong> — groups, list, favourites filter and an all-sources switch.</li>
       <li><strong>Guide</strong> — EPG grid, timeline shift, programme search over 7 days.</li>
       <li><strong>Films</strong> and <strong>Series</strong> — poster wall from the playlist.</li>
@@ -874,8 +915,10 @@
         <tr><td>Channels</td><td><kbd>INFO</kbd> / <kbd>RED</kbd></td><td>Channel guide.</td></tr>
         <tr><td>Player</td><td>Up / down / <kbd>CH±</kbd></td><td>Change channel.</td></tr>
         <tr><td>Player</td><td>Hold <kbd>OK</kbd></td><td>Picture ratio.</td></tr>
-        <tr><td>Player</td><td>Left</td><td>Channel list or −30 s in a film.</td></tr>
-        <tr><td>Player</td><td>Right</td><td>+30 s in a film.</td></tr>
+        <tr><td>Player</td><td>Left</td><td>Channel list of the current bouquet, or −30 s in a film.</td></tr>
+        <tr><td>Player</td><td>Right</td><td>Tile strip, or +30 s in a film.</td></tr>
+        <tr><td>Channel list in the player</td><td>Left / right</td><td>Neighbouring bouquet.</td></tr>
+        <tr><td>Tile strip</td><td>Left / right, <kbd>OK</kbd>, <kbd>BACK</kbd></td><td>Pick a channel, play it, close the strip.</td></tr>
         <tr><td>Player</td><td><kbd>RED</kbd></td><td>Previously watched channel.</td></tr>
         <tr><td>Player</td><td><kbd>GREEN</kbd></td><td>Audio track.</td></tr>
         <tr><td>Player</td><td><kbd>YELLOW</kbd></td><td>Programme description.</td></tr>
@@ -894,8 +937,11 @@
       <li><strong>TMDb key.</strong> API v3 key for descriptions and ratings. Posters work without a key.</li>
       <li><strong>Sources.</strong> List, add and delete. Deleting a source also clears its list and EPG on the TV.</li>
       <li><strong>Backup.</strong> Downloads a JSON file with sources, local radio playlists, favourites, history, VOD positions, manual EPG matches and program settings. The file also contains the login details stored with your sources — keep it safe. Restore replaces the current data. File limit: 10 MB.</li>
+      <li><strong>Bouquets.</strong> The bouquets of the selected source with a channel count each. An unticked bouquet disappears from the channel list on the TV, from bouquet switching while watching and from the rail in the Channels tab. Its channels <strong>stay</strong> in search, in favourites and in Films — the point is shorter lists, not hiding part of your own playlist.</li>
       <li><strong>TV guide.</strong> <strong>Fetch EPG for the selected source</strong> starts an XMLTV import on the TV. Below it sits the <strong>Manual EPG matching</strong> card — described in <a href="#en-mapping">chapter 15</a>.</li>
-      <li><strong>Channel list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Hide VOD on the channel list. Clear browser storage — this does not delete sources on the TV, only the panel’s local cache.</li>
+      <li><strong>Channel and radio station list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Below the divider: hiding VOD items on the channel list and the <strong>next-programme notice</strong> — how many minutes ahead it should appear, or “off”.</li>
+      <li><strong>Guide stored on the TV.</strong> How many programmes for how many channels sit in the database, how much space they take and <strong>how far ahead the guide runs</strong> — that is, when it needs refreshing. The <strong>Clear the guide</strong> button removes programmes and automatic matches; <strong>manual matches are kept</strong> and come back into play at the next import.</li>
+      <li><strong>Storage.</strong> The TV (channel logos and film posters, each with its own limit) and this browser (a copy of the lists so the panel opens instantly) are listed separately. Clearing browser storage deletes nothing on the TV.</li>
     </ol>
 
     <h2 id="en-mapping" class="section-break">15. Manual EPG matching <span class="badge web">PANEL</span></h2>
@@ -960,7 +1006,7 @@
     <p>Posters do not need TMDb. Descriptions and ratings need an API v3 key in Settings and internet access in the browser.</p>
     <h3>The phone remote does not control the TV</h3>
     <p>The phone must be on the same network. Scan the code again from the panel that is currently open. Check that the remote has the correct television selected.</p>
-    <div class="footer-note">HPL ink IPTV E2+ Radio Android v1.87 — bilingual user manual — 17.08.2026</div>
+    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.13 — bilingual user manual — 31.08.2026</div>
   </section>
 </main>
 </body>
