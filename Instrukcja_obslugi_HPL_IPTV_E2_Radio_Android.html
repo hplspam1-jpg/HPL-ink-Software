@@ -173,12 +173,12 @@
     <p class="subtitle">Dwujęzyczny przewodnik po programie na Android TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
       <div class="edition"><strong>Platforma</strong><span>Android TV / Google TV</span></div>
-      <div class="edition"><strong>Wydanie</strong><span>v2.13 &nbsp; 31.08.2026</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v2.17 &nbsp; 01.09.2026</span></div>
       <div class="edition"><strong>Źródła</strong><span>M3U, Xtream, Enigma2, radio</span></div>
       <div class="edition"><strong>Sterowanie</strong><span>pilot TV + panel w przeglądarce</span></div>
     </div>
     <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge tv">TV</span> oznacza czynność na telewizorze. <span class="badge web">PANEL</span> oznacza czynność w przeglądarce komputera lub telefonu, na adresie pokazanym na ekranie TV.</div>
-    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.13</strong> z 31.08.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.17</strong> z 01.09.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
   </section>
 
   <section id="pl" class="page-break">
@@ -214,6 +214,15 @@
       <li>Przewodnik XMLTV, filmy i seriale z playlisty, ulubione, historia, przypomnienia i kopia zapasowa.</li>
     </ul>
     <div class="tip"><strong>Sieć:</strong> telewizor, komputer i telefon muszą być w tej samej sieci lokalnej. Panel i strona aktywacji nie są stroną internetową w sieci publicznej — działają tylko w domu, pod adresem pokazanym na TV.</div>
+
+    <h3>Co nowego od wersji 2.13</h3>
+    <table>
+      <thead><tr><th>Nowość</th><th>Gdzie</th><th>Opis w instrukcji</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Aktualizacja programu</strong> — sprawdzenie i wgranie nowszej wersji z podanego adresu, na żądanie</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-aktualizacja">rozdział 14</a></td></tr>
+        <tr><td><strong>Kod QR pilota na ekranie telewizora</strong> — telefon staje się pilotem także wtedy, gdy komputer jest wyłączony</td><td>Źródła <span class="badge tv">TV</span></td><td><a href="#pl-pilot">rozdział 12</a></td></tr>
+      </tbody>
+    </table>
 
     <h3>Co nowego od wersji 1.87</h3>
     <table>
@@ -282,7 +291,7 @@
     <h2 id="pl-zrodla">4. Ekran źródeł <span class="badge tv">TV</span></h2>
     <p>To pierwszy ekran po aktywacji. Poniższy rysunek jest schematem GUI i nie zawiera prawdziwego adresu ani tokenu.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.13 — IPTV, Enigma2 i Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.17 — IPTV, Enigma2 i Radio</div>
       <div class="mock-pane">
         <h5>PANEL STEROWANIA W PRZEGLĄDARCE</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -479,7 +488,8 @@
     <p>Filtr VOD na ekranie źródeł TV i w Ustawieniach panelu ukrywa te pozycje na zwykłej liście kanałów, żeby nie mieszały się z telewizją na żywo.</p>
 
     <h2 id="pl-pilot">12. Pilot na telefonie <span class="badge web">PANEL</span></h2>
-    <p>W <strong>Ustawieniach</strong> jest kod QR. Zeskanuj go telefonem w tej samej sieci — w przeglądarce telefonu otworzy się osobny, wąski pilot.</p>
+    <p>Kod QR jest w dwóch miejscach: w <strong>Ustawieniach panelu</strong> oraz — od wersji 2.16 — <strong>na ekranie źródeł na telewizorze</strong>, obok adresu panelu, z podpisem „Pilot". Ten drugi jest ważniejszy, niż się wydaje: gdy komputer jest wyłączony, telefon zostaje jedynym pilotem, a wtedy nie ma skąd wziąć adresu.</p>
+    <p>Zeskanuj kod telefonem podłączonym do tej samej sieci — w przeglądarce telefonu otworzy się osobny, wąski pilot.</p>
     <ul>
       <li>Wybór telewizora i źródła.</li>
       <li>Bieżący kanał, EPG i suwak filmu.</li>
@@ -487,6 +497,8 @@
       <li>Zakładki: ulubione, katalogi, ostatnie, szukaj.</li>
     </ul>
     <p>Przycisk <strong>Pilot</strong> w górnym pasku panelu otwiera to samo okno na komputerze.</p>
+
+    <div class="warning"><strong>iPhone: gdy Safari odmawia otwarcia.</strong> Safari na iOS 26 nie otwiera adresów <code>http://</code> przychodzących <strong>z innej aplikacji</strong> — na przykład z aparatu po zeskanowaniu kodu — i pokazuje komunikat <em>„żądanie dotyczyło adresu URL HTTP, dozwolone są tylko adresy URL HTTPS"</em>. Przytrzymaj wtedy baner aparatu, wybierz <strong>Skopiuj łącze</strong> i wklej je w pasek adresu Safari — wklejony adres otwiera się normalnie. Można też użyć innej przeglądarki, w niej kod działa od razu. Sam kod jest poprawny; program pracuje w sieci domowej po zwykłym HTTP, bo HTTPS wymagałby certyfikatu instalowanego ręcznie na każdym telefonie.</div>
 
     <h2 id="pl-klawisze">13. Klawisze pilota — zestawienie</h2>
     <table>
@@ -523,6 +535,7 @@
       <li><strong>Klucz TMDb.</strong> Klucz API v3 do opisów i ocen. Plakaty działają bez klucza.</li>
       <li><strong>Źródła.</strong> Lista, dodawanie i usuwanie. Usunięcie źródła czyści też jego listę i EPG na telewizorze.</li>
       <li><strong>Kopia zapasowa.</strong> Pobiera plik JSON ze źródłami, lokalnymi playlistami radiowymi, ulubionymi, historią, pozycjami VOD, ręcznymi dopasowaniami EPG i ustawieniami. Plik zawiera również dane logowania zapisane przy źródłach — przechowuj go bezpiecznie. Przywrócenie zastępuje bieżące dane. Limit pliku: 10 MB.</li>
+      <li id="pl-aktualizacja"><strong>Aktualizacja programu.</strong> Pole na adres i przycisk <strong>Sprawdź</strong>. Pod podanym adresem ma leżeć mały plik <code>update.json</code> z numerem najnowszej wersji, adresem pakietu, sumą kontrolną i opisem zmian. Program łączy się z tym adresem <strong>wyłącznie po naciśnięciu przycisku</strong> — nigdy sam z siebie. Gdy jest nowsza wersja, przycisk <strong>Pobierz i zainstaluj</strong> pobiera pakiet, sprawdza sumę kontrolną i <strong>podpis</strong> (pakiet podpisany innym kluczem jest odrzucany), a na końcu oddaje go instalatorowi Androida, który pyta o zgodę <strong>na ekranie telewizora</strong>. Cicha instalacja nie jest możliwa; telewizor musi też raz pozwolić programowi instalować pakiety.</li>
       <li><strong>Bukiety.</strong> Lista bukietów wybranego źródła z licznikiem kanałów. Odznaczony bukiet znika z listy kanałów na telewizorze, z przerzucania bukietów w trakcie oglądania i z szyny w zakładce Kanały. Jego kanały <strong>zostają</strong> w wyszukiwaniu, w ulubionych i w Filmach — chodzi o skrócenie list, nie o schowanie części playlisty.</li>
       <li><strong>Program telewizyjny.</strong> <strong>Pobierz EPG dla wybranego źródła</strong> uruchamia import XMLTV na TV. Pod spodem leży karta <strong>Ręczne dopasowanie EPG</strong> — opisana w <a href="#pl-mapowanie">rozdziale 15</a>.</li>
       <li><strong>Lista kanałów i stacji radiowych.</strong> Ponowne pobranie playlisty od dostawcy (to samo, co niebieski przycisk na pilocie). Pod linią: ukrywanie pozycji VOD na liście kanałów oraz <strong>zapowiedź kolejnej audycji</strong> — na ile minut przed startem ma się pokazać albo „wyłączona”.</li>
@@ -629,6 +642,15 @@
     </ul>
     <div class="tip"><strong>Network:</strong> the TV, computer and phone must be on the same local network. The panel and the activation page are not a public website — they work only at home, at the address shown on the TV.</div>
 
+    <h3>What is new since version 2.13</h3>
+    <table>
+      <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Program update</strong> — check for and install a newer version from an address you provide, on request</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-update">chapter 14</a></td></tr>
+        <tr><td><strong>Remote QR code on the TV screen</strong> — your phone becomes the remote even with the computer switched off</td><td>Sources <span class="badge tv">TV</span></td><td><a href="#en-remote">chapter 12</a></td></tr>
+      </tbody>
+    </table>
+
     <h3>What is new since version 1.87</h3>
     <table>
       <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
@@ -696,7 +718,7 @@
     <h2 id="en-sources">4. Sources screen <span class="badge tv">TV</span></h2>
     <p>This is the first screen after activation. The drawing below is a UI diagram and contains no real address or token.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.13 — IPTV, Enigma2 and Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.17 — IPTV, Enigma2 and Radio</div>
       <div class="mock-pane">
         <h5>BROWSER CONTROL PANEL</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -893,7 +915,8 @@
     <p>The VOD filter on the TV sources screen and in panel Settings hides these items on the ordinary channel list so they do not mix with live TV.</p>
 
     <h2 id="en-remote">12. Phone remote <span class="badge web">PANEL</span></h2>
-    <p><strong>Settings</strong> shows a QR code. Scan it with a phone on the same network — a separate, narrow remote opens in the phone browser.</p>
+    <p>The QR code sits in two places: in the <strong>panel settings</strong> and — since version 2.16 — <strong>on the sources screen of the television</strong>, next to the panel address, labelled “Remote”. The second one matters more than it sounds: with the computer switched off the phone is the only remote left, and there is nowhere else to read the address from.</p>
+    <p>Scan the code with a phone on the same network — a separate, narrow remote opens in the phone browser.</p>
     <ul>
       <li>TV and source selection.</li>
       <li>Current channel, EPG and a film seek slider.</li>
@@ -901,6 +924,8 @@
       <li>Tabs: favourites, folders, recent, search.</li>
     </ul>
     <p>The <strong>Remote</strong> button in the panel header opens the same window on the computer.</p>
+
+    <div class="warning"><strong>iPhone: when Safari refuses to open the page.</strong> Safari on iOS 26 does not open <code>http://</code> addresses that arrive <strong>from another app</strong> — from the camera after scanning a code, for example — and shows <em>“the request was for an HTTP URL, only HTTPS URLs are allowed”</em>. Press and hold the camera banner, choose <strong>Copy Link</strong> and paste it into Safari's address bar; a pasted address opens normally. Another browser works straight away. The code itself is correct; the program runs over plain HTTP on your home network, because HTTPS would need a certificate installed by hand on every phone.</div>
 
     <h2 id="en-keys">13. Remote keys — summary</h2>
     <table>
@@ -937,6 +962,7 @@
       <li><strong>TMDb key.</strong> API v3 key for descriptions and ratings. Posters work without a key.</li>
       <li><strong>Sources.</strong> List, add and delete. Deleting a source also clears its list and EPG on the TV.</li>
       <li><strong>Backup.</strong> Downloads a JSON file with sources, local radio playlists, favourites, history, VOD positions, manual EPG matches and program settings. The file also contains the login details stored with your sources — keep it safe. Restore replaces the current data. File limit: 10 MB.</li>
+      <li id="en-update"><strong>Program update.</strong> An address field and a <strong>Check</strong> button. The address should point at a small <code>update.json</code> file holding the latest version number, the package address, a checksum and a description of the changes. The program contacts that address <strong>only when you press the button</strong> — never on its own. When a newer version exists, <strong>Download and install</strong> fetches the package, verifies the checksum and the <strong>signature</strong> (a package signed with a different key is rejected), and hands it to the Android installer, which asks for confirmation <strong>on the TV screen</strong>. A silent install is not possible; the television must also allow the program to install packages once.</li>
       <li><strong>Bouquets.</strong> The bouquets of the selected source with a channel count each. An unticked bouquet disappears from the channel list on the TV, from bouquet switching while watching and from the rail in the Channels tab. Its channels <strong>stay</strong> in search, in favourites and in Films — the point is shorter lists, not hiding part of your own playlist.</li>
       <li><strong>TV guide.</strong> <strong>Fetch EPG for the selected source</strong> starts an XMLTV import on the TV. Below it sits the <strong>Manual EPG matching</strong> card — described in <a href="#en-mapping">chapter 15</a>.</li>
       <li><strong>Channel and radio station list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Below the divider: hiding VOD items on the channel list and the <strong>next-programme notice</strong> — how many minutes ahead it should appear, or “off”.</li>
@@ -1006,7 +1032,7 @@
     <p>Posters do not need TMDb. Descriptions and ratings need an API v3 key in Settings and internet access in the browser.</p>
     <h3>The phone remote does not control the TV</h3>
     <p>The phone must be on the same network. Scan the code again from the panel that is currently open. Check that the remote has the correct television selected.</p>
-    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.13 — bilingual user manual — 31.08.2026</div>
+    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.17 — bilingual user manual — 01.09.2026</div>
   </section>
 </main>
 </body>
