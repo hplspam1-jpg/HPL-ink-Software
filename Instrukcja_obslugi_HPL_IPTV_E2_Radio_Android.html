@@ -173,12 +173,12 @@
     <p class="subtitle">Dwujęzyczny przewodnik po programie na Android TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
       <div class="edition"><strong>Platforma</strong><span>Android TV / Google TV</span></div>
-      <div class="edition"><strong>Wydanie</strong><span>v2.17 &nbsp; 01.09.2026</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v2.43 &nbsp; 08.09.2026</span></div>
       <div class="edition"><strong>Źródła</strong><span>M3U, Xtream, Enigma2, radio</span></div>
       <div class="edition"><strong>Sterowanie</strong><span>pilot TV + panel w przeglądarce</span></div>
     </div>
     <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge tv">TV</span> oznacza czynność na telewizorze. <span class="badge web">PANEL</span> oznacza czynność w przeglądarce komputera lub telefonu, na adresie pokazanym na ekranie TV.</div>
-    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.17</strong> z 01.09.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.43</strong> z 08.09.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
   </section>
 
   <section id="pl" class="page-break">
@@ -214,6 +214,21 @@
       <li>Przewodnik XMLTV, filmy i seriale z playlisty, ulubione, historia, przypomnienia i kopia zapasowa.</li>
     </ul>
     <div class="tip"><strong>Sieć:</strong> telewizor, komputer i telefon muszą być w tej samej sieci lokalnej. Panel i strona aktywacji nie są stroną internetową w sieci publicznej — działają tylko w domu, pod adresem pokazanym na TV.</div>
+
+    <h3>Co nowego od wersji 2.17</h3>
+    <table>
+      <thead><tr><th>Nowość</th><th>Gdzie</th><th>Opis w instrukcji</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wszystko bez kolorowych klawiszy</strong> — menu ekranu i menu pod przytrzymaniem <kbd>OK</kbd>. Pilot bez kolorów i bez <kbd>INFO</kbd> obsługuje cały program</td><td>Kanały, Odtwarzacz, Radio <span class="badge tv">TV</span></td><td><a href="#pl-klawisze">rozdział 13</a></td></tr>
+        <tr><td><strong>Panel „Później"</strong> — trzy nadchodzące audycje na minutę przed końcem bieżącej</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-player">rozdział 6</a></td></tr>
+        <tr><td><strong>Uprzedzenie o przypomnieniu</strong> — belka „Za 10 min…" na wybrane 5, 10, 15 albo 30 minut przed audycją</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
+        <tr><td><strong>Opis audycji z innego kanału</strong> — na pasku kafelków, klawiszem w górę</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-kafelki">rozdział 6</a></td></tr>
+        <tr><td><strong>Nowy ekran źródeł</strong> — dwie kolumny, kod QR pilota i adres panelu obok listy</td><td>Źródła <span class="badge tv">TV</span></td><td><a href="#pl-zrodla">rozdział 4</a></td></tr>
+        <tr><td>Postęp zlecenia z kolejki widoczny w panelu; karta aktualizacji pokazuje numer i rozmiar <strong>przed</strong> pobraniem</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
+        <tr><td>Przecinek w tytule nie gubi już grupy ani nazwy pozycji VOD</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-vod">rozdział 11</a></td></tr>
+        <tr><td>Łagodniejsze odzyskiwanie obrazu po zamrożeniu strumienia</td><td>Odtwarzacz <span class="badge tv">TV</span></td><td><a href="#pl-help">rozdział 16</a></td></tr>
+      </tbody>
+    </table>
 
     <h3>Co nowego od wersji 2.13</h3>
     <table>
@@ -290,8 +305,9 @@
 
     <h2 id="pl-zrodla">4. Ekran źródeł <span class="badge tv">TV</span></h2>
     <p>To pierwszy ekran po aktywacji. Poniższy rysunek jest schematem GUI i nie zawiera prawdziwego adresu ani tokenu.</p>
+    <p>Ekran ma <strong>dwie kolumny</strong>: po lewej nazwa programu i lista źródeł, po prawej — jedna pod drugą — karta z <strong>kodem QR pilota</strong>, karta z <strong>adresem panelu</strong> dla przeglądarki i trzy przyciski ekranu. Kod QR wystarczy zeskanować telefonem, żeby otworzyć na nim pilota; nie trzeba do tego włączonego komputera.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.17 — IPTV, Enigma2 i Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.43 — IPTV, Enigma2 i Radio</div>
       <div class="mock-pane">
         <h5>PANEL STEROWANIA W PRZEGLĄDARCE</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -319,6 +335,7 @@
 
     <h2 id="pl-kanaly">5. Lista kanałów <span class="badge tv">TV</span></h2>
     <p>Po wejściu w źródło IPTV, Xtream albo Enigma2 widać grupy po lewej i kanały po prawej. Przy kanale może pojawić się bieżąca audycja, jeśli jest EPG.</p>
+    <div class="tip"><strong>Dwa menu zamiast kolorowych klawiszy.</strong> Nad listą bukietów stoi pozycja <strong>☰ Menu</strong> — wchodzisz na nią strzałką <strong>w górę</strong> z pierwszego bukietu, <kbd>OK</kbd> otwiera. W środku są rzeczy dotyczące całego ekranu: <em>Import EPG</em> i <em>Odśwież listę</em>. Rzeczy dotyczące jednego kanału — <em>Przewodnik</em> i <em>Ulubione</em> — siedzą pod <strong>przytrzymaniem <kbd>OK</kbd> na kanale</strong>, żeby było widać, czego dotyczą. Kolorowe klawisze z tabeli niżej dalej działają jako skróty.</div>
     <table>
       <thead><tr><th>Klawisz</th><th>Działanie</th></tr></thead>
       <tbody>
@@ -359,12 +376,23 @@
       <li><kbd>OK</kbd> włącza zaznaczony kanał, <kbd>WSTECZ</kbd> zamyka pasek.</li>
       <li>Pasek chodzi po <strong>bieżącym bukiecie</strong> i zatrzymuje się na jego końcach. Po inne bukiety sięgnij listą pod klawiszem w lewo.</li>
       <li>Otwarcie paska nie pobiera niczego z sieci — logotypy i program pochodzą z pamięci telewizora.</li>
+      <li><strong>Góra pokazuje pełny opis audycji z kanału pod kursorem</strong> — nie z tego, który oglądasz. Oglądasz HBO, przejeżdżasz na Canal+ i klawiszem w górę czytasz, co leci na Canal+. To samo robi <kbd>ŻÓŁTY</kbd>. <kbd>WSTECZ</kbd> zamyka opis i wraca do paska, więc można przejrzeć kilka kanałów po kolei.</li>
     </ul>
 
     <h3>Kropka przypomnienia i zapowiedź audycji</h3>
     <ul>
       <li><strong>Czerwona kropka pod zegarem</strong> w OSD znaczy, że czeka co najmniej jedno przypomnienie. Widać ją na każdym kanale i gaśnie dopiero wtedy, gdy ostatnie oczekujące przypomnienie się zrealizuje. Co dokładnie czeka, pokazuje panel na stronie Start.</li>
       <li><strong>Zapowiedź kolejnej audycji</strong> pojawia się w rogu ekranu na kilka minut przed jej startem. Wyprzedzenie ustawia się w panelu (<a href="#pl-ustawienia">rozdział 14</a>), można ją też wyłączyć.</li>
+      <li><strong>Uprzedzenie o przypomnieniu</strong> — na tej samej belce w rogu, na 5, 10, 15 albo 30 minut przed audycją, którą kazałeś sobie przypomnieć: <em>Za 10 min · nazwa kanału</em> i tytuł. Przy dłuższym wyprzedzeniu belka wisi dwadzieścia sekund zamiast dziesięciu. Wyprzedzenie ustawia się w panelu (<a href="#pl-ustawienia">rozdział 14</a>), zero znaczy „bez uprzedzania".</li>
+      <li><strong>Samo przypomnienie</strong> przychodzi minutę przed audycją — na tę samą belkę, w tej samej postaci, tylko zamiast „Za 10 min" pisze <em>Teraz</em> albo <em>Przełączam</em>, gdy przypomnienie ma od razu włączyć kanał.</li>
+    </ul>
+
+    <h3 id="pl-pozniej">Panel „Później" — trzy nadchodzące audycje</h3>
+    <p>Na <strong>minutę przed końcem</strong> oglądanej audycji przy prawej krawędzi ekranu pojawia się na dziesięć sekund lista <strong>trzech kolejnych pozycji z programu</strong> tego kanału — godzina i tytuł. Pierwsza pozycja, czyli to, co zaraz się zacznie, jest wyróżniona.</p>
+    <ul>
+      <li><kbd>OK</kbd> albo <kbd>WSTECZ</kbd> zamyka panel od razu.</li>
+      <li>Panel można wyłączyć na stałe w ustawieniach panelu (<a href="#pl-ustawienia">rozdział 14</a>).</li>
+      <li>Nic nie pobiera się przy tym z sieci — dane pochodzą z przewodnika zapisanego w telewizorze.</li>
     </ul>
     <ul>
       <li>Zerwany strumień jest ponawiany kilka razy. Gdy w tym samym katalogu jest zapasowe łącze, program przełącza się na nie i pokazuje komunikat o innym łączu. Gdy zamiennika nie ma, mówi to wprost: <em>brak zapasowego łącza dla tego kanału</em>.</li>
@@ -373,8 +401,19 @@
       <li>Minuta spokojnego obrazu kasuje pamięć nieudanych łączy — po chwilowym przeciążeniu sieci program znów ma dokąd się przełączyć.</li>
     </ul>
 
+    <h3 id="pl-menu-odtwarzacza">Menu odtwarzacza — przytrzymanie OK</h3>
+    <p>Przytrzymanie <kbd>OK</kbd> otwiera <strong>Menu odtwarzacza</strong>. Zbiera wszystko, co wcześniej wymagało kolorowych klawiszy:</p>
+    <ul>
+      <li><strong>Ścieżka audio</strong> — ta sama lista, co pod <kbd>ZIELONYM</kbd>.</li>
+      <li><strong>Napisy</strong> — jak pod <kbd>NIEBIESKIM</kbd>; pozycja <em>Wyłączone</em> jest zawsze pierwsza.</li>
+      <li><strong>Opis audycji</strong> — jak pod <kbd>ŻÓŁTYM</kbd>.</li>
+      <li><strong>Poprzedni kanał</strong> — powrót na ostatnio oglądany, jak pod <kbd>CZERWONYM</kbd>.</li>
+      <li><strong>Proporcje obrazu</strong> — opisane niżej.</li>
+    </ul>
+    <p>Przy filmie menu ma trzy pozycje: film nie ma audycji do opisania ani poprzedniego kanału, na który można wrócić.</p>
+
     <h3 id="pl-proporcje">Proporcje obrazu</h3>
-    <p>Przytrzymanie <kbd>OK</kbd> otwiera okno <strong>Proporcje obrazu</strong> — takie samo jak wybór ścieżki audio. Działa przy kanale na żywo i przy filmie. Aktywny tryb jest zaznaczony.</p>
+    <p>Ostatnia pozycja <strong>Menu odtwarzacza</strong> (przytrzymanie <kbd>OK</kbd>). Działa przy kanale na żywo i przy filmie. Aktywny tryb jest zaznaczony.</p>
     <table>
       <thead><tr><th>Tryb</th><th>Co robi</th></tr></thead>
       <tbody>
@@ -396,8 +435,9 @@
     <p>Źródło typu radio otwiera listę stacji, nie listę kanałów TV.</p>
     <ul>
       <li><kbd>OK</kbd> — słuchaj zaznaczonej stacji.</li>
-      <li><kbd>NIEBIESKI</kbd> — odśwież playlistę.</li>
-      <li><kbd>ŻÓŁTY</kbd> — ulubione.</li>
+      <li><strong>Przytrzymanie <kbd>OK</kbd></strong> — dodanie albo usunięcie stacji z ulubionych.</li>
+      <li><strong>☰ Menu</strong> nad listą grup (strzałka w górę z pierwszej grupy) — <em>Odśwież listę</em>.</li>
+      <li>Skróty dla pilota z kolorami: <kbd>NIEBIESKI</kbd> — odśwież playlistę, <kbd>ŻÓŁTY</kbd> — ulubione.</li>
     </ul>
     <p>W odtwarzaczu radia: <kbd>OK</kbd> pauza, góra / dół zmiana stacji, lewo / prawo głośność, <kbd>WSTECZ</kbd> powrót do listy. Na ekranie widać zegar oraz bitrate, gdy stacja go podaje.</p>
     <p>Radio reaguje na sieć tak samo jak odtwarzacz kanałów: po zerwaniu połączenia czeka z komunikatem <em>Brak sieci · czekam na połączenie</em>, a po powrocie sieci samo wznawia stację.</p>
@@ -443,6 +483,58 @@
     <p>Górny pasek pokazuje wybrany TV, bieżący kanał, audycję i znacznik nagrywania na tunerze Enigma2. Przyciski: poprzedni / następny kanał, cofnij i do przodu 30 s (filmy), pauza, stop, głośność, wyciszenie oraz <strong>ⓘ</strong> — pokaż panel na TV. Suwak czasu pojawia się tylko przy filmach.</p>
     <p>Lista rozwijana <strong>Źródło</strong> przełącza playlistę. <strong>Odśwież</strong> pobiera listę z telewizora ponownie do przeglądarki. Szukaj wszędzie (<kbd>Ctrl+K</kbd>) obejmuje kanały, filmy i seriale. Przycisk mikrofonu uruchamia sterowanie głosem w przeglądarce, która to obsługuje.</p>
     <div class="tip"><strong>Kilka telewizorów:</strong> jeden panel może sterować wieloma TV. Przełączenie telewizora zmienia też listy i program, bo każdy TV ma własne źródła.</div>
+
+    <h3 id="pl-zdalny-start">Uruchamianie programu z komputera</h3>
+    <p>Panel odpowiada tylko wtedy, gdy program <strong>działa na telewizorze</strong>.
+       Serwer panelu żyje wewnątrz programu, więc przy zamkniętej aplikacji nie ma komu
+       wydać polecenia — i właśnie dlatego uruchomienie z komputera wymaga
+       <strong>sterowania IP samego telewizora</strong>, a nie naszego panelu.</p>
+
+    <p><strong>Krok 1 — na telewizorze</strong> <span class="badge tv">TV</span></p>
+    <ol>
+      <li>Naciśnij <kbd>HOME</kbd> i wejdź w <strong>Ustawienia</strong>.</li>
+      <li>Odszukaj <strong>BRAVIA Settings → IP control</strong>. W części wydań ścieżka
+          brzmi <strong>Sieć → Konfiguracja sieci domowej → IP control</strong>.</li>
+      <li>Włącz <strong>sterowanie zdalne</strong>.</li>
+      <li>Ustaw <strong>Uwierzytelnianie</strong> na <strong>klucz PSK</strong> i wpisz własny klucz,
+          na przykład <code>hpl</code>. To hasło do sterowania telewizorem — nie używaj tu hasła,
+          którego używasz gdzie indziej.</li>
+    </ol>
+
+    <p><strong>Krok 2 — w Programie PC</strong></p>
+    <ol>
+      <li>W profilu telewizora wpisz ten sam klucz w polu <strong>Klucz PSK telewizora</strong>.
+          Klucz jest szyfrowany dla bieżącego konta Windows, tak samo jak token panelu.</li>
+      <li>Naciśnij <strong>Pobierz z TV</strong> — program pobierze listę aplikacji
+          zainstalowanych na telewizorze.</li>
+      <li>Wybierz z listy <strong>HPL IPTV E2+ Radio</strong> i zapisz profil. Wyboru dokonuje się
+          raz; identyfikator aplikacji nie jest wpisany na sztywno, bo na jednym telewizorze
+          może stać kilka odmian programu.</li>
+      <li>Od tej chwili przycisk <strong>Uruchom program na telewizorze</strong> włącza aplikację
+          bez sięgania po pilota.</li>
+    </ol>
+
+    <div class="warning"><strong>Telewizor musi być włączony.</strong> Sterowanie IP nie budzi go
+       ze stanu czuwania — przy wyłączonym odbiorniku przycisk zgłosi, że telewizor jest w czuwaniu.
+       Komputer i telewizor muszą być w tej samej sieci domowej.</div>
+
+    <div class="note"><strong>Po odcięciu telewizora od prądu</strong> ustawienie sterowania IP
+       potrafi wrócić do stanu domyślnego. Jeśli przycisk przestanie działać, sprawdź najpierw
+       <strong>Krok 1</strong> — klucz PSK bywa wtedy do wpisania od nowa.</div>
+
+    <h3>Wgranie nowej wersji z komputera</h3>
+    <p>Przycisk <strong>Wyślij nową wersję na telewizor</strong> w Programie PC (od wersji 1.10)
+       wgrywa wskazany plik <code>.apk</code> z dysku komputera, bez serwera i bez kabla.
+       Komputer udostępnia plik na chwilę po sieci domowej i podaje telewizorowi jego adres —
+       resztę robi już sam telewizor.</p>
+    <ul>
+      <li>Aplikacja <strong>musi być otwarta</strong> na telewizorze; to ona przyjmuje polecenie.
+          Jeśli jest zamknięta, najpierw <strong>Uruchom program na telewizorze</strong>.</li>
+      <li>Przed wysłaniem program pokazuje, jaka wersja stoi na telewizorze i jaka zostanie wgrana.</li>
+      <li>Telewizor sprawdza sumę kontrolną i <strong>podpis</strong> pakietu, a instalację
+          i tak potwierdzasz pilotem — tak samo jak przy aktualizacji z adresu.</li>
+      <li>Przy pierwszym użyciu Windows może zapytać o zaporę: zezwól dla <strong>sieci prywatnej</strong>.</li>
+    </ul>
 
     <h2 id="pl-dodaj">10. Dodawanie źródeł <span class="badge web">PANEL</span></h2>
     <p>W <strong>Ustawienia → Źródła → Dodaj źródło</strong> wybierz rodzaj i uzupełnij pola. Po dodaniu wejdź w źródło na telewizorze, żeby wczytać listę.</p>
@@ -501,28 +593,31 @@
     <div class="warning"><strong>iPhone: gdy Safari odmawia otwarcia.</strong> Safari na iOS 26 nie otwiera adresów <code>http://</code> przychodzących <strong>z innej aplikacji</strong> — na przykład z aparatu po zeskanowaniu kodu — i pokazuje komunikat <em>„żądanie dotyczyło adresu URL HTTP, dozwolone są tylko adresy URL HTTPS"</em>. Przytrzymaj wtedy baner aparatu, wybierz <strong>Skopiuj łącze</strong> i wklej je w pasek adresu Safari — wklejony adres otwiera się normalnie. Można też użyć innej przeglądarki, w niej kod działa od razu. Sam kod jest poprawny; program pracuje w sieci domowej po zwykłym HTTP, bo HTTPS wymagałby certyfikatu instalowanego ręcznie na każdym telefonie.</div>
 
     <h2 id="pl-klawisze">13. Klawisze pilota — zestawienie</h2>
+    <div class="tip"><strong>Pilot bez kolorowych klawiszy.</strong> Nowe telewizory bywają sprzedawane z dwoma pilotami, a ten mniejszy, używany na co dzień, często nie ma ani kolorów, ani przycisku <kbd>INFO</kbd>. Od wersji 2.43 <strong>każda</strong> funkcja programu ma dojście ze zwykłych klawiszy: strzałek, <kbd>OK</kbd> i przytrzymanego <kbd>OK</kbd>. Kolory nadal działają — są skrótem, nie jedyną drogą.</div>
     <table>
       <thead><tr><th>Ekran</th><th>Klawisz</th><th>Działanie</th></tr></thead>
       <tbody>
         <tr><td>Źródła</td><td><kbd>OK</kbd></td><td>Otwórz źródło. Przytrzymaj, aby usunąć.</td></tr>
         <tr><td>Źródła</td><td><kbd>INFO</kbd> / <kbd>ZIELONY</kbd></td><td>Test połączenia.</td></tr>
         <tr><td>Kanały</td><td><kbd>OK</kbd></td><td>Odtwarzaj.</td></tr>
-        <tr><td>Kanały</td><td><kbd>ZIELONY</kbd></td><td>Import EPG.</td></tr>
-        <tr><td>Kanały</td><td><kbd>NIEBIESKI</kbd></td><td>Odśwież playlistę.</td></tr>
-        <tr><td>Kanały</td><td><kbd>ŻÓŁTY</kbd></td><td>Ulubione.</td></tr>
-        <tr><td>Kanały</td><td><kbd>INFO</kbd> / <kbd>CZERWONY</kbd></td><td>Program kanału.</td></tr>
+        <tr><td>Kanały</td><td>Przytrzymaj <kbd>OK</kbd></td><td><strong>Menu kanału:</strong> program tego kanału, dodanie albo usunięcie z ulubionych.</td></tr>
+        <tr><td>Kanały</td><td>Góra ponad bukietami → <kbd>OK</kbd></td><td><strong>☰ Menu ekranu:</strong> import EPG, odświeżenie listy.</td></tr>
+        <tr><td>Kanały</td><td><kbd>ZIELONY</kbd> / <kbd>NIEBIESKI</kbd> / <kbd>ŻÓŁTY</kbd></td><td>Skróty: import EPG / odświeżenie listy / ulubione.</td></tr>
+        <tr><td>Kanały</td><td><kbd>INFO</kbd> / <kbd>CZERWONY</kbd></td><td>Skrót do programu kanału.</td></tr>
         <tr><td>Odtwarzacz</td><td>Góra / dół / <kbd>CH±</kbd></td><td>Zmiana kanału.</td></tr>
-        <tr><td>Odtwarzacz</td><td>Przytrzymaj <kbd>OK</kbd></td><td>Proporcje obrazu.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>OK</kbd></td><td>Pasek informacyjny (OSD). Przy filmie — pauza.</td></tr>
+        <tr><td>Odtwarzacz</td><td>Przytrzymaj <kbd>OK</kbd></td><td><strong>Menu odtwarzacza:</strong> ścieżka audio, napisy, opis audycji, poprzedni kanał, proporcje obrazu.</td></tr>
         <tr><td>Odtwarzacz</td><td>Lewo</td><td>Lista kanałów bieżącego bukietu albo −30 s w filmie.</td></tr>
         <tr><td>Odtwarzacz</td><td>Prawo</td><td>Pasek kafelków albo +30 s w filmie.</td></tr>
+        <tr><td>Odtwarzacz</td><td><kbd>CZERWONY</kbd> / <kbd>ZIELONY</kbd> / <kbd>ŻÓŁTY</kbd> / <kbd>NIEBIESKI</kbd></td><td>Skróty: poprzedni kanał / audio / opis audycji / napisy.</td></tr>
         <tr><td>Lista kanałów w odtwarzaczu</td><td>Lewo / prawo</td><td>Sąsiedni bukiet.</td></tr>
         <tr><td>Pasek kafelków</td><td>Lewo / prawo, <kbd>OK</kbd>, <kbd>WSTECZ</kbd></td><td>Wybór kanału, włączenie, zamknięcie paska.</td></tr>
-        <tr><td>Odtwarzacz</td><td><kbd>CZERWONY</kbd></td><td>Poprzednio oglądany kanał.</td></tr>
-        <tr><td>Odtwarzacz</td><td><kbd>ZIELONY</kbd></td><td>Ścieżka audio.</td></tr>
-        <tr><td>Odtwarzacz</td><td><kbd>ŻÓŁTY</kbd></td><td>Opis audycji.</td></tr>
-        <tr><td>Odtwarzacz</td><td><kbd>NIEBIESKI</kbd></td><td>Napisy.</td></tr>
-        <tr><td>Radio</td><td>Góra / dół</td><td>Stacja.</td></tr>
-        <tr><td>Radio</td><td>Lewo / prawo</td><td>Głośność.</td></tr>
+        <tr><td>Pasek kafelków</td><td>Góra <span class="badge tv">nowość</span></td><td><strong>Opis audycji z kanału pod kursorem</strong> — nie z oglądanego. To samo robi <kbd>ŻÓŁTY</kbd>.</td></tr>
+        <tr><td>Opis audycji</td><td>Góra / dół, <kbd>WSTECZ</kbd></td><td>Przewijanie tekstu, zamknięcie.</td></tr>
+        <tr><td>Radio</td><td><kbd>OK</kbd></td><td>Słuchaj.</td></tr>
+        <tr><td>Radio — lista stacji</td><td>Przytrzymaj <kbd>OK</kbd></td><td>Dodanie albo usunięcie stacji z ulubionych.</td></tr>
+        <tr><td>Radio — lista stacji</td><td>Góra ponad grupami → <kbd>OK</kbd></td><td><strong>☰ Menu ekranu:</strong> odświeżenie listy.</td></tr>
+        <tr><td>Radio — odtwarzanie</td><td>Góra / dół, lewo / prawo</td><td>Stacja, głośność.</td></tr>
         <tr><td>Panel WWW</td><td><kbd>Ctrl+K</kbd></td><td>Szukaj wszędzie.</td></tr>
       </tbody>
     </table>
@@ -642,6 +737,21 @@
     </ul>
     <div class="tip"><strong>Network:</strong> the TV, computer and phone must be on the same local network. The panel and the activation page are not a public website — they work only at home, at the address shown on the TV.</div>
 
+    <h3>What is new since version 2.17</h3>
+    <table>
+      <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Everything without colour keys</strong> — a screen menu and a menu under a long press of <kbd>OK</kbd>. A remote with no colours and no <kbd>INFO</kbd> now reaches every function</td><td>Channels, Player, Radio <span class="badge tv">TV</span></td><td><a href="#en-keys">chapter 13</a></td></tr>
+        <tr><td><strong>„Later" panel</strong> — three upcoming programmes, one minute before the current one ends</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-player">chapter 6</a></td></tr>
+        <tr><td><strong>Advance notice of a reminder</strong> — a corner bar 5, 10, 15 or 30 minutes before the programme</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
+        <tr><td><strong>Programme info for another channel</strong> — from the tile bar, with the up key</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-strip">chapter 6</a></td></tr>
+        <tr><td><strong>New sources screen</strong> — two columns, remote QR code and panel address next to the list</td><td>Sources <span class="badge tv">TV</span></td><td><a href="#en-sources">chapter 4</a></td></tr>
+        <tr><td>Queued job progress shown in the panel; the update card shows version and size <strong>before</strong> downloading</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
+        <tr><td>A comma in the title no longer loses the group or the name of a VOD item</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-vod">chapter 11</a></td></tr>
+        <tr><td>Gentler picture recovery after the stream freezes</td><td>Player <span class="badge tv">TV</span></td><td><a href="#en-help">chapter 16</a></td></tr>
+      </tbody>
+    </table>
+
     <h3>What is new since version 2.13</h3>
     <table>
       <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
@@ -717,8 +827,9 @@
 
     <h2 id="en-sources">4. Sources screen <span class="badge tv">TV</span></h2>
     <p>This is the first screen after activation. The drawing below is a UI diagram and contains no real address or token.</p>
+    <p>The screen has <strong>two columns</strong>: the program name and the source list on the left; on the right, one below another, a card with the <strong>remote QR code</strong>, a card with the <strong>panel address</strong> for the browser, and the three screen buttons. Scanning the QR code with a phone opens the remote on it — no computer needs to be running.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.17 — IPTV, Enigma2 and Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.43 — IPTV, Enigma2 and Radio</div>
       <div class="mock-pane">
         <h5>BROWSER CONTROL PANEL</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
@@ -746,6 +857,7 @@
 
     <h2 id="en-channels">5. Channel list <span class="badge tv">TV</span></h2>
     <p>Opening an IPTV, Xtream or Enigma2 source shows groups on the left and channels on the right. A current programme may appear next to a channel when EPG is available.</p>
+    <div class="tip"><strong>Two menus instead of colour keys.</strong> Above the bouquet list there is a <strong>☰ Menu</strong> entry — reach it with the <strong>up</strong> arrow from the first bouquet and open it with <kbd>OK</kbd>. It holds what concerns the whole screen: <em>Import EPG</em> and <em>Refresh list</em>. What concerns a single channel — <em>Guide</em> and <em>Favourites</em> — sits under a <strong>long press of <kbd>OK</kbd> on the channel</strong>, so you can see what it applies to. The colour keys in the table below still work as shortcuts.</div>
     <table>
       <thead><tr><th>Key</th><th>Action</th></tr></thead>
       <tbody>
@@ -786,12 +898,23 @@
       <li><kbd>OK</kbd> plays the selected channel, <kbd>BACK</kbd> closes the strip.</li>
       <li>The strip walks the <strong>current bouquet</strong> and stops at its ends. For other bouquets use the list under the left key.</li>
       <li>Opening the strip fetches nothing from the network — logos and the guide come from the TV's own memory.</li>
+      <li><strong>Up shows the full programme description for the channel under the cursor</strong> — not for the one you are watching. You are watching HBO, you move across to Canal+ and the up key tells you what is on Canal+. <kbd>YELLOW</kbd> does the same. <kbd>BACK</kbd> closes the description and returns to the strip, so several channels can be checked one after another.</li>
     </ul>
 
     <h3>The reminder dot and the next-programme notice</h3>
     <ul>
       <li>A <strong>red dot under the clock</strong> in the OSD means at least one reminder is waiting. It shows on every channel and goes out only when the last pending reminder has fired. What exactly is waiting is listed on the panel's Start page.</li>
       <li>The <strong>next-programme notice</strong> appears in the corner of the screen a few minutes before that programme starts. How far ahead is set in the panel (<a href="#en-settings">chapter 14</a>); it can also be switched off.</li>
+      <li><strong>Advance notice of a reminder</strong> — on the same corner bar, 5, 10, 15 or 30 minutes before a programme you asked to be reminded about: <em>In 10 min · channel name</em> plus the title. With a longer lead time the bar stays for twenty seconds instead of ten. The lead time is set in the panel (<a href="#en-settings">chapter 14</a>); zero means no advance notice.</li>
+      <li><strong>The reminder itself</strong> arrives a minute before the programme — on the same bar, in the same shape, except that instead of „In 10 min" it says <em>Now</em>, or <em>Switching</em> when the reminder is set to change the channel for you.</li>
+    </ul>
+
+    <h3 id="en-later">The „Later" panel — three upcoming programmes</h3>
+    <p><strong>One minute before the current programme ends</strong>, a list of the <strong>next three items in the guide</strong> for that channel appears at the right edge for ten seconds — time and title. The first item, the one about to start, is highlighted.</p>
+    <ul>
+      <li><kbd>OK</kbd> or <kbd>BACK</kbd> closes the panel at once.</li>
+      <li>The panel can be switched off for good in the panel settings (<a href="#en-settings">chapter 14</a>).</li>
+      <li>Nothing is fetched from the network — the data comes from the guide stored on the TV.</li>
     </ul>
     <ul>
       <li>A dropped stream is retried several times. If the same folder has a backup link, the program switches to it and shows a failover notice. When there is no replacement it says so: <em>no backup link for this channel</em>.</li>
@@ -800,8 +923,19 @@
       <li>A minute of healthy picture clears the memory of failed links — after a short network overload the program has somewhere to switch again.</li>
     </ul>
 
+    <h3 id="en-player-menu">Player menu — hold OK</h3>
+    <p>Holding <kbd>OK</kbd> opens the <strong>Player menu</strong>. It gathers everything that used to need a colour key:</p>
+    <ul>
+      <li><strong>Audio track</strong> — the same list as under <kbd>GREEN</kbd>.</li>
+      <li><strong>Subtitles</strong> — as under <kbd>BLUE</kbd>; the <em>Off</em> entry always comes first.</li>
+      <li><strong>Programme info</strong> — as under <kbd>YELLOW</kbd>.</li>
+      <li><strong>Previous channel</strong> — back to the last one watched, as under <kbd>RED</kbd>.</li>
+      <li><strong>Picture ratio</strong> — described below.</li>
+    </ul>
+    <p>With a film the menu has three entries: a film has no programme to describe and no previous channel to go back to.</p>
+
     <h3 id="en-aspect">Picture ratio</h3>
-    <p>Holding <kbd>OK</kbd> opens the <strong>Picture ratio</strong> window — the same layout as the audio track selection. It works on a live channel and on a film. The active mode is marked.</p>
+    <p>The last entry of the <strong>Player menu</strong> (hold <kbd>OK</kbd>). It works on a live channel and on a film. The active mode is marked.</p>
     <table>
       <thead><tr><th>Mode</th><th>What it does</th></tr></thead>
       <tbody>
@@ -823,8 +957,9 @@
     <p>A radio source opens a station list, not a TV channel list.</p>
     <ul>
       <li><kbd>OK</kbd> — play the selected station.</li>
-      <li><kbd>BLUE</kbd> — refresh the playlist.</li>
-      <li><kbd>YELLOW</kbd> — favourites.</li>
+      <li><strong>Hold <kbd>OK</kbd></strong> — add or remove the station from favourites.</li>
+      <li><strong>☰ Menu</strong> above the group list (up arrow from the first group) — <em>Refresh list</em>.</li>
+      <li>Shortcuts for a remote with colours: <kbd>BLUE</kbd> — refresh the playlist, <kbd>YELLOW</kbd> — favourites.</li>
     </ul>
     <p>In the radio player: <kbd>OK</kbd> pause, up / down change station, left / right volume, <kbd>BACK</kbd> return to the list. A clock is shown, and the bitrate when the station provides it.</p>
     <p>Radio reacts to the network like the channel player: after a lost connection it waits with <em>No network · waiting for a connection</em> and resumes the station by itself once the network is back.</p>
@@ -870,6 +1005,58 @@
     <p>The top bar shows the selected TV, the current channel, the programme and a recording mark when the Enigma2 tuner is recording. Buttons: previous / next channel, back and forward 30 s (films), pause, stop, volume, mute and <strong>ⓘ</strong> — show the panel on the TV. The seek slider appears for films only.</p>
     <p>The <strong>Source</strong> list switches the playlist. <strong>Refresh</strong> fetches the list from the TV into the browser again. Search everywhere (<kbd>Ctrl+K</kbd>) covers channels, films and series. The microphone button starts voice control in browsers that support it.</p>
     <div class="tip"><strong>Several TV sets:</strong> one panel can control several televisions. Switching TV also changes lists and the guide, because each TV has its own sources.</div>
+
+    <h3 id="en-remote-start">Starting the program from the computer</h3>
+    <p>The panel answers only while the program <strong>is running on the television</strong>.
+       The panel server lives inside the program, so with the application closed there is nobody
+       to take the command — which is why starting it from the computer uses the
+       <strong>television's own IP control</strong>, not our panel.</p>
+
+    <p><strong>Step 1 — on the television</strong> <span class="badge tv">TV</span></p>
+    <ol>
+      <li>Press <kbd>HOME</kbd> and open <strong>Settings</strong>.</li>
+      <li>Find <strong>BRAVIA Settings → IP control</strong>. On some releases the path reads
+          <strong>Network → Home network setup → IP control</strong>.</li>
+      <li>Turn <strong>remote control</strong> on.</li>
+      <li>Set <strong>Authentication</strong> to <strong>Pre-Shared Key</strong> and enter your own key,
+          for example <code>hpl</code>. This is a password for controlling the television — do not reuse
+          a password you use elsewhere.</li>
+    </ol>
+
+    <p><strong>Step 2 — in the PC program</strong></p>
+    <ol>
+      <li>Enter the same key in the <strong>TV pre-shared key</strong> field of the TV profile.
+          The key is encrypted for the current Windows account, just like the panel token.</li>
+      <li>Press <strong>Fetch from TV</strong> — the program downloads the list of applications
+          installed on the television.</li>
+      <li>Pick <strong>HPL IPTV E2+ Radio</strong> from the list and save the profile. You choose once;
+          the application id is not hard-coded, because one television may hold several variants
+          of the program.</li>
+      <li>From now on the <strong>Start the program on the television</strong> button opens the
+          application without reaching for the remote.</li>
+    </ol>
+
+    <div class="warning"><strong>The television must be on.</strong> IP control does not wake it from
+       standby — with the set off the button reports that the television is in standby. The computer
+       and the television must be on the same home network.</div>
+
+    <div class="note"><strong>After the television is disconnected from power</strong> the IP control
+       setting may return to its default. If the button stops working, check <strong>Step 1</strong>
+       first — the pre-shared key sometimes has to be entered again.</div>
+
+    <h3>Sending a new version from the computer</h3>
+    <p>The <strong>Send a new version to the TV</strong> button in the PC program (from version 1.10)
+       installs a chosen <code>.apk</code> file straight from the computer's disk, with no server
+       and no cable. The computer serves the file over the home network for a moment and hands the
+       TV its address — the television does the rest itself.</p>
+    <ul>
+      <li>The application <strong>must be open</strong> on the TV; it is the one that accepts the
+          command. If it is closed, use <strong>Start the program on the TV</strong> first.</li>
+      <li>Before sending, the program shows which version is on the TV and which one will be installed.</li>
+      <li>The TV verifies the checksum and the package <strong>signature</strong>, and you still
+          confirm the installation with the remote — exactly as with an update from an address.</li>
+      <li>On first use Windows may ask about the firewall: allow it for the <strong>private network</strong>.</li>
+    </ul>
 
     <h2 id="en-add">10. Adding sources <span class="badge web">PANEL</span></h2>
     <p>In <strong>Settings → Sources → Add a source</strong> choose the type and fill in the fields. After adding, open the source on the TV to load the list.</p>
@@ -928,29 +1115,32 @@
     <div class="warning"><strong>iPhone: when Safari refuses to open the page.</strong> Safari on iOS 26 does not open <code>http://</code> addresses that arrive <strong>from another app</strong> — from the camera after scanning a code, for example — and shows <em>“the request was for an HTTP URL, only HTTPS URLs are allowed”</em>. Press and hold the camera banner, choose <strong>Copy Link</strong> and paste it into Safari's address bar; a pasted address opens normally. Another browser works straight away. The code itself is correct; the program runs over plain HTTP on your home network, because HTTPS would need a certificate installed by hand on every phone.</div>
 
     <h2 id="en-keys">13. Remote keys — summary</h2>
+    <div class="tip"><strong>A remote without colour keys.</strong> New televisions often come with two remotes, and the smaller one used day to day frequently has neither colour buttons nor an <kbd>INFO</kbd> key. Since version 2.43 <strong>every</strong> function is reachable with ordinary keys: the arrows, <kbd>OK</kbd> and a long press of <kbd>OK</kbd>. The colour keys still work — they are shortcuts, not the only way in.</div>
     <table>
       <thead><tr><th>Screen</th><th>Key</th><th>Action</th></tr></thead>
       <tbody>
         <tr><td>Sources</td><td><kbd>OK</kbd></td><td>Open the source. Hold to delete.</td></tr>
         <tr><td>Sources</td><td><kbd>INFO</kbd> / <kbd>GREEN</kbd></td><td>Connection test.</td></tr>
         <tr><td>Channels</td><td><kbd>OK</kbd></td><td>Play.</td></tr>
-        <tr><td>Channels</td><td><kbd>GREEN</kbd></td><td>EPG import.</td></tr>
-        <tr><td>Channels</td><td><kbd>BLUE</kbd></td><td>Refresh the playlist.</td></tr>
-        <tr><td>Channels</td><td><kbd>YELLOW</kbd></td><td>Favourites.</td></tr>
-        <tr><td>Channels</td><td><kbd>INFO</kbd> / <kbd>RED</kbd></td><td>Channel guide.</td></tr>
+        <tr><td>Channels</td><td>Hold <kbd>OK</kbd></td><td><strong>Channel menu:</strong> guide for this channel, add or remove from favourites.</td></tr>
+        <tr><td>Channels</td><td>Up above the bouquets → <kbd>OK</kbd></td><td><strong>☰ Screen menu:</strong> import EPG, refresh the list.</td></tr>
+        <tr><td>Channels</td><td><kbd>GREEN</kbd> / <kbd>BLUE</kbd> / <kbd>YELLOW</kbd></td><td>Shortcuts: import EPG / refresh list / favourites.</td></tr>
+        <tr><td>Channels</td><td><kbd>INFO</kbd> / <kbd>RED</kbd></td><td>Shortcut to the channel guide.</td></tr>
         <tr><td>Player</td><td>Up / down / <kbd>CH±</kbd></td><td>Change channel.</td></tr>
-        <tr><td>Player</td><td>Hold <kbd>OK</kbd></td><td>Picture ratio.</td></tr>
+        <tr><td>Player</td><td><kbd>OK</kbd></td><td>Information bar (OSD). With a film — pause.</td></tr>
+        <tr><td>Player</td><td>Hold <kbd>OK</kbd></td><td><strong>Player menu:</strong> audio track, subtitles, programme info, previous channel, picture ratio.</td></tr>
         <tr><td>Player</td><td>Left</td><td>Channel list of the current bouquet, or −30 s in a film.</td></tr>
-        <tr><td>Player</td><td>Right</td><td>Tile strip, or +30 s in a film.</td></tr>
+        <tr><td>Player</td><td>Right</td><td>Tile bar, or +30 s in a film.</td></tr>
+        <tr><td>Player</td><td><kbd>RED</kbd> / <kbd>GREEN</kbd> / <kbd>YELLOW</kbd> / <kbd>BLUE</kbd></td><td>Shortcuts: previous channel / audio / programme info / subtitles.</td></tr>
         <tr><td>Channel list in the player</td><td>Left / right</td><td>Neighbouring bouquet.</td></tr>
-        <tr><td>Tile strip</td><td>Left / right, <kbd>OK</kbd>, <kbd>BACK</kbd></td><td>Pick a channel, play it, close the strip.</td></tr>
-        <tr><td>Player</td><td><kbd>RED</kbd></td><td>Previously watched channel.</td></tr>
-        <tr><td>Player</td><td><kbd>GREEN</kbd></td><td>Audio track.</td></tr>
-        <tr><td>Player</td><td><kbd>YELLOW</kbd></td><td>Programme description.</td></tr>
-        <tr><td>Player</td><td><kbd>BLUE</kbd></td><td>Subtitles.</td></tr>
-        <tr><td>Radio</td><td>Up / down</td><td>Station.</td></tr>
-        <tr><td>Radio</td><td>Left / right</td><td>Volume.</td></tr>
-        <tr><td>Web panel</td><td><kbd>Ctrl+K</kbd></td><td>Search everywhere.</td></tr>
+        <tr><td>Tile bar</td><td>Left / right, <kbd>OK</kbd>, <kbd>BACK</kbd></td><td>Choose a channel, play it, close the bar.</td></tr>
+        <tr><td>Tile bar</td><td>Up <span class="badge tv">new</span></td><td><strong>Programme info for the channel under the cursor</strong> — not the one being watched. <kbd>YELLOW</kbd> does the same.</td></tr>
+        <tr><td>Programme info</td><td>Up / down, <kbd>BACK</kbd></td><td>Scroll the text, close.</td></tr>
+        <tr><td>Radio</td><td><kbd>OK</kbd></td><td>Listen.</td></tr>
+        <tr><td>Radio — station list</td><td>Hold <kbd>OK</kbd></td><td>Add or remove the station from favourites.</td></tr>
+        <tr><td>Radio — station list</td><td>Up above the groups → <kbd>OK</kbd></td><td><strong>☰ Screen menu:</strong> refresh the list.</td></tr>
+        <tr><td>Radio — playback</td><td>Up / down, left / right</td><td>Station, volume.</td></tr>
+        <tr><td>Browser panel</td><td><kbd>Ctrl+K</kbd></td><td>Search everywhere.</td></tr>
       </tbody>
     </table>
 
@@ -962,10 +1152,10 @@
       <li><strong>TMDb key.</strong> API v3 key for descriptions and ratings. Posters work without a key.</li>
       <li><strong>Sources.</strong> List, add and delete. Deleting a source also clears its list and EPG on the TV.</li>
       <li><strong>Backup.</strong> Downloads a JSON file with sources, local radio playlists, favourites, history, VOD positions, manual EPG matches and program settings. The file also contains the login details stored with your sources — keep it safe. Restore replaces the current data. File limit: 10 MB.</li>
-      <li id="en-update"><strong>Program update.</strong> An address field and a <strong>Check</strong> button. The address should point at a small <code>update.json</code> file holding the latest version number, the package address, a checksum and a description of the changes. The program contacts that address <strong>only when you press the button</strong> — never on its own. When a newer version exists, <strong>Download and install</strong> fetches the package, verifies the checksum and the <strong>signature</strong> (a package signed with a different key is rejected), and hands it to the Android installer, which asks for confirmation <strong>on the TV screen</strong>. A silent install is not possible; the television must also allow the program to install packages once.</li>
+      <li id="en-update"><strong>Program update.</strong> An address field and a <strong>Check</strong> button. The address should point at a small <code>update.json</code> file holding the latest version number, the package address, a checksum and a description of the changes. The program contacts that address <strong>only when you press the button</strong> — never on its own. The result of the check shows <strong>the version that is waiting next to the one installed, the package size and the list of changes</strong> — before anything is downloaded. When a newer version exists, <strong>Download and install</strong> fetches the package, verifies the checksum and the <strong>signature</strong> (a package signed with a different key is rejected), and hands it to the Android installer, which asks for confirmation <strong>on the TV screen</strong>. A silent install is not possible; the television must also allow the program to install packages once.</li>
       <li><strong>Bouquets.</strong> The bouquets of the selected source with a channel count each. An unticked bouquet disappears from the channel list on the TV, from bouquet switching while watching and from the rail in the Channels tab. Its channels <strong>stay</strong> in search, in favourites and in Films — the point is shorter lists, not hiding part of your own playlist.</li>
       <li><strong>TV guide.</strong> <strong>Fetch EPG for the selected source</strong> starts an XMLTV import on the TV. Below it sits the <strong>Manual EPG matching</strong> card — described in <a href="#en-mapping">chapter 15</a>.</li>
-      <li><strong>Channel and radio station list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Below the divider: hiding VOD items on the channel list and the <strong>next-programme notice</strong> — how many minutes ahead it should appear, or “off”.</li>
+      <li><strong>Channel and radio station list.</strong> Fetch the playlist from the provider again (same as the blue remote key). Below the divider: hiding VOD items on the channel list, the <strong>next-programme notice</strong> — how many minutes ahead it should appear, or “off”, the <strong>„Later" panel</strong> — whether to show three upcoming programmes a minute before the current one ends (<a href="#en-later">chapter 6</a>), and the <strong>advance notice of a reminder</strong> — 5, 10, 15 or 30 minutes before a programme you asked to be reminded about; “off” leaves only the reminder itself, a minute before.</li>
       <li><strong>Guide stored on the TV.</strong> How many programmes for how many channels sit in the database, how much space they take and <strong>how far ahead the guide runs</strong> — that is, when it needs refreshing. The <strong>Clear the guide</strong> button removes programmes and automatic matches; <strong>manual matches are kept</strong> and come back into play at the next import.</li>
       <li><strong>Storage.</strong> The TV (channel logos and film posters, each with its own limit) and this browser (a copy of the lists so the panel opens instantly) are listed separately. Clearing browser storage deletes nothing on the TV.</li>
     </ol>
@@ -1032,7 +1222,7 @@
     <p>Posters do not need TMDb. Descriptions and ratings need an API v3 key in Settings and internet access in the browser.</p>
     <h3>The phone remote does not control the TV</h3>
     <p>The phone must be on the same network. Scan the code again from the panel that is currently open. Check that the remote has the correct television selected.</p>
-    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.17 — bilingual user manual — 01.09.2026</div>
+    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.43 — bilingual user manual — 08.09.2026</div>
   </section>
 </main>
 </body>
