@@ -584,3 +584,16 @@ body.pl .lang-en {
     border: 1px solid #f5b94d;
     background: rgba(245, 185, 77, .12);
 }
+
+/* --- Animowane logo (hero) --- */
+.logo-anim {
+    display: block;
+    width: min(420px, 82%);
+    aspect-ratio: 16 / 9;
+    margin: 4px auto 20px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    object-fit: cover;
+    background: #000;
+}

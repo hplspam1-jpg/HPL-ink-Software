@@ -34,6 +34,10 @@
             <div class="banner"><img src="assets/banner.jpg" alt="HPL ink Software banner"></div>
         </section>
         <section class="intro wrap">
+            <video class="logo-anim" autoplay loop muted playsinline preload="metadata"
+                poster="assets/logo-animation-poster.jpg" aria-label="HPL ink animated logo">
+                <source src="assets/logo-animation.mp4" type="video/mp4">
+            </video>
             <h1>HPL <span>ink</span> Software</h1>
             <p><span class="lang-en">Programs:</span><span class="lang-pl">Programy:</span></p>
         </section>
@@ -118,6 +122,17 @@
         </div>
     </footer>
     <script src="lang.js"></script>
+    <script>
+        // Szanuj preferencję ograniczenia ruchu: zatrzymaj animowane logo (zostaje statyczna klatka).
+        (function () {
+            try {
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    var v = document.querySelector('.logo-anim');
+                    if (v) { v.removeAttribute('autoplay'); v.pause(); }
+                }
+            } catch (e) { }
+        })();
+    </script>
 </body>
 
 </html>
