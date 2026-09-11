@@ -173,12 +173,12 @@
     <p class="subtitle">Dwujęzyczny przewodnik po programie na Android TV. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
       <div class="edition"><strong>Platforma</strong><span>Android TV / Google TV</span></div>
-      <div class="edition"><strong>Wydanie</strong><span>v2.43 &nbsp; 08.09.2026</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v2.75 &nbsp; 08.09.2026</span></div>
       <div class="edition"><strong>Źródła</strong><span>M3U, Xtream, Enigma2, radio</span></div>
       <div class="edition"><strong>Sterowanie</strong><span>pilot TV + panel w przeglądarce</span></div>
     </div>
     <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge tv">TV</span> oznacza czynność na telewizorze. <span class="badge web">PANEL</span> oznacza czynność w przeglądarce komputera lub telefonu, na adresie pokazanym na ekranie TV.</div>
-    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.43</strong> z 08.09.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL IPTV E2+ Radio v2.75</strong> z 08.09.2026. Ekran aktywacji jest w języku angielskim. Język reszty programu i panelu podąża za językiem telewizora (polski albo angielski).</div>
   </section>
 
   <section id="pl" class="page-break">
@@ -214,6 +214,25 @@
       <li>Przewodnik XMLTV, filmy i seriale z playlisty, ulubione, historia, przypomnienia i kopia zapasowa.</li>
     </ul>
     <div class="tip"><strong>Sieć:</strong> telewizor, komputer i telefon muszą być w tej samej sieci lokalnej. Panel i strona aktywacji nie są stroną internetową w sieci publicznej — działają tylko w domu, pod adresem pokazanym na TV.</div>
+
+    <h3>Co nowego od wersji 2.43</h3>
+    <table>
+      <thead><tr><th>Nowość</th><th>Gdzie</th><th>Opis w instrukcji</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nagrania z dysku tunera</strong> — katalogi i nagrania z dekodera Enigma2, z przewijaniem jak przy filmie</td><td>Kanały <span class="badge tv">TV</span></td><td><a href="#pl-kanaly">rozdział 5</a></td></tr>
+        <tr><td><strong>Nowy ekran źródeł</strong> — zegar, opis zaznaczonego źródła pod listą, większy kod QR pilota, przyciski <em>Ostatnio oglądane</em> i <em>Przypomnienia</em></td><td>Źródła <span class="badge tv">TV</span></td><td><a href="#pl-zrodla">rozdział 4</a></td></tr>
+        <tr><td><strong>Lista kanałów w trzech kolumnach</strong> — bukiety, kanały i karta bieżącej audycji z opisem, godzinami i zapowiedzią następnej</td><td>Kanały <span class="badge tv">TV</span></td><td><a href="#pl-kanaly">rozdział 5</a></td></tr>
+        <tr><td><strong>Przycisk „Przypomnij"</strong> na karcie audycji — przypomnienie o następnej pozycji bez wchodzenia w wyszukiwanie</td><td>Kanały <span class="badge tv">TV</span></td><td><a href="#pl-kanaly">rozdział 5</a></td></tr>
+        <tr><td><strong>Lista przypomnień na telewizorze</strong> — podgląd i kasowanie bez komputera</td><td>Źródła <span class="badge tv">TV</span></td><td><a href="#pl-zrodla">rozdział 4</a></td></tr>
+        <tr><td><strong>Ustawienia na telewizorze</strong> — to samo, co w panelu, obsługiwane pilotem</td><td>Źródła <span class="badge tv">TV</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
+        <tr><td><strong>Wielkość napisów na listach kanałów</strong> — trzy stopnie, dla telewizora stojącego daleko od kanapy</td><td>Ustawienia <span class="badge tv">TV</span> <span class="badge web">PANEL</span></td><td><a href="#pl-ustawienia">rozdział 14</a></td></tr>
+        <tr><td><strong>Filmy z plakatami na telewizorze</strong> — katalog VOD z okładkami, obsługiwany pilotem</td><td>Filmy <span class="badge tv">TV</span></td><td><a href="#pl-vod">rozdział 11</a></td></tr>
+        <tr><td><strong>Pełna nazwa bukietu nad listą</strong> — długie nazwy przestały się urywać</td><td>Kanały <span class="badge tv">TV</span></td><td><a href="#pl-kanaly">rozdział 5</a></td></tr>
+        <tr><td><strong>„Szukaj wszędzie" obejmuje wszystkie źródła</strong> — wyniki brane na przemian, z prawdziwą liczbą trafień</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-panel">rozdział 9</a></td></tr>
+        <tr><td>Panel rozpoznaje filmy tak samo jak telewizor — koniec rozbieżności między listą w przeglądarce a listą na ekranie</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-vod">rozdział 11</a></td></tr>
+        <tr><td>Pole <strong>Katalog nagrań</strong> przy źródle Enigma2 — gdy nagrania leżą poza katalogiem domyślnym</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#pl-dodaj">rozdział 10</a></td></tr>
+      </tbody>
+    </table>
 
     <h3>Co nowego od wersji 2.17</h3>
     <table>
@@ -305,37 +324,81 @@
 
     <h2 id="pl-zrodla">4. Ekran źródeł <span class="badge tv">TV</span></h2>
     <p>To pierwszy ekran po aktywacji. Poniższy rysunek jest schematem GUI i nie zawiera prawdziwego adresu ani tokenu.</p>
-    <p>Ekran ma <strong>dwie kolumny</strong>: po lewej nazwa programu i lista źródeł, po prawej — jedna pod drugą — karta z <strong>kodem QR pilota</strong>, karta z <strong>adresem panelu</strong> dla przeglądarki i trzy przyciski ekranu. Kod QR wystarczy zeskanować telefonem, żeby otworzyć na nim pilota; nie trzeba do tego włączonego komputera.</p>
+    <p>Ekran ma <strong>dwie kolumny</strong>. W nagłówku, przy prawej krawędzi, stoi <strong>zegar</strong>. Po lewej nagłówek <em>TWOJE ŹRÓDŁA</em>, lista, a <strong>pod nią jedna linia</strong> z adresem, datą przewodnika i wynikiem ostatniego testu — zawsze dla źródła, na którym stoi kursor. Po prawej karta z <strong>kodem QR pilota</strong>, karta z <strong>adresem panelu</strong> i trzy przyciski. Na dole podpowiedzi, przyciski <strong>Filmy</strong> i <strong>Ustawienia</strong> oraz numer wersji.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.43 — IPTV, Enigma2 i Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; 21:45</div>
+      <div class="mock-list" style="padding:8px">
+        TWOJE ŹRÓDŁA<br>
+        Playlista M3U &nbsp;&nbsp;&nbsp;›<br>
+        Xtream Codes &nbsp;&nbsp;&nbsp;›<br>
+        Tuner Enigma2 &nbsp;&nbsp;&nbsp;›<br>
+        Radio internetowe &nbsp;&nbsp;&nbsp;›
+      </div>
       <div class="mock-pane">
+        <h5>PILOT NA TELEFONIE</h5>
+        <div class="mock-list">kod QR &nbsp;·&nbsp; zeskanuj telefonem</div>
         <h5>PANEL STEROWANIA W PRZEGLĄDARCE</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
       </div>
       <div class="mock-toolbar">
-        <span class="mock-button hot">Odśwież ekran</span>
-        <span class="mock-button">Wyczyść picony</span>
-        <span class="mock-button m3u">Filtr VOD</span>
-      </div>
-      <div class="mock-list" style="padding:8px">
-        Playlista M3U<br>
-        Xtream Codes<br>
-        Tuner Enigma2<br>
-        Radio internetowe M3U
+        <span class="mock-button hot">Odśwież</span>
+        <span class="mock-button">Ostatnio oglądane</span>
+        <span class="mock-button">Przypomnienia</span>
+        <span class="mock-button m3u">Filmy</span>
+        <span class="mock-button m3u">Ustawienia</span>
       </div>
     </div>
     <ul>
-      <li><strong>Odśwież ekran</strong> — ponownie wczytuje listę źródeł.</li>
-      <li><strong>Wyczyść picony</strong> — usuwa zapamiętane logo kanałów z pamięci telewizora.</li>
-      <li><strong>Filtr VOD</strong> — ukrywa albo pokazuje pozycje filmów i seriali na liście kanałów. Ten sam przełącznik jest w panelu.</li>
+      <li><strong>Odśwież</strong> — ponownie wczytuje listę źródeł.</li>
+      <li><strong>Ostatnio oglądane</strong> — włącza kanał, który grał ostatnio. Najkrótsza droga od włączenia telewizora do obrazu: nie trzeba wchodzić w źródło i szukać kanału na liście.</li>
+      <li><strong>Przypomnienia</strong> — lista zaplanowanych przypomnień: tytuł audycji, kanał, dzień i godzina. Przy tych, które mają przełączyć kanał samoczynnie, stoi dopisek <em>program przełączy kanał</em>. <kbd>OK</kbd> pyta i usuwa, <kbd>WSTECZ</kbd> wraca. Przypomnienia <strong>zakłada się</strong> gdzie indziej — na karcie audycji w liście kanałów albo w wyszukiwaniu programu.</li>
+      <li><strong>Filmy</strong> — katalog filmów i seriali z playlisty, z okładkami (<a href="#pl-vod">rozdział 11</a>).</li>
+      <li><strong>Ustawienia</strong> — te same, co w panelu, obsługiwane pilotem (<a href="#pl-ustawienia">rozdział 14</a>).</li>
       <li><kbd>OK</kbd> otwiera źródło. Przytrzymanie <kbd>OK</kbd> pyta o usunięcie źródła.</li>
-      <li><kbd>INFO</kbd> albo <kbd>ZIELONY</kbd> sprawdza połączenie zaznaczonego źródła.</li>
+      <li><kbd>INFO</kbd> albo <kbd>ZIELONY</kbd> sprawdza połączenie zaznaczonego źródła; wynik pojawia się w linii pod listą.</li>
     </ul>
+    <p>Kod QR wystarczy zeskanować telefonem, żeby otworzyć na nim pilota — nie trzeba do tego włączonego komputera.</p>
     <p>Dopóki nie dodasz źródła w panelu, lista jest pusta. Źródła nie dodaje się na telewizorze.</p>
-
     <h2 id="pl-kanaly">5. Lista kanałów <span class="badge tv">TV</span></h2>
-    <p>Po wejściu w źródło IPTV, Xtream albo Enigma2 widać grupy po lewej i kanały po prawej. Przy kanale może pojawić się bieżąca audycja, jeśli jest EPG.</p>
-    <div class="tip"><strong>Dwa menu zamiast kolorowych klawiszy.</strong> Nad listą bukietów stoi pozycja <strong>☰ Menu</strong> — wchodzisz na nią strzałką <strong>w górę</strong> z pierwszego bukietu, <kbd>OK</kbd> otwiera. W środku są rzeczy dotyczące całego ekranu: <em>Import EPG</em> i <em>Odśwież listę</em>. Rzeczy dotyczące jednego kanału — <em>Przewodnik</em> i <em>Ulubione</em> — siedzą pod <strong>przytrzymaniem <kbd>OK</kbd> na kanale</strong>, żeby było widać, czego dotyczą. Kolorowe klawisze z tabeli niżej dalej działają jako skróty.</div>
+    <p>Po wejściu w źródło ekran dzieli się na <strong>trzy kolumny</strong>: bukiety po lewej, kanały pośrodku, a po prawej <strong>karta bieżącej audycji</strong>. Nad listą kanałów stoi <strong>pełna nazwa bukietu</strong>, na którym stoi kursor — w wąskiej kolumnie długie nazwy się nie mieszczą.</p>
+    <div class="mock-window">
+      <div class="mock-title">TV VOD &nbsp; | &nbsp; 5390 kanałów, 9 grup &nbsp; | &nbsp; Filmy &nbsp; Ustawienia</div>
+      <div class="mock-list" style="padding:8px">
+        ☰ Menu<br>
+        HPL PL &nbsp; 640<br>
+        RADIO PL &nbsp; 20<br>
+        VOD - PL - KINO &nbsp; 2301
+      </div>
+      <div class="mock-list" style="padding:8px">
+        HPL PL<br>
+        1 &nbsp; HBO &nbsp;— Wielka, odważna, piękna podróż<br>
+        2 &nbsp; HBO 2 &nbsp;— Spider-Man: Uniwersum<br>
+        3 &nbsp; HBO 3 &nbsp;— Królowa ringu
+      </div>
+      <div class="mock-pane">
+        <h5>NA ANTENIE</h5>
+        <div class="mock-list">Spider-Man: Uniwersum &nbsp;·&nbsp; 17:35 – 19:30<br>opis audycji…</div>
+        <h5>NASTĘPNIE</h5>
+        <div class="mock-list">19:30 &nbsp; Bez wyjścia</div>
+        <div class="mock-toolbar"><span class="mock-button hot">Przypomnij o następnej</span></div>
+      </div>
+    </div>
+    <p><strong>Karta po prawej</strong> pokazuje audycję z kanału, na którym stoi kursor: logo, tytuł, godziny, pasek postępu, opis i — pod spodem — <strong>NASTĘPNIE</strong> z godziną i tytułem kolejnej pozycji.</p>
+    <p>Pod nią stoi przycisk <strong>Przypomnij o następnej</strong>. Strzałka <strong>w prawo</strong> z dowolnego wiersza listy prowadzi wprost na niego, a <strong>w lewo</strong> wraca na ten sam kanał, z którego się wyszło. <kbd>OK</kbd> zakłada przypomnienie — napis zmienia się na <em>✔ Przypomnienie ustawione</em>, a kolejne <kbd>OK</kbd> je zdejmuje. Przy kanale bez przewodnika przycisk jest przygaszony i mówi, czego brakuje. Przypomnienie <strong>powiadamia</strong>, nie przełącza kanału samo z siebie.</p>
+    <div class="tip"><strong>Dwa menu zamiast kolorowych klawiszy.</strong> Nad listą bukietów stoi pozycja <strong>☰ Menu</strong> — wchodzisz na nią strzałką <strong>w górę</strong> z pierwszego bukietu, <kbd>OK</kbd> otwiera. W środku są rzeczy dotyczące całego ekranu: <em>Import EPG</em>, <em>Odśwież listę</em>, a przy tunerze także <em>Nagrania z tunera</em>. Rzeczy dotyczące jednego kanału — <em>Przewodnik</em> i <em>Ulubione</em> — siedzą pod <strong>przytrzymaniem <kbd>OK</kbd> na kanale</strong>, żeby było widać, czego dotyczą. Kolorowe klawisze z tabeli niżej dalej działają jako skróty.</div>
+    <p>W nagłówku, obok liczby kanałów, stoją przyciski <strong>Ustawienia</strong> oraz — zależnie od rodzaju źródła — <strong>Filmy</strong> przy playliście IPTV albo czerwone <strong>Nagrania</strong> przy tunerze Enigma2.</p>
+
+    <h3 id="pl-nagrania">Nagrania z dysku tunera <span class="badge tv">TV</span></h3>
+    <p>Dekoder Enigma2 nagrywa na własny dysk. Program potrafi z niego korzystać — <strong>to nie są filmy z playlisty IPTV</strong> i nie mają nic wspólnego z zakładką Filmy.</p>
+    <p>Wejście jest w dwóch miejscach: przycisk <strong>Nagrania</strong> w nagłówku listy kanałów tunera albo <strong>☰ Menu → Nagrania z tunera</strong>.</p>
+    <ul>
+      <li>Ekran wygląda jak katalog na dekoderze: najpierw foldery, potem nagrania <strong>od najnowszych</strong>, przy każdym data, długość i kanał, z którego zostało nagrane.</li>
+      <li><kbd>OK</kbd> wchodzi w folder albo odtwarza. <kbd>WSTECZ</kbd> cofa o katalog wyżej i stawia kursor tam, skąd się wyszło; z pierwszego katalogu wychodzi z ekranu.</li>
+      <li>Nagranie odtwarza się jak film: przewijanie działa, a koniec pliku kończy odtwarzanie.</li>
+      <li>Program zaczyna od katalogu wpisanego w polu <strong>Katalog nagrań</strong> przy źródle (<a href="#pl-dodaj">rozdział 10</a>); puste pole znaczy katalog domyślny dekodera.</li>
+    </ul>
+    <div class="warning"><strong>Pusto nie znaczy „brak nagrań".</strong> Dekoder w stanie czuwania odpowiada pustą listą. Jeśli ekran mówi, że nagrań nie ma, a wiesz, że są — wybudź dekoder i wejdź ponownie.</div>
+
     <table>
       <thead><tr><th>Klawisz</th><th>Działanie</th></tr></thead>
       <tbody>
@@ -348,7 +411,7 @@
       </tbody>
     </table>
     <p>Wyszukiwanie na TV ma dwa tryby: <strong>Kanału</strong> (nazwy) oraz <strong>W programie</strong> (tytuły audycji na 7 dni). <kbd>OK</kbd> na polu otwiera klawiaturę, <kbd>WSTECZ</kbd> ją chowa.</p>
-
+    <p>Gdy telewizor stoi daleko od kanapy, napisy na tej liście można powiększyć — patrz <a href="#pl-ustawienia">rozdział 14</a>.</p>
     <h2 id="pl-player">6. Odtwarzacz <span class="badge tv">TV</span></h2>
     <p>Kanał otwiera się na pełnym ekranie. OSD pokazuje logotyp kanału, <strong>jego nazwę na czerwono</strong>, tytuł audycji, godziny nadawania i pasek postępu. Znika po chwili i wraca po <kbd>OK</kbd> albo <kbd>INFO</kbd> — wywołane klawiszem stoi dwa razy dłużej niż to, które pokazuje się samo po zmianie kanału.</p>
     <p>W dolnym wierszu OSD widać, <strong>z której playlisty</strong> leci obraz: napis <code>IPTV</code> i dwa pierwsze człony nazwy źródła, np. źródło „TV VOD 12.2026” daje <code>IPTV TV VOD</code>. Przy tunerze widnieje samo <code>Enigma2</code>. Obok stoi podpowiedź kolorowych klawiszy i pozycja <strong>OK dłużej — obraz</strong>.</p>
@@ -481,7 +544,7 @@
     </ul>
     <h3>Pasek telewizora</h3>
     <p>Górny pasek pokazuje wybrany TV, bieżący kanał, audycję i znacznik nagrywania na tunerze Enigma2. Przyciski: poprzedni / następny kanał, cofnij i do przodu 30 s (filmy), pauza, stop, głośność, wyciszenie oraz <strong>ⓘ</strong> — pokaż panel na TV. Suwak czasu pojawia się tylko przy filmach.</p>
-    <p>Lista rozwijana <strong>Źródło</strong> przełącza playlistę. <strong>Odśwież</strong> pobiera listę z telewizora ponownie do przeglądarki. Szukaj wszędzie (<kbd>Ctrl+K</kbd>) obejmuje kanały, filmy i seriale. Przycisk mikrofonu uruchamia sterowanie głosem w przeglądarce, która to obsługuje.</p>
+    <p>Lista rozwijana <strong>Źródło</strong> przełącza playlistę. <strong>Odśwież</strong> pobiera listę z telewizora ponownie do przeglądarki. <strong>Szukaj wszędzie</strong> (<kbd>Ctrl+K</kbd>) obejmuje kanały, filmy i seriale ze <strong>wszystkich pobranych źródeł naraz</strong>. Wyniki brane są <strong>na przemian</strong>, po kilka z każdego źródła, więc żadna lista nie wypełnia całego okna sobą. Licznik pokazuje, ile pozycji znaleziono, a przy nagłówku grupy stoi „pokazano 40 ze 102", gdy reszta się nie zmieściła. Przycisk mikrofonu uruchamia sterowanie głosem w przeglądarce, która to obsługuje.</p>
     <div class="tip"><strong>Kilka telewizorów:</strong> jeden panel może sterować wieloma TV. Przełączenie telewizora zmienia też listy i program, bo każdy TV ma własne źródła.</div>
 
     <h3 id="pl-zdalny-start">Uruchamianie programu z komputera</h3>
@@ -558,8 +621,10 @@
       <div class="step"><b>1. Host</b>Adres tunera w sieci lokalnej.</div>
       <div class="step"><b>2. Port</b>OpenWebif, zwykle 80. Użytkownik i hasło, jeśli są włączone.</div>
       <div class="step"><b>3. Strumień</b>Port strumienia, zwykle 8001.</div>
-      <div class="step"><b>4. Dodaj</b>Wejdź w źródło na TV — wczytają się bukiety.</div>
+      <div class="step"><b>4. Nagrania</b>Katalog nagrań — nieobowiązkowy, patrz niżej.</div>
+      <div class="step"><b>5. Dodaj</b>Wejdź w źródło na TV — wczytają się bukiety.</div>
     </div>
+    <p><strong>Katalog nagrań</strong> to ścieżka <strong>na tunerze</strong>, nie folder na komputerze — na przykład <code>/media/hdd/movie/</code>. Puste pole znaczy: katalog, który dekoder uważa za bieżący. Wpisz własny, gdy nagrania i filmy leżą gdzie indziej, choćby na drugim dysku. Program czyta z niego listę przy otwarciu ekranu <a href="#pl-nagrania">Nagrania</a>.</p>
     <p>Z panelu, przy audycji Enigma2, można zaplanować nagranie na tunerze. Telewizor pyta o potwierdzenie, a tuner musi przyjąć timer.</p>
     <h3>Radio internetowe</h3>
     <ul>
@@ -577,10 +642,18 @@
       <li>W serialu: katalogi → serial → sezon → odcinek. Przycisk <strong>Następny nieobejrzany</strong> wznawia od pierwszego nieobejrzanego odcinka.</li>
       <li><strong>Play na telewizorze</strong> uruchamia materiał na wybranym TV.</li>
     </ul>
-    <p>Filtr VOD na ekranie źródeł TV i w Ustawieniach panelu ukrywa te pozycje na zwykłej liście kanałów, żeby nie mieszały się z telewizją na żywo.</p>
+    <p>Filtr VOD w Ustawieniach ukrywa te pozycje na zwykłej liście kanałów, żeby nie mieszały się z telewizją na żywo.</p>
+    <p><strong>Pod uwagę brane są wyłącznie listy IPTV</strong> — playlisty M3U i Xtream. Tuner Enigma2 nie ma katalogu VOD, a rozpoznawanie po nazwach potrafiło brać za filmy zwykłe kanały w rodzaju „Polsat Seriale HD". Dlatego przy źródle tunera przycisk Filmów się nie pojawia; jego miejsce zajmują <a href="#pl-nagrania">Nagrania</a>. Panel i telewizor rozpoznają filmy <strong>tą samą regułą</strong>, więc lista w przeglądarce zgadza się z tym, co widać na ekranie.</p>
+
+    <h3 id="pl-filmy-tv">Filmy na telewizorze <span class="badge tv">TV</span></h3>
+    <p>Ten sam katalog można otworzyć bez komputera: przycisk <strong>Filmy</strong> stoi na ekranie źródeł i w nagłówku listy kanałów. Ekran pokazuje <strong>siatkę plakatów</strong>, nad nią wybór katalogu, a pod spodem pełny tytuł zaznaczonej pozycji — na kafelku jest przycięty do dwóch wierszy.</p>
+    <ul>
+      <li>Lista bierze się z <strong>pamięci telewizora</strong>: ekran nie łączy się z dostawcą. Gdy pamięć jest pusta, mówi to wprost, zamiast ściągać kilkadziesiąt megabajtów bez pytania.</li>
+      <li><kbd>OK</kbd> odtwarza, <kbd>WSTECZ</kbd> wraca.</li>
+    </ul>
 
     <h2 id="pl-pilot">12. Pilot na telefonie <span class="badge web">PANEL</span></h2>
-    <p>Kod QR jest w dwóch miejscach: w <strong>Ustawieniach panelu</strong> oraz — od wersji 2.16 — <strong>na ekranie źródeł na telewizorze</strong>, obok adresu panelu, z podpisem „Pilot". Ten drugi jest ważniejszy, niż się wydaje: gdy komputer jest wyłączony, telefon zostaje jedynym pilotem, a wtedy nie ma skąd wziąć adresu.</p>
+    <p>Kod QR jest w dwóch miejscach: w <strong>Ustawieniach panelu</strong> oraz — od wersji 2.16 — <strong>na ekranie źródeł na telewizorze</strong>, obok adresu panelu, z podpisem „PILOT NA TELEFONIE". Ten drugi jest ważniejszy, niż się wydaje: gdy komputer jest wyłączony, telefon zostaje jedynym pilotem, a wtedy nie ma skąd wziąć adresu.</p>
     <p>Zeskanuj kod telefonem podłączonym do tej samej sieci — w przeglądarce telefonu otworzy się osobny, wąski pilot.</p>
     <ul>
       <li>Wybór telewizora i źródła.</li>
@@ -593,15 +666,19 @@
     <div class="warning"><strong>iPhone: gdy Safari odmawia otwarcia.</strong> Safari na iOS 26 nie otwiera adresów <code>http://</code> przychodzących <strong>z innej aplikacji</strong> — na przykład z aparatu po zeskanowaniu kodu — i pokazuje komunikat <em>„żądanie dotyczyło adresu URL HTTP, dozwolone są tylko adresy URL HTTPS"</em>. Przytrzymaj wtedy baner aparatu, wybierz <strong>Skopiuj łącze</strong> i wklej je w pasek adresu Safari — wklejony adres otwiera się normalnie. Można też użyć innej przeglądarki, w niej kod działa od razu. Sam kod jest poprawny; program pracuje w sieci domowej po zwykłym HTTP, bo HTTPS wymagałby certyfikatu instalowanego ręcznie na każdym telefonie.</div>
 
     <h2 id="pl-klawisze">13. Klawisze pilota — zestawienie</h2>
-    <div class="tip"><strong>Pilot bez kolorowych klawiszy.</strong> Nowe telewizory bywają sprzedawane z dwoma pilotami, a ten mniejszy, używany na co dzień, często nie ma ani kolorów, ani przycisku <kbd>INFO</kbd>. Od wersji 2.43 <strong>każda</strong> funkcja programu ma dojście ze zwykłych klawiszy: strzałek, <kbd>OK</kbd> i przytrzymanego <kbd>OK</kbd>. Kolory nadal działają — są skrótem, nie jedyną drogą.</div>
+    <div class="tip"><strong>Pilot bez kolorowych klawiszy.</strong> Nowe telewizory bywają sprzedawane z dwoma pilotami, a ten mniejszy, używany na co dzień, często nie ma ani kolorów, ani przycisku <kbd>INFO</kbd>. Od wersji 2.75 <strong>każda</strong> funkcja programu ma dojście ze zwykłych klawiszy: strzałek, <kbd>OK</kbd> i przytrzymanego <kbd>OK</kbd>. Kolory nadal działają — są skrótem, nie jedyną drogą.</div>
     <table>
       <thead><tr><th>Ekran</th><th>Klawisz</th><th>Działanie</th></tr></thead>
       <tbody>
         <tr><td>Źródła</td><td><kbd>OK</kbd></td><td>Otwórz źródło. Przytrzymaj, aby usunąć.</td></tr>
-        <tr><td>Źródła</td><td><kbd>INFO</kbd> / <kbd>ZIELONY</kbd></td><td>Test połączenia.</td></tr>
+        <tr><td>Źródła</td><td><kbd>INFO</kbd> / <kbd>ZIELONY</kbd></td><td>Test połączenia; wynik w linii pod listą.</td></tr>
+        <tr><td>Źródła</td><td>Prawo → <kbd>OK</kbd></td><td>Przyciski kolumny: <em>Odśwież</em>, <em>Ostatnio oglądane</em>, <em>Przypomnienia</em>.</td></tr>
+        <tr><td>Źródła</td><td>Dół → <kbd>OK</kbd></td><td>Pasek na dole: <em>Filmy</em> i <em>Ustawienia</em>.</td></tr>
         <tr><td>Kanały</td><td><kbd>OK</kbd></td><td>Odtwarzaj.</td></tr>
+        <tr><td>Kanały</td><td>Prawo</td><td>Przycisk <strong>Przypomnij o następnej</strong> na karcie audycji. Lewo wraca na ten sam kanał.</td></tr>
         <tr><td>Kanały</td><td>Przytrzymaj <kbd>OK</kbd></td><td><strong>Menu kanału:</strong> program tego kanału, dodanie albo usunięcie z ulubionych.</td></tr>
-        <tr><td>Kanały</td><td>Góra ponad bukietami → <kbd>OK</kbd></td><td><strong>☰ Menu ekranu:</strong> import EPG, odświeżenie listy.</td></tr>
+        <tr><td>Kanały</td><td>Góra ponad bukietami → <kbd>OK</kbd></td><td><strong>☰ Menu ekranu:</strong> import EPG, odświeżenie listy, a przy tunerze także nagrania.</td></tr>
+        <tr><td>Kanały — tuner Enigma2</td><td>Przycisk <strong>Nagrania</strong></td><td>Katalogi i nagrania z dysku dekodera. <kbd>OK</kbd> — folder albo odtwarzanie, <kbd>WSTECZ</kbd> — katalog wyżej.</td></tr>
         <tr><td>Kanały</td><td><kbd>ZIELONY</kbd> / <kbd>NIEBIESKI</kbd> / <kbd>ŻÓŁTY</kbd></td><td>Skróty: import EPG / odświeżenie listy / ulubione.</td></tr>
         <tr><td>Kanały</td><td><kbd>INFO</kbd> / <kbd>CZERWONY</kbd></td><td>Skrót do programu kanału.</td></tr>
         <tr><td>Odtwarzacz</td><td>Góra / dół / <kbd>CH±</kbd></td><td>Zmiana kanału.</td></tr>
@@ -622,8 +699,10 @@
       </tbody>
     </table>
 
-    <h2 id="pl-ustawienia">14. Ustawienia panelu <span class="badge web">PANEL</span></h2>
+    <h2 id="pl-ustawienia">14. Ustawienia <span class="badge web">PANEL</span> <span class="badge tv">TV</span></h2>
+    <div class="tip"><strong>To samo ustawia się także na telewizorze.</strong> Przycisk <strong>Ustawienia</strong> stoi na ekranie źródeł i w nagłówku listy kanałów, a ekran obsługuje się pilotem. Komputer nie jest do niczego potrzebny — panel daje to samo, tylko wygodniej przy dłuższych wpisach, jak adresy czy klucz TMDb.</div>
     <ol class="settings-list">
+      <li><strong>Wielkość napisów na listach kanałów.</strong> Trzy stopnie: <em>normalna</em>, <em>duża</em>, <em>bardzo duża</em>. Dotyczy listy otwieranej w trakcie oglądania klawiszem w lewo oraz pełnego ekranu z kanałami. Rośnie nazwa kanału i nazwa audycji. <strong>Im większe napisy, tym mniej pozycji mieści się na ekranie</strong> — dlatego stopnie tak się nazywają. Zmiana działa przy następnym otwarciu listy; wystarczy ją zamknąć i otworzyć ponownie, bez restartu programu. Domyślnie zostaje rozmiar dotychczasowy.</li>
       <li><strong>Pilot na telefonie.</strong> Kod QR i adres strony pilota. Telefon musi być w tej samej sieci.</li>
       <li><strong>Telewizory.</strong> Dodaj kolejny TV, wklejając pełny adres z jego ekranu, razem z <code>token</code>. Telewizor serwujący stronę jest zawsze dostępny jako „Ten telewizor”.</li>
       <li><strong>Klawisze multimedialne.</strong> Pauza i przewijanie na klawiaturze sterują TV także przy zminimalizowanej przeglądarce. Przejmują te klawisze innym programom — wyłącz, jeśli przeszkadza. Wymaga kliknięcia na stronie, gdy przeglądarka zablokuje dźwięk.</li>
@@ -695,7 +774,7 @@
     <h3>Obraz jest rozciągnięty albo ma pasy</h3>
     <p>Przytrzymaj <kbd>OK</kbd> w odtwarzaczu i zmień tryb: <strong>Dopasuj</strong> pokazuje cały kadr z pasami, <strong>Powiększ</strong> wypełnia ekran kosztem brzegów, <strong>Rozciągnij</strong> to ustawienie domyślne. Na materiale 16:9 wszystkie trzy tryby dają ten sam obraz.</p>
     <h3>Film nie startuje, a kanał TV tak</h3>
-    <p>Sprawdź, czy konto obejmuje VOD i czy playlista ma osobne ścieżki filmów. Filtr VOD na TV nie blokuje zakładek Filmy / Seriale w panelu — tylko czyści listę kanałów.</p>
+    <p>Sprawdź, czy konto obejmuje VOD i czy playlista ma osobne ścieżki filmów. Filtr VOD w Ustawieniach nie blokuje zakładek Filmy / Seriale ani ekranu Filmów na telewizorze — tylko czyści listę kanałów.</p>
     <h3>Brak opisów filmów</h3>
     <p>Plakaty nie wymagają TMDb. Opisy i oceny wymagają klucza API v3 w Ustawieniach oraz internetu w przeglądarce.</p>
     <h3>Pilot na telefonie nie steruje</h3>
@@ -736,6 +815,25 @@
       <li>XMLTV guide, films and series from the playlist, favourites, history, reminders and backup.</li>
     </ul>
     <div class="tip"><strong>Network:</strong> the TV, computer and phone must be on the same local network. The panel and the activation page are not a public website — they work only at home, at the address shown on the TV.</div>
+
+    <h3>What is new since version 2.43</h3>
+    <table>
+      <thead><tr><th>New</th><th>Where</th><th>Described in</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Recordings from the tuner disk</strong> — folders and recordings from the Enigma2 box, with seeking as in a film</td><td>Channels <span class="badge tv">TV</span></td><td><a href="#en-channels">chapter 5</a></td></tr>
+        <tr><td><strong>New sources screen</strong> — a clock, a description of the highlighted source under the list, a bigger remote QR code, and the <em>Last watched</em> and <em>Reminders</em> buttons</td><td>Sources <span class="badge tv">TV</span></td><td><a href="#en-sources">chapter 4</a></td></tr>
+        <tr><td><strong>Channel list in three columns</strong> — bouquets, channels and a card with the current programme, its hours, description and what comes next</td><td>Channels <span class="badge tv">TV</span></td><td><a href="#en-channels">chapter 5</a></td></tr>
+        <tr><td><strong>„Remind me" button</strong> on the programme card — a reminder for the next programme without opening the search</td><td>Channels <span class="badge tv">TV</span></td><td><a href="#en-channels">chapter 5</a></td></tr>
+        <tr><td><strong>Reminder list on the TV</strong> — review and delete without a computer</td><td>Sources <span class="badge tv">TV</span></td><td><a href="#en-sources">chapter 4</a></td></tr>
+        <tr><td><strong>Settings on the TV</strong> — the same as in the panel, operated with the remote</td><td>Sources <span class="badge tv">TV</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
+        <tr><td><strong>Text size in channel lists</strong> — three steps, for a TV standing far from the sofa</td><td>Settings <span class="badge tv">TV</span> <span class="badge web">PANEL</span></td><td><a href="#en-settings">chapter 14</a></td></tr>
+        <tr><td><strong>Films with posters on the TV</strong> — the VOD catalogue with covers, operated with the remote</td><td>Films <span class="badge tv">TV</span></td><td><a href="#en-vod">chapter 11</a></td></tr>
+        <tr><td><strong>Full bouquet name above the list</strong> — long names no longer get cut off</td><td>Channels <span class="badge tv">TV</span></td><td><a href="#en-channels">chapter 5</a></td></tr>
+        <tr><td><strong>„Search everywhere" covers every source</strong> — results taken in turns, with the real number of hits</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-panel">chapter 9</a></td></tr>
+        <tr><td>The panel recognises films exactly as the TV does — no more differences between the browser list and the screen</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-vod">chapter 11</a></td></tr>
+        <tr><td>A <strong>Recordings folder</strong> field for the Enigma2 source — when recordings sit outside the default folder</td><td>Panel <span class="badge web">PANEL</span></td><td><a href="#en-add">chapter 10</a></td></tr>
+      </tbody>
+    </table>
 
     <h3>What is new since version 2.17</h3>
     <table>
@@ -827,37 +925,81 @@
 
     <h2 id="en-sources">4. Sources screen <span class="badge tv">TV</span></h2>
     <p>This is the first screen after activation. The drawing below is a UI diagram and contains no real address or token.</p>
-    <p>The screen has <strong>two columns</strong>: the program name and the source list on the left; on the right, one below another, a card with the <strong>remote QR code</strong>, a card with the <strong>panel address</strong> for the browser, and the three screen buttons. Scanning the QR code with a phone opens the remote on it — no computer needs to be running.</p>
+    <p>The screen has <strong>two columns</strong>. A <strong>clock</strong> sits at the right end of the header. On the left: the <em>YOUR SOURCES</em> heading, the list, and <strong>one line below it</strong> with the address, the guide date and the result of the last test — always for the highlighted source. On the right: a card with the <strong>remote QR code</strong>, a card with the <strong>panel address</strong>, and three buttons. At the bottom: key hints, the <strong>Films</strong> and <strong>Settings</strong> buttons, and the version number.</p>
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; v2.43 — IPTV, Enigma2 and Radio</div>
+      <div class="mock-title"><b>HPL</b> <i>ink</i> IPTV E2+ Radio &nbsp; | &nbsp; 21:45</div>
+      <div class="mock-list" style="padding:8px">
+        YOUR SOURCES<br>
+        M3U playlist &nbsp;&nbsp;&nbsp;›<br>
+        Xtream Codes &nbsp;&nbsp;&nbsp;›<br>
+        Enigma2 tuner &nbsp;&nbsp;&nbsp;›<br>
+        Internet radio &nbsp;&nbsp;&nbsp;›
+      </div>
       <div class="mock-pane">
+        <h5>REMOTE ON YOUR PHONE</h5>
+        <div class="mock-list">QR code &nbsp;·&nbsp; scan it with your phone</div>
         <h5>BROWSER CONTROL PANEL</h5>
         <div class="mock-list">http://192.168.x.x:8091/?token=••••••••</div>
       </div>
       <div class="mock-toolbar">
-        <span class="mock-button hot">Refresh screen</span>
-        <span class="mock-button">Clear picons</span>
-        <span class="mock-button m3u">VOD filter</span>
-      </div>
-      <div class="mock-list" style="padding:8px">
-        M3U playlist<br>
-        Xtream Codes<br>
-        Enigma2 tuner<br>
-        Internet radio M3U
+        <span class="mock-button hot">Refresh</span>
+        <span class="mock-button">Last watched</span>
+        <span class="mock-button">Reminders</span>
+        <span class="mock-button m3u">Films</span>
+        <span class="mock-button m3u">Settings</span>
       </div>
     </div>
     <ul>
-      <li><strong>Refresh screen</strong> — reloads the source list.</li>
-      <li><strong>Clear picons</strong> — removes cached channel logos from the TV.</li>
-      <li><strong>VOD filter</strong> — hides or shows films and series on the channel list. The same switch is in the panel.</li>
+      <li><strong>Refresh</strong> — reloads the source list.</li>
+      <li><strong>Last watched</strong> — starts the channel that played last. The shortest way from switching the TV on to a picture: no need to open a source and look for the channel.</li>
+      <li><strong>Reminders</strong> — the list of scheduled reminders: programme title, channel, day and time. Those set to switch the channel by themselves carry the note <em>the app will switch the channel</em>. <kbd>OK</kbd> asks and deletes, <kbd>BACK</kbd> returns. Reminders are <strong>created</strong> elsewhere — on the programme card in the channel list or in the guide search.</li>
+      <li><strong>Films</strong> — the catalogue of films and series from the playlist, with covers (<a href="#en-vod">chapter 11</a>).</li>
+      <li><strong>Settings</strong> — the same as in the panel, operated with the remote (<a href="#en-settings">chapter 14</a>).</li>
       <li><kbd>OK</kbd> opens a source. Holding <kbd>OK</kbd> asks to delete it.</li>
-      <li><kbd>INFO</kbd> or <kbd>GREEN</kbd> tests the selected source.</li>
+      <li><kbd>INFO</kbd> or <kbd>GREEN</kbd> tests the selected source; the result appears in the line below the list.</li>
     </ul>
+    <p>Scanning the QR code with a phone opens the remote on it — no computer needs to be running.</p>
     <p>Until you add a source in the panel, the list is empty. Sources are not added on the TV.</p>
-
     <h2 id="en-channels">5. Channel list <span class="badge tv">TV</span></h2>
-    <p>Opening an IPTV, Xtream or Enigma2 source shows groups on the left and channels on the right. A current programme may appear next to a channel when EPG is available.</p>
-    <div class="tip"><strong>Two menus instead of colour keys.</strong> Above the bouquet list there is a <strong>☰ Menu</strong> entry — reach it with the <strong>up</strong> arrow from the first bouquet and open it with <kbd>OK</kbd>. It holds what concerns the whole screen: <em>Import EPG</em> and <em>Refresh list</em>. What concerns a single channel — <em>Guide</em> and <em>Favourites</em> — sits under a <strong>long press of <kbd>OK</kbd> on the channel</strong>, so you can see what it applies to. The colour keys in the table below still work as shortcuts.</div>
+    <p>After opening a source the screen splits into <strong>three columns</strong>: bouquets on the left, channels in the middle, and the <strong>current programme card</strong> on the right. Above the channel list stands the <strong>full name of the bouquet</strong> the cursor is on — long names do not fit in the narrow column.</p>
+    <div class="mock-window">
+      <div class="mock-title">TV VOD &nbsp; | &nbsp; 5390 channels, 9 groups &nbsp; | &nbsp; Films &nbsp; Settings</div>
+      <div class="mock-list" style="padding:8px">
+        ☰ Menu<br>
+        HPL PL &nbsp; 640<br>
+        RADIO PL &nbsp; 20<br>
+        VOD - PL - KINO &nbsp; 2301
+      </div>
+      <div class="mock-list" style="padding:8px">
+        HPL PL<br>
+        1 &nbsp; HBO &nbsp;— a film<br>
+        2 &nbsp; HBO 2 &nbsp;— Spider-Man: Into the Spider-Verse<br>
+        3 &nbsp; HBO 3 &nbsp;— another film
+      </div>
+      <div class="mock-pane">
+        <h5>ON AIR</h5>
+        <div class="mock-list">Spider-Man: Into the Spider-Verse &nbsp;·&nbsp; 17:35 – 19:30<br>programme description…</div>
+        <h5>NEXT</h5>
+        <div class="mock-list">19:30 &nbsp; No Way Out</div>
+        <div class="mock-toolbar"><span class="mock-button hot">Remind me about the next one</span></div>
+      </div>
+    </div>
+    <p><strong>The card on the right</strong> shows the programme from the channel under the cursor: logo, title, hours, a progress bar, the description and — below — <strong>NEXT</strong> with the time and title of the following programme.</p>
+    <p>Under it sits the <strong>Remind me about the next one</strong> button. The <strong>right</strong> arrow from any row of the list leads straight to it, and <strong>left</strong> returns to the same channel you came from. <kbd>OK</kbd> sets the reminder — the label changes to <em>✔ Reminder set</em> and another <kbd>OK</kbd> removes it. On a channel without a guide the button is dimmed and says what is missing. A reminder <strong>notifies</strong>; it does not switch the channel by itself.</p>
+    <div class="tip"><strong>Two menus instead of colour keys.</strong> Above the bouquet list sits <strong>☰ Menu</strong> — you reach it with the <strong>up</strong> arrow from the first bouquet, <kbd>OK</kbd> opens it. Inside are things concerning the whole screen: <em>EPG import</em>, <em>Refresh list</em>, and — for a tuner — <em>Tuner recordings</em>. Things concerning a single channel — <em>Guide</em> and <em>Favourites</em> — sit under <strong>holding <kbd>OK</kbd> on the channel</strong>, so it is clear what they apply to. The colour keys in the table below still work as shortcuts.</div>
+    <p>In the header, next to the channel count, sit the <strong>Settings</strong> button and — depending on the source — <strong>Films</strong> for an IPTV playlist or the red <strong>Recordings</strong> for an Enigma2 tuner.</p>
+
+    <h3 id="en-recordings">Recordings from the tuner disk <span class="badge tv">TV</span></h3>
+    <p>An Enigma2 box records onto its own disk. The program can use it — <strong>these are not films from an IPTV playlist</strong> and have nothing to do with the Films tab.</p>
+    <p>There are two ways in: the <strong>Recordings</strong> button in the header of the tuner channel list, or <strong>☰ Menu → Tuner recordings</strong>.</p>
+    <ul>
+      <li>The screen looks like the folder view on the box: folders first, then recordings <strong>newest first</strong>, each with the date, length and the channel it was recorded from.</li>
+      <li><kbd>OK</kbd> opens a folder or plays. <kbd>BACK</kbd> goes one folder up and puts the cursor where you left it; from the first folder it leaves the screen.</li>
+      <li>A recording plays like a film: seeking works, and the end of the file ends playback.</li>
+      <li>The program starts from the folder set in the <strong>Recordings folder</strong> field of the source (<a href="#en-add">chapter 10</a>); an empty field means the box default.</li>
+    </ul>
+    <div class="warning"><strong>Empty does not mean „no recordings".</strong> A box in standby answers with an empty list. If the screen says there are none and you know there are — wake the box up and come back.</div>
+
     <table>
       <thead><tr><th>Key</th><th>Action</th></tr></thead>
       <tbody>
@@ -866,11 +1008,11 @@
         <tr><td><kbd>GREEN</kbd></td><td>EPG (XMLTV) import for this source. An Enigma2 tuner provides the guide itself and needs no import.</td></tr>
         <tr><td><kbd>BLUE</kbd></td><td>Fetches the playlist from the provider again.</td></tr>
         <tr><td><kbd>YELLOW</kbd></td><td>Adds or removes the channel from favourites. The ★ Favourites group appears in the group list.</td></tr>
-        <tr><td><kbd>INFO</kbd> or <kbd>RED</kbd></td><td>Opens the guide for the selected channel. If there is no EPG, the TV suggests an XMLTV import.</td></tr>
+        <tr><td><kbd>INFO</kbd> or <kbd>RED</kbd></td><td>Opens the guide for the selected channel. With no EPG the TV suggests an XMLTV import.</td></tr>
       </tbody>
     </table>
     <p>Search on the TV has two modes: <strong>Channel</strong> (names) and <strong>In the guide</strong> (programme titles for 7 days). <kbd>OK</kbd> on the field opens the keyboard, <kbd>BACK</kbd> hides it.</p>
-
+    <p>When the TV stands far from the sofa, the text in this list can be enlarged — see <a href="#en-settings">chapter 14</a>.</p>
     <h2 id="en-player">6. Player <span class="badge tv">TV</span></h2>
     <p>A channel opens full screen. The OSD shows the channel logo, <strong>the channel name in red</strong>, the programme title, broadcast times and a progress bar. It hides after a moment and returns with <kbd>OK</kbd> or <kbd>INFO</kbd> — called up by a key it stays twice as long as the one that appears by itself after a channel change.</p>
     <p>The bottom OSD line shows <strong>which playlist</strong> is playing: the word <code>IPTV</code> plus the first two words of the source name — the source “TV VOD 12.2026” gives <code>IPTV TV VOD</code>. A tuner shows just <code>Enigma2</code>. Next to it sit the colour key hints and the item <strong>hold OK — picture</strong>.</p>
@@ -1003,7 +1145,7 @@
     </ul>
     <h3>TV bar</h3>
     <p>The top bar shows the selected TV, the current channel, the programme and a recording mark when the Enigma2 tuner is recording. Buttons: previous / next channel, back and forward 30 s (films), pause, stop, volume, mute and <strong>ⓘ</strong> — show the panel on the TV. The seek slider appears for films only.</p>
-    <p>The <strong>Source</strong> list switches the playlist. <strong>Refresh</strong> fetches the list from the TV into the browser again. Search everywhere (<kbd>Ctrl+K</kbd>) covers channels, films and series. The microphone button starts voice control in browsers that support it.</p>
+    <p>The <strong>Source</strong> list switches the playlist. <strong>Refresh</strong> fetches the list from the TV into the browser again. <strong>Search everywhere</strong> (<kbd>Ctrl+K</kbd>) covers channels, films and series from <strong>every fetched source at once</strong>. Results are taken <strong>in turns</strong>, a few from each source, so no single list fills the whole window. The counter shows how many items were found, and the group heading says „showing 40 of 102" when the rest did not fit. The microphone button starts voice control in browsers that support it.</p>
     <div class="tip"><strong>Several TV sets:</strong> one panel can control several televisions. Switching TV also changes lists and the guide, because each TV has its own sources.</div>
 
     <h3 id="en-remote-start">Starting the program from the computer</h3>
@@ -1080,8 +1222,10 @@
       <div class="step"><b>1. Host</b>Receiver address on the local network.</div>
       <div class="step"><b>2. Port</b>OpenWebif, usually 80. User and password if authentication is on.</div>
       <div class="step"><b>3. Stream</b>Stream port, usually 8001.</div>
-      <div class="step"><b>4. Add</b>Open the source on the TV — bouquets will load.</div>
+      <div class="step"><b>4. Recordings</b>Recordings folder — optional, see below.</div>
+      <div class="step"><b>5. Add</b>Open the source on the TV — bouquets will load.</div>
     </div>
+    <p>The <strong>Recordings folder</strong> is a path <strong>on the tuner</strong>, not a folder on the computer — for example <code>/media/hdd/movie/</code>. An empty field means the folder the box considers current. Enter your own when recordings and films sit elsewhere, for instance on a second disk. The program reads the list from it when the <a href="#en-recordings">Recordings</a> screen is opened.</p>
     <p>From the panel, an Enigma2 programme can be scheduled as a recording on the tuner. The TV asks for confirmation, and the receiver must accept the timer.</p>
     <h3>Internet radio</h3>
     <ul>
@@ -1099,10 +1243,18 @@
       <li>In series: folders → series → season → episode. <strong>Next unwatched</strong> resumes from the first unwatched episode.</li>
       <li><strong>Play on the TV</strong> starts the item on the selected television.</li>
     </ul>
-    <p>The VOD filter on the TV sources screen and in panel Settings hides these items on the ordinary channel list so they do not mix with live TV.</p>
+    <p>The VOD filter in Settings hides these items on the ordinary channel list so they do not mix with live TV.</p>
+    <p><strong>Only IPTV lists are taken into account</strong> — M3U and Xtream playlists. An Enigma2 tuner has no VOD catalogue, and name-based recognition could take ordinary channels such as „Polsat Seriale HD" for films. That is why the Films button does not appear for a tuner source; its place is taken by <a href="#en-recordings">Recordings</a>. The panel and the TV recognise films by <strong>the same rule</strong>, so the list in the browser matches what is on the screen.</p>
+
+    <h3 id="en-films-tv">Films on the TV <span class="badge tv">TV</span></h3>
+    <p>The same catalogue can be opened without a computer: the <strong>Films</strong> button sits on the sources screen and in the channel list header. The screen shows a <strong>grid of posters</strong>, the folder selector above it, and the full title of the highlighted item below — on the tile it is trimmed to two lines.</p>
+    <ul>
+      <li>The list comes from the <strong>TV's own memory</strong>: this screen does not contact the provider. When the memory is empty it says so, instead of downloading tens of megabytes unasked.</li>
+      <li><kbd>OK</kbd> plays, <kbd>BACK</kbd> returns.</li>
+    </ul>
 
     <h2 id="en-remote">12. Phone remote <span class="badge web">PANEL</span></h2>
-    <p>The QR code sits in two places: in the <strong>panel settings</strong> and — since version 2.16 — <strong>on the sources screen of the television</strong>, next to the panel address, labelled “Remote”. The second one matters more than it sounds: with the computer switched off the phone is the only remote left, and there is nowhere else to read the address from.</p>
+    <p>The QR code sits in two places: in the <strong>panel settings</strong> and — since version 2.16 — <strong>on the sources screen of the television</strong>, next to the panel address, labelled “REMOTE ON YOUR PHONE”. The second one matters more than it sounds: with the computer switched off the phone is the only remote left, and there is nowhere else to read the address from.</p>
     <p>Scan the code with a phone on the same network — a separate, narrow remote opens in the phone browser.</p>
     <ul>
       <li>TV and source selection.</li>
@@ -1115,15 +1267,19 @@
     <div class="warning"><strong>iPhone: when Safari refuses to open the page.</strong> Safari on iOS 26 does not open <code>http://</code> addresses that arrive <strong>from another app</strong> — from the camera after scanning a code, for example — and shows <em>“the request was for an HTTP URL, only HTTPS URLs are allowed”</em>. Press and hold the camera banner, choose <strong>Copy Link</strong> and paste it into Safari's address bar; a pasted address opens normally. Another browser works straight away. The code itself is correct; the program runs over plain HTTP on your home network, because HTTPS would need a certificate installed by hand on every phone.</div>
 
     <h2 id="en-keys">13. Remote keys — summary</h2>
-    <div class="tip"><strong>A remote without colour keys.</strong> New televisions often come with two remotes, and the smaller one used day to day frequently has neither colour buttons nor an <kbd>INFO</kbd> key. Since version 2.43 <strong>every</strong> function is reachable with ordinary keys: the arrows, <kbd>OK</kbd> and a long press of <kbd>OK</kbd>. The colour keys still work — they are shortcuts, not the only way in.</div>
+    <div class="tip"><strong>A remote without colour keys.</strong> New televisions often come with two remotes, and the smaller one used day to day frequently has neither colour buttons nor an <kbd>INFO</kbd> key. Since version 2.75 <strong>every</strong> function is reachable with ordinary keys: the arrows, <kbd>OK</kbd> and a long press of <kbd>OK</kbd>. The colour keys still work — they are shortcuts, not the only way in.</div>
     <table>
       <thead><tr><th>Screen</th><th>Key</th><th>Action</th></tr></thead>
       <tbody>
         <tr><td>Sources</td><td><kbd>OK</kbd></td><td>Open the source. Hold to delete.</td></tr>
-        <tr><td>Sources</td><td><kbd>INFO</kbd> / <kbd>GREEN</kbd></td><td>Connection test.</td></tr>
+        <tr><td>Sources</td><td><kbd>INFO</kbd> / <kbd>GREEN</kbd></td><td>Connection test; the result appears in the line below the list.</td></tr>
+        <tr><td>Sources</td><td>Right → <kbd>OK</kbd></td><td>Column buttons: <em>Refresh</em>, <em>Last watched</em>, <em>Reminders</em>.</td></tr>
+        <tr><td>Sources</td><td>Down → <kbd>OK</kbd></td><td>Bottom bar: <em>Films</em> and <em>Settings</em>.</td></tr>
         <tr><td>Channels</td><td><kbd>OK</kbd></td><td>Play.</td></tr>
+        <tr><td>Channels</td><td>Right</td><td>The <strong>Remind me about the next one</strong> button on the programme card. Left returns to the same channel.</td></tr>
         <tr><td>Channels</td><td>Hold <kbd>OK</kbd></td><td><strong>Channel menu:</strong> guide for this channel, add or remove from favourites.</td></tr>
-        <tr><td>Channels</td><td>Up above the bouquets → <kbd>OK</kbd></td><td><strong>☰ Screen menu:</strong> import EPG, refresh the list.</td></tr>
+        <tr><td>Channels</td><td>Up above the bouquets → <kbd>OK</kbd></td><td><strong>☰ Screen menu:</strong> import EPG, refresh the list, and for a tuner also recordings.</td></tr>
+        <tr><td>Channels — Enigma2 tuner</td><td>The <strong>Recordings</strong> button</td><td>Folders and recordings from the box disk. <kbd>OK</kbd> — folder or play, <kbd>BACK</kbd> — one folder up.</td></tr>
         <tr><td>Channels</td><td><kbd>GREEN</kbd> / <kbd>BLUE</kbd> / <kbd>YELLOW</kbd></td><td>Shortcuts: import EPG / refresh list / favourites.</td></tr>
         <tr><td>Channels</td><td><kbd>INFO</kbd> / <kbd>RED</kbd></td><td>Shortcut to the channel guide.</td></tr>
         <tr><td>Player</td><td>Up / down / <kbd>CH±</kbd></td><td>Change channel.</td></tr>
@@ -1144,8 +1300,10 @@
       </tbody>
     </table>
 
-    <h2 id="en-settings">14. Panel settings <span class="badge web">PANEL</span></h2>
+    <h2 id="en-settings">14. Settings <span class="badge web">PANEL</span> <span class="badge tv">TV</span></h2>
+    <div class="tip"><strong>The same settings are on the television.</strong> The <strong>Settings</strong> button sits on the sources screen and in the channel list header, and the screen is operated with the remote. No computer is needed — the panel offers the same, only more comfortably for longer entries such as addresses or the TMDb key.</div>
     <ol class="settings-list">
+      <li><strong>Text size in channel lists.</strong> Three steps: <em>normal</em>, <em>large</em>, <em>very large</em>. Applies to the list opened while watching with the left key and to the full channel screen. Both the channel name and the programme name grow. <strong>The larger the text, the fewer entries fit on screen</strong> — hence the names of the steps. The change takes effect the next time the list is drawn; just close and open it again, no restart needed. The default keeps the previous size.</li>
       <li><strong>Remote on your phone.</strong> QR code and remote page address. The phone must be on the same network.</li>
       <li><strong>TV sets.</strong> Add another TV by pasting the full address from its screen, including <code>token</code>. The television serving this page is always available as “This TV”.</li>
       <li><strong>Media keys.</strong> Pause and seek keys on the keyboard control the TV even when the browser is minimised. They take those keys from other programs — turn the option off if that gets in the way. A click on the page may be required if the browser blocked audio.</li>
@@ -1217,12 +1375,12 @@
     <h3>The picture is stretched or has bars</h3>
     <p>Hold <kbd>OK</kbd> in the player and change the mode: <strong>Fit</strong> shows the whole frame with bars, <strong>Zoom</strong> fills the screen at the cost of the edges, <strong>Stretch</strong> is the default. On 16:9 material all three modes give the same picture.</p>
     <h3>A film does not start, but a TV channel does</h3>
-    <p>Check that the account includes VOD and that the playlist has separate film paths. The VOD filter on the TV does not block the Films / Series tabs in the panel — it only cleans the channel list.</p>
+    <p>Check that the account includes VOD and that the playlist has separate film paths. The VOD filter in Settings does not block the Films / Series tabs in the panel, nor the Films screen on the TV — it only cleans the channel list.</p>
     <h3>Film descriptions are missing</h3>
     <p>Posters do not need TMDb. Descriptions and ratings need an API v3 key in Settings and internet access in the browser.</p>
     <h3>The phone remote does not control the TV</h3>
     <p>The phone must be on the same network. Scan the code again from the panel that is currently open. Check that the remote has the correct television selected.</p>
-    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.43 — bilingual user manual — 08.09.2026</div>
+    <div class="footer-note">HPL ink IPTV E2+ Radio Android v2.75 — bilingual user manual — 08.09.2026</div>
   </section>
 </main>
 </body>
