@@ -1,21 +1,21 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HPL Tool Ultimate ver.3.09 - user manual (EN)</title>
-  <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HPL Tool Ultimate — instrukcja obsługi / user manual</title>
+<style>
     :root {
       --bg: #0b0c0f;
       --panel: #15171c;
       --panel2: #1e2128;
-      --ink: #ff315f;
-      --accent: #ff7a1a;
+      --ink: #e8622a;
+      --accent: #00c2a8;
       --violet: #8d7cff;
-      --cyan: #00d8c9;
-      --green: #39d98a;
+      --cyan: #38bdf8;
+      --green: #2ecc71;
       --warn: #f5b94d;
-      --danger: #ff5246;
+      --danger: #e74c3c;
       --text: #e6eaf5;
       --dim: #9aa1af;
       --line: #383d49;
@@ -40,14 +40,13 @@
       border-top: 8px solid var(--accent);
       border-bottom: 1px solid var(--line);
     }
-    .brand { font-size: 52px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
-    .brand .hpl { color: var(--violet); }
-    .brand .ink { color: var(--ink); font-style: italic; margin: 0 10px 0 6px; }
-    .brand .conv { color: var(--cyan); }
-    .brand .e2 { color: #b5aaff; font-size: 34px; }
+    .brand { font-size: 48px; line-height: 1.05; font-weight: 800; margin: 0 0 18px; }
+    .brand .hpl { color: var(--accent); }
+    .brand .tool { color: var(--text); margin-left: 10px; }
+    .brand .ult { color: var(--ink); font-style: italic; margin-left: 10px; }
     .cover h1 { margin: 0; font-size: 30px; color: var(--accent); }
     .cover .subtitle { max-width: 760px; color: var(--dim); font-size: 18px; }
-    .edition-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+    .edition-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 28px 0; }
     .edition {
       border: 1px solid var(--line);
       background: var(--panel);
@@ -92,9 +91,8 @@
       line-height: 1.3;
       white-space: nowrap;
     }
-    .badge.num { color: #ebe8ff; border: 1px solid var(--violet); background: #2c274a; }
-    .badge.new { color: #251400; border: 1px solid var(--accent); background: var(--accent); }
-    .badge.admin { color: #ffe3e0; border: 1px solid var(--danger); background: #5b1210; }
+    .badge.adm { color: #2a1400; border: 1px solid var(--warn); background: var(--warn); }
+    .badge.pin { color: #00201d; border: 1px solid var(--accent); background: var(--accent); }
     .note, .warning, .tip {
       margin: 15px 0;
       padding: 12px 14px;
@@ -120,31 +118,30 @@
     th { color: var(--accent); background: var(--panel2); font-weight: 700; }
     td { background: #101216; }
     tr { break-inside: avoid; }
-    .yes { color: var(--green); font-weight: 800; text-align: center; }
-    .no { color: #626a78; text-align: center; }
     .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 22px; }
     .step { min-height: 76px; padding: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 5px; }
     .step b { display: block; color: var(--accent); margin-bottom: 4px; }
-    .mock-window { margin: 18px 0 24px; padding: 7px; background: #000; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
+    .mock-window { margin: 18px 0 24px; padding: 7px; background: #111318; border: 1px solid #545a67; border-radius: 5px; break-inside: avoid; }
     .mock-title { padding: 8px 11px; color: var(--dim); border-bottom: 1px solid #333; }
-    .mock-title b { color: var(--violet); }
-    .mock-title i { color: var(--ink); }
-    .mock-tabs { display: flex; gap: 5px; padding: 8px 0 2px; }
-    .mock-tab { padding: 5px 14px; background: #2a2416; color: #ffd9a8; border-radius: 3px 3px 0 0; font-size: 11px; font-weight: 700; }
-    .mock-tab.active { background: var(--accent); color: #201400; }
+    .mock-title b { color: var(--accent); }
+    .mock-title i { color: var(--ink); font-style: normal; }
+    .mock-tabs { display: flex; gap: 3px; padding: 8px 0 0; }
+    .mock-tab { padding: 6px 14px; border: 1px solid #343943; border-bottom: none; background: #1a1d24; color: var(--dim); font-size: 11px; font-weight: 700; }
+    .mock-tab.on { background: #22262f; color: var(--accent); border-color: var(--accent); }
     .mock-toolbar { display: flex; gap: 5px; flex-wrap: wrap; padding: 8px 0; }
     .mock-button { padding: 5px 8px; border: 1px solid #555; background: var(--panel2); color: var(--text); border-radius: 3px; font-size: 11px; }
     .mock-button.hot { border-color: var(--accent); color: var(--accent); }
-    .mock-button.m3u { border-color: var(--green); color: var(--green); }
-    .mock-button.amber { border-color: var(--warn); color: var(--warn); }
+    .mock-button.warn { border-color: var(--warn); color: var(--warn); }
     .mock-button.red { border-color: var(--danger); color: var(--danger); }
-    .mock-grid { display: grid; grid-template-columns: 1fr; gap: 7px; }
-    .mock-pane { padding: 9px; border: 1px solid #343943; background: #111318; }
-    .mock-pane h5 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; }
-    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; }
-    .mock-list .folder { color: #7fdfff; font-weight: 700; }
+    .mock-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; min-height: 210px; }
+    .mock-grid-2 { display: grid; grid-template-columns: 1fr 1.4fr; gap: 7px; min-height: 190px; }
+    .mock-pane { padding: 9px; border: 1px solid #343943; background: #15171c; }
+    .mock-pane h5 { margin: 0 0 7px; color: var(--accent); font-size: 12px; }
+    .mock-list { color: var(--dim); font-size: 11px; line-height: 1.75; font-family: Consolas, monospace; }
+    .mock-list .folder { color: var(--warn); font-weight: 700; }
+    .mock-list .hit { color: var(--text); }
+    .mock-input { display: block; margin: 4px 0 8px; padding: 5px 8px; border: 1px solid #343943; background: #2a2e38; color: var(--text); font-size: 11px; font-family: Consolas, monospace; }
     .mock-status { margin-top: 7px; padding: 6px; color: var(--dim); border-top: 1px solid #333; font-size: 11px; }
-    .matrix-small td:first-child { width: 42%; }
     .page-break { break-before: page; }
     .section-break { break-before: page; }
     .language-break { break-before: page; margin-top: 0; }
@@ -155,313 +152,1529 @@
       body { background: #fff; color: #17191d; font-size: 10.2pt; }
       main { max-width: none; padding: 0; }
       .cover { min-height: 250mm; }
-      .brand { font-size: 34pt; }
-      h2 { color: #bd4c00; border-color: #bbb; margin-top: 28px; }
-      h3 { color: #007f78; }
+      .brand { font-size: 30pt; }
+      h2 { color: #046b5d; border-color: #bbb; margin-top: 28px; }
+      h3 { color: #0a5f86; }
+      .brand .hpl { color: #046b5d; }
+      .brand .tool { color: #17191d; }
+      .brand .ult { color: #b4501f; }
+      .cover h1 { color: #046b5d; }
       .edition, .note, .warning, .tip, .toc, .step { background: #f4f5f7; border-color: #bbb; }
-      table th { background: #eceef1; color: #9c3f00; }
+      .note strong, .warning strong, .tip strong, .edition strong { color: #17191d; }
+      .edition span, .cover .subtitle, .footer-note, .muted { color: #5a606b; }
+      .step b { color: #046b5d; }
+      .mock-window .muted, .mock-title { color: #9aa1af; }
+      table th { background: #eceef1; color: #046b5d; }
       table td { background: #fff; }
       th, td { border-color: #bbb; }
       code, kbd { background: #eef0f3; border-color: #bbb; color: #111; }
-      .badge.num { color: #413477; background: #efedff; }
-      .badge.new { color: #251400; background: #ff9a4f; }
-      .badge.admin { color: #7f1d1d; background: #ffe3e0; }
-      .mock-window { border-color: #555; background: #050505; color: #eee; }
+      kbd { color: #7a4a00; }
+      .badge.adm { color: #2a1400; background: #f7d99a; }
+      .badge.pin { color: #00201d; background: #8fe3d7; }
+      .edition-strip { grid-template-columns: repeat(2, 1fr); }
+      .mock-window { border-color: #555; background: #111318; color: #e6eaf5; }
       a { color: inherit; }
       .page-break, .language-break { break-before: page; }
     }
-  </style>
+    /* wydruk jednojęzyczny — patrz zloz.py */
+    body.only-pl #en { display: none; }
+    body.only-en #pl { display: none; }
+</style>
 </head>
 <body>
 <main>
   <section class="cover">
-    <div class="brand"><span class="hpl">HPL</span><span class="conv">Tool</span> <span class="ink">Ultimate</span></div>
-    <h1>User manual</h1>
-    <p class="subtitle">A guide to the multi-purpose Windows service tool: power timer, network management, firewall, diagnostics and a fast file search engine.</p>
+    <div class="brand"><span class="hpl">HPL</span><span class="tool">Tool</span><span class="ult">Ultimate</span></div>
+    <h1>Instrukcja obsługi / User manual</h1>
+    <p class="subtitle">Dwujęzyczny przewodnik po programie dla Windows. Część polska znajduje się u góry dokumentu, pełna wersja angielska poniżej.</p>
     <div class="edition-strip">
-      <div class="edition"><strong>HPL Tool Ultimate</strong><span>described release: ver.3.09</span></div>
-      <div class="edition"><strong>Release date</strong><span>2026-07-12</span></div>
-      <div class="edition"><strong>Platform</strong><span>Windows 10 / 11 (desktop application)</span></div>
+      <div class="edition"><strong>System</strong><span>Windows 10 / 11 (64-bit)</span></div>
+      <div class="edition"><strong>Wydanie</strong><span>v3.23 &nbsp; 17.09.2026</span></div>
+      <div class="edition"><strong>Postać</strong><span>jeden plik .exe, bez instalacji</span></div>
+      <div class="edition"><strong>Licencja</strong><span>kod aktywacyjny na jeden komputer</span></div>
     </div>
-    <div class="note"><strong>Labelling rule:</strong> the interface is divided into four numbered sections (1 - Power, 2 - Network, 3 - Tools, 4 - File search). The <span class="badge admin">ADMIN</span> label marks a function that works correctly <strong>only when the program is run as administrator</strong>. The <span class="badge num">PIN</span> label marks a function protected by the program's PIN code.</div>
+    <div class="note"><strong>Zasada oznaczeń:</strong> <span class="badge adm">ADMIN</span> oznacza funkcję, która działa tylko po uruchomieniu programu jako administrator. <span class="badge pin">PIN</span> oznacza funkcję, przed którą program pyta o PIN.</div>
+    <div class="warning"><strong>Wydanie dokumentu:</strong> ta instrukcja opisuje <strong>HPL Tool Ultimate v3.23</strong> z 17.09.2026, w wersji z aktywacją kodem. Okno aktywacji jest w języku angielskim. Język samego programu przełącza się w prawym górnym rogu okna — <code>PL</code> albo <code>EN</code>.</div>
   </section>
 
-  <section id="en" class="page-break">
-    <h2>Table of contents</h2>
-    <div class="toc">
-      <ol>
-        <li><a href="#en-about">About the program</a></li>
-        <li><a href="#en-start">Startup, PIN and administrator rights</a></li>
-        <li><a href="#en-gui">Main window</a></li>
-        <li><a href="#en-power">Section 1 - Power and timer</a></li>
-        <li><a href="#en-mydata">My data</a></li>
-        <li><a href="#en-net">Section 2 - Network: interface, ping, DNS</a></li>
-        <li><a href="#en-scan">Local network scanner</a></li>
-        <li><a href="#en-tools">Section 3 - System tools</a></li>
-        <li><a href="#en-clip">Clipboard history</a></li>
-        <li><a href="#en-fw">Blocking applications in the firewall</a></li>
-        <li><a href="#en-search">Section 4 - File search</a></li>
-        <li><a href="#en-search2">Combined search, content search and result menu</a></li>
-        <li><a href="#en-dupes">File duplicates</a></li>
-        <li><a href="#en-rename">Batch rename and program files</a></li>
-        <li><a href="#en-help">Troubleshooting</a></li>
-      </ol>
-    </div>
 
-    <h2 id="en-about">1. About the program</h2>
-    <p><strong>HPL Tool Ultimate ver.3.09 [2026-07-12]</strong> is a multi-purpose Windows service tool that combines in one window:</p>
-    <ul>
-      <li>a <strong>power timer</strong> with voice announcements and a choice of action (shutdown, restart, hibernate, sleep, log off),</li>
-      <li><strong>network</strong> management: enabling/disabling the network interface, a continuous ping monitor, quick DNS switching (Google, Cloudflare, Quad9, DHCP presets),</li>
-      <li>a <strong>local network scanner</strong> that identifies the device vendor from the MAC address (full IEEE OUI database, ~40,000 entries) <span class="badge new">NEW in v3.09</span>,</li>
-      <li>the <strong>My data</strong> window - a complete connection summary (public and local IP, MAC, gateway, DNS, ping tests),</li>
-      <li><strong>blocking applications' internet access</strong> through Windows Firewall rules,</li>
-      <li>service tools: active TCP/UDP connections with process names, a system report (CPU, RAM, motherboard, disks + SMART), TEMP cleanup, DISKPART, Keep Awake,</li>
-      <li>a <strong>clipboard history</strong> with pinnable entries,</li>
-      <li>a very fast, index-based <strong>file search engine</strong>: by name, size, date, extension, combined criteria and file contents, with duplicate detection and batch renaming.</li>
-    </ul>
-    <p>The interface is available in <strong>Polish and English</strong> (the PL / EN switch in the top-right corner takes effect immediately) and uses the dark "Windows 11 Dark Industrial" theme with a teal accent.</p>
-    <h3>Requirements</h3>
-    <ul>
-      <li>Windows 10 or 11.</li>
-      <li>When run from the <code>.py</code> file: Python 3 with the <strong>pyautogui</strong>, <strong>pyttsx3</strong> and <strong>Pillow</strong> libraries. The EXE build ships with all dependencies.</li>
-      <li>Internet access for the network functions (public IP, ping, DNS).</li>
-      <li>Speakers/audio output for the voice announcements (Windows SAPI speech synthesizer).</li>
-      <li><strong>Administrator rights</strong> for some functions - the full list is in chapter 2.</li>
-    </ul>
-
-    <h2 id="en-start">2. Startup, PIN and administrator rights</h2>
-    <h3>Starting the program</h3>
-    <ol>
-      <li>Run the program (the <code>hpl_tool_search.py</code> file or the supplied executable).</li>
-      <li>The window opens at 1480x1000 (minimum 1100x700) with the four sections.</li>
-      <li>To use the functions marked <span class="badge admin">ADMIN</span>, close the program and start it again with <strong>right-click → "Run as administrator"</strong> (and confirm the UAC prompt).</li>
+  <section id="pl" class="page-break">
+    <h2>Instrukcja po polsku</h2>
+    <ol class="toc">
+      <li><a href="#pl-czym">Czym jest program</a></li>
+      <li><a href="#pl-aktywacja">Aktywacja programu</a></li>
+      <li><a href="#pl-start">Pierwsze uruchomienie</a></li>
+      <li><a href="#pl-indeks">Indeks plików</a></li>
+      <li><a href="#pl-szukanie">Wyszukiwanie plików</a></li>
+      <li><a href="#pl-tresc">Szukanie w treści i duplikaty</a></li>
+      <li><a href="#pl-wyniki">Co zrobić z wynikami</a></li>
+      <li><a href="#pl-dysk">Co zjada dysk</a></li>
+      <li><a href="#pl-siec">Zakładka SIEĆ — podstawy</a></li>
+      <li><a href="#pl-serwer">Serwer plików</a></li>
+      <li><a href="#pl-narzsieci">Narzędzia sieciowe</a></li>
+      <li><a href="#pl-narzedzia">Zakładka NARZĘDZIA</a></li>
+      <li><a href="#pl-system">Narzędzia systemowe</a></li>
+      <li><a href="#pl-zasilanie">Zakładka ZASILANIE</a></li>
+      <li><a href="#pl-przyciski">Zestawienie przycisków</a></li>
+      <li><a href="#pl-problemy">Rozwiązywanie problemów</a></li>
     </ol>
-    <h3>Functions that require administrator rights</h3>
-    <div class="warning"><strong>Important:</strong> the functions below execute system commands (<code>netsh</code>, <code>shutdown /fw</code>, <code>diskpart</code>) that Windows only allows with elevated rights. Without administrator mode the program shows an error such as "Error - run as administrator".</div>
+
+    <h2 id="pl-czym">1. Czym jest program</h2>
+    <p><strong>HPL Tool Ultimate</strong> to jeden plik <code>.exe</code> dla Windows, który zbiera w jednym oknie rzeczy, po które zwykle sięga się do kilku osobnych programów: szybkie szukanie plików na całym dysku, narzędzia sieciowe, serwer do udostępniania plików w sieci domowej, drobne narzędzia codzienne i planowane wyłączanie komputera.</p>
+    <p>Program <strong>nie wymaga instalacji</strong>. Nie zapisuje się w Menu Start, nie zakłada wpisów odinstalowania i nie rozsypuje plików po systemie. Wszystko, czego potrzebuje — ikona, logo i baza producentów kart sieciowych — siedzi w środku pliku <code>.exe</code>.</p>
+
+    <h3>Cztery zakładki</h3>
     <table>
-      <thead><tr><th>Function</th><th>Section</th><th>Without administrator</th></tr></thead>
+      <thead><tr><th>Zakładka</th><th>Do czego służy</th></tr></thead>
       <tbody>
-        <tr><td><strong>DISABLE NETWORK / ENABLE NETWORK</strong> <span class="badge admin">ADMIN</span></td><td>2 - Network</td><td>the command is ignored - the interface state does not change</td></tr>
-        <tr><td><strong>SET DNS</strong> <span class="badge admin">ADMIN</span></td><td>2 - Network</td><td>the message "Error - run as administrator" appears</td></tr>
-        <tr><td><strong>RESTART TO BIOS</strong> <span class="badge admin">ADMIN</span></td><td>1 - Power</td><td>the <code>shutdown /r /fw</code> command ends with access denied</td></tr>
-        <tr><td><strong>Firewall: BLOCK / UNBLOCK / DELETE rule</strong> <span class="badge admin">ADMIN</span></td><td>3 - Tools</td><td>the message "Error creating/removing rule" appears</td></tr>
-        <tr><td><strong>DISKPART</strong> <span class="badge admin">ADMIN</span></td><td>3 - Tools</td><td>diskpart refuses to work in a non-elevated console</td></tr>
-        <tr><td><strong>CLEAN TEMP</strong> - the <code>C:\Windows\Temp</code> part <span class="badge admin">ADMIN</span></td><td>3 - Tools</td><td>only the user's TEMP and the Recycle Bin are cleaned; system files increase the error counter</td></tr>
+        <tr><td><strong>WYSZUKIWANIE</strong></td><td>Indeks plików i szukanie po nazwie, rozmiarze, dacie, rozszerzeniu albo w treści. Duplikaty, hurtowa zmiana nazw, raport „co zjada dysk”. To zakładka domyślna — pokazuje się zaraz po starcie.</td></tr>
+        <tr><td><strong>SIEĆ</strong></td><td>Ping, DNS, skaner sieci i portów, traceroute, monitor transferu, Wake on LAN, Wi-Fi, zmiana MAC, serwer plików i diagnostyka „dlaczego nie ma internetu”.</td></tr>
+        <tr><td><strong>NARZĘDZIA</strong></td><td>Zrzuty ekranu, historia schowka, notatki, generator haseł, suma kontrolna, snapshot folderu, menedżer autostartu, raport systemu, zapora, czyszczenie TEMP, Keep Awake.</td></tr>
+        <tr><td><strong>ZASILANIE</strong></td><td>Wyłączenie, restart, hibernacja, wylogowanie i blokada — od razu, za X minut, o godzinie albo codziennie o stałej porze. Restart do BIOS.</td></tr>
       </tbody>
     </table>
-    <p>All remaining functions (timer, ping, network scanner, My data, connections, system report, clipboard, the whole file search) work without administrator rights. Viewing the firewall rule list also needs no administrator - only deleting rules does.</p>
-    <h3>PIN code</h3>
-    <p>Sensitive operations are additionally protected by a PIN code <span class="badge num">PIN</span>. The default PIN is <code>0000</code> - change it with the <strong>CHANGE PIN</strong> button in section 3.</p>
-    <ul>
-      <li>The PIN protects: <strong>closing the program</strong>, cancelling the timer, restart to BIOS, enabling/disabling the network, DNS change, TEMP cleanup, firewall blocking and moving duplicates to the Recycle Bin.</li>
-      <li>After <strong>3 failed attempts</strong> PIN entry is locked for <strong>5 minutes</strong>.</li>
-      <li>The PIN is stored in the <code>pin.dat</code> file as a SHA-256 hash (it cannot be read back from the file).</li>
-    </ul>
-    <div class="tip"><strong>Forgotten PIN:</strong> close the program (e.g. via Task Manager), delete the <code>pin.dat</code> file from the program folder and start the program again - the PIN resets to <code>0000</code>.</div>
 
-    <h2 id="en-gui">3. Main window</h2>
-    <p>The following drawing is a privacy-safe UI diagram. It contains no IP addresses or other user data.</p>
+    <h3>Czego program nie robi</h3>
+    <ul>
+      <li>Nie szuka w chmurze ani na dyskach sieciowych innych komputerów — pracuje na dyskach widocznych w systemie.</li>
+      <li>Nie jest antywirusem ani programem do odzyskiwania danych.</li>
+      <li>Nie wysyła nigdzie Twoich plików. Jedyne połączenia z internetem to: sprawdzenie publicznego adresu IP (<strong>MOJE DANE</strong>), rozpoznanie kraju połączeń (opcja włączana ręcznie) i rozmowa z ruterem przy udostępnianiu przez UPnP.</li>
+    </ul>
+    <div class="note"><strong>Dane robocze leżą obok pliku .exe.</strong> Indeks, notatki, PIN, historia schowka i pozostałe ustawienia zapisują się w tym samym folderze, w którym leży program. Przeniesienie folderu na inny dysk albo na pendrive zabiera je ze sobą — patrz <a href="#pl-start">rozdział 3</a>.</div>
+
+    <h2 id="pl-aktywacja">2. Aktywacja programu</h2>
+    <p>Program wymaga jednorazowej aktywacji na komputerze, na którym został uruchomiony. Przy pierwszym starcie zamiast głównego okna pojawia się okno aktywacji — po angielsku, niezależnie od języka systemu.</p>
+
     <div class="mock-window">
-      <div class="mock-title"><b>HPL</b> Tool <i>Ultimate</i> &nbsp;|&nbsp; ver.3.09 [2026-07-12] &nbsp;|&nbsp; PL / EN</div>
-      <div class="mock-grid">
-        <div class="mock-pane"><h5>1 - POWER</h5><div class="mock-toolbar"><span class="mock-button">00:00:00</span><span class="mock-button">Action: Shutdown ▾</span><span class="mock-button hot">START SHUTDOWN TIMER</span><span class="mock-button m3u">CANCEL SHUTDOWN</span><span class="mock-button red">RESTART TO BIOS</span><span class="mock-button">MY DATA</span></div></div>
-        <div class="mock-pane"><h5>2 - NETWORK</h5><div class="mock-toolbar"><span class="mock-button">Interface ▾</span><span class="mock-button red">DISABLE NETWORK</span><span class="mock-button m3u">ENABLE NETWORK</span><span class="mock-button">Ping: [____] START PING</span><span class="mock-button">NETWORK SCANNER</span><span class="mock-button amber">DNS ▾ SET DNS</span></div></div>
-        <div class="mock-pane"><h5>3 - TOOLS</h5><div class="mock-toolbar"><span class="mock-button">DISKPART</span><span class="mock-button">KEEP AWAKE</span><span class="mock-button">CHANGE PIN</span><span class="mock-button">CONNECTIONS</span><span class="mock-button">SYSTEM REPORT</span><span class="mock-button red">CLEAN TEMP</span><span class="mock-button">CLIPBOARD (HISTORY)</span><span class="mock-button amber">Application: [____] BLOCK / UNBLOCK / RULES</span></div></div>
-        <div class="mock-pane"><h5>4 - FILE SEARCH</h5><div class="mock-list"><span class="folder">Drives: ☑C: ☑D: ...</span> &nbsp; BUILD INDEX | SELECT FOLDER | RENAME<br>Extension | COMBINED SEARCH | FILE DUPLICATES | In content<br>SEARCH BY NAME &nbsp;•&nbsp; SIZE (MIN. MB) &nbsp;•&nbsp; DATE (YYYY-MM-DD)<br>result lists (double-click opens the file)</div></div>
+      <div class="mock-title"><b>HPL</b> <i>Tool Ultimate</i> &nbsp; <span class="muted">ver.3.23</span> &nbsp;—&nbsp; Activation</div>
+      <div class="mock-pane" style="margin-top:7px">
+        <h5 style="color:var(--ink)">This copy is not activated.</h5>
+        <div class="mock-list">To keep using the program you need to activate a licence for this computer.<br><br>
+        1.&nbsp; Copy the request code below (button Copy code).<br>
+        2.&nbsp; Send it to: hplink.soft@proton.me<br>
+        3.&nbsp; Use this message subject: HPL Tool Ultimate - activation<br>
+        4.&nbsp; Paste the activation code you receive and press Activate.</div>
+        <div class="mock-status">COMPUTER ID: &nbsp; <span style="color:var(--accent)">HPL-4C7A-91B3-E28D</span></div>
+        <div class="mock-list" style="margin-top:8px">REQUEST CODE</div>
+        <span class="mock-input" style="color:var(--accent)">eyJwaWQiOiJIUExUT09MVUxUIiwibWlkIjoiUFJaWUtMQUQtREVNTy1NQUNISU5FLUlELTAwMDEi…</span>
+        <div class="mock-list">ACTIVATION CODE</div>
+        <span class="mock-input">&nbsp;</span>
       </div>
-      <div class="mock-status">Ready &nbsp;|&nbsp; HPL Tool Ultimate ver.3.09 [2026-07-12]</div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Copy code</span>
+        <span class="mock-button" style="border-color:var(--green);color:var(--green)">Activate</span>
+        <span class="mock-button red" style="margin-left:auto">Close program</span>
+      </div>
     </div>
+
+    <div class="workflow">
+      <div class="step"><b>1. Copy code</b>Kliknięcie kopiuje cały request code do schowka.</div>
+      <div class="step"><b>2. Wyślij</b>Wklej kod w wiadomości na <code>hplink.soft@proton.me</code>, temat <code>HPL Tool Ultimate - activation</code>.</div>
+      <div class="step"><b>3. Wklej kod</b>Otrzymany activation code wklej w pole ACTIVATION CODE.</div>
+      <div class="step"><b>4. Activate</b>Program potwierdza <em>Licence activated</em> i otwiera główne okno.</div>
+    </div>
+
+    <p>Kod aktywacyjny ma około 340 znaków i jest <strong>podpisem przypisanym do jednego komputera</strong>. Przekazany komuś innemu nie zadziała. Sama aktywacja nie łączy się z żadnym serwerem — wymiana kodów odbywa się pocztą, więc program nie potrzebuje do niej internetu.</p>
     <ul>
-      <li>The <strong>title bar</strong> holds the HPL logo, the program name and the <strong>PL / EN</strong> language switch (instant, no restart needed).</li>
-      <li>Sections 1-3 scroll inside the upper area of the window (mouse wheel); section 4 fills the rest of the window.</li>
-      <li><strong>Closing the window (X) requires the PIN</strong> - the program is also designed as a parental / service lock.</li>
+      <li><strong>COMPUTER ID</strong> w postaci <code>HPL-XXXX-XXXX-XXXX</code> to skrócony identyfikator komputera. Warto podać go w wiadomości obok request code — ułatwia rozpoznanie zgłoszenia.</li>
+      <li><strong>Aktywacja jest jednorazowa.</strong> Przy kolejnych uruchomieniach program od razu otwiera główne okno.</li>
+      <li><strong>Licencja siedzi w systemie, nie obok pliku .exe.</strong> Przeniesienie programu do innego folderu albo na inny dysk tego samego komputera nie kasuje aktywacji.</li>
+      <li><strong>Wymiana płyty głównej albo karty sieciowej</strong> zmienia identyfikator komputera — wtedy potrzebny jest nowy kod.</li>
     </ul>
+    <div class="tip"><strong>Zachowaj otrzymany kod aktywacyjny.</strong> Pozostaje ważny bezterminowo i przyda się, gdyby system trzeba było kiedyś postawić od nowa. Szczegółowy opis aktywacji z ilustracją jest w osobnym pliku <em>Aktywacja programu — instrukcja</em>.</div>
+    <div class="warning"><strong>„This activation code is not valid for this computer”</strong> to najczęściej niekompletnie skopiowany kod — brakujący początek, koniec albo złamanie kodu przy przeklejaniu. Skopiuj go jeszcze raz w całości. Druga możliwość to kod wydany dla innego komputera.</div>
 
-    <h2 id="en-power" class="section-break">4. Section 1 - Power and timer</h2>
-    <h3>Power timer</h3>
-    <ol>
-      <li>From the <strong>Action</strong> list choose what happens when the countdown ends: <em>Shutdown, Restart, Hibernate, Sleep</em> or <em>Log off</em>.</li>
-      <li>Click <strong>START SHUTDOWN TIMER</strong> and enter the time in minutes (1-1440, i.e. up to 24 hours).</li>
-      <li>The large clock counts down in <code>HH:MM:SS</code> format and the button changes to "⏱ TIMER ACTIVE".</li>
-      <li>The program <strong>speaks</strong> voice announcements: 3 minutes before the end, 1 minute before the end and at the moment the action is executed (in Polish or English, matching the interface language).</li>
-    </ol>
-    <p><strong>CANCEL SHUTDOWN</strong> <span class="badge num">PIN</span> stops the countdown and additionally runs <code>shutdown /a</code>, so it also aborts a shutdown scheduled outside the program. Starting the timer twice is blocked.</p>
-    <h3>RESTART TO BIOS <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
-    <p>Immediately restarts the computer straight into the UEFI/BIOS settings (<code>shutdown /r /fw /t 0</code>). Requires a UEFI motherboard and the program running as administrator.</p>
-    <div class="warning"><strong>Warning:</strong> the restart happens immediately, without asking to save open documents.</div>
+    <h2 id="pl-start">3. Pierwsze uruchomienie</h2>
+    <p>Po aktywacji program otwiera główne okno na zakładce <strong>WYSZUKIWANIE</strong>. Okno ma stały układ: pasek górny, cztery zakładki i pasek stanu na dole.</p>
 
-    <h2 id="en-mydata">5. My data</h2>
-    <p>The <strong>MY DATA</strong> button in section 1 collects a complete connection summary in the background (a few seconds) and opens a window with copyable rows:</p>
-    <table class="matrix-small">
-      <thead><tr><th>Item</th><th>Description</th></tr></thead>
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>Tool Ultimate</i> <span class="muted">ver.3.23 [17.09.2026]</span></div>
+      <div class="mock-toolbar">
+        <span class="mock-button warn">BEZ UPRAWNIEŃ ADMIN</span>
+        <span class="mock-button hot">URUCHOM JAKO ADMIN</span>
+        <span class="mock-button" style="margin-left:auto">00:00:00</span>
+        <span class="mock-button hot">PL</span>
+        <span class="mock-button">EN</span>
+      </div>
+      <div class="mock-tabs">
+        <span class="mock-tab on">WYSZUKIWANIE</span>
+        <span class="mock-tab">SIEĆ</span>
+        <span class="mock-tab">NARZĘDZIA</span>
+        <span class="mock-tab">ZASILANIE</span>
+      </div>
+      <div class="mock-pane" style="border-top:none">
+        <div class="mock-list">Dyski: [Cały system ▾] &nbsp; [BUDUJ INDEKS] [ODŚWIEŻ INDEKS] [WYKLUCZENIA]<br>
+        <span class="hit">SZUKAJ PO NAZWIE</span> &nbsp;&nbsp; ROZMIAR (MIN. MB) &nbsp;&nbsp; DATA (RRRR-MM-DD) &nbsp;&nbsp; Rozszerzenie:</div>
+        <div class="mock-status">Gotowy &nbsp;·&nbsp; indeks: 412 908 plików &nbsp;·&nbsp; dzisiaj 09:14</div>
+      </div>
+    </div>
+
+    <h3>Pasek górny</h3>
+    <ul>
+      <li><strong>Znacznik uprawnień.</strong> Napis <em>BEZ UPRAWNIEŃ ADMIN</em> i przycisk <strong>URUCHOM JAKO ADMIN</strong> pojawiają się tylko wtedy, gdy program działa bez podwyższonych uprawnień. Kliknięcie uruchamia program ponownie z pytaniem systemu o zgodę. Po uruchomieniu jako administrator tego paska nie ma.</li>
+      <li><strong>Zegar</strong> pośrodku odlicza czas do zaplanowanego wyłączenia komputera. Gdy nic nie jest zaplanowane, stoi na <code>00:00:00</code>.</li>
+      <li><strong>Przełącznik PL / EN</strong> w prawym rogu zmienia język całego okna od razu, bez restartu programu. Po starcie program jest zawsze po polsku.</li>
+    </ul>
+    <div class="note"><strong>Co wymaga administratora.</strong> Bez podwyższonych uprawnień nie zadziałają: <strong>WYŁĄCZ / WŁĄCZ SIEĆ</strong>, <strong>USTAW DNS</strong>, <strong>ZMIEŃ MAC</strong>, reguły zapory (<strong>ZABLOKUJ</strong>, <strong>ODBLOKUJ</strong>, <strong>ZABLOKUJ W ZAPORZE</strong>), <strong>RESTART DO BIOS</strong> i odczyt ścieżek procesów w oknie <strong>POŁĄCZENIA</strong>. Reszta programu działa normalnie.</div>
+
+    <h3 id="pl-pin">PIN</h3>
+    <p>Część funkcji jest zabezpieczona czterocyfrowym PIN-em. <strong>Domyślny PIN to <code>0000</code></strong> — warto zmienić go przy pierwszym uruchomieniu przyciskiem <strong>ZMIEŃ PIN</strong> w zakładce NARZĘDZIA.</p>
+    <table>
+      <thead><tr><th>Pyta o PIN</th><th>Dlaczego</th></tr></thead>
       <tbody>
-        <tr><td>Internet status</td><td>OK / Offline - a public-IP retrieval test.</td></tr>
-        <tr><td>Router ping / DNS ping / Internet ping</td><td>Three independent reachability tests: default gateway, first DNS server, the 8.8.8.8 server.</td></tr>
-        <tr><td>Public IP / Local IP / Subnet mask</td><td>The computer's addresses as seen from the internet and on the LAN.</td></tr>
-        <tr><td>Computer MAC / Computer name</td><td>Hardware identification on the network.</td></tr>
-        <tr><td>Default gateway / Router MAC / DNS servers</td><td>Router details and the DNS servers currently in use.</td></tr>
+        <tr><td>Zamknięcie programu</td><td>Program nie zamyka się krzyżykiem bez PIN-u — chroni to zaplanowane wyłączenie komputera przed przypadkowym anulowaniem.</td></tr>
+        <tr><td><strong>WYCZYŚĆ TEMP</strong></td><td>Kasuje pliki tymczasowe i opróżnia Kosz.</td></tr>
+        <tr><td><strong>ZABLOKUJ</strong> / <strong>ODBLOKUJ</strong> w zaporze</td><td>Zmienia reguły zapory Windows.</td></tr>
+        <tr><td><strong>WYŁĄCZ SIEĆ</strong> / <strong>WŁĄCZ SIEĆ</strong></td><td>Odcina komputer od sieci.</td></tr>
+        <tr><td><strong>USTAW DNS</strong></td><td>Zmienia serwery DNS karty sieciowej.</td></tr>
+        <tr><td><strong>RESTART DO BIOS</strong></td><td>Restartuje komputer prosto do ustawień UEFI.</td></tr>
+        <tr><td><strong>ZMIEŃ PIN</strong></td><td>Wymaga podania starego PIN-u przed ustawieniem nowego.</td></tr>
       </tbody>
     </table>
-    <p>Every row has a <strong>COPY</strong> button; <strong>COPY ALL</strong> copies the whole report - convenient for support tickets.</p>
+    <div class="warning"><strong>Trzy błędne próby blokują PIN na pięć minut.</strong> W tym czasie program odpowiada komunikatem <em>Zablokowane</em>. Licznik kasuje się po poprawnym podaniu PIN-u.</div>
 
-    <h2 id="en-net">6. Section 2 - Network: interface, ping, DNS</h2>
-    <h3>Enabling and disabling the network <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
-    <p>Choose the network adapter from the <strong>Interface</strong> list (the program detects active interfaces), then use <strong>DISABLE NETWORK</strong> or <strong>ENABLE NETWORK</strong>. This is a hard, system-level disable of the adapter - the computer loses connectivity until it is enabled again.</p>
-    <h3>Ping monitor</h3>
-    <ol>
-      <li>Enter an address (default <code>8.8.8.8</code>) and click <strong>START PING</strong>.</li>
-      <li>The program pings the address every second and shows the response time in colour: <span style="color:#2ecc71;font-weight:700">green</span> below 50 ms, <span style="color:#00c2a8;font-weight:700">teal</span> below 150 ms, <span style="color:#e8622a;font-weight:700">orange</span> above that, and a red <span style="color:#e74c3c;font-weight:700">TIMEOUT</span> when there is no response.</li>
-      <li><strong>STOP PING</strong> stops the monitor.</li>
+    <h3 id="pl-dane">Gdzie program trzyma dane</h3>
+    <p>Wszystkie pliki robocze powstają <strong>w tym samym folderze, w którym leży <code>HPL Tool Ultimate.exe</code></strong>. Program jest przenośny: skopiowanie całego folderu na inny dysk albo pendrive zabiera ze sobą indeks, notatki i ustawienia.</p>
+    <table>
+      <thead><tr><th>Plik</th><th>Co zawiera</th></tr></thead>
+      <tbody>
+        <tr><td><code>index.json</code></td><td>Indeks plików — największy z tych plików, powstaje po kliknięciu BUDUJ INDEKS.</td></tr>
+        <tr><td><code>index_cfg.json</code></td><td>Lista katalogów pomijanych przy indeksowaniu.</td></tr>
+        <tr><td><code>pin.dat</code></td><td>Skrót PIN-u. Skasowanie pliku przywraca PIN <code>0000</code>.</td></tr>
+        <tr><td><code>clipboard.json</code></td><td>Historia schowka wraz z przypiętymi wpisami.</td></tr>
+        <tr><td><code>notes.txt</code></td><td>Treść okna SZYBKIE NOTATKI.</td></tr>
+        <tr><td><code>wol.json</code></td><td>Zapisane urządzenia Wake on LAN.</td></tr>
+        <tr><td><code>oplog.json</code></td><td>Dziennik operacji na plikach — to z niego działa COFNIJ.</td></tr>
+        <tr><td><code>ipinfo.json</code></td><td>Zapamiętane nazwy i producenci urządzeń ze skanera sieci.</td></tr>
+        <tr><td><code>autostart_backup.json</code></td><td>Kopia wpisów autostartu wyłączonych z poziomu programu.</td></tr>
+        <tr><td><code>app_cfg.json</code></td><td>Pozostałe ustawienia okna i narzędzi.</td></tr>
+      </tbody>
+    </table>
+    <div class="tip"><strong>Licencja jest wyjątkiem.</strong> Stan aktywacji nie leży obok pliku .exe, tylko w systemie — dlatego przeniesienie folderu w inne miejsce tego samego komputera nie zmusza do ponownej aktywacji.</div>
+    <div class="warning"><strong>Nie trzymaj programu w „Program Files”.</strong> Windows nie pozwala zwykłemu użytkownikowi zapisywać w tym katalogu, więc indeks i ustawienia nie miałyby gdzie powstać. Dobre miejsca to własny folder na dysku, pulpit albo pendrive.</div>
+
+    <h2 id="pl-indeks">4. Indeks plików</h2>
+    <p>Szukanie po nazwie, rozmiarze, dacie i rozszerzeniu działa na <strong>indeksie</strong> — spisie plików zrobionym raz, z góry. Dzięki temu wyniki pojawiają się od razu, zamiast przeczesywać dysk przy każdym pytaniu.</p>
+
+    <h3>Budowanie indeksu</h3>
+    <ol class="settings-list">
+      <li><strong>Wybierz zakres w polu „Dyski”.</strong> <em>Cały system</em> bierze wszystkie dyski stałe. Można też wskazać pojedynczy dysk albo — przyciskiem <strong>WYBIERZ FOLDER</strong> — jeden konkretny katalog.</li>
+      <li><strong>Kliknij BUDUJ INDEKS.</strong> Pasek stanu pokazuje, ile plików już policzono. Indeks całego dysku systemowego to zwykle kilka minut i kilkadziesiąt megabajtów pliku <code>index.json</code>.</li>
+      <li><strong>Później wystarczy ODŚWIEŻ INDEKS.</strong> Odświeżanie dopisuje zmiany zamiast budować spis od zera, więc trwa znacznie krócej. Gdy indeksu jeszcze nie ma, program mówi wprost: <em>Nie ma czego odświeżać — zbuduj indeks od zera</em>.</li>
     </ol>
-    <h3>Quick DNS switching <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
-    <p>Choose a preset from the <strong>DNS</strong> list and click <strong>SET DNS</strong>. Available presets:</p>
+    <p>Data ostatniego indeksowania stoi na pasku stanu — <em>dzisiaj</em>, <em>wczoraj</em> albo konkretna data. Gdy indeksu nie ma, pasek pokazuje <em>brak indeksu</em>.</p>
+
+    <h3>Wykluczenia</h3>
+    <p>Przycisk <strong>WYKLUCZENIA</strong> otwiera listę katalogów pomijanych przy indeksowaniu. Domyślnie są to miejsca, w których i tak nie szuka się własnych plików: katalogi systemowe Windows, pliki tymczasowe, cache przeglądarek i foldery aktualizacji. Pomijanie ich skraca indeksowanie i zmniejsza plik indeksu.</p>
     <ul>
-      <li><strong>Automatic (DHCP)</strong> - back to the servers assigned by the router,</li>
-      <li><strong>Google</strong> (8.8.8.8 / 8.8.4.4), <strong>Cloudflare</strong> (1.1.1.1 / 1.0.0.1), <strong>Quad9</strong> (9.9.9.9 / 149.112.112.112).</li>
+      <li><strong>Pomijaj wypisane katalogi (zalecane)</strong> — odznaczenie tego pola indeksuje wszystko, razem z katalogami systemowymi.</li>
+      <li><strong>ZAPISZ</strong> zapamiętuje listę w <code>index_cfg.json</code>, <strong>DOMYŚLNE</strong> przywraca zestaw fabryczny.</li>
     </ul>
-    <p>The change applies to the adapter selected in the <strong>Interface</strong> list. The result ("OK: …" or an error) appears next to the button.</p>
+    <div class="note"><strong>Zmiana wykluczeń działa od następnego indeksowania.</strong> Istniejący indeks nie zmienia się sam — po zmianie listy zbuduj go ponownie.</div>
+    <div class="warning"><strong>Indeks to zdjęcie stanu dysku, nie podgląd na żywo.</strong> Plik skasowany po zaindeksowaniu nadal pojawi się w wynikach. Program rozpoznaje to przy otwieraniu i mówi, że pliku już nie ma — ale lista nie odświeża się sama. Po większych porządkach kliknij <strong>ODŚWIEŻ INDEKS</strong>.</div>
 
-    <h2 id="en-scan" class="section-break">7. Local network scanner</h2>
-    <p>The <strong>NETWORK SCANNER</strong> button in section 2 finds all devices on the local network (a /24 subnet, up to 254 addresses). Scanning takes several seconds:</p>
-    <ol>
-      <li>The program pings the whole subnet in parallel (batches of 64 addresses), filling the system ARP table.</li>
-      <li>It reads IP + MAC pairs from the ARP table (skipping broadcast/multicast addresses).</li>
-      <li>Device names are resolved in two stages: DNS first, then NetBIOS (<code>nbtstat</code>) for Windows computers without a DNS entry.</li>
-      <li>The device vendor is identified from the MAC prefix using the full <strong>IEEE OUI</strong> database (the <code>oui_db.txt</code> file, ~40,000 entries); without the file a built-in list of the most common vendors is used (Raspberry Pi, Espressif/smart home, TP-Link, Apple, Samsung, MikroTik, Ubiquiti and others). <span class="badge new">NEW in v3.09</span></li>
-    </ol>
-    <p>Results go to an <strong>IP | MAC | Name | Vendor</strong> table. The column headers are clickable - ascending/descending sort with a direction arrow <span class="badge new">NEW in v3.09</span>. Each row can be copied with <strong>COPY</strong>, and the whole list with <strong>COPY ALL</strong>.</p>
-    <div class="tip"><strong>Tip:</strong> your own computer always appears on the list (ARP does not show it; the program adds it itself). If the list looks suspiciously short, check Wi-Fi client isolation on the router and disable any VPN.</div>
 
-    <h2 id="en-tools">8. Section 3 - System tools</h2>
-    <h3>DISKPART <span class="badge admin">ADMIN</span></h3>
-    <p>Opens a console window with the <code>diskpart</code> disk and partition management tool. Diskpart requires administrator rights.</p>
+    <h2 id="pl-szukanie">5. Wyszukiwanie plików</h2>
+    <p>Górna część zakładki WYSZUKIWANIE to cztery kolumny kryteriów, każda z własnym przyciskiem. Kryteria można używać osobno albo łączyć.</p>
+
+    <div class="mock-window">
+      <div class="mock-title"><b>WYSZUKIWANIE</b> — kryteria</div>
+      <div class="mock-grid">
+        <div class="mock-pane">
+          <h5>SZUKAJ PO NAZWIE</h5>
+          <span class="mock-input">faktura</span>
+          <span class="mock-button hot">SZUKAJ NAZWY</span>
+        </div>
+        <div class="mock-pane">
+          <h5>ROZMIAR (MIN. MB)</h5>
+          <span class="mock-input">500</span>
+          <span class="mock-button">FILTRUJ ROZMIAR</span>
+        </div>
+        <div class="mock-pane">
+          <h5>DATA (RRRR-MM-DD)</h5>
+          <span class="mock-input">2026-01-01</span>
+          <div class="mock-list">☑ Data i nowsze</div>
+          <span class="mock-button">SZUKAJ PO DACIE</span>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Rozszerzenie: pdf</span>
+        <span class="mock-button">SZUKAJ ROZSZERZENIA</span>
+        <span class="mock-button hot">SZUKAJ ŁĄCZONE</span>
+        <span class="mock-button">W treści: umowa</span>
+        <span class="mock-button">SZUKAJ W TREŚCI</span>
+        <span class="mock-button">DUPLIKATY PLIKÓW</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Przycisk</th><th>Co robi</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SZUKAJ NAZWY</strong></td><td>Szuka wpisanego fragmentu w nazwie pliku. Wielkość liter nie ma znaczenia. Wpisanie <code>fakt</code> znajdzie <em>Faktura_2026.pdf</em> i <em>fakty.txt</em>.</td></tr>
+        <tr><td><strong>FILTRUJ ROZMIAR</strong></td><td>Pokazuje pliki <strong>nie mniejsze</strong> niż podana liczba megabajtów. Najszybszy sposób na znalezienie tego, co zajmuje miejsce.</td></tr>
+        <tr><td><strong>SZUKAJ PO DACIE</strong></td><td>Data w formacie <code>RRRR-MM-DD</code>. Zaznaczone pole <em>Data i nowsze</em> bierze wszystko od tego dnia w górę; odznaczone — tylko ten jeden dzień.</td></tr>
+        <tr><td><strong>SZUKAJ ROZSZERZENIA</strong></td><td>Samo rozszerzenie, z kropką albo bez: <code>pdf</code> i <code>.pdf</code> działają tak samo.</td></tr>
+        <tr><td><strong>SZUKAJ ŁĄCZONE</strong></td><td>Bierze pod uwagę <strong>wszystkie wypełnione pola naraz</strong>. Puste pola są pomijane.</td></tr>
+        <tr><td><strong>SZUKAJ W TREŚCI</strong></td><td>Szuka frazy w środku plików tekstowych — opis w <a href="#pl-tresc">rozdziale 6</a>.</td></tr>
+        <tr><td><strong>DUPLIKATY PLIKÓW</strong></td><td>Wyszukuje powtórzone pliki w całym indeksie — opis w <a href="#pl-tresc">rozdziale 6</a>.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Nagłówek listy wyników mówi, które kryterium ją wypełniło: <em>WYNIKI — ROZMIAR</em>, <em>WYNIKI — DATA</em>, <em>WYNIKI — ROZSZERZENIE</em>, <em>WYNIKI — ŁĄCZONE</em> albo <em>WYNIKI — ŁĄCZONE + TREŚĆ</em>. Przy każdym pliku stoi jego rozmiar i data zmiany.</p>
+
+    <div class="note"><strong>Szukanie po nazwie, rozmiarze, dacie i rozszerzeniu czyta indeks</strong>, więc odpowiedź jest natychmiastowa i nie obciąża dysku. Szukanie w treści musi otworzyć pliki po kolei, więc trwa dłużej i pracuje na wskazanym folderze, nie na całym indeksie.</div>
+    <div class="warning"><strong>Brak indeksu = brak wyników.</strong> Gdy indeksu jeszcze nie ma, program mówi <em>Nie znaleziono indeksu! Zbuduj go najpierw</em>. Kliknij <strong>BUDUJ INDEKS</strong> — patrz <a href="#pl-indeks">rozdział 4</a>.</div>
+
+    <h3>Przykłady</h3>
+    <ul>
+      <li><strong>Znajdź wszystkie filmy większe niż pół giga.</strong> Rozszerzenie <code>mkv</code>, rozmiar <code>500</code>, przycisk <strong>SZUKAJ ŁĄCZONE</strong>.</li>
+      <li><strong>Co się zmieniło w tym tygodniu.</strong> Data początku tygodnia, zaznaczone <em>Data i nowsze</em>, przycisk <strong>SZUKAJ PO DACIE</strong>.</li>
+      <li><strong>Gdzie podziała się ta faktura.</strong> Nazwa <code>faktura</code>, rozszerzenie <code>pdf</code>, <strong>SZUKAJ ŁĄCZONE</strong>.</li>
+      <li><strong>Największe pliki na dysku.</strong> Rozmiar <code>1000</code> i <strong>FILTRUJ ROZMIAR</strong> — albo od razu <strong>CO ZJADA DYSK</strong> z <a href="#pl-dysk">rozdziału 8</a>.</li>
+    </ul>
+
+    <h2 id="pl-tresc">6. Szukanie w treści i duplikaty</h2>
+
+    <h3>Szukanie w treści</h3>
+    <p>Wpisz frazę w pole <strong>W treści</strong>, wskaż folder przyciskiem <strong>WYBIERZ FOLDER</strong> i kliknij <strong>SZUKAJ W TREŚCI</strong>. Program przechodzi pliki w tym folderze i podfolderach, i pokazuje każde trafienie razem z <strong>numerem linii i jej początkiem</strong>.</p>
+    <table>
+      <thead><tr><th>Ograniczenie</th><th>Wartość</th></tr></thead>
+      <tbody>
+        <tr><td>Rodzaje plików</td><td>Tylko pliki tekstowe: <code>txt</code>, <code>log</code>, <code>ini</code>, <code>cfg</code>, <code>conf</code>, <code>csv</code>, <code>xml</code>, <code>json</code>, <code>md</code>, <code>py</code>, <code>bat</code>, <code>ps1</code>, <code>html</code>, <code>htm</code>, <code>css</code>, <code>js</code>, <code>sql</code>, <code>yaml</code>, <code>yml</code>, <code>srt</code>, <code>nfo</code>, <code>reg</code>, <code>env</code>.</td></tr>
+        <tr><td>Największy plik</td><td>20 MB. Większe pliki są pomijane, żeby jedno duże archiwum tekstowe nie zatrzymało całego szukania.</td></tr>
+        <tr><td>Liczba trafień</td><td>1000. Po osiągnięciu limitu program przerywa i dopisuje przy podsumowaniu <em>(limit trafień)</em>.</td></tr>
+      </tbody>
+    </table>
+    <div class="warning"><strong>To nie jest wyszukiwarka dokumentów.</strong> Pliki <code>.docx</code>, <code>.xlsx</code> i <code>.pdf</code> są spakowane albo binarne — program ich nie otwiera i nie znajdzie w nich frazy. Szukanie w treści służy do plików tekstowych: konfiguracji, logów, napisów, kodu, plików CSV.</div>
+    <div class="tip"><strong>Fraza plus kryteria naraz.</strong> Gdy oprócz frazy wypełnisz nazwę, rozmiar, datę albo rozszerzenie i klikniesz <strong>SZUKAJ ŁĄCZONE</strong>, program najpierw zawęzi listę z indeksu, a dopiero w tych plikach poszuka treści. Przy bardzo dużej liczbie kandydatów zapyta, czy na pewno przeszukać ich treść — czytanie kilku tysięcy plików trwa.</div>
+
+    <h3>Duplikaty</h3>
+    <p>Przycisk <strong>DUPLIKATY PLIKÓW</strong> przegląda cały indeks i zestawia w grupy pliki, które mają <strong>tę samą nazwę i ten sam rozmiar</strong>. Okno pokazuje grupy posortowane od największych plików, po jednej grupie na sekcję, razem ze ścieżką każdej kopii.</p>
+    <ul>
+      <li><strong>ZAZNACZ KOPIE</strong> zaznacza w każdej grupie wszystko <strong>oprócz pierwszego pliku</strong> — czyli to, co można usunąć, zostawiając jeden egzemplarz.</li>
+      <li><strong>USUŃ DO KOSZA</strong> przenosi zaznaczone pliki do Kosza, więc pomyłkę da się cofnąć.</li>
+      <li>Gdy grup jest więcej niż 200, okno pokazuje 200 największych i pisze o tym w nagłówku.</li>
+    </ul>
+    <div class="warning"><strong>Zgodna nazwa i rozmiar to mocna, ale nie stuprocentowa przesłanka.</strong> Program nie liczy sum kontrolnych wszystkich plików na dysku — trwałoby to godzinami. Gdy chcesz mieć pewność, że dwa pliki są identyczne, policz ich sumy narzędziem <strong>SUMA KONTROLNA</strong> z <a href="#pl-system">rozdziału 13</a>.</div>
+
+    <h2 id="pl-wyniki">7. Co zrobić z wynikami</h2>
+    <p>Lista wyników nie jest tylko do patrzenia. Pojedyncze kliknięcie zaznacza, podwójne otwiera plik, a <strong>prawy przycisk myszy</strong> otwiera menu z operacjami.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">WYNIKI — ŁĄCZONE &nbsp;<span class="muted">· 128 plików</span></div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <div class="mock-list">
+            <span class="folder">D:\Dokumenty\</span><span class="hit">Faktura_2026_01.pdf</span> &nbsp; 1,2 MB &nbsp; 2026-01-08<br>
+            <span class="folder">D:\Dokumenty\</span><span class="hit">Faktura_2026_02.pdf</span> &nbsp; 1,1 MB &nbsp; 2026-02-06<br>
+            <span class="folder">E:\Kopia\</span><span class="hit">Faktura_2026_01.pdf</span> &nbsp; 1,2 MB &nbsp; 2026-01-08<br>
+            <span class="folder">E:\Archiwum\2025\</span><span class="hit">Faktura_2025_12.pdf</span> &nbsp; 0,9 MB &nbsp; 2025-12-04
+          </div>
+        </div>
+        <div class="mock-pane">
+          <h5>prawy przycisk myszy</h5>
+          <div class="mock-list">Otwórz<br>Otwórz folder zawierający<br>Kopiuj ścieżkę<br>Kopiuj ścieżki zaznaczonych<br>Kopiuj do...<br>Przenieś do...<br>Usuń do kosza<br>Eksportuj listę...<br>Właściwości</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">EKSPORT</span>
+        <span class="mock-button red">DO KOSZA</span>
+        <span class="mock-button">KOPIUJ DO...</span>
+        <span class="mock-button">ZMIEŃ NAZWY</span>
+        <span class="mock-button hot">DZIENNIK</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Operacja</th><th>Szczegóły</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Otwórz</strong> / podwójne kliknięcie</td><td>Otwiera plik w programie przypisanym w systemie. Gdy pliku już nie ma, program mówi o tym zamiast otwierać puste okno.</td></tr>
+        <tr><td><strong>Otwórz folder zawierający</strong></td><td>Otwiera Eksplorator z plikiem już zaznaczonym.</td></tr>
+        <tr><td><strong>Kopiuj ścieżkę</strong></td><td>Pełna ścieżka wskazanego pliku trafia do schowka. <em>Kopiuj ścieżki zaznaczonych</em> robi to samo dla całego zaznaczenia, po jednej ścieżce w linii.</td></tr>
+        <tr><td><strong>Kopiuj do...</strong> / <strong>Przenieś do...</strong></td><td>Wskazujesz folder docelowy; program kopiuje albo przenosi wszystkie zaznaczone pliki i zapisuje operację w dzienniku.</td></tr>
+        <tr><td><strong>Usuń do kosza</strong> / <strong>DO KOSZA</strong></td><td>Pliki trafiają do Kosza Windows, a nie znikają na stałe — to świadoma decyzja, żeby pomyłkę dało się odwrócić.</td></tr>
+        <tr><td><strong>EKSPORT</strong></td><td>Zapisuje widoczną listę do pliku <code>.csv</code> (średnik) albo <code>.txt</code> (tabulator) — do arkusza albo do wiadomości.</td></tr>
+        <tr><td><strong>Właściwości</strong></td><td>Otwiera systemowe okno właściwości pliku, to samo co w Eksploratorze.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="pl-zmiennazw">Hurtowa zmiana nazw</h3>
+    <p>Przycisk <strong>ZMIEŃ NAZWY</strong> otwiera okno, w którym jedną regułą przemianujesz wszystkie pliki w wybranym folderze.</p>
+    <ul class="settings-list">
+      <li><strong>Zamień / na</strong> — podmienia fragment nazwy. <em>IMG_</em> na <em>Wakacje_</em> zamienia <code>IMG_0041.jpg</code> w <code>Wakacje_0041.jpg</code>.</li>
+      <li><strong>Prefiks</strong> i <strong>Sufiks</strong> — dokładają tekst na początku albo na końcu nazwy, przed rozszerzeniem.</li>
+      <li><strong>Numeruj (001, 002…)</strong> — dopisuje kolejny numer, w kolejności wyświetlania listy.</li>
+    </ul>
+    <p>Pole <strong>PODGLĄD — STARA → NOWA</strong> pokazuje wynik reguły <em>przed</em> jej wykonaniem. Dopiero <strong>WYKONAJ</strong> zmienia nazwy naprawdę. Gdy reguła niczego nie zmienia, program mówi <em>Brak zmian do wykonania</em> i nie rusza plików.</p>
+    <div class="tip"><strong>Zawsze przeczytaj podgląd.</strong> To jedyny moment, w którym widać skutek reguły na wszystkich plikach naraz. Zmianę nazw też można cofnąć — patrz niżej.</div>
+
+    <h3 id="pl-dziennik">Dziennik operacji i COFNIJ</h3>
+    <p>Przycisk <strong>DZIENNIK</strong> w zakładce NARZĘDZIA otwiera zapis wszystkiego, co program zrobił z plikami: kopiowania, przeniesienia, usunięcia do Kosza i zmiany nazw. Każdy wpis ma datę, rodzaj i liczbę plików.</p>
+    <ul>
+      <li><strong>COFNIJ</strong> odwraca zaznaczoną operację — przywraca nazwy, kasuje kopie, wraca z przeniesieniem. Cofnięty wpis zostaje na liście z dopiskiem <em>cofnięte</em>.</li>
+      <li><strong>Rodzaj</strong> zawęża listę do jednego typu operacji.</li>
+      <li><strong>EKSPORT TXT</strong> zapisuje dziennik do pliku, <strong>ODŚWIEŻ</strong> przeładowuje go z dysku, <strong>WYCZYŚĆ</strong> kasuje całą historię po potwierdzeniu.</li>
+    </ul>
+    <div class="warning"><strong>Nie wszystko da się cofnąć.</strong> Przy wpisach, których odwrócenie nie jest możliwe — bo plik docelowy już nie istnieje albo został w międzyczasie zmieniony — program mówi <em>Tego wpisu nie da się cofnąć</em> zamiast działać po omacku. Usunięcie do Kosza odwraca się przez Kosz Windows.</div>
+
+    <h2 id="pl-dysk">8. Co zjada dysk</h2>
+    <p>Przycisk <strong>CO ZJADA DYSK</strong> liczy zajętość <strong>z indeksu</strong>, a nie przez ponowne przeglądanie dysku — dlatego raport powstaje w kilka sekund. Okno ma trzy zakładki.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">Co zjada dysk &nbsp;<span class="muted">· wszystkie dyski</span></div>
+      <div class="mock-tabs">
+        <span class="mock-tab on">FOLDERY</span>
+        <span class="mock-tab">ROZSZERZENIA</span>
+        <span class="mock-tab">NAJWIĘKSZE PLIKI</span>
+      </div>
+      <div class="mock-pane" style="border-top:none">
+        <div class="mock-list">
+          <span class="folder">C:\Users\…\AppData</span> &nbsp;&nbsp; 41,2 GB<br>
+          <span class="folder">D:\Filmy</span> &nbsp;&nbsp; 38,7 GB<br>
+          <span class="folder">D:\Kopie zapasowe</span> &nbsp;&nbsp; 22,4 GB<br>
+          <span class="folder">C:\Program Files</span> &nbsp;&nbsp; 18,1 GB
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">▲ WYŻEJ</span>
+        <span class="mock-button hot">OTWÓRZ W EKSPLORATORZE</span>
+        <span class="mock-button">KOPIUJ WIDOK</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Zakładka</th><th>Co pokazuje</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FOLDERY</strong></td><td>Katalogi od najcięższego. Podwójne kliknięcie schodzi poziom niżej, <strong>▲ WYŻEJ</strong> wraca. Tak dochodzi się do konkretnego miejsca, które zjada dysk.</td></tr>
+        <tr><td><strong>ROZSZERZENIA</strong></td><td>Ile miejsca zajmuje każdy typ pliku razem wzięty. Odpowiada na pytanie „to filmy czy kopie zapasowe”. Pliki bez rozszerzenia idą do pozycji <em>(bez rozszerzenia)</em>.</td></tr>
+        <tr><td><strong>NAJWIĘKSZE PLIKI</strong></td><td>Pojedyncze pliki od największego, ze ścieżką.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>OTWÓRZ W EKSPLORATORZE</strong> otwiera zaznaczony folder albo plik, a <strong>KOPIUJ WIDOK</strong> przenosi całą widoczną listę do schowka — wygodne, gdy chcesz komuś wysłać zestawienie. Listę można też zawęzić do jednego dysku.</p>
+    <div class="note"><strong>Raport jest tak aktualny jak indeks.</strong> Po dużych porządkach kliknij najpierw <strong>ODŚWIEŻ INDEKS</strong>, inaczej zobaczysz stan sprzed sprzątania.</div>
+
+    <h3>Puste foldery i pliki 0 B</h3>
+    <p>Przycisk <strong>PUSTE / 0 B</strong> otwiera osobne okno, które przeszukuje <strong>wskazany folder</strong> (przycisk <strong>WYBIERZ</strong>, potem <strong>SZUKAJ</strong>) i pokazuje dwie listy: <em>PLIKI 0 B</em> i <em>PUSTE FOLDERY</em>.</p>
+    <ul>
+      <li><strong>ZAZNACZ WSZYSTKO</strong> zaznacza obie listy naraz.</li>
+      <li><strong>USUŃ DO KOSZA</strong> kasuje zaznaczone pozycje — również tutaj wszystko idzie do Kosza.</li>
+      <li>Szukanie można przerwać w trakcie; program kończy wtedy komunikatem <em>Anulowano</em> i zostawia to, co zdążył znaleźć.</li>
+    </ul>
+    <div class="warning"><strong>Pusty nie zawsze znaczy zbędny.</strong> Niektóre programy trzymają puste katalogi celowo i odtwarzają je przy starcie. Przejrzyj listę, zanim usuniesz wszystko hurtem — zwłaszcza w katalogach aplikacji.</div>
+
+
+    <h2 id="pl-siec">9. Zakładka SIEĆ — podstawy</h2>
+    <p>Górny pasek zakładki SIEĆ wybiera <strong>kartę sieciową</strong>, której dotyczą wszystkie operacje: ping, DNS, zmiana MAC, monitor transferu i włączanie sieci. Program wypełnia listę kartami widocznymi w systemie — zwykle są to Ethernet i Wi-Fi.</p>
+
+    <h3>MOJE DANE</h3>
+    <p>Jeden przycisk, który odpowiada na pytanie „jak właściwie jestem podłączony”. Okno zbiera w jednym miejscu to, po co normalnie trzeba zaglądać w trzy różne miejsca systemu:</p>
+    <table>
+      <thead><tr><th>Pozycja</th><th>Co oznacza</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stan internetu</strong></td><td><em>OK</em> albo <em>Offline</em> — czy komputer w ogóle wychodzi na zewnątrz.</td></tr>
+        <tr><td><strong>Ping do rutera / DNS / internetu</strong></td><td>Trzy osobne próby. Po nich od razu widać, na którym odcinku jest problem: ruter, serwer nazw czy łącze.</td></tr>
+        <tr><td><strong>Publiczny IP</strong></td><td>Adres, którym widzi Cię internet. To jedyna pozycja, która wymaga połączenia z siecią.</td></tr>
+        <tr><td><strong>Lokalny IP i maska</strong></td><td>Adres komputera w sieci domowej — ten, którego użyjesz przy udostępnianiu plików.</td></tr>
+        <tr><td><strong>MAC komputera, nazwa komputera</strong></td><td>Do konfiguracji rutera i do Wake on LAN.</td></tr>
+        <tr><td><strong>Brama / IP rutera, MAC rutera</strong></td><td>Adres, pod którym otworzysz panel rutera w przeglądarce.</td></tr>
+        <tr><td><strong>Serwery DNS</strong></td><td>Które serwery nazw są w tej chwili ustawione.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>KOPIUJ WSZYSTKO</strong> przenosi cały raport do schowka — wygodne, gdy ktoś prosi o dane połączenia.</p>
+
+    <h3>Ping</h3>
+    <p>W polu <strong>Ping</strong> wpisz adres albo nazwę i kliknij <strong>START PING</strong>. Program pinguje bez przerwy i pokazuje kolejne odpowiedzi; <strong>STOP PING</strong> zatrzymuje. To narzędzie do obserwowania łącza w czasie — widać po nim zrywanie Wi-Fi albo chwilowe przeciążenia.</p>
+
+    <h3>DNS</h3>
+    <p>Lista <strong>DNS</strong> zawiera gotowe zestawy serwerów nazw: <em>Automatyczny (DHCP)</em>, Google, Cloudflare, Quad9, OpenDNS i AdGuard. Po wybraniu pozycji kliknij <strong>USTAW DNS</strong> <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span>.</p>
+    <ul>
+      <li><strong>Automatyczny (DHCP)</strong> oddaje decyzję ruterowi — to ustawienie fabryczne Windows.</li>
+      <li><strong>TEST DNS</strong> sprawdza, który serwer odpowiada najszybciej z Twojego łącza. Tabela pokazuje średni, najlepszy i najgorszy czas oraz liczbę błędów. <strong>USTAW ZWYCIĘZCĘ</strong> ustawia od razu ten najszybszy, a <strong>KOPIUJ WYNIKI</strong> przenosi tabelę do schowka.</li>
+    </ul>
+    <div class="note"><strong>Zmiana DNS dotyczy wybranej karty sieciowej.</strong> Jeśli komputer korzysta raz z kabla, raz z Wi-Fi, ustaw DNS osobno dla każdej karty albo zostaw <em>Automatyczny</em>.</div>
+
+    <h3>WYŁĄCZ SIEĆ / WŁĄCZ SIEĆ</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Wyłącza i włącza wybraną kartę sieciową — odpowiednik ręcznego odłączenia kabla. Przydaje się, gdy trzeba odciąć komputer od sieci na chwilę albo zmusić kartę do ponownego pobrania adresu.</p>
+    <div class="warning"><strong>Uważaj przy zdalnym pulpicie.</strong> Wyłączenie karty, przez którą jesteś połączony, zrywa połączenie i nie da się go przywrócić zdalnie.</div>
+
+    <h2 id="pl-serwer">10. Serwer plików</h2>
+    <p>Przycisk <strong>SERVER</strong> otwiera okno, które zamienia komputer w prosty serwer plików. Telewizor, telefon albo drugi komputer w tej samej sieci otwiera podany adres i pobiera albo odtwarza plik — bez pendrive'a, bez chmury, bez instalowania czegokolwiek po drugiej stronie.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">Serwer plików <span class="muted">— udostępnianie plików w sieci lokalnej</span></div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <h5>Pliki do udostępnienia</h5>
+          <div class="mock-list">
+            1 &nbsp; <span class="hit">update.json</span> &nbsp; 2 KB &nbsp; port 8890<br>
+            2 &nbsp; <span class="hit">HPL_IPTV_v2.15.apk</span> &nbsp; 24 MB<br>
+            3 &nbsp; <span class="folder">D:\Filmy\</span> &nbsp; folder
+          </div>
+          <div class="mock-status">ŁĄCZNY ROZMIAR &nbsp; 24,1 MB</div>
+        </div>
+        <div class="mock-pane">
+          <h5>ADRES DLA TV / PLAYERA</h5>
+          <span class="mock-input">http://192.168.1.50:8080/1</span>
+          <div class="mock-list">☑ Pozwól wysyłać pliki na komputer<br>☐ Udostępnij w internecie (UPnP)<br>☑ Wymagaj hasła</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">DODAJ PLIKI</span>
+        <span class="mock-button">DODAJ FOLDER</span>
+        <span class="mock-button">WYCZYŚĆ LISTĘ</span>
+        <span class="mock-button">KOPIUJ ADRES</span>
+        <span class="mock-button">KOPIUJ WSZYSTKIE ADRESY</span>
+        <span class="mock-button">QR</span>
+        <span class="mock-button hot">URUCHOM SERWER</span>
+      </div>
+    </div>
+
+    <h3>Jak to uruchomić</h3>
+    <div class="workflow">
+      <div class="step"><b>1. Dodaj</b><strong>DODAJ PLIKI</strong> albo <strong>DODAJ FOLDER</strong>. Lista może zawierać wiele pozycji naraz.</div>
+      <div class="step"><b>2. Uruchom</b><strong>URUCHOM SERWER</strong>. Kropka zmienia się na <em>Serwer działa</em>.</div>
+      <div class="step"><b>3. Skopiuj adres</b><strong>KOPIUJ ADRES</strong> albo <strong>QR</strong> do zeskanowania telefonem.</div>
+      <div class="step"><b>4. Otwórz</b>Wpisz adres w przeglądarce albo w odtwarzaczu na drugim urządzeniu.</div>
+    </div>
+
+    <h3 id="pl-adresy">Adresy — który plik pod czym</h3>
+    <p>To najczęstsze pytanie przy udostępnianiu kilku plików naraz. Reguła jest prosta: <strong>numer na liście = numer w adresie</strong>.</p>
+    <table>
+      <thead><tr><th>Adres</th><th>Co zwraca</th></tr></thead>
+      <tbody>
+        <tr><td><code>http://192.168.1.50:8080/</code></td><td>Przy jednym udostępnionym pliku — ten plik. Przy kilku — stronę ze spisem.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/1</code><br><code>…/2</code>, <code>…/3</code></td><td>Plik o tym numerze na liście. Najwygodniejsza postać dla odtwarzaczy i telewizorów.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/update.json</code></td><td>Plik po nazwie. Przydatne, gdy druga strona wymaga konkretnej nazwy w adresie — na przykład plik aktualizacji.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/lista</code></td><td>Strona ze spisem wszystkich udostępnionych pozycji, z odnośnikami.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/playlist.m3u</code></td><td>Playlista M3U ze wszystkimi plikami — otwiera się wprost w odtwarzaczu.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/upload</code></td><td>Strona do wysyłania plików <em>na</em> komputer (gdy opcja jest włączona).</td></tr>
+      </tbody>
+    </table>
+    <div class="tip"><strong>KOPIUJ WSZYSTKIE ADRESY</strong> wrzuca do schowka komplet gotowych odnośników, po jednym w linii — nie trzeba składać ich ręcznie.</div>
+
+    <h3>Osobny port dla pliku</h3>
+    <p>Czasem druga strona nie potrafi dopisać numeru ani nazwy do adresu i oczekuje, że <strong>pod całym adresem będzie jeden konkretny plik</strong>. Do tego służy port przypisany do pozycji na liście: wpisz numer portu przy pliku, a program uruchomi dla niego osobny serwer, w którym <strong>każdy adres zwraca ten jeden plik</strong>.</p>
+    <ul>
+      <li>Port musi być z zakresu <strong>1024–65535</strong>.</li>
+      <li>Jeden port obsługuje jeden plik — program nie pozwoli przypisać tego samego portu dwa razy i powie <em>Ten port jest już przypisany do innego pliku</em>.</li>
+      <li><strong>KOPIUJ PORT</strong> kopiuje gotowy adres w postaci <code>http://192.168.1.50:8890/</code>.</li>
+    </ul>
+    <p>W ten sposób dwa różne pliki można wystawić pod dwoma różnymi adresami: <code>http://192.168.1.50:8890/</code> i <code>http://192.168.1.50:8891/</code> — każdy zwraca swój plik, niezależnie od tego, co dopisze klient.</p>
+
+    <h3>Hasło, UPnP i odbiór plików</h3>
+    <ul class="settings-list">
+      <li><strong>Wymagaj hasła</strong> — włącza logowanie. Wpisz <strong>LOGIN</strong> i <strong>HASŁO</strong> albo kliknij <strong>GENERUJ</strong>, a program wymyśli je za Ciebie. <strong>POKAŻ</strong> odsłania hasło, <strong>KOPIUJ ADRES Z HASŁEM</strong> daje gotowy odnośnik z danymi logowania w środku.</li>
+      <li><strong>Pozwól wysyłać pliki na komputer</strong> — dokłada stronę <code>/upload</code>, przez którą telefon albo inny komputer wyśle plik <em>do Ciebie</em>. Przycisk <strong>FOLDER ODBIORU</strong> wskazuje, gdzie te pliki mają lądować.</li>
+      <li><strong>Udostępnij w internecie (UPnP)</strong> — prosi ruter o przepuszczenie portu z zewnątrz. Program pokazuje wtedy <em>Rozmawiam z ruterem…</em>, a po udanej rozmowie podaje adres publiczny i pozwala pokazać go jako kod QR.</li>
+    </ul>
+    <div class="warning"><strong>UPnP wystawia plik na cały internet.</strong> Używaj go tylko wtedy, gdy naprawdę musisz przesłać coś poza dom, i <strong>zawsze razem z hasłem</strong>. Po skończonej wysyłce zatrzymaj serwer przyciskiem <strong>ZATRZYMAJ SERWER</strong> — wtedy przekierowanie przestaje działać. Nie wszystkie rutery mają UPnP włączone; gdy ruter odmówi, program powie o tym wprost.</div>
+    <div class="note"><strong>Serwer umie przewijanie.</strong> Obsługuje żądania zakresu, więc film otwarty z tego adresu w odtwarzaczu można przewijać, a przerwane pobieranie da się wznowić. Zmiany na liście plików działają na żywo — dodanie albo usunięcie pozycji nie wymaga restartu serwera.</div>
+    <div class="tip"><strong>Zapora Windows zapyta raz.</strong> Przy pierwszym uruchomieniu serwera system pyta o zgodę na połączenia przychodzące. Trzeba ją dać dla <strong>sieci prywatnych</strong>, inaczej inne urządzenia nie zobaczą adresu.</div>
+
+    <h2 id="pl-narzsieci">11. Narzędzia sieciowe</h2>
+
+    <h3>SKANER SIECI</h3>
+    <p>Przegląda całą sieć domową i pokazuje, co jest w niej włączone: adres IP, nazwę urządzenia i producenta karty sieciowej rozpoznanego z adresu MAC. Nazwy ustala z DNS i NetBIOS, więc telewizor czy drukarka zwykle podpisują się same.</p>
+    <p>Rozpoznane urządzenia zapisują się w pliku <code>ipinfo.json</code>, dzięki czemu przy następnym skanowaniu lista jest od razu opisana. Przyciski <strong>+WOL</strong> i <strong>PORTY</strong> przy wierszu przenoszą urządzenie do Wake on LAN albo od razu skanują jego porty.</p>
+
+    <h3>POŁĄCZENIA</h3>
+    <p>Pokazuje, <strong>co i dokąd wysyła dane z tego komputera</strong>: adres lokalny, adres zdalny, stan połączenia i proces, który je nawiązał.</p>
+    <ul>
+      <li><strong>Szukaj procesu</strong> zawęża listę do jednej nazwy programu.</li>
+      <li><strong>Tylko zewnętrzne</strong> ukrywa ruch wewnątrz komputera i sieci lokalnej, zostawiając to, co wychodzi na świat.</li>
+      <li><strong>Tylko ESTABLISHED</strong> zostawia połączenia faktycznie nawiązane, bez nasłuchujących portów.</li>
+      <li><strong>Sprawdzaj kraj online</strong> dopisuje kraj i organizację właściciela adresu. To jedyna opcja w tym oknie, która sama łączy się z internetem — domyślnie jest wyłączona.</li>
+      <li><strong>ZABLOKUJ W ZAPORZE</strong> <span class="badge adm">ADMIN</span> zakłada regułę zapory blokującą wskazany program.</li>
+    </ul>
+    <div class="note"><strong>Bez uprawnień administratora</strong> część procesów pokaże się bez ścieżki do pliku — Windows nie udostępnia jej zwykłemu użytkownikowi. Sama lista połączeń działa normalnie.</div>
+
+    <h3>SKANER PORTÓW</h3>
+    <p>Sprawdza, które porty są otwarte na wskazanym adresie. Do wyboru <strong>typowe porty</strong> albo <strong>własny zakres</strong> w postaci <code>80,443,8000-8100</code>. Przy otwartych portach program próbuje rozpoznać usługę i pokazuje jej pierwszą odpowiedź, więc widać nie tylko „port 22 otwarty”, ale i co za nim stoi. Zakres jest ograniczony do 8000 portów na jedno skanowanie, a <strong>PRZERWIJ</strong> zatrzymuje pracę w dowolnym momencie.</p>
+    <div class="warning"><strong>Skanuj tylko własne urządzenia.</strong> Skanowanie portów cudzych adresów bywa traktowane jak próba włamania i może naruszać regulamin dostawcy internetu.</div>
+
+    <h3>TRASA (TRACEROUTE)</h3>
+    <p>Pokazuje kolejne węzły, przez które przechodzą pakiety do wskazanego adresu, razem z czasami. Po tym widać, czy zacięcie jest u Ciebie, u dostawcy, czy dopiero gdzieś dalej w drodze.</p>
+
+    <h3>DLACZEGO NIE MA INTERNETU?</h3>
+    <p>Diagnostyka, która przechodzi połączenie odcinek po odcinku — karta sieciowa, adres IP, ruter, DNS, wyjście na świat — i pisze przy każdym etapie, czy jest w porządku. Zamiast zgadywać, dostajesz gotową odpowiedź, na którym kroku się zatrzymało. <strong>KOPIUJ RAPORT</strong> przenosi wynik do schowka — do wysłania do pomocy technicznej.</p>
+
+    <h3>MONITOR TRANSFERU</h3>
+    <p>Pokazuje bieżącą prędkość pobierania i wysyłania dla wybranej karty, sumę od otwarcia okna i wykres z <strong>ostatnich 60 sekund</strong>. Odpowiada na pytanie „czy coś w tle zjada łącze”.</p>
+
+    <h3>WAKE ON LAN</h3>
+    <p>Budzi komputery w sieci lokalnej pakietem magicznym. Urządzenie dodaje się raz — <strong>Nazwa</strong>, <strong>MAC</strong> i <strong>IP</strong>, przycisk <strong>DODAJ</strong> — a potem wystarczy <strong>OBUDŹ</strong>. Lista zapisuje się w <code>wol.json</code>, więc przeżywa zamknięcie programu.</p>
+    <div class="note"><strong>Wake on LAN musi być włączone po drugiej stronie</strong> — w BIOS-ie budzonego komputera i we właściwościach jego karty sieciowej. Program tylko wysyła pakiet; jeśli komputer go ignoruje, ustawienia są po tamtej stronie.</div>
+
+    <h3>WI-FI</h3>
+    <p>Okno pokazuje trzy rzeczy naraz: <strong>stan własnego połączenia</strong> (SSID, sygnał, kanał i pasmo, prędkość, zabezpieczenie), <strong>obłożenie kanałów</strong> w postaci wykresu i <strong>listę sieci w otoczeniu</strong>.</p>
+    <p>Pod wykresem program podaje <strong>najlepszy wolny kanał w paśmie 2,4 GHz i 5 GHz</strong> — to gotowa podpowiedź, co ustawić w ruterze, gdy Wi-Fi zwalnia w godzinach szczytu. <strong>SKANUJ OTOCZENIE</strong> odświeża listę, <strong>KOPIUJ LISTĘ</strong> przenosi ją do schowka.</p>
+    <div class="note">Gdy komputer nie ma karty Wi-Fi albo usługa WLAN jest wyłączona, okno mówi to wprost (<em>Brak karty Wi-Fi</em>, <em>Usługa WLAN nie działa</em>) zamiast pokazywać pustą listę.</div>
+
+    <h3>ZMIEŃ MAC</h3>
+    <p><span class="badge adm">ADMIN</span> Zmienia adres MAC wybranej karty sieciowej. <strong>LOSUJ</strong> generuje losowy adres prywatny, <strong>ZMIEŃ MAC</strong> zapisuje go i restartuje kartę, a <strong>PRZYWRÓĆ FABRYCZNY</strong> wraca do adresu sprzętowego.</p>
+    <div class="warning"><strong>W trakcie zmiany karta na chwilę znika z systemu</strong> — połączenie zrywa się i wraca po kilku sekundach. Jeśli ruter przydziela adresy po MAC albo filtruje po nim dostęp, po zmianie komputer może nie dostać adresu, dopóki nie wrócisz do fabrycznego.</div>
+
+
+    <h2 id="pl-narzedzia">12. Zakładka NARZĘDZIA</h2>
+    <p>Zbiór drobnych narzędzi, po które normalnie sięga się do osobnych programów. Każdy przycisk otwiera własne okno — można mieć kilka otwartych naraz.</p>
+
+    <h3>ZRZUT EKRANU</h3>
+    <p>Robi zrzut całego ekranu i zapisuje go do folderu programu. Dwa ustawienia obok przycisku zmieniają sposób działania:</p>
+    <ul>
+      <li><strong>Opóźnienie (s)</strong> — od 0 do 60 sekund. Czas na otwarcie menu albo okna, które ma znaleźć się na zrzucie.</li>
+      <li><strong>ukryj okno programu</strong> — na czas zrzutu HPL Tool Ultimate chowa się, żeby nie zasłaniał tego, co chcesz uwiecznić.</li>
+      <li><strong>OTWÓRZ OSTATNI</strong> — otwiera ostatnio zrobiony zrzut. Gdy żadnego jeszcze nie ma, otwiera folder programu.</li>
+    </ul>
+
+    <h3>SCHOWEK (HISTORIA)</h3>
+    <p>Program zapamiętuje, co kopiowałeś, i pozwala wrócić do wcześniejszych wpisów — także po ponownym uruchomieniu, bo historia leży w pliku <code>clipboard.json</code>.</p>
+    <ul>
+      <li><strong>KOPIUJ</strong> przy wpisie wrzuca go z powrotem do schowka.</li>
+      <li><strong>Przypięcie</strong> wpisu chroni go przed skasowaniem — przydaje się do adresów, numerów i tekstów, których używasz stale.</li>
+      <li><strong>WYCZYŚĆ HISTORIĘ (BEZ PRZYPIĘTYCH)</strong> kasuje wszystko poza przypiętymi pozycjami.</li>
+    </ul>
+    <div class="warning"><strong>Historia schowka to zwykły plik tekstowy obok programu.</strong> Jeśli kopiujesz hasła albo dane, których nie chcesz zostawiać na dysku, czyść historię po pracy — albo nie trzymaj programu na komputerze współdzielonym z innymi.</div>
+
+    <h3>SZYBKIE NOTATKI</h3>
+    <p>Jedno pole tekstowe, które zapisuje się samo. W trakcie pisania program pokazuje <em>pisanie…</em>, a po zapisaniu — <em>wczytano</em>. Treść leży w <code>notes.txt</code> obok programu, więc można ją czytać i edytować zwykłym notatnikiem. <strong>WSTAW DATĘ</strong> dopisuje bieżącą datę i godzinę — wygodne przy prowadzeniu dziennika prac.</p>
+
+    <h3>GENERATOR HASEŁ</h3>
+    <p>Generuje kilka haseł naraz. Suwak <strong>DŁUGOŚĆ</strong> ustala liczbę znaków, a opcja <strong>pomiń znaki mylące</strong> wyrzuca z puli zera i litery O, jedynki oraz małe l i duże I, a także znaki łatwe do pomylenia przy przepisywaniu. <strong>Kliknięcie w wynik kopiuje go do schowka</strong> — pod listą pojawia się wtedy potwierdzenie <em>SKOPIOWANE</em>.</p>
+    <div class="tip"><strong>Wyłącz „pomiń znaki mylące” dla haseł, których nigdy nie przepisujesz ręcznie.</strong> Pełna pula znaków daje mocniejsze hasło. Ograniczenie ma sens tylko wtedy, gdy hasło trzeba będzie komuś podyktować albo przepisać z kartki.</div>
+
     <h3>KEEP AWAKE</h3>
-    <p>Prevents the computer from sleeping and the screensaver from starting: every 30 seconds it gently moves the mouse cursor to a random position. Clicking again turns the function off (the button changes colour while active).</p>
-    <h3>CHANGE PIN <span class="badge num">PIN</span></h3>
-    <p>After entering the current PIN, lets you set a new one.</p>
-    <h3>CONNECTIONS</h3>
-    <p>The <strong>Active connections</strong> window lists all TCP and UDP connections (<code>netstat</code>): protocol, local address, remote address, state and the <strong>name of the process</strong> that opened the connection. Handy for a quick check of "what is talking to the internet".</p>
-    <h3>SYSTEM REPORT</h3>
-    <p>A service report of the computer: operating system (with build number), CPU, RAM amount, motherboard model and serial number, and the list of physical disks with size and <strong>SMART / health status</strong> (OK, Healthy, Warning…).</p>
-    <h3>CLEAN TEMP <span class="badge num">PIN</span> <span class="badge admin">ADMIN — partially</span></h3>
-    <p>After confirmation deletes temporary files from <code>%TEMP%</code> and <code>C:\Windows\Temp</code>, and empties the <strong>Recycle Bin</strong>. The result ("Deleted: N files | Errors: M") appears next to the button. Cleaning <code>C:\Windows\Temp</code> fully works only in administrator mode; files currently in use by running programs are skipped and increase the error counter - this is normal.</p>
+    <p>Blokuje usypianie komputera i wygaszanie ekranu — na czas długiego kopiowania, renderowania albo pobierania. Włączony przycisk zmienia kolor na fioletowy i napis na <strong>KEEP AWAKE — AKTYWNY</strong>. Ponowne kliknięcie wyłącza blokadę i oddaje sterowanie ustawieniom Windows.</p>
 
-    <h2 id="en-clip">9. Clipboard history</h2>
-    <p>The program continuously monitors the text clipboard (about every 0.8 s) and saves the history to the <code>clipboard.json</code> file. The <strong>CLIPBOARD (HISTORY)</strong> button opens the manager:</p>
-    <ul>
-      <li>the <strong>30 most recent entries</strong> are kept, plus <strong>pinned 📌</strong> entries (no limit) - pinned entries never drop out of the history,</li>
-      <li><strong>📌</strong> pins/unpins an entry (pinned entries always stay at the top of the list),</li>
-      <li><strong>COPY</strong> puts the entry back into the clipboard and closes the window,</li>
-      <li><strong>✕</strong> deletes a single entry, and <strong>CLEAR HISTORY (KEEP PINNED)</strong> removes everything except pinned entries,</li>
-      <li>copying a text that is already in the history moves it to the top and keeps its pin.</li>
-    </ul>
+    <h3>WYCZYŚĆ TEMP</h3>
+    <p><span class="badge pin">PIN</span> Kasuje pliki tymczasowe z <code>%TEMP%</code> i <code>C:\Windows\Temp</code> oraz opróżnia <strong>Kosz</strong>. Program pyta o potwierdzenie i wymienia te trzy miejsca, a po pracy podaje, ile plików usunął i ile miejsca odzyskał. Pliki zajęte przez działające programy są pomijane — to normalne i nie jest błędem.</p>
+    <div class="warning"><strong>Opróżnienie Kosza jest nieodwracalne.</strong> Jeśli korzystasz z funkcji <em>Usuń do kosza</em> w innych częściach programu jako zabezpieczenia przed pomyłką, sprawdź Kosz, zanim uruchomisz czyszczenie.</div>
 
-    <h2 id="en-fw" class="section-break">10. Blocking applications in the firewall</h2>
-    <p>The <strong>Application</strong> row in section 3 blocks a chosen program's internet access using Windows Defender Firewall rules.</p>
-    <h3>Blocking <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span></h3>
-    <ol>
-      <li>Click <strong>BROWSE</strong> and point to the application's <code>.exe</code> file (or type the full path manually).</li>
-      <li>Click <strong>BLOCK</strong>. The program creates two firewall rules - for outbound and inbound traffic - named <code>HPL_BLOCK_&lt;name&gt;_OUT</code> and <code>HPL_BLOCK_&lt;name&gt;_IN</code>.</li>
-      <li><strong>UNBLOCK</strong> removes both rules for the given application.</li>
+    <h3>ZMIEŃ PIN</h3>
+    <p>Pyta o stary PIN, potem o nowy. Nowy zapisuje się w postaci skrótu w pliku <code>pin.dat</code>. Skasowanie tego pliku przywraca PIN fabryczny <code>0000</code> — warto o tym pamiętać, gdy PIN wypadnie z głowy.</p>
+
+    <h2 id="pl-system">13. Narzędzia systemowe</h2>
+
+    <h3>RAPORT SYSTEMU</h3>
+    <p>Zbiera w jedno okno komplet danych serwisowych: procesor, pamięć, płytę główną i BIOS, system i jego wersję, karty sieciowe, a także listę dysków z ich rozmiarem i wolnym miejscem. <strong>KOPIUJ RAPORT</strong> przenosi całość do schowka.</p>
+    <div class="tip">To pierwsza rzecz, o którą prosi serwis albo pomoc techniczna. Zamiast czytać dane z pięciu okien systemu, wyślij jeden gotowy raport.</div>
+
+    <h3>MENEDŻER AUTOSTARTU</h3>
+    <p>Pokazuje programy uruchamiane razem z Windows i pozwala je wyłączyć. Wyłączone wpisy trafiają do kopii <code>autostart_backup.json</code>, więc da się je przywrócić — narzędzie nie kasuje ich bezpowrotnie.</p>
+    <div class="warning"><strong>Nie wyłączaj wpisów, których nie rozpoznajesz.</strong> W autostarcie siedzą też sterowniki dźwięku, obsługa touchpada i oprogramowanie karty graficznej. Wyłączaj to, co znasz i czego nie potrzebujesz od razu po starcie.</div>
+
+    <h3>SUMA KONTROLNA</h3>
+    <p>Liczy sumę kontrolną pliku — <code>MD5</code>, <code>SHA-1</code> albo <code>SHA-256</code>. Służy do sprawdzenia, czy pobrany plik jest kompletny i taki sam jak u wydawcy.</p>
+    <ol class="settings-list">
+      <li><strong>PRZEGLĄDAJ</strong> — wskaż plik. Przy dużych plikach widać postęp; liczenie można przerwać.</li>
+      <li><strong>LICZ</strong> — w polu <strong>WYNIK</strong> pojawia się suma.</li>
+      <li><strong>PORÓWNAJ Z</strong> — wklej sumę podaną przez wydawcę. Program odpowie <strong>✔ ZGODNE</strong> albo <strong>✘ NIEZGODNE</strong>, bez wpatrywania się w ciąg znaków.</li>
     </ol>
-    <h3>Rule overview</h3>
-    <p><strong>RULES</strong> opens a list of all <code>HPL_BLOCK_*</code> rules present in the firewall. Viewing alone does not require administrator; the <strong>DELETE</strong> button next to a rule <span class="badge num">PIN</span> <span class="badge admin">ADMIN</span> removes it individually.</p>
-    <div class="note"><strong>Note:</strong> firewall rules stay in the system after the program is closed - a blocked application has no internet until the rules are removed (with UNBLOCK, from the RULES list, or manually in Windows Firewall).</div>
 
-    <h2 id="en-search">11. Section 4 - File search</h2>
-    <h3>Two operating modes</h3>
+    <h3>SNAPSHOT FOLDERU</h3>
+    <p>Odpowiada na pytanie „co się w tym folderze zmieniło”. Działa w dwóch krokach: najpierw <strong>ZAPISZ SNAPSHOT</strong> zapamiętuje stan folderu, a później <strong>PORÓWNAJ ZE SNAPSHOTEM</strong> pokazuje trzy listy: <strong>NOWE</strong>, <strong>USUNIĘTE</strong> i <strong>ZMIENIONE</strong>.</p>
+    <p>Porównanie bierze pod uwagę rozmiar, datę i sumę kontrolną każdego pliku, więc wyłapuje też podmianę pliku o tej samej nazwie i wielkości. Czytanie dużego folderu trwa — pracę można przerwać, a program powie wtedy <em>Anulowano</em>.</p>
+    <div class="tip">Przydaje się przed instalacją nieznanego programu i po niej, przy sprawdzaniu, co zmieniła aktualizacja, i przy pilnowaniu katalogu z kopiami zapasowymi.</div>
+
+    <h3>Zapora Windows</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Trzy przyciski i jedno pole <strong>Aplikacja</strong>, w którym wskazujesz plik <code>.exe</code> przyciskiem <strong>PRZEGLĄDAJ</strong>:</p>
+    <ul>
+      <li><strong>ZABLOKUJ</strong> zakłada regułę zapory odcinającą wskazany program od sieci — w obie strony, wychodzącą i przychodzącą.</li>
+      <li><strong>ODBLOKUJ</strong> kasuje tę regułę.</li>
+      <li><strong>REGUŁY</strong> pokazuje wszystkie reguły zapory obecne w systemie.</li>
+    </ul>
+    <p>Reguły zakładane przez program mają nazwy zaczynające się od <code>HPL_BLOCK_</code>, więc łatwo je rozpoznać i skasować także z poziomu systemu.</p>
+
+    <h3>DISKPART</h3>
+    <p>Otwiera systemowe narzędzie <strong>diskpart</strong> — konsolowy menedżer dysków i partycji Windows. Program tylko je uruchamia; dalsza praca odbywa się w oknie konsoli, według składni diskpart.</p>
+    <div class="warning"><strong>Diskpart operuje na partycjach i potrafi skasować dysk jednym poleceniem</strong>, bez pytania i bez Kosza. Używaj go tylko wtedy, gdy wiesz, jakie polecenie wpisujesz, i sprawdź dwa razy numer dysku przed każdą operacją.</div>
+
+    <h3>Uruchamiaj razem z Windows</h3>
+    <p>Pole <strong>Uruchamiaj razem z Windows</strong> zakłada skrót w folderze Autostart bieżącego użytkownika, dzięki czemu program wstaje razem z systemem. Odznaczenie kasuje skrót. Przydaje się przy codziennym wyłączaniu komputera o stałej porze — patrz <a href="#pl-zasilanie">rozdział 14</a>.</p>
+
+    <h2 id="pl-zasilanie">14. Zakładka ZASILANIE</h2>
+    <p>Zakładka planuje jedną rzecz: <strong>co zrobić z komputerem i kiedy</strong>. Ustawia się dwa pola i klika start.</p>
+
+    <div class="mock-window">
+      <div class="mock-title"><b>ZASILANIE</b> — planowanie</div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <h5>Akcja</h5>
+          <div class="mock-list">● Wyłączenie<br>○ Restart<br>○ Hibernacja<br>○ Uśpienie<br>○ Wylogowanie</div>
+        </div>
+        <div class="mock-pane">
+          <h5>Tryb</h5>
+          <div class="mock-list">● za X minut &nbsp; <span class="hit">[ 90 ]</span><br>○ o godzinie &nbsp; <span class="hit">[ 23:30 ]</span><br>○ codziennie &nbsp; <span class="hit">[ 23:30 ]</span></div>
+          <div class="mock-status">Do wyłączenia: 01:29:58</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">START TIMER WYŁĄCZENIA PC</span>
+        <span class="mock-button red">ANULUJ WYŁĄCZENIE</span>
+        <span class="mock-button warn">RESTART DO BIOS</span>
+      </div>
+    </div>
+
     <table>
-      <thead><tr><th>Mode</th><th>When active</th><th>Characteristics</th></tr></thead>
+      <thead><tr><th>Pole</th><th>Możliwości</th></tr></thead>
       <tbody>
-        <tr><td><strong>Index</strong></td><td>when no folder is selected (the label reads "All drives")</td><td>Instant results from a previously built index of all ticked drives.</td></tr>
-        <tr><td><strong>Live</strong></td><td>after clicking <strong>SELECT FOLDER</strong></td><td>Searches the chosen folder directly on disk - always up to date, slower. The <strong>✕</strong> button returns to index mode.</td></tr>
+        <tr><td><strong>Akcja</strong></td><td><em>Wyłączenie</em>, <em>Restart</em>, <em>Hibernacja</em>, <em>Uśpienie</em>, <em>Wylogowanie</em>.</td></tr>
+        <tr><td><strong>Tryb: za X minut</strong></td><td>Odliczanie od teraz. Najprostszy wariant — „wyłącz za półtorej godziny”.</td></tr>
+        <tr><td><strong>Tryb: o godzinie</strong></td><td>Jednorazowo, o podanej porze w formacie <code>HH:MM</code>. Godzina, która już minęła, oznacza dzień następny.</td></tr>
+        <tr><td><strong>Tryb: codziennie</strong></td><td>Powtarzalnie, o tej samej porze każdego dnia. Razem z opcją <em>Uruchamiaj razem z Windows</em> daje stałe wyłączanie komputera wieczorem.</td></tr>
       </tbody>
     </table>
+    <p>Po kliknięciu <strong>START TIMER WYŁĄCZENIA PC</strong> zegar na pasku górnym zaczyna odliczać. Program <strong>zapowiada zbliżającą się akcję głosem</strong> na trzy minuty i na minutę przed czasem, a potem w chwili wykonania — więc nie zaskoczy Cię w połowie pracy. <strong>ANULUJ WYŁĄCZENIE</strong> odwołuje plan, a zegar wraca na <code>00:00:00</code>.</p>
+    <div class="note"><strong>Zamknięcie programu wymaga PIN-u</strong> właśnie po to, żeby zaplanowane wyłączenie nie zniknęło przez przypadkowe kliknięcie krzyżyka.</div>
+
+    <h3>RESTART DO BIOS</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Restartuje komputer prosto do ustawień UEFI, bez łapania klawisza przy starcie. Działa na komputerach z UEFI — na starszych z klasycznym BIOS-em system nie udostępnia takiej możliwości.</p>
+    <div class="warning">Przed użyciem zapisz otwarte dokumenty. Restart następuje od razu po potwierdzeniu.</div>
+
+    <h2 id="pl-przyciski">15. Zestawienie przycisków</h2>
+    <p>Wszystkie przyciski programu w jednym miejscu. <span class="badge adm">ADMIN</span> oznacza wymóg uprawnień administratora, <span class="badge pin">PIN</span> — pytanie o PIN.</p>
+
+    <h3>WYSZUKIWANIE</h3>
+    <table>
+      <thead><tr><th>Przycisk</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>BUDUJ INDEKS</td><td>Buduje indeks plików od zera dla wybranego zakresu.</td></tr>
+        <tr><td>ODŚWIEŻ INDEKS</td><td>Dopisuje do indeksu zmiany — szybciej niż budowa od nowa.</td></tr>
+        <tr><td>WYKLUCZENIA</td><td>Lista katalogów pomijanych przy indeksowaniu.</td></tr>
+        <tr><td>WYBIERZ FOLDER</td><td>Zawęża zakres do jednego katalogu.</td></tr>
+        <tr><td>SZUKAJ NAZWY</td><td>Szuka fragmentu w nazwie pliku.</td></tr>
+        <tr><td>FILTRUJ ROZMIAR</td><td>Pliki nie mniejsze niż podana liczba MB.</td></tr>
+        <tr><td>SZUKAJ PO DACIE</td><td>Pliki z podanego dnia albo nowsze.</td></tr>
+        <tr><td>SZUKAJ ROZSZERZENIA</td><td>Pliki o podanym rozszerzeniu.</td></tr>
+        <tr><td>SZUKAJ ŁĄCZONE</td><td>Wszystkie wypełnione kryteria naraz.</td></tr>
+        <tr><td>SZUKAJ W TREŚCI</td><td>Szuka frazy w środku plików tekstowych.</td></tr>
+        <tr><td>DUPLIKATY PLIKÓW</td><td>Grupuje pliki o tej samej nazwie i rozmiarze.</td></tr>
+        <tr><td>CO ZJADA DYSK</td><td>Raport zajętości: foldery, rozszerzenia, największe pliki.</td></tr>
+        <tr><td>PUSTE / 0 B</td><td>Puste foldery i pliki zerowej długości.</td></tr>
+        <tr><td>ZMIEŃ NAZWY</td><td>Hurtowa zmiana nazw z podglądem.</td></tr>
+        <tr><td>EKSPORT</td><td>Zapisuje listę wyników do CSV albo TXT.</td></tr>
+        <tr><td>DO KOSZA</td><td>Przenosi zaznaczone pliki do Kosza.</td></tr>
+        <tr><td>KOPIUJ DO...</td><td>Kopiuje zaznaczone pliki do wskazanego folderu.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>SIEĆ</h3>
+    <table>
+      <thead><tr><th>Przycisk</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>MOJE DANE</td><td>Komplet danych połączenia w jednym oknie.</td></tr>
+        <tr><td>START PING / STOP PING</td><td>Ciągły ping wybranego adresu.</td></tr>
+        <tr><td>USTAW DNS <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Ustawia wybrany zestaw serwerów DNS.</td></tr>
+        <tr><td>TEST DNS</td><td>Mierzy szybkość serwerów DNS i wskazuje najlepszy.</td></tr>
+        <tr><td>WYŁĄCZ SIEĆ / WŁĄCZ SIEĆ <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Wyłącza i włącza kartę sieciową.</td></tr>
+        <tr><td>SERVER</td><td>Serwer plików w sieci lokalnej.</td></tr>
+        <tr><td>SKANER SIECI</td><td>Urządzenia w sieci: IP, nazwa, producent.</td></tr>
+        <tr><td>SKANER PORTÓW</td><td>Otwarte porty i rozpoznane usługi.</td></tr>
+        <tr><td>POŁĄCZENIA</td><td>Aktywne połączenia i procesy, które je nawiązały.</td></tr>
+        <tr><td>TRASA (TRACEROUTE)</td><td>Kolejne węzły w drodze do adresu.</td></tr>
+        <tr><td>DLACZEGO NIE MA INTERNETU?</td><td>Diagnostyka połączenia krok po kroku.</td></tr>
+        <tr><td>MONITOR TRANSFERU</td><td>Prędkość łącza i wykres ostatnich 60 sekund.</td></tr>
+        <tr><td>WAKE ON LAN</td><td>Budzenie komputerów pakietem magicznym.</td></tr>
+        <tr><td>WI-FI</td><td>Sygnał, obłożenie kanałów, sieci w otoczeniu.</td></tr>
+        <tr><td>ZMIEŃ MAC <span class="badge adm">ADMIN</span></td><td>Zmiana i przywracanie adresu MAC karty.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>NARZĘDZIA</h3>
+    <table>
+      <thead><tr><th>Przycisk</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>ZRZUT EKRANU / OTWÓRZ OSTATNI</td><td>Zrzut z opóźnieniem i ukrywaniem okna.</td></tr>
+        <tr><td>SCHOWEK (HISTORIA)</td><td>Historia kopiowanych tekstów, z przypinaniem.</td></tr>
+        <tr><td>SZYBKIE NOTATKI</td><td>Notatnik zapisujący się sam.</td></tr>
+        <tr><td>GENERATOR HASEŁ</td><td>Hasła o zadanej długości, kliknięcie kopiuje.</td></tr>
+        <tr><td>KEEP AWAKE</td><td>Blokuje usypianie komputera i ekranu.</td></tr>
+        <tr><td>WYCZYŚĆ TEMP <span class="badge pin">PIN</span></td><td>Pliki tymczasowe i Kosz.</td></tr>
+        <tr><td>ZMIEŃ PIN <span class="badge pin">PIN</span></td><td>Zmiana kodu zabezpieczającego.</td></tr>
+        <tr><td>RAPORT SYSTEMU</td><td>Dane serwisowe komputera i dysków.</td></tr>
+        <tr><td>MENEDŻER AUTOSTARTU</td><td>Programy startujące z Windows.</td></tr>
+        <tr><td>DZIENNIK</td><td>Historia operacji na plikach, z COFNIJ.</td></tr>
+        <tr><td>SUMA KONTROLNA</td><td>MD5 / SHA-1 / SHA-256 i porównanie.</td></tr>
+        <tr><td>SNAPSHOT FOLDERU</td><td>Co się zmieniło w folderze.</td></tr>
+        <tr><td>ZABLOKUJ / ODBLOKUJ / REGUŁY <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Reguły zapory dla wskazanego programu.</td></tr>
+        <tr><td>DISKPART <span class="badge adm">ADMIN</span></td><td>Systemowy menedżer partycji.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>ZASILANIE</h3>
+    <table>
+      <thead><tr><th>Przycisk</th><th>Działanie</th></tr></thead>
+      <tbody>
+        <tr><td>START TIMER WYŁĄCZENIA PC</td><td>Uruchamia zaplanowaną akcję.</td></tr>
+        <tr><td>ANULUJ WYŁĄCZENIE</td><td>Odwołuje plan i zeruje zegar.</td></tr>
+        <tr><td>RESTART DO BIOS <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Restart prosto do ustawień UEFI.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pl-problemy">16. Rozwiązywanie problemów</h2>
+    <table>
+      <thead><tr><th>Objaw</th><th>Co zrobić</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Po starcie pokazuje się okno aktywacji, choć program był już aktywowany.</strong></td><td>Sprawdź, czy to ten sam komputer i czy nie zmieniła się płyta główna albo karta sieciowa. Jeśli sprzęt jest ten sam, wklej ponownie posiadany kod aktywacyjny — pozostaje ważny.</td></tr>
+        <tr><td><strong>„This activation code is not valid for this computer”.</strong></td><td>Najczęściej kod skopiowany niekompletnie albo złamany na dwie części. Skopiuj go jeszcze raz w całości. Druga możliwość: kod wydany dla innego komputera.</td></tr>
+        <tr><td><strong>„Nie znaleziono indeksu! Zbuduj go najpierw”.</strong></td><td>Kliknij <strong>BUDUJ INDEKS</strong>. Szukanie po nazwie, rozmiarze, dacie i rozszerzeniu wymaga indeksu.</td></tr>
+        <tr><td><strong>Wyniki pokazują pliki, których już nie ma.</strong></td><td>Indeks jest zdjęciem stanu dysku. Kliknij <strong>ODŚWIEŻ INDEKS</strong>.</td></tr>
+        <tr><td><strong>Szukanie w treści nie znajduje frazy z dokumentu Worda albo PDF.</strong></td><td>Tak ma być — przeszukiwane są tylko pliki tekstowe. Lista rozszerzeń jest w <a href="#pl-tresc">rozdziale 6</a>.</td></tr>
+        <tr><td><strong>Indeks albo ustawienia się nie zapisują.</strong></td><td>Program leży w katalogu, w którym Windows nie pozwala zapisywać — najczęściej <em>Program Files</em>. Przenieś go do własnego folderu.</td></tr>
+        <tr><td><strong>„Błąd — uruchom jako administrator”.</strong></td><td>Funkcja wymaga podwyższonych uprawnień. Kliknij <strong>URUCHOM JAKO ADMIN</strong> na pasku górnym.</td></tr>
+        <tr><td><strong>Nie pamiętam PIN-u.</strong></td><td>Skasuj plik <code>pin.dat</code> z folderu programu. PIN wróci do fabrycznego <code>0000</code>.</td></tr>
+        <tr><td><strong>PIN nie działa, program pisze „Zablokowane”.</strong></td><td>Trzy błędne próby blokują PIN na pięć minut. Odczekaj i spróbuj ponownie.</td></tr>
+        <tr><td><strong>Inne urządzenie nie widzi udostępnionego pliku.</strong></td><td>Sprawdź, czy serwer jest uruchomiony (<em>Serwer działa</em>), czy obie strony są w tej samej sieci i czy zapora Windows dostała zgodę dla sieci prywatnych. Adres bierz przyciskiem <strong>KOPIUJ ADRES</strong>, nie z pamięci.</td></tr>
+        <tr><td><strong>Odtwarzacz nie chce przewijać filmu z serwera.</strong></td><td>Serwer obsługuje przewijanie. Jeśli nie działa, ograniczenie jest po stronie odtwarzacza — spróbuj adresu z numerem, na przykład <code>…:8080/1</code>.</td></tr>
+        <tr><td><strong>UPnP nie działa, ruter nie odpowiada.</strong></td><td>UPnP bywa wyłączone w ruterze. Włącz je w jego ustawieniach albo przekieruj port ręcznie. Przy łączu z adresem współdzielonym (CGNAT) udostępnienie na zewnątrz nie zadziała w ogóle.</td></tr>
+        <tr><td><strong>Skaner sieci pokazuje adresy bez nazw.</strong></td><td>Nie każde urządzenie podaje nazwę. Producent rozpoznany z adresu MAC zwykle wystarczy do identyfikacji.</td></tr>
+        <tr><td><strong>Okno Wi-Fi mówi „Brak karty Wi-Fi” albo „Usługa WLAN nie działa”.</strong></td><td>Komputer nie ma karty bezprzewodowej albo usługa <em>WLAN AutoConfig</em> jest zatrzymana. Uruchom ją w usługach Windows.</td></tr>
+        <tr><td><strong>Po zmianie MAC nie ma połączenia.</strong></td><td>Kliknij <strong>PRZYWRÓĆ FABRYCZNY</strong>. Niektóre rutery przydzielają adresy tylko znanym adresom MAC.</td></tr>
+        <tr><td><strong>Zaplanowane wyłączenie nie zadziałało.</strong></td><td>Program musi działać do wyznaczonej godziny. Przy trybie <em>codziennie</em> włącz <strong>Uruchamiaj razem z Windows</strong>.</td></tr>
+        <tr><td><strong>Program nie zamyka się krzyżykiem.</strong></td><td>Tak ma być — zamknięcie wymaga PIN-u, żeby nie skasować zaplanowanego wyłączenia przez przypadek.</td></tr>
+        <tr><td><strong>Antywirus zgłasza nieznany plik.</strong></td><td>Program jest spakowany do jednego pliku .exe i nie ma podpisu wydawcy, więc bywa zgłaszany jako nieznany. Sprawdź sumę kontrolną otrzymanego pliku i dodaj go do wyjątków.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="footer-note">HPL Tool Ultimate v3.23 &nbsp;·&nbsp; instrukcja obsługi &nbsp;·&nbsp; kontakt: hplink.soft@proton.me &nbsp;·&nbsp; inne wersje programów: https://hplspam1-jpg.github.io/HPL-ink-Software/index.html</div>
+  </section>
+
+
+  <section id="en" class="language-break">
+    <h2>English user manual</h2>
+    <ol class="toc">
+      <li><a href="#en-what">What the program is</a></li>
+      <li><a href="#en-activation">Program activation</a></li>
+      <li><a href="#en-start">First start</a></li>
+      <li><a href="#en-index">The file index</a></li>
+      <li><a href="#en-search">Searching for files</a></li>
+      <li><a href="#en-content">Content search and duplicates</a></li>
+      <li><a href="#en-results">What to do with results</a></li>
+      <li><a href="#en-disk">What eats the disk</a></li>
+      <li><a href="#en-network">NETWORK tab — basics</a></li>
+      <li><a href="#en-server">File server</a></li>
+      <li><a href="#en-nettools">Network tools</a></li>
+      <li><a href="#en-tools">TOOLS tab</a></li>
+      <li><a href="#en-system">System tools</a></li>
+      <li><a href="#en-power">POWER tab</a></li>
+      <li><a href="#en-buttons">Button summary</a></li>
+      <li><a href="#en-trouble">Troubleshooting</a></li>
+    </ol>
+
+    <h2 id="en-what">1. What the program is</h2>
+    <p><strong>HPL Tool Ultimate</strong> is a single <code>.exe</code> file for Windows that brings together, in one window, the things you would normally open several separate programs for: fast file search across the whole disk, network tools, a file server for the home network, small everyday utilities and scheduled shutdown.</p>
+    <p>The program <strong>needs no installation</strong>. It does not appear in the Start menu, creates no uninstall entries and scatters no files around the system. Everything it needs — the icon, the logo and the network-card vendor database — sits inside the <code>.exe</code> file.</p>
+
+    <h3>Four tabs</h3>
+    <table>
+      <thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SEARCH</strong></td><td>The file index and searching by name, size, date, extension or content. Duplicates, batch rename, the “what eats the disk” report. This is the default tab — it opens right after start.</td></tr>
+        <tr><td><strong>NETWORK</strong></td><td>Ping, DNS, network and port scanners, traceroute, traffic monitor, Wake on LAN, Wi-Fi, MAC change, the file server and the “why is there no internet” diagnostics.</td></tr>
+        <tr><td><strong>TOOLS</strong></td><td>Screenshots, clipboard history, notes, password generator, checksums, folder snapshot, startup manager, system report, firewall, TEMP cleaning, Keep Awake.</td></tr>
+        <tr><td><strong>POWER</strong></td><td>Shutdown, restart, hibernation, sleep and log off — now, in X minutes, at a given time or daily at a fixed hour. Restart to BIOS.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What the program does not do</h3>
+    <ul>
+      <li>It does not search the cloud or network drives of other computers — it works on disks visible in the system.</li>
+      <li>It is not an antivirus and not a data recovery tool.</li>
+      <li>It does not send your files anywhere. The only internet connections it makes are: checking the public IP address (<strong>MY DATA</strong>), resolving the country of remote connections (an option you switch on yourself) and talking to the router when sharing through UPnP.</li>
+    </ul>
+    <div class="note"><strong>Working data is kept next to the .exe file.</strong> The index, notes, PIN, clipboard history and the remaining settings are written into the same folder the program sits in. Moving that folder to another disk or a USB stick takes them along — see <a href="#en-start">chapter 3</a>.</div>
+
+    <h2 id="en-activation">2. Program activation</h2>
+    <p>The program needs a one-off activation on the computer it was started on. On the first start, instead of the main window, an activation window appears — in English, regardless of the system language.</p>
+
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>Tool Ultimate</i> &nbsp; <span class="muted">ver.3.23</span> &nbsp;—&nbsp; Activation</div>
+      <div class="mock-pane" style="margin-top:7px">
+        <h5 style="color:var(--ink)">This copy is not activated.</h5>
+        <div class="mock-list">To keep using the program you need to activate a licence for this computer.<br><br>
+        1.&nbsp; Copy the request code below (button Copy code).<br>
+        2.&nbsp; Send it to: hplink.soft@proton.me<br>
+        3.&nbsp; Use this message subject: HPL Tool Ultimate - activation<br>
+        4.&nbsp; Paste the activation code you receive and press Activate.</div>
+        <div class="mock-status">COMPUTER ID: &nbsp; <span style="color:var(--accent)">HPL-4C7A-91B3-E28D</span></div>
+        <div class="mock-list" style="margin-top:8px">REQUEST CODE</div>
+        <span class="mock-input" style="color:var(--accent)">eyJwaWQiOiJIUExUT09MVUxUIiwibWlkIjoiUFJaWUtMQUQtREVNTy1NQUNISU5FLUlELTAwMDEi…</span>
+        <div class="mock-list">ACTIVATION CODE</div>
+        <span class="mock-input">&nbsp;</span>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">Copy code</span>
+        <span class="mock-button" style="border-color:var(--green);color:var(--green)">Activate</span>
+        <span class="mock-button red" style="margin-left:auto">Close program</span>
+      </div>
+    </div>
+
+    <div class="workflow">
+      <div class="step"><b>1. Copy code</b>One click copies the whole request code to the clipboard.</div>
+      <div class="step"><b>2. Send it</b>Paste it into a message to <code>hplink.soft@proton.me</code>, subject <code>HPL Tool Ultimate - activation</code>.</div>
+      <div class="step"><b>3. Paste the code</b>Put the activation code you receive into the ACTIVATION CODE field.</div>
+      <div class="step"><b>4. Activate</b>The program confirms <em>Licence activated</em> and opens the main window.</div>
+    </div>
+
+    <p>The activation code is about 340 characters long and is a <strong>signature bound to one computer</strong>. Passed on to somebody else it will not work. Activation itself contacts no server — the codes travel by e-mail, so the program needs no internet connection for it.</p>
+    <ul>
+      <li><strong>COMPUTER ID</strong> in the form <code>HPL-XXXX-XXXX-XXXX</code> is the short identifier of the computer. It is worth including it in your message next to the request code — it makes the request easier to recognise.</li>
+      <li><strong>Activation happens once.</strong> On later starts the program goes straight to the main window.</li>
+      <li><strong>The licence lives in the system, not next to the .exe file.</strong> Moving the program to another folder or another disk of the same computer does not clear the activation.</li>
+      <li><strong>Replacing the motherboard or the network card</strong> changes the computer identifier — a new code is then needed.</li>
+    </ul>
+    <div class="tip"><strong>Keep the activation code you receive.</strong> It stays valid indefinitely and will be useful if the system ever has to be reinstalled. A detailed, illustrated description of activation is in the separate file <em>Program activation — guide</em>.</div>
+    <div class="warning"><strong>“This activation code is not valid for this computer”</strong> usually means an incompletely copied code — a missing beginning or end, or the code broken while being pasted. Copy it again in one piece. The other possibility is a code issued for a different computer.</div>
+
+    <h2 id="en-start">3. First start</h2>
+    <p>After activation the program opens the main window on the <strong>SEARCH</strong> tab. The window has a fixed layout: a top bar, four tabs and a status bar at the bottom.</p>
+
+    <div class="mock-window">
+      <div class="mock-title"><b>HPL</b> <i>Tool Ultimate</i> <span class="muted">ver.3.23 [17.09.2026]</span></div>
+      <div class="mock-toolbar">
+        <span class="mock-button warn">NOT ADMINISTRATOR</span>
+        <span class="mock-button hot">RESTART AS ADMIN</span>
+        <span class="mock-button" style="margin-left:auto">00:00:00</span>
+        <span class="mock-button">PL</span>
+        <span class="mock-button hot">EN</span>
+      </div>
+      <div class="mock-tabs">
+        <span class="mock-tab on">SEARCH</span>
+        <span class="mock-tab">NETWORK</span>
+        <span class="mock-tab">TOOLS</span>
+        <span class="mock-tab">POWER</span>
+      </div>
+      <div class="mock-pane" style="border-top:none">
+        <div class="mock-list">Drives: [All drives ▾] &nbsp; [BUILD INDEX] [REFRESH INDEX] [EXCLUSIONS]<br>
+        <span class="hit">SEARCH BY NAME</span> &nbsp;&nbsp; SIZE (MIN. MB) &nbsp;&nbsp; DATE (YYYY-MM-DD) &nbsp;&nbsp; Extension:</div>
+        <div class="mock-status">Ready &nbsp;·&nbsp; index: 412,908 files &nbsp;·&nbsp; today 09:14</div>
+      </div>
+    </div>
+
+    <h3>The top bar</h3>
+    <ul>
+      <li><strong>The privileges marker.</strong> The words <em>NOT ADMINISTRATOR</em> and the <strong>RESTART AS ADMIN</strong> button appear only when the program runs without elevated rights. Clicking restarts it, with the system asking for consent. Once running as administrator, that bar is gone.</li>
+      <li><strong>The clock</strong> in the middle counts down to a scheduled shutdown. With nothing scheduled it sits at <code>00:00:00</code>.</li>
+      <li><strong>The PL / EN switch</strong> in the right corner changes the language of the whole window at once, with no restart. After start the program is always in Polish.</li>
+    </ul>
+    <div class="note"><strong>What needs administrator rights.</strong> Without elevation these will not work: <strong>DISABLE / ENABLE NETWORK</strong>, <strong>SET DNS</strong>, <strong>CHANGE MAC</strong>, firewall rules (<strong>BLOCK</strong>, <strong>UNBLOCK</strong>, <strong>BLOCK IN FIREWALL</strong>), <strong>RESTART TO BIOS</strong> and reading process paths in the <strong>CONNECTIONS</strong> window. The rest of the program works normally.</div>
+
+    <h3 id="en-pin">The PIN</h3>
+    <p>Some functions are protected by a four-digit PIN. <strong>The default PIN is <code>0000</code></strong> — it is worth changing it on the first run with the <strong>CHANGE PIN</strong> button in the TOOLS tab.</p>
+    <table>
+      <thead><tr><th>Asks for the PIN</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Closing the program</td><td>The program does not close from the X without a PIN — this protects a scheduled shutdown from being cancelled by accident.</td></tr>
+        <tr><td><strong>CLEAN TEMP</strong></td><td>Deletes temporary files and empties the Recycle Bin.</td></tr>
+        <tr><td><strong>BLOCK</strong> / <strong>UNBLOCK</strong> in the firewall</td><td>Changes Windows firewall rules.</td></tr>
+        <tr><td><strong>DISABLE NETWORK</strong> / <strong>ENABLE NETWORK</strong></td><td>Cuts the computer off the network.</td></tr>
+        <tr><td><strong>SET DNS</strong></td><td>Changes the name servers of the network card.</td></tr>
+        <tr><td><strong>RESTART TO BIOS</strong></td><td>Restarts the computer straight into UEFI settings.</td></tr>
+        <tr><td><strong>CHANGE PIN</strong></td><td>Requires the old PIN before setting a new one.</td></tr>
+      </tbody>
+    </table>
+    <div class="warning"><strong>Three wrong attempts lock the PIN for five minutes.</strong> During that time the program answers <em>Locked</em>. The counter resets once the PIN is entered correctly.</div>
+
+    <h3 id="en-data">Where the program keeps its data</h3>
+    <p>All working files are created <strong>in the same folder that holds <code>HPL Tool Ultimate.exe</code></strong>. The program is portable: copying the whole folder to another disk or a USB stick takes the index, notes and settings along.</p>
+    <table>
+      <thead><tr><th>File</th><th>What it holds</th></tr></thead>
+      <tbody>
+        <tr><td><code>index.json</code></td><td>The file index — the largest of these files, created by BUILD INDEX.</td></tr>
+        <tr><td><code>index_cfg.json</code></td><td>The list of folders skipped while indexing.</td></tr>
+        <tr><td><code>pin.dat</code></td><td>The PIN hash. Deleting the file restores the PIN <code>0000</code>.</td></tr>
+        <tr><td><code>clipboard.json</code></td><td>Clipboard history together with pinned entries.</td></tr>
+        <tr><td><code>notes.txt</code></td><td>The contents of the QUICK NOTES window.</td></tr>
+        <tr><td><code>wol.json</code></td><td>Saved Wake on LAN devices.</td></tr>
+        <tr><td><code>oplog.json</code></td><td>The file operation log — the source of UNDO.</td></tr>
+        <tr><td><code>ipinfo.json</code></td><td>Remembered names and vendors of devices from the network scanner.</td></tr>
+        <tr><td><code>autostart_backup.json</code></td><td>A copy of startup entries disabled from inside the program.</td></tr>
+        <tr><td><code>app_cfg.json</code></td><td>The remaining window and tool settings.</td></tr>
+      </tbody>
+    </table>
+    <div class="tip"><strong>The licence is the exception.</strong> The activation state does not sit next to the .exe file but in the system — which is why moving the folder elsewhere on the same computer does not force another activation.</div>
+    <div class="warning"><strong>Do not keep the program in “Program Files”.</strong> Windows does not let an ordinary user write there, so the index and settings would have nowhere to go. Good places are a folder of your own, the desktop or a USB stick.</div>
+
+    <h2 id="en-index">4. The file index</h2>
+    <p>Searching by name, size, date and extension works on an <strong>index</strong> — a list of files made once, in advance. That is why results appear instantly instead of combing through the disk on every question.</p>
+
     <h3>Building the index</h3>
-    <ol>
-      <li>Tick the drives to index (the checkboxes next to "Drives:"; network drives are detected too).</li>
-      <li>Click <strong>BUILD INDEX</strong>. The program scans the drives in the background and saves a catalogue of all files (path, size, date) to the <code>index.json</code> file.</li>
-      <li>When finished, a message with the file count appears together with the spoken "Indexing complete".</li>
+    <ol class="settings-list">
+      <li><strong>Choose the scope in the “Drives” field.</strong> <em>All drives</em> takes every fixed disk. You can also pick a single drive or — with <strong>SELECT FOLDER</strong> — one particular directory.</li>
+      <li><strong>Click BUILD INDEX.</strong> The status bar shows how many files have been counted. Indexing a whole system disk usually takes a few minutes and produces an <code>index.json</code> of a few dozen megabytes.</li>
+      <li><strong>Afterwards REFRESH INDEX is enough.</strong> Refreshing adds the changes instead of rebuilding the list, so it is much quicker. With no index yet, the program says plainly: <em>Nothing to refresh — build the index first</em>.</li>
     </ol>
-    <div class="tip"><strong>Tip:</strong> the index is a snapshot - new or deleted files are not visible in it until you rebuild it. Refresh the index after larger changes on the disks.</div>
-    <h3>Basic searches</h3>
+    <p>The date of the last indexing sits on the status bar — <em>today</em>, <em>yesterday</em> or an actual date. With no index at all, the bar shows <em>no index</em>.</p>
+
+    <h3>Exclusions</h3>
+    <p>The <strong>EXCLUSIONS</strong> button opens the list of folders skipped while indexing. By default these are places where you would not look for your own files anyway: Windows system folders, temporary files, browser caches and update folders. Skipping them shortens indexing and shrinks the index file.</p>
     <ul>
-      <li><strong>SEARCH NAME</strong> - a phrase in the file name; supports wildcard masks, e.g. <code>*.iso</code> or <code>report*2026*</code>. Results in the left list.</li>
-      <li><strong>FILTER SIZE</strong> - files larger than the given threshold in MB (default 500). Results with a <code>[MB/GB]</code> size in the right list.</li>
-      <li><strong>SEARCH BY DATE</strong> - files modified on the given day <em>or newer</em> (YYYY-MM-DD format).</li>
-      <li><strong>SEARCH EXTENSION</strong> - all files with the given extension (e.g. <code>mkv</code>).</li>
+      <li><strong>Skip the listed folders (recommended)</strong> — clearing this box indexes everything, system folders included.</li>
+      <li><strong>SAVE</strong> stores the list in <code>index_cfg.json</code>, <strong>DEFAULTS</strong> restores the factory set.</li>
     </ul>
-    <p>After each search finishes, the program says "Search complete".</p>
+    <div class="note"><strong>Changed exclusions take effect from the next indexing.</strong> An existing index does not change by itself — rebuild it after editing the list.</div>
+    <div class="warning"><strong>The index is a snapshot of the disk, not a live view.</strong> A file deleted after indexing will still appear in the results. The program notices this when opening it and says the file is gone — but the list does not refresh itself. After a big clean-up, click <strong>REFRESH INDEX</strong>.</div>
 
-    <h2 id="en-search2" class="section-break">12. Combined search, content search and result menu</h2>
-    <h3>COMBINED SEARCH</h3>
-    <p>Combines <strong>all filled-in</strong> criteria at once (AND): the name phrase, extension, minimum size and date. Example: <code>*.mkv</code> + min. 4000 MB + date 2026-01-01 finds large movies added this year. An empty field = the criterion is skipped.</p>
-    <h3>SEARCH IN CONTENT</h3>
-    <ol>
-      <li>First <strong>SELECT FOLDER</strong> - content search works only in the selected folder.</li>
-      <li>Enter a phrase in the "In content:" field and click <strong>SEARCH IN CONTENT</strong>.</li>
-      <li>The program searches text files (txt, log, ini, cfg, csv, xml, json, md, py, bat, ps1, html, css, js, sql, yaml, srt, nfo, reg and others), skipping files larger than 20 MB; the result limit is 1000 hits.</li>
-      <li>Results in the left list are grouped by file, with a line number and a content preview; double-clicking opens the file.</li>
-    </ol>
-    <h3>Working with results</h3>
-    <ul>
-      <li><strong>Double-click</strong> opens the file in its default program.</li>
-      <li><strong>Right-click</strong> on a result opens a menu: open the file, <strong>open the containing folder</strong> (with the file selected in Explorer) and <strong>file properties</strong>.</li>
-    </ul>
+    <h2 id="en-search">5. Searching for files</h2>
+    <p>The upper part of the SEARCH tab is four columns of criteria, each with its own button. The criteria can be used separately or combined.</p>
 
-    <h2 id="en-dupes">13. File duplicates</h2>
-    <p><strong>FILE DUPLICATES</strong> analyses the index and groups files with an <strong>identical name and identical size</strong>. Requires a built index.</p>
-    <ol>
-      <li>The window opens on the right half of the screen; groups are sorted from the largest files (at most 200 groups shown).</li>
-      <li>Each group shows the name, size and number of copies; <strong>SELECT COPIES</strong> ticks all files in the group <em>except the first one</em> (the original stays).</li>
-      <li>The counter at the bottom sums the selected files and their size.</li>
-      <li><strong>DELETE TO RECYCLE BIN</strong> <span class="badge num">PIN</span> moves the selected files to the system Recycle Bin (they can be restored). The program verifies what actually disappeared from disk, updates the index and refreshes the view.</li>
-    </ol>
-    <div class="warning"><strong>Warning:</strong> the name+size criterion does not compare file contents. Before deleting, make sure the selected entries really are copies.</div>
+    <div class="mock-window">
+      <div class="mock-title"><b>SEARCH</b> — criteria</div>
+      <div class="mock-grid">
+        <div class="mock-pane">
+          <h5>SEARCH BY NAME</h5>
+          <span class="mock-input">invoice</span>
+          <span class="mock-button hot">SEARCH BY NAME</span>
+        </div>
+        <div class="mock-pane">
+          <h5>SIZE (MIN. MB)</h5>
+          <span class="mock-input">500</span>
+          <span class="mock-button">FILTER BY SIZE</span>
+        </div>
+        <div class="mock-pane">
+          <h5>DATE (YYYY-MM-DD)</h5>
+          <span class="mock-input">2026-01-01</span>
+          <div class="mock-list">☑ This date and newer</div>
+          <span class="mock-button">SEARCH BY DATE</span>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">Extension: pdf</span>
+        <span class="mock-button">SEARCH BY EXTENSION</span>
+        <span class="mock-button hot">COMBINED SEARCH</span>
+        <span class="mock-button">In content: contract</span>
+        <span class="mock-button">SEARCH IN CONTENT</span>
+        <span class="mock-button">FILE DUPLICATES</span>
+      </div>
+    </div>
 
-    <h2 id="en-rename">14. Batch rename and program files</h2>
-    <h3>RENAME</h3>
-    <ol>
-      <li>First <strong>SELECT FOLDER</strong> - renaming works on the files of the selected folder (without subfolders).</li>
-      <li>Set the operations: <strong>Replace</strong> one text with another, add a <strong>Prefix</strong> and/or <strong>Suffix</strong>, optionally <strong>Number (001, 002…)</strong>.</li>
-      <li>The live <strong>OLD → NEW</strong> preview shows the outcome for every file; extensions remain untouched.</li>
-      <li>Confirm with the rename button - the program reports the number of renamed files.</li>
-    </ol>
-    <h3>Program files</h3>
     <table>
-      <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+      <thead><tr><th>Button</th><th>What it does</th></tr></thead>
       <tbody>
-        <tr><td><code>pin.dat</code></td><td>SHA-256 hash of the PIN code. Deleting the file restores the <code>0000</code> PIN.</td></tr>
-        <tr><td><code>index.json</code></td><td>The search engine's file index (paths, sizes, dates). Updated when duplicates are deleted.</td></tr>
-        <tr><td><code>clipboard.json</code></td><td>Clipboard history (atomic saving - the file survives crashes undamaged).</td></tr>
-        <tr><td><code>oui_db.txt</code></td><td>The full IEEE OUI vendor database for the network scanner (optional; without it the built-in list is used).</td></tr>
-        <tr><td><code>icon.ico</code>, <code>logo3_HPLInk.jpg</code></td><td>The window icon and the logo in section 1 (optional).</td></tr>
+        <tr><td><strong>SEARCH BY NAME</strong></td><td>Looks for the typed fragment in file names. Letter case does not matter. Typing <code>inv</code> finds <em>Invoice_2026.pdf</em> and <em>inventory.txt</em>.</td></tr>
+        <tr><td><strong>FILTER BY SIZE</strong></td><td>Shows files <strong>not smaller</strong> than the given number of megabytes. The quickest way to find what takes up space.</td></tr>
+        <tr><td><strong>SEARCH BY DATE</strong></td><td>The date in <code>YYYY-MM-DD</code> form. With <em>This date and newer</em> ticked it takes everything from that day onwards; unticked — that single day only.</td></tr>
+        <tr><td><strong>SEARCH BY EXTENSION</strong></td><td>The extension alone, with or without the dot: <code>pdf</code> and <code>.pdf</code> work the same.</td></tr>
+        <tr><td><strong>COMBINED SEARCH</strong></td><td>Takes <strong>every filled field at once</strong>. Empty fields are ignored.</td></tr>
+        <tr><td><strong>SEARCH IN CONTENT</strong></td><td>Looks for a phrase inside text files — described in <a href="#en-content">chapter 6</a>.</td></tr>
+        <tr><td><strong>FILE DUPLICATES</strong></td><td>Finds repeated files across the whole index — described in <a href="#en-content">chapter 6</a>.</td></tr>
       </tbody>
     </table>
 
-    <h2 id="en-help" class="section-break">15. Troubleshooting</h2>
-    <h3>"Error - run as administrator" (DNS, firewall, network)</h3>
-    <p>The function needs elevated rights. Close the program (PIN) and start it again with right-click → <strong>"Run as administrator"</strong>. The full list of admin-only functions is in chapter 2.</p>
-    <h3>DISABLE NETWORK does nothing</h3>
-    <p>The <code>netsh interface set interface</code> command is silently rejected by the system without administrator rights. Run the program as administrator. Also check that the correct interface is selected in the list.</p>
-    <h3>Forgotten PIN / PIN locked</h3>
-    <p>After 3 failed attempts wait 5 minutes. If the PIN is forgotten - delete the <code>pin.dat</code> file from the program folder (close the program first, e.g. with Task Manager); the PIN resets to <code>0000</code>.</p>
-    <h3>The search shows "Index not found"</h3>
-    <p>In "All drives" mode the search uses the index - click <strong>BUILD INDEX</strong> first. Alternatively pick a folder with <strong>SELECT FOLDER</strong> to search live without an index.</p>
-    <h3>Search results are out of date</h3>
-    <p>The index is a snapshot from the moment it was built. Rebuild the index after larger changes on the drives.</p>
-    <h3>The network scanner finds few devices</h3>
-    <p>Temporarily disable any VPN, check client isolation (AP isolation) on the router and scan again - the ARP table fills up with each pass. Sleeping devices may not answer pings.</p>
-    <h3>No voice announcements</h3>
-    <p>Check the audio output and system volume. The synthesizer uses Windows (SAPI) voices - verify in Windows Settings that speech voices are installed.</p>
-    <h3>CLEAN TEMP reports errors</h3>
-    <p>Files currently used by running programs cannot be deleted - the "Errors" counter is normal then. Full cleaning of <code>C:\Windows\Temp</code> requires administrator mode.</p>
-    <h3>RESTART TO BIOS returns an error</h3>
-    <p>The function requires running as administrator and a UEFI motherboard. On older (legacy BIOS) computers the <code>shutdown /r /fw</code> command is not supported.</p>
-    <h3>A blocked application still has internet access</h3>
-    <p>Check in the <strong>RULES</strong> window whether the <code>HPL_BLOCK_*</code> rules exist (if not, the block was not created - most likely due to missing administrator rights). Also make sure the correct <code>.exe</code> path was blocked - some programs have several executables.</p>
-    <div class="footer-note">HPL Tool Ultimate ver.3.09 [2026-07-12] - user manual - 17.07.2026</div>
+    <p>The header of the result list says which criterion filled it: <em>RESULTS — SIZE</em>, <em>RESULTS — DATE</em>, <em>RESULTS — EXTENSION</em>, <em>RESULTS — COMBINED</em> or <em>RESULTS — COMBINED + CONTENT</em>. Each file is listed with its size and modification date.</p>
+
+    <div class="note"><strong>Searching by name, size, date and extension reads the index</strong>, so the answer is instant and puts no load on the disk. Content search has to open files one by one, so it takes longer and works on the folder you point at, not on the whole index.</div>
+    <div class="warning"><strong>No index means no results.</strong> With no index yet, the program says <em>Index not found! Build it first</em>. Click <strong>BUILD INDEX</strong> — see <a href="#en-index">chapter 4</a>.</div>
+
+    <h3>Examples</h3>
+    <ul>
+      <li><strong>Find every film larger than half a gigabyte.</strong> Extension <code>mkv</code>, size <code>500</code>, the <strong>COMBINED SEARCH</strong> button.</li>
+      <li><strong>What changed this week.</strong> The date the week started, <em>This date and newer</em> ticked, the <strong>SEARCH BY DATE</strong> button.</li>
+      <li><strong>Where did that invoice go.</strong> Name <code>invoice</code>, extension <code>pdf</code>, <strong>COMBINED SEARCH</strong>.</li>
+      <li><strong>The biggest files on the disk.</strong> Size <code>1000</code> and <strong>FILTER BY SIZE</strong> — or go straight to <strong>WHAT EATS THE DISK</strong> from <a href="#en-disk">chapter 8</a>.</li>
+    </ul>
+
+    <h2 id="en-content">6. Content search and duplicates</h2>
+
+    <h3>Searching in content</h3>
+    <p>Type the phrase into the <strong>In content</strong> field, point at a folder with <strong>SELECT FOLDER</strong> and click <strong>SEARCH IN CONTENT</strong>. The program walks through the files in that folder and its subfolders and shows every hit together with <strong>the line number and the beginning of that line</strong>.</p>
+    <table>
+      <thead><tr><th>Limit</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>File types</td><td>Text files only: <code>txt</code>, <code>log</code>, <code>ini</code>, <code>cfg</code>, <code>conf</code>, <code>csv</code>, <code>xml</code>, <code>json</code>, <code>md</code>, <code>py</code>, <code>bat</code>, <code>ps1</code>, <code>html</code>, <code>htm</code>, <code>css</code>, <code>js</code>, <code>sql</code>, <code>yaml</code>, <code>yml</code>, <code>srt</code>, <code>nfo</code>, <code>reg</code>, <code>env</code>.</td></tr>
+        <tr><td>Largest file</td><td>20 MB. Bigger files are skipped so that one huge text archive does not stall the whole search.</td></tr>
+        <tr><td>Number of hits</td><td>1000. Once the limit is reached the program stops and adds <em>(hit limit)</em> to the summary.</td></tr>
+      </tbody>
+    </table>
+    <div class="warning"><strong>This is not a document search.</strong> <code>.docx</code>, <code>.xlsx</code> and <code>.pdf</code> files are compressed or binary — the program does not open them and will not find a phrase inside them. Content search is for text files: configuration, logs, subtitles, code, CSV files.</div>
+    <div class="tip"><strong>A phrase together with other criteria.</strong> If, besides the phrase, you fill in the name, size, date or extension and click <strong>COMBINED SEARCH</strong>, the program first narrows the list down from the index and only then looks inside those files. With a very large number of candidates it asks whether to really read their contents — going through several thousand files takes time.</div>
+
+    <h3>Duplicates</h3>
+    <p>The <strong>FILE DUPLICATES</strong> button goes through the whole index and groups files that share <strong>the same name and the same size</strong>. The window shows the groups sorted from the largest files down, one group per section, with the path of every copy.</p>
+    <ul>
+      <li><strong>SELECT COPIES</strong> ticks everything in each group <strong>except the first file</strong> — that is, what can be deleted while one copy stays.</li>
+      <li><strong>DELETE TO RECYCLE BIN</strong> moves the ticked files to the Recycle Bin, so a mistake can be undone.</li>
+      <li>With more than 200 groups, the window shows the 200 largest and says so in the header.</li>
+    </ul>
+    <div class="warning"><strong>A matching name and size is strong evidence, but not proof.</strong> The program does not compute checksums for every file on the disk — that would take hours. When you need certainty that two files are identical, compute their checksums with <strong>CHECKSUM</strong> from <a href="#en-system">chapter 13</a>.</div>
+
+    <h2 id="en-results">7. What to do with results</h2>
+    <p>The result list is not just for looking at. A single click selects, a double click opens the file, and the <strong>right mouse button</strong> opens a menu of operations.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">RESULTS — COMBINED &nbsp;<span class="muted">· 128 files</span></div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <div class="mock-list">
+            <span class="folder">D:\Documents\</span><span class="hit">Invoice_2026_01.pdf</span> &nbsp; 1.2 MB &nbsp; 2026-01-08<br>
+            <span class="folder">D:\Documents\</span><span class="hit">Invoice_2026_02.pdf</span> &nbsp; 1.1 MB &nbsp; 2026-02-06<br>
+            <span class="folder">E:\Backup\</span><span class="hit">Invoice_2026_01.pdf</span> &nbsp; 1.2 MB &nbsp; 2026-01-08<br>
+            <span class="folder">E:\Archive\2025\</span><span class="hit">Invoice_2025_12.pdf</span> &nbsp; 0.9 MB &nbsp; 2025-12-04
+          </div>
+        </div>
+        <div class="mock-pane">
+          <h5>right mouse button</h5>
+          <div class="mock-list">Open<br>Open containing folder<br>Copy path<br>Copy selected paths<br>Copy to...<br>Move to...<br>Delete to Recycle Bin<br>Export list...<br>Properties</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">EXPORT</span>
+        <span class="mock-button red">TO RECYCLE BIN</span>
+        <span class="mock-button">COPY TO...</span>
+        <span class="mock-button">RENAME FILES</span>
+        <span class="mock-button hot">LOG</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Operation</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Open</strong> / double click</td><td>Opens the file in the program the system associates with it. If the file is gone, the program says so instead of opening an empty window.</td></tr>
+        <tr><td><strong>Open containing folder</strong></td><td>Opens Explorer with the file already selected.</td></tr>
+        <tr><td><strong>Copy path</strong></td><td>The full path of the chosen file goes to the clipboard. <em>Copy selected paths</em> does the same for the whole selection, one path per line.</td></tr>
+        <tr><td><strong>Copy to...</strong> / <strong>Move to...</strong></td><td>You pick a target folder; the program copies or moves all selected files and records the operation in the log.</td></tr>
+        <tr><td><strong>Delete to Recycle Bin</strong> / <strong>TO RECYCLE BIN</strong></td><td>Files go to the Windows Recycle Bin rather than disappearing for good — a deliberate decision so that a mistake can be reversed.</td></tr>
+        <tr><td><strong>EXPORT</strong></td><td>Saves the visible list to a <code>.csv</code> (semicolon) or <code>.txt</code> (tab) file — for a spreadsheet or a message.</td></tr>
+        <tr><td><strong>Properties</strong></td><td>Opens the system file properties window, the same one as in Explorer.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="en-rename">Batch rename</h3>
+    <p>The <strong>RENAME FILES</strong> button opens a window in which one rule renames every file in the chosen folder.</p>
+    <ul class="settings-list">
+      <li><strong>Replace / with</strong> — swaps a fragment of the name. <em>IMG_</em> to <em>Holiday_</em> turns <code>IMG_0041.jpg</code> into <code>Holiday_0041.jpg</code>.</li>
+      <li><strong>Prefix</strong> and <strong>Suffix</strong> — add text at the beginning or the end of the name, before the extension.</li>
+      <li><strong>Number (001, 002…)</strong> — appends a running number, in the order the list is displayed.</li>
+    </ul>
+    <p>The <strong>PREVIEW — OLD → NEW</strong> box shows the result of the rule <em>before</em> it runs. Only <strong>APPLY</strong> actually renames anything. When a rule changes nothing, the program says <em>No changes to apply</em> and leaves the files alone.</p>
+    <div class="tip"><strong>Always read the preview.</strong> It is the only moment when you see the effect of the rule on every file at once. Renaming can also be undone — see below.</div>
+
+    <h3 id="en-log">The operation log and UNDO</h3>
+    <p>The <strong>LOG</strong> button in the TOOLS tab opens the record of everything the program did to files: copying, moving, deleting to the Recycle Bin and renaming. Every entry has a date, a kind and the number of files.</p>
+    <ul>
+      <li><strong>UNDO</strong> reverses the selected operation — restores names, removes copies, brings a move back. The reversed entry stays on the list marked <em>undone</em>.</li>
+      <li><strong>Kind</strong> narrows the list down to one type of operation.</li>
+      <li><strong>EXPORT TXT</strong> saves the log to a file, <strong>REFRESH</strong> reloads it from the disk, <strong>CLEAR</strong> deletes the whole history after a confirmation.</li>
+    </ul>
+    <div class="warning"><strong>Not everything can be undone.</strong> For entries that cannot be reversed — because the target file no longer exists or has changed meanwhile — the program says <em>This entry cannot be undone</em> rather than acting blindly. Deletion to the Recycle Bin is reversed through the Recycle Bin itself.</div>
+
+    <h2 id="en-disk">8. What eats the disk</h2>
+    <p>The <strong>WHAT EATS THE DISK</strong> button computes usage <strong>from the index</strong> rather than by walking the disk again — which is why the report appears within seconds. The window has three tabs.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">What eats the disk &nbsp;<span class="muted">· all drives</span></div>
+      <div class="mock-tabs">
+        <span class="mock-tab on">FOLDERS</span>
+        <span class="mock-tab">EXTENSIONS</span>
+        <span class="mock-tab">BIGGEST FILES</span>
+      </div>
+      <div class="mock-pane" style="border-top:none">
+        <div class="mock-list">
+          <span class="folder">C:\Users\…\AppData</span> &nbsp;&nbsp; 41.2 GB<br>
+          <span class="folder">D:\Films</span> &nbsp;&nbsp; 38.7 GB<br>
+          <span class="folder">D:\Backups</span> &nbsp;&nbsp; 22.4 GB<br>
+          <span class="folder">C:\Program Files</span> &nbsp;&nbsp; 18.1 GB
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">▲ UP</span>
+        <span class="mock-button hot">OPEN IN EXPLORER</span>
+        <span class="mock-button">COPY VIEW</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FOLDERS</strong></td><td>Directories from the heaviest down. A double click goes one level deeper, <strong>▲ UP</strong> comes back. That is how you reach the exact place eating the disk.</td></tr>
+        <tr><td><strong>EXTENSIONS</strong></td><td>How much space every file type takes altogether. It answers “is it films or backups”. Files without an extension go into the <em>(no extension)</em> row.</td></tr>
+        <tr><td><strong>BIGGEST FILES</strong></td><td>Individual files from the largest down, with their paths.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>OPEN IN EXPLORER</strong> opens the selected folder or file, and <strong>COPY VIEW</strong> puts the whole visible list into the clipboard — handy when you want to send somebody the summary. The list can also be narrowed to a single drive.</p>
+    <div class="note"><strong>The report is only as current as the index.</strong> After a big clean-up click <strong>REFRESH INDEX</strong> first, otherwise you will see the state from before the tidying.</div>
+
+    <h3>Empty folders and 0-byte files</h3>
+    <p>The <strong>EMPTY / 0 B</strong> button opens a separate window that searches <strong>the folder you point at</strong> (the <strong>BROWSE</strong> button, then <strong>SCAN</strong>) and shows two lists: <em>0-BYTE FILES</em> and <em>EMPTY FOLDERS</em>.</p>
+    <ul>
+      <li><strong>SELECT ALL</strong> ticks both lists at once.</li>
+      <li><strong>DELETE TO RECYCLE BIN</strong> removes the ticked entries — here too, everything goes to the Recycle Bin.</li>
+      <li>The scan can be stopped midway; the program then finishes with <em>Cancelled</em> and keeps whatever it found.</li>
+    </ul>
+    <div class="warning"><strong>Empty does not always mean unnecessary.</strong> Some programs keep empty folders on purpose and recreate them at start. Look through the list before deleting everything at once — especially inside application folders.</div>
+
+
+    <h2 id="en-network">9. NETWORK tab — basics</h2>
+    <p>The top bar of the NETWORK tab selects the <strong>network card</strong> that every operation applies to: ping, DNS, MAC change, traffic monitor and enabling the network. The program fills the list with the cards visible in the system — usually Ethernet and Wi-Fi.</p>
+
+    <h3>MY DATA</h3>
+    <p>One button that answers the question “how am I actually connected”. The window gathers in one place what normally takes three different parts of the system:</p>
+    <table>
+      <thead><tr><th>Entry</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Internet status</strong></td><td><em>OK</em> or <em>Offline</em> — whether the computer reaches the outside at all.</td></tr>
+        <tr><td><strong>Router / DNS / internet ping</strong></td><td>Three separate attempts. Together they show immediately which leg is broken: the router, the name server or the line itself.</td></tr>
+        <tr><td><strong>Public IP</strong></td><td>The address the internet sees you as. This is the only entry that needs a connection.</td></tr>
+        <tr><td><strong>Local IP and subnet mask</strong></td><td>The computer's address on the home network — the one you use when sharing files.</td></tr>
+        <tr><td><strong>Computer MAC, computer name</strong></td><td>For router configuration and for Wake on LAN.</td></tr>
+        <tr><td><strong>Default gateway / router IP, router MAC</strong></td><td>The address at which you open the router panel in a browser.</td></tr>
+        <tr><td><strong>DNS servers</strong></td><td>Which name servers are currently set.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>COPY ALL</strong> puts the whole report into the clipboard — handy when somebody asks for your connection details.</p>
+
+    <h3>Ping</h3>
+    <p>Type an address or a name into the <strong>Ping</strong> field and click <strong>START PING</strong>. The program pings continuously and shows the replies as they come; <strong>STOP PING</strong> stops it. This is a tool for watching a line over time — it makes dropping Wi-Fi and brief congestion visible.</p>
+
+    <h3>DNS</h3>
+    <p>The <strong>DNS</strong> list holds ready-made sets of name servers: <em>Automatic (DHCP)</em>, Google, Cloudflare, Quad9, OpenDNS and AdGuard. Pick one and click <strong>SET DNS</strong> <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span>.</p>
+    <ul>
+      <li><strong>Automatic (DHCP)</strong> leaves the decision to the router — the Windows factory setting.</li>
+      <li><strong>DNS TEST</strong> checks which server answers fastest from your line. The table shows the average, best and worst time and the number of errors. <strong>APPLY WINNER</strong> sets the fastest one straight away, and <strong>COPY RESULTS</strong> puts the table into the clipboard.</li>
+    </ul>
+    <div class="note"><strong>A DNS change applies to the selected network card.</strong> If the computer uses a cable one day and Wi-Fi the next, set the DNS for each card separately or leave it on <em>Automatic</em>.</div>
+
+    <h3>DISABLE NETWORK / ENABLE NETWORK</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Switches the selected network card off and on — the equivalent of unplugging the cable by hand. Useful when the computer has to be cut off for a moment, or when the card needs to fetch a fresh address.</p>
+    <div class="warning"><strong>Careful over a remote desktop.</strong> Disabling the card you are connected through drops the session, and it cannot be restored remotely.</div>
+
+    <h2 id="en-server">10. File server</h2>
+    <p>The <strong>SERVER</strong> button opens a window that turns the computer into a simple file server. A TV, a phone or a second computer on the same network opens the address given and downloads or plays the file — with no USB stick, no cloud and nothing to install on the other side.</p>
+
+    <div class="mock-window">
+      <div class="mock-title">File server <span class="muted">— share files on the local network</span></div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <h5>Files to share</h5>
+          <div class="mock-list">
+            1 &nbsp; <span class="hit">update.json</span> &nbsp; 2 KB &nbsp; port 8890<br>
+            2 &nbsp; <span class="hit">HPL_IPTV_v2.15.apk</span> &nbsp; 24 MB<br>
+            3 &nbsp; <span class="folder">D:\Films\</span> &nbsp; folder
+          </div>
+          <div class="mock-status">TOTAL SIZE &nbsp; 24.1 MB</div>
+        </div>
+        <div class="mock-pane">
+          <h5>ADDRESS FOR TV / PLAYER</h5>
+          <span class="mock-input">http://192.168.1.50:8080/1</span>
+          <div class="mock-list">☑ Allow uploading files to this PC<br>☐ Share on the internet (UPnP)<br>☑ Require a password</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button">ADD FILES</span>
+        <span class="mock-button">ADD FOLDER</span>
+        <span class="mock-button">CLEAR LIST</span>
+        <span class="mock-button">COPY ADDRESS</span>
+        <span class="mock-button">COPY ALL ADDRESSES</span>
+        <span class="mock-button">QR</span>
+        <span class="mock-button hot">START SERVER</span>
+      </div>
+    </div>
+
+    <h3>How to run it</h3>
+    <div class="workflow">
+      <div class="step"><b>1. Add</b><strong>ADD FILES</strong> or <strong>ADD FOLDER</strong>. The list may hold several entries at once.</div>
+      <div class="step"><b>2. Start</b><strong>START SERVER</strong>. The dot changes to <em>Server running</em>.</div>
+      <div class="step"><b>3. Copy the address</b><strong>COPY ADDRESS</strong>, or <strong>QR</strong> to scan with a phone.</div>
+      <div class="step"><b>4. Open it</b>Type the address into a browser or a player on the other device.</div>
+    </div>
+
+    <h3 id="en-addresses">Addresses — which file is where</h3>
+    <p>This is the most common question when sharing several files at once. The rule is simple: <strong>the number on the list is the number in the address</strong>.</p>
+    <table>
+      <thead><tr><th>Address</th><th>What it returns</th></tr></thead>
+      <tbody>
+        <tr><td><code>http://192.168.1.50:8080/</code></td><td>With one shared file — that file. With several — a page listing them.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/1</code><br><code>…/2</code>, <code>…/3</code></td><td>The file with that number on the list. The most convenient form for players and TVs.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/update.json</code></td><td>The file by name. Useful when the other side needs a particular name in the address — an update file, for instance.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/list</code></td><td>A page listing every shared entry, with links.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/playlist.m3u</code></td><td>An M3U playlist of all the files — opens directly in a player.</td></tr>
+        <tr><td><code>http://192.168.1.50:8080/upload</code></td><td>The page for sending files <em>to</em> the computer (when the option is on).</td></tr>
+      </tbody>
+    </table>
+    <div class="tip"><strong>COPY ALL ADDRESSES</strong> puts the complete set of ready-made links into the clipboard, one per line — no need to assemble them by hand.</div>
+
+    <h3>A separate port for one file</h3>
+    <p>Sometimes the other side cannot append a number or a name and expects <strong>the whole address to be one particular file</strong>. That is what a port assigned to a list entry is for: type a port number next to a file and the program runs a separate server for it in which <strong>every address returns that one file</strong>.</p>
+    <ul>
+      <li>The port must be between <strong>1024 and 65535</strong>.</li>
+      <li>One port serves one file — the program will not let the same port be used twice and says <em>This port is already assigned to another file</em>.</li>
+      <li><strong>COPY PORT URL</strong> copies the finished address in the form <code>http://192.168.1.50:8890/</code>.</li>
+    </ul>
+    <p>This is how two different files get two different addresses: <code>http://192.168.1.50:8890/</code> and <code>http://192.168.1.50:8891/</code> — each returns its own file, whatever the client appends.</p>
+
+    <h3>Password, UPnP and receiving files</h3>
+    <ul class="settings-list">
+      <li><strong>Require a password</strong> — switches on a login. Type a <strong>USER</strong> and a <strong>PASSWORD</strong> or click <strong>GENERATE</strong> and let the program invent them. <strong>SHOW</strong> reveals the password, <strong>COPY URL WITH LOGIN</strong> gives a ready link with the credentials inside.</li>
+      <li><strong>Allow uploading files to this PC</strong> — adds an <code>/upload</code> page through which a phone or another computer sends a file <em>to you</em>. The <strong>RECEIVE FOLDER</strong> button says where those files should land.</li>
+      <li><strong>Share on the internet (UPnP)</strong> — asks the router to let the port through from outside. The program then shows <em>Talking to the router…</em> and, if the conversation succeeds, gives the public address and can display it as a QR code.</li>
+    </ul>
+    <div class="warning"><strong>UPnP exposes the file to the whole internet.</strong> Use it only when you really have to send something beyond the house, and <strong>always together with a password</strong>. When the transfer is done, stop the server with <strong>STOP SERVER</strong> — the forwarding then ends. Not every router has UPnP enabled; when the router refuses, the program says so plainly.</div>
+    <div class="note"><strong>The server supports seeking.</strong> It answers range requests, so a film opened from that address in a player can be wound forwards and backwards, and an interrupted download can be resumed. Changes to the file list take effect live — adding or removing an entry needs no server restart.</div>
+    <div class="tip"><strong>The Windows firewall asks once.</strong> The first time the server starts, the system asks for permission for incoming connections. It has to be granted for <strong>private networks</strong>, otherwise other devices will not reach the address.</div>
+
+    <h2 id="en-nettools">11. Network tools</h2>
+
+    <h3>NETWORK SCANNER</h3>
+    <p>Goes through the whole home network and shows what is switched on in it: the IP address, the device name and the vendor of the network card recognised from the MAC address. Names come from DNS and NetBIOS, so a TV or a printer usually announces itself.</p>
+    <p>Recognised devices are saved in <code>ipinfo.json</code>, so the next scan comes back already labelled. The <strong>+WOL</strong> and <strong>PORTS</strong> buttons on a row move the device to Wake on LAN or scan its ports straight away.</p>
+
+    <h3>CONNECTIONS</h3>
+    <p>Shows <strong>what is sending data out of this computer and where</strong>: the local address, the remote address, the connection state and the process that opened it.</p>
+    <ul>
+      <li><strong>Find process</strong> narrows the list down to one program name.</li>
+      <li><strong>External only</strong> hides traffic inside the computer and the local network, leaving what goes out into the world.</li>
+      <li><strong>ESTABLISHED only</strong> keeps the connections actually in place, without listening ports.</li>
+      <li><strong>Check country online</strong> adds the country and the organisation owning the address. It is the only option in this window that reaches the internet by itself — it is off by default.</li>
+      <li><strong>BLOCK IN FIREWALL</strong> <span class="badge adm">ADMIN</span> creates a firewall rule blocking the chosen program.</li>
+    </ul>
+    <div class="note"><strong>Without administrator rights</strong> some processes will appear without the path to their executable — Windows does not hand it to an ordinary user. The connection list itself works normally.</div>
+
+    <h3>PORT SCANNER</h3>
+    <p>Checks which ports are open on the given address. You can choose <strong>common ports</strong> or a <strong>custom range</strong> in the form <code>80,443,8000-8100</code>. For open ports the program tries to identify the service and shows its first reply, so you see not just “port 22 is open” but what stands behind it. A single scan is limited to 8000 ports, and <strong>STOP</strong> halts the work at any moment.</p>
+    <div class="warning"><strong>Scan only your own devices.</strong> Port-scanning somebody else's address is often treated as an intrusion attempt and may breach your provider's terms of service.</div>
+
+    <h3>ROUTE (TRACEROUTE)</h3>
+    <p>Shows the successive hops packets take to the given address, with their times. It makes clear whether a slowdown is at your end, at the provider's, or somewhere further down the road.</p>
+
+    <h3>WHY IS THERE NO INTERNET?</h3>
+    <p>A diagnostic that walks the connection leg by leg — the network card, the IP address, the router, DNS, the way out — and states at each stage whether it is all right. Instead of guessing you get a straight answer about the step it stopped at. <strong>COPY REPORT</strong> puts the result into the clipboard — ready to send to support.</p>
+
+    <h3>TRAFFIC MONITOR</h3>
+    <p>Shows the current download and upload speed for the selected card, the total since the window was opened, and a chart of <strong>the last 60 seconds</strong>. It answers the question “is something in the background eating the line”.</p>
+
+    <h3>WAKE ON LAN</h3>
+    <p>Wakes computers on the local network with a magic packet. A device is added once — <strong>Name</strong>, <strong>MAC</strong> and <strong>IP</strong>, the <strong>ADD</strong> button — and from then on <strong>WAKE</strong> is enough. The list is saved in <code>wol.json</code>, so it survives closing the program.</p>
+    <div class="note"><strong>Wake on LAN has to be enabled on the other side</strong> — in the BIOS of the computer being woken and in the properties of its network card. The program only sends the packet; if the computer ignores it, the settings are over there.</div>
+
+    <h3>WI-FI</h3>
+    <p>The window shows three things at once: <strong>the state of your own connection</strong> (SSID, signal, channel and band, rate, security), <strong>channel load</strong> as a chart, and <strong>a list of nearby networks</strong>.</p>
+    <p>Below the chart the program names <strong>the best free channel in the 2.4 GHz and 5 GHz bands</strong> — a ready answer for what to set in the router when Wi-Fi slows down at peak hours. <strong>SCAN AREA</strong> refreshes the list, <strong>COPY LIST</strong> puts it into the clipboard.</p>
+    <div class="note">When the computer has no Wi-Fi card or the WLAN service is stopped, the window says so plainly (<em>No Wi-Fi adapter</em>, <em>WLAN service is not running</em>) instead of showing an empty list.</div>
+
+    <h3>CHANGE MAC</h3>
+    <p><span class="badge adm">ADMIN</span> Changes the MAC address of the selected network card. <strong>RANDOM</strong> generates a random private address, <strong>CHANGE MAC</strong> applies it and restarts the card, and <strong>RESTORE ORIGINAL</strong> goes back to the hardware address.</p>
+    <div class="warning"><strong>During the change the card briefly disappears from the system</strong> — the connection drops and comes back after a few seconds. If the router assigns addresses by MAC or filters access on it, the computer may get no address until you restore the original.</div>
+
+    <h2 id="en-tools">12. TOOLS tab</h2>
+    <p>A collection of small utilities you would normally reach for separate programs for. Each button opens its own window — several can be open at once.</p>
+
+    <h3>SCREENSHOT</h3>
+    <p>Takes a shot of the whole screen and saves it into the program folder. Two settings next to the button change how it works:</p>
+    <ul>
+      <li><strong>Delay (s)</strong> — from 0 to 60 seconds. Time to open the menu or window that should be in the shot.</li>
+      <li><strong>hide program window</strong> — HPL Tool Ultimate hides itself for the duration of the shot so it does not cover what you want to capture.</li>
+      <li><strong>OPEN LAST</strong> — opens the most recent screenshot. With none taken yet, it opens the program folder.</li>
+    </ul>
+
+    <h3>CLIPBOARD (HISTORY)</h3>
+    <p>The program remembers what you copied and lets you go back to earlier entries — after a restart as well, because the history sits in <code>clipboard.json</code>.</p>
+    <ul>
+      <li><strong>COPY</strong> next to an entry puts it back into the clipboard.</li>
+      <li><strong>Pinning</strong> an entry protects it from being cleared — useful for addresses, numbers and texts you use all the time.</li>
+      <li><strong>CLEAR HISTORY (KEEP PINNED)</strong> deletes everything except the pinned entries.</li>
+    </ul>
+    <div class="warning"><strong>The clipboard history is an ordinary text file next to the program.</strong> If you copy passwords or data you would rather not leave on the disk, clear the history after work — or do not keep the program on a computer shared with others.</div>
+
+    <h3>QUICK NOTES</h3>
+    <p>A single text box that saves itself. While you type the program shows <em>typing…</em>, and after saving — <em>loaded</em>. The content lives in <code>notes.txt</code> next to the program, so it can be read and edited with an ordinary text editor. <strong>INSERT DATE</strong> adds the current date and time — handy when keeping a work journal.</p>
+
+    <h3>PASSWORD GENERATOR</h3>
+    <p>Generates several passwords at once. The <strong>LENGTH</strong> slider sets the number of characters, and the <strong>skip look-alike characters</strong> option removes zeros and the letter O, ones and both lower-case l and capital I, along with other characters easily confused when copied by hand. <strong>Clicking a result copies it to the clipboard</strong> — a <em>COPIED</em> confirmation then appears under the list.</p>
+    <div class="tip"><strong>Switch “skip look-alike characters” off for passwords you never retype by hand.</strong> The full character pool gives a stronger password. The restriction only makes sense when the password has to be dictated or copied from paper.</div>
+
+    <h3>KEEP AWAKE</h3>
+    <p>Blocks the computer from sleeping and the screen from blanking — for the duration of a long copy, render or download. Once on, the button turns violet and reads <strong>KEEP AWAKE — ACTIVE</strong>. Clicking again releases the block and hands control back to the Windows settings.</p>
+
+    <h3>CLEAN TEMP</h3>
+    <p><span class="badge pin">PIN</span> Deletes temporary files from <code>%TEMP%</code> and <code>C:\Windows\Temp</code> and empties the <strong>Recycle Bin</strong>. The program asks for confirmation and names those three places, and when it is done reports how many files it removed and how much space it freed. Files held open by running programs are skipped — that is normal and not an error.</p>
+    <div class="warning"><strong>Emptying the Recycle Bin cannot be undone.</strong> If you rely on <em>Delete to Recycle Bin</em> elsewhere in the program as a safety net, check the Bin before running the clean-up.</div>
+
+    <h3>CHANGE PIN</h3>
+    <p>Asks for the old PIN, then for the new one. The new one is stored as a hash in <code>pin.dat</code>. Deleting that file restores the factory PIN <code>0000</code> — worth remembering when the PIN slips your mind.</p>
+
+    <h2 id="en-system">13. System tools</h2>
+
+    <h3>SYSTEM REPORT</h3>
+    <p>Gathers a full set of service data into one window: processor, memory, motherboard and BIOS, the system and its version, network cards, and a list of disks with their size and free space. <strong>COPY REPORT</strong> puts the lot into the clipboard.</p>
+    <div class="tip">This is the first thing a service desk asks for. Instead of reading values out of five system windows, send one ready report.</div>
+
+    <h3>STARTUP MANAGER</h3>
+    <p>Shows the programs launched together with Windows and lets you switch them off. Disabled entries are kept in a backup, <code>autostart_backup.json</code>, so they can be restored — the tool does not delete them for good.</p>
+    <div class="warning"><strong>Do not disable entries you do not recognise.</strong> Startup also holds audio drivers, touchpad support and graphics card software. Switch off what you know and do not need right after boot.</div>
+
+    <h3>CHECKSUM</h3>
+    <p>Computes a file's checksum — <code>MD5</code>, <code>SHA-1</code> or <code>SHA-256</code>. It is used to verify that a downloaded file is complete and identical to the publisher's.</p>
+    <ol class="settings-list">
+      <li><strong>BROWSE</strong> — pick the file. For large files the progress is visible; the computation can be stopped.</li>
+      <li><strong>COMPUTE</strong> — the checksum appears in the <strong>RESULT</strong> field.</li>
+      <li><strong>COMPARE WITH</strong> — paste the checksum the publisher gives. The program answers <strong>✔ MATCH</strong> or <strong>✘ MISMATCH</strong>, with no need to stare at a string of characters.</li>
+    </ol>
+
+    <h3>FOLDER SNAPSHOT</h3>
+    <p>Answers the question “what changed in this folder”. It works in two steps: first <strong>SAVE SNAPSHOT</strong> records the state of the folder, and later <strong>COMPARE WITH SNAPSHOT</strong> shows three lists: <strong>ADDED</strong>, <strong>REMOVED</strong> and <strong>CHANGED</strong>.</p>
+    <p>The comparison takes the size, the date and the checksum of every file into account, so it also catches a file swapped for another of the same name and size. Reading a large folder takes time — the work can be stopped, and the program then says <em>Cancelled</em>.</p>
+    <div class="tip">Useful before and after installing an unknown program, when checking what an update changed, and when keeping an eye on a backup folder.</div>
+
+    <h3>Windows firewall</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Three buttons and one <strong>Application</strong> field in which you point at an <code>.exe</code> file with <strong>BROWSE</strong>:</p>
+    <ul>
+      <li><strong>BLOCK</strong> creates a firewall rule cutting the chosen program off the network — in both directions, outbound and inbound.</li>
+      <li><strong>UNBLOCK</strong> deletes that rule.</li>
+      <li><strong>RULES</strong> shows every firewall rule present in the system.</li>
+    </ul>
+    <p>Rules created by the program are named starting with <code>HPL_BLOCK_</code>, so they are easy to recognise and to remove from the system side as well.</p>
+
+    <h3>DISKPART</h3>
+    <p>Opens the system tool <strong>diskpart</strong> — the Windows console manager of disks and partitions. The program only launches it; the work itself happens in the console window, following diskpart syntax.</p>
+    <div class="warning"><strong>Diskpart works on partitions and can wipe a disk with a single command</strong>, without asking and without a Recycle Bin. Use it only when you know what command you are typing, and check the disk number twice before every operation.</div>
+
+    <h3>Start with Windows</h3>
+    <p>The <strong>Start with Windows</strong> box creates a shortcut in the current user's Startup folder, so the program comes up with the system. Clearing the box removes the shortcut. It is useful for shutting the computer down at a fixed hour every day — see <a href="#en-power">chapter 14</a>.</p>
+
+    <h2 id="en-power">14. POWER tab</h2>
+    <p>This tab plans one thing: <strong>what to do with the computer and when</strong>. You set two fields and click start.</p>
+
+    <div class="mock-window">
+      <div class="mock-title"><b>POWER</b> — scheduling</div>
+      <div class="mock-grid-2">
+        <div class="mock-pane">
+          <h5>Action</h5>
+          <div class="mock-list">● Shutdown<br>○ Restart<br>○ Hibernate<br>○ Sleep<br>○ Log off</div>
+        </div>
+        <div class="mock-pane">
+          <h5>Mode</h5>
+          <div class="mock-list">● in X minutes &nbsp; <span class="hit">[ 90 ]</span><br>○ at time &nbsp; <span class="hit">[ 23:30 ]</span><br>○ daily &nbsp; <span class="hit">[ 23:30 ]</span></div>
+          <div class="mock-status">Until shutdown: 01:29:58</div>
+        </div>
+      </div>
+      <div class="mock-toolbar">
+        <span class="mock-button hot">START SHUTDOWN TIMER</span>
+        <span class="mock-button red">CANCEL SHUTDOWN</span>
+        <span class="mock-button warn">RESTART TO BIOS</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Field</th><th>Options</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Action</strong></td><td><em>Shutdown</em>, <em>Restart</em>, <em>Hibernate</em>, <em>Sleep</em>, <em>Log off</em>.</td></tr>
+        <tr><td><strong>Mode: in X minutes</strong></td><td>A countdown from now. The simplest variant — “shut down in an hour and a half”.</td></tr>
+        <tr><td><strong>Mode: at time</strong></td><td>Once, at the given hour in <code>HH:MM</code> form. An hour that has already passed means the next day.</td></tr>
+        <tr><td><strong>Mode: daily</strong></td><td>Repeatedly, at the same hour every day. Together with <em>Start with Windows</em> it gives a fixed evening shutdown.</td></tr>
+      </tbody>
+    </table>
+    <p>Once <strong>START SHUTDOWN TIMER</strong> is pressed, the clock on the top bar begins counting down. The program <strong>announces the approaching action by voice</strong> three minutes and one minute ahead, and again as it happens — so it will not catch you mid-work. <strong>CANCEL SHUTDOWN</strong> calls the plan off and the clock returns to <code>00:00:00</code>.</p>
+    <div class="note"><strong>Closing the program needs the PIN</strong> precisely so that a scheduled shutdown does not disappear with an accidental click on the X.</div>
+
+    <h3>RESTART TO BIOS</h3>
+    <p><span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span> Restarts the computer straight into the UEFI settings, without catching a key at boot. It works on UEFI machines — on older ones with a classic BIOS the system offers no such option.</p>
+    <div class="warning">Save open documents before using it. The restart happens immediately after confirmation.</div>
+
+    <h2 id="en-buttons">15. Button summary</h2>
+    <p>Every button of the program in one place. <span class="badge adm">ADMIN</span> marks a need for administrator rights, <span class="badge pin">PIN</span> — a PIN prompt.</p>
+
+    <h3>SEARCH</h3>
+    <table>
+      <thead><tr><th>Button</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>BUILD INDEX</td><td>Builds the file index from scratch for the selected scope.</td></tr>
+        <tr><td>REFRESH INDEX</td><td>Adds changes to the index — quicker than a rebuild.</td></tr>
+        <tr><td>EXCLUSIONS</td><td>The list of folders skipped while indexing.</td></tr>
+        <tr><td>SELECT FOLDER</td><td>Narrows the scope to one directory.</td></tr>
+        <tr><td>SEARCH BY NAME</td><td>Looks for a fragment in file names.</td></tr>
+        <tr><td>FILTER BY SIZE</td><td>Files not smaller than the given number of MB.</td></tr>
+        <tr><td>SEARCH BY DATE</td><td>Files from the given day or newer.</td></tr>
+        <tr><td>SEARCH BY EXTENSION</td><td>Files with the given extension.</td></tr>
+        <tr><td>COMBINED SEARCH</td><td>All filled criteria at once.</td></tr>
+        <tr><td>SEARCH IN CONTENT</td><td>Looks for a phrase inside text files.</td></tr>
+        <tr><td>FILE DUPLICATES</td><td>Groups files with the same name and size.</td></tr>
+        <tr><td>WHAT EATS THE DISK</td><td>Usage report: folders, extensions, biggest files.</td></tr>
+        <tr><td>EMPTY / 0 B</td><td>Empty folders and zero-length files.</td></tr>
+        <tr><td>RENAME FILES</td><td>Batch rename with a preview.</td></tr>
+        <tr><td>EXPORT</td><td>Saves the result list to CSV or TXT.</td></tr>
+        <tr><td>TO RECYCLE BIN</td><td>Moves the selected files to the Recycle Bin.</td></tr>
+        <tr><td>COPY TO...</td><td>Copies the selected files to a chosen folder.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>NETWORK</h3>
+    <table>
+      <thead><tr><th>Button</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>MY DATA</td><td>The full connection details in one window.</td></tr>
+        <tr><td>START PING / STOP PING</td><td>Continuous ping of a chosen address.</td></tr>
+        <tr><td>SET DNS <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Applies the chosen set of DNS servers.</td></tr>
+        <tr><td>DNS TEST</td><td>Measures DNS server speed and names the best.</td></tr>
+        <tr><td>DISABLE / ENABLE NETWORK <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Switches the network card off and on.</td></tr>
+        <tr><td>SERVER</td><td>The file server on the local network.</td></tr>
+        <tr><td>NETWORK SCANNER</td><td>Devices on the network: IP, name, vendor.</td></tr>
+        <tr><td>PORT SCANNER</td><td>Open ports and identified services.</td></tr>
+        <tr><td>CONNECTIONS</td><td>Active connections and the processes behind them.</td></tr>
+        <tr><td>ROUTE (TRACEROUTE)</td><td>The hops on the way to an address.</td></tr>
+        <tr><td>WHY IS THERE NO INTERNET?</td><td>Connection diagnostics, step by step.</td></tr>
+        <tr><td>TRAFFIC MONITOR</td><td>Line speed and a chart of the last 60 seconds.</td></tr>
+        <tr><td>WAKE ON LAN</td><td>Waking computers with a magic packet.</td></tr>
+        <tr><td>WI-FI</td><td>Signal, channel load, nearby networks.</td></tr>
+        <tr><td>CHANGE MAC <span class="badge adm">ADMIN</span></td><td>Changing and restoring the card's MAC address.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>TOOLS</h3>
+    <table>
+      <thead><tr><th>Button</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>SCREENSHOT / OPEN LAST</td><td>A shot with a delay and window hiding.</td></tr>
+        <tr><td>CLIPBOARD (HISTORY)</td><td>History of copied texts, with pinning.</td></tr>
+        <tr><td>QUICK NOTES</td><td>A notepad that saves itself.</td></tr>
+        <tr><td>PASSWORD GENERATOR</td><td>Passwords of a given length; a click copies.</td></tr>
+        <tr><td>KEEP AWAKE</td><td>Blocks the computer and screen from sleeping.</td></tr>
+        <tr><td>CLEAN TEMP <span class="badge pin">PIN</span></td><td>Temporary files and the Recycle Bin.</td></tr>
+        <tr><td>CHANGE PIN <span class="badge pin">PIN</span></td><td>Changes the protecting code.</td></tr>
+        <tr><td>SYSTEM REPORT</td><td>Service data of the computer and its disks.</td></tr>
+        <tr><td>STARTUP MANAGER</td><td>Programs starting with Windows.</td></tr>
+        <tr><td>LOG</td><td>History of file operations, with UNDO.</td></tr>
+        <tr><td>CHECKSUM</td><td>MD5 / SHA-1 / SHA-256 and comparison.</td></tr>
+        <tr><td>FOLDER SNAPSHOT</td><td>What changed in a folder.</td></tr>
+        <tr><td>BLOCK / UNBLOCK / RULES <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Firewall rules for a chosen program.</td></tr>
+        <tr><td>DISKPART <span class="badge adm">ADMIN</span></td><td>The system partition manager.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>POWER</h3>
+    <table>
+      <thead><tr><th>Button</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>START SHUTDOWN TIMER</td><td>Starts the scheduled action.</td></tr>
+        <tr><td>CANCEL SHUTDOWN</td><td>Calls the plan off and zeroes the clock.</td></tr>
+        <tr><td>RESTART TO BIOS <span class="badge adm">ADMIN</span> <span class="badge pin">PIN</span></td><td>Restart straight into the UEFI settings.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="en-trouble">16. Troubleshooting</h2>
+    <table>
+      <thead><tr><th>Symptom</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td><strong>The activation window appears although the program was already activated.</strong></td><td>Check that it is the same computer and that the motherboard or network card has not changed. If the hardware is the same, paste the activation code you already have — it stays valid.</td></tr>
+        <tr><td><strong>“This activation code is not valid for this computer”.</strong></td><td>Usually a code copied incompletely or broken into two parts. Copy it again in one piece. The other possibility: a code issued for a different computer.</td></tr>
+        <tr><td><strong>“Index not found! Build it first”.</strong></td><td>Click <strong>BUILD INDEX</strong>. Searching by name, size, date and extension needs the index.</td></tr>
+        <tr><td><strong>Results show files that are no longer there.</strong></td><td>The index is a snapshot of the disk. Click <strong>REFRESH INDEX</strong>.</td></tr>
+        <tr><td><strong>Content search does not find a phrase from a Word document or a PDF.</strong></td><td>That is by design — only text files are searched. The list of extensions is in <a href="#en-content">chapter 6</a>.</td></tr>
+        <tr><td><strong>The index or the settings are not being saved.</strong></td><td>The program sits in a folder Windows does not let you write to — most often <em>Program Files</em>. Move it into a folder of your own.</td></tr>
+        <tr><td><strong>“Error — run as administrator”.</strong></td><td>The function needs elevated rights. Click <strong>RESTART AS ADMIN</strong> on the top bar.</td></tr>
+        <tr><td><strong>I do not remember the PIN.</strong></td><td>Delete the <code>pin.dat</code> file from the program folder. The PIN goes back to the factory <code>0000</code>.</td></tr>
+        <tr><td><strong>The PIN does not work, the program says “Locked”.</strong></td><td>Three wrong attempts lock the PIN for five minutes. Wait and try again.</td></tr>
+        <tr><td><strong>Another device does not see the shared file.</strong></td><td>Check that the server is running (<em>Server running</em>), that both sides are on the same network and that the Windows firewall was allowed for private networks. Take the address with <strong>COPY ADDRESS</strong>, not from memory.</td></tr>
+        <tr><td><strong>The player will not seek in a film from the server.</strong></td><td>The server supports seeking. If it does not work, the limitation is on the player's side — try the numbered address, for example <code>…:8080/1</code>.</td></tr>
+        <tr><td><strong>UPnP does not work, the router does not answer.</strong></td><td>UPnP is often disabled in the router. Switch it on in its settings or forward the port by hand. On a line with a shared address (CGNAT), sharing to the outside will not work at all.</td></tr>
+        <tr><td><strong>The network scanner shows addresses without names.</strong></td><td>Not every device announces a name. The vendor recognised from the MAC address is usually enough to identify it.</td></tr>
+        <tr><td><strong>The Wi-Fi window says “No Wi-Fi adapter” or “WLAN service is not running”.</strong></td><td>The computer has no wireless card, or the <em>WLAN AutoConfig</em> service is stopped. Start it in Windows services.</td></tr>
+        <tr><td><strong>There is no connection after a MAC change.</strong></td><td>Click <strong>RESTORE ORIGINAL</strong>. Some routers only hand out addresses to MAC addresses they know.</td></tr>
+        <tr><td><strong>The scheduled shutdown did not happen.</strong></td><td>The program has to be running at the appointed hour. For the <em>daily</em> mode, switch on <strong>Start with Windows</strong>.</td></tr>
+        <tr><td><strong>The program will not close from the X.</strong></td><td>That is by design — closing needs the PIN so that a scheduled shutdown is not cancelled by accident.</td></tr>
+        <tr><td><strong>The antivirus reports an unknown file.</strong></td><td>The program is packed into a single .exe and carries no publisher signature, so it is sometimes reported as unknown. Verify the checksum of the file you received and add it to the exceptions.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="footer-note">HPL Tool Ultimate v3.23 &nbsp;·&nbsp; user manual &nbsp;·&nbsp; contact: hplink.soft@proton.me &nbsp;·&nbsp; other versions of the programs: https://hplspam1-jpg.github.io/HPL-ink-Software/index.html</div>
   </section>
 </main>
 </body>
