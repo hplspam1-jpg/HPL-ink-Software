@@ -712,3 +712,19 @@ body.pl .lang-en {
     gap: 12px;
     flex-wrap: wrap;
 }
+
+/* --- Lista funkcji programu --- */
+.feature-list {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.feature-list li {
+    margin: 0 0 10px;
+}
+
+.feature-list li::marker {
+    color: var(--red);
+}
