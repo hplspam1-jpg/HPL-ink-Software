@@ -597,3 +597,111 @@ body.pl .lang-en {
     object-fit: cover;
     background: #000;
 }
+
+/* --- Buy Me a Coffee (wsparcie) --- */
+.coffee-btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    color: #201400;
+    background: linear-gradient(90deg, #ffb347, #ff7a1a);
+    border: 0;
+    padding: 9px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 0 16px rgba(255, 122, 26, .4);
+    transition: .25s transform, .25s box-shadow;
+}
+
+.coffee-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 26px rgba(255, 122, 26, .65);
+}
+
+.coffee-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(5, 5, 10, .72);
+    backdrop-filter: blur(4px);
+}
+
+.coffee-modal[hidden] {
+    display: none;
+}
+
+.coffee-dialog {
+    position: relative;
+    width: min(420px, 100%);
+    padding: 32px 26px 26px;
+    text-align: center;
+    background: var(--panel2, #131326);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.coffee-emoji {
+    font-size: 46px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.coffee-dialog h3 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    color: var(--text);
+}
+
+.coffee-paypal {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: var(--text);
+    word-break: break-all;
+}
+
+.coffee-paypal strong {
+    color: #ff7a1a;
+}
+
+.coffee-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.coffee-close:hover {
+    color: #fff;
+}
+
+.coffee-copy {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 18px;
+    cursor: pointer;
+}
+
+.coffee-copy:hover {
+    border-color: rgba(255, 122, 26, .6);
+}
+
+.coffee-copy.done {
+    color: #39d98a;
+    border-color: #39d98a;
+}
