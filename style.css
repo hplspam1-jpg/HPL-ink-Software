@@ -705,3 +705,10 @@ body.pl .lang-en {
     color: #39d98a;
     border-color: #39d98a;
 }
+
+.dl-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}

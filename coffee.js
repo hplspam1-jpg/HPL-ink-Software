@@ -1,5 +1,6 @@
 // Przycisk "Buy Me a Coffee" + okno z adresem PayPal.
-// Wstawiany na każdą stronę przez jeden plik, bez dublowania w HTML.
+// Strona glowna: przycisk w pasku nawigacji.
+// Strony programow: przycisk obok przycisku pobierania (ostatnia sekcja z pobieraniem).
 (function () {
     var PAYPAL = 'noname8745@protonmail.com';
 
@@ -35,20 +36,46 @@
         return { open: function () { overlay.hidden = false; } };
     }
 
-    function init() {
-        var nav = document.querySelector('.navlinks');
-        if (!nav || nav.querySelector('.coffee-btn')) { return; }
-
+    function makeButton(modal) {
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'coffee-btn';
         btn.textContent = '☕ Buy Me a Coffee';
-
-        var langSwitch = nav.querySelector('.lang-switch');
-        if (langSwitch) { nav.insertBefore(btn, langSwitch); } else { nav.appendChild(btn); }
-
-        var modal = buildModal();
         btn.addEventListener('click', modal.open);
+        return btn;
+    }
+
+    function init() {
+        if (document.querySelector('.coffee-btn')) { return; }
+        var modal = buildModal();
+        var isProductPage = !!document.querySelector('.product-layout');
+
+        if (isProductPage) {
+            // Obok przycisku pobierania programu (ostatnia sekcja z .download-box).
+            var boxes = document.querySelectorAll('.download-box');
+            var box = boxes.length ? boxes[boxes.length - 1] : null;
+            if (box) {
+                var dl = box.querySelector('a.download-btn, span.download-btn');
+                var btn = makeButton(modal);
+                if (dl) {
+                    var wrap = document.createElement('div');
+                    wrap.className = 'dl-actions';
+                    dl.parentNode.insertBefore(wrap, dl);
+                    wrap.appendChild(dl);
+                    wrap.appendChild(btn);
+                } else {
+                    box.appendChild(btn);
+                }
+                return;
+            }
+        }
+
+        // Strona glowna (lub brak sekcji pobierania) - przycisk w nawigacji.
+        var nav = document.querySelector('.navlinks');
+        if (!nav) { return; }
+        var navBtn = makeButton(modal);
+        var langSwitch = nav.querySelector('.lang-switch');
+        if (langSwitch) { nav.insertBefore(navBtn, langSwitch); } else { nav.appendChild(navBtn); }
     }
 
     if (document.readyState === 'loading') {
