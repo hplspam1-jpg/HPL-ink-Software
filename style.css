@@ -728,3 +728,49 @@ body.pl .lang-en {
 .feature-list li::marker {
     color: var(--red);
 }
+
+/* --- Hero: animowane logo + kafelek "For Donors Only" --- */
+.hero-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 4px auto 20px;
+}
+
+.hero-row .logo-anim {
+    margin: 0;
+}
+
+.donor-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: min(300px, 82%);
+    aspect-ratio: 5 / 4;
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 183, 71, .55);
+    background: linear-gradient(160deg, rgba(255, 183, 71, .20), rgba(255, 122, 26, .08)), var(--panel2);
+    color: #ffd79a;
+    font-weight: 900;
+    font-size: 23px;
+    letter-spacing: .5px;
+    box-shadow: 0 0 26px rgba(255, 122, 26, .25);
+    transition: .25s transform, .25s box-shadow, .25s border-color;
+}
+
+.donor-tile:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 183, 71, .95);
+    box-shadow: 0 0 36px rgba(255, 122, 26, .5);
+}
+
+.donor-tile .donor-star {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 10px;
+}
