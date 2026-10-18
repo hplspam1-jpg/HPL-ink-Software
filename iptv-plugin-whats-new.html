@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HPL ink IPTV — What's new</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="wrap nav"><a class="brand" href="index.html">HPL <span>ink</span> Software</a>
+            <nav class="navlinks">
+                <a href="index.html"><span class="lang-en">Home</span><span class="lang-pl">Start</span></a>
+                <a href="enigma2-iptv.html">Enigma2 + IPTV</a>
+                <a href="music.html">Music</a>
+                <a href="conventer.html">Conventer</a>
+                <a href="tool.html">Tool</a>
+                <a href="picon-generator.html">Picon Generator</a>
+                <a href="iptv-e2-radio.html">IPTV E2 Radio</a>
+                <a href="enigma2-plugin-iptv.html">Enigma2 Plugin</a>
+                <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-pl">Kontakt</span></a>
+                <span class="lang-switch">
+                    <button type="button" data-setlang="en">EN</button>
+                    <button type="button" data-setlang="pl">PL</button>
+                </span>
+            </nav>
+        </div>
+    </header>
+    <main class="wrap"><a class="back" href="only-for-donor.html"><span class="lang-en">← Back</span><span
+                class="lang-pl">← Powrót</span></a>
+        <section class="page-hero raised">
+            <h1>HPL <span>ink</span> IPTV</h1>
+            <p><span class="lang-en">What's new compared to the earlier free version.</span><span class="lang-pl">Co
+                    nowego w porównaniu z wcześniejszą darmową wersją.</span></p>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Activation</span><span class="lang-pl">Aktywacja</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">The plugin requires a one-time activation for each receiver. After
+                        installation it shows the device ID and a request code. You send the code by e-mail and receive
+                        an activation code in reply, which you paste in the web panel. The code works only on that
+                        receiver. After reinstalling on the same receiver you can use it again.</span><span
+                        class="lang-pl">Plugin wymaga jednorazowej aktywacji dla danego dekodera. Po instalacji
+                        wyświetla identyfikator urządzenia i kod żądania. Kod wysyłasz e-mailem, a w odpowiedzi
+                        dostajesz kod aktywacji, który wklejasz w panelu WWW. Kod działa tylko na tym dekoderze. Po
+                        ponownej instalacji na tym samym dekoderze możesz użyć go jeszcze raz.</span></li>
+                <li><span class="lang-en">The new version installs as a separate plugin and does not replace the free
+                        version. On first launch it imports its playlists, favourites, reminders and
+                        settings.</span><span class="lang-pl">Nowa wersja instaluje się jako osobny plugin i nie
+                        zastępuje wersji darmowej. Przy pierwszym uruchomieniu przejmuje z niej listy, ulubione,
+                        przypomnienia i ustawienia.</span></li>
+                <li><span class="lang-en">The web panel runs at a new address: <code>http://receiver-IP:8099</code>
+                        (the plugin shows the exact address).</span><span class="lang-pl">Panel WWW działa pod nowym
+                        adresem: <code>http://IP-dekodera:8099</code> (dokładny adres pokazuje plugin).</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Playback</span><span class="lang-pl">Odtwarzanie</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">A third player to choose from: GStreamer with ServiceApp, alongside Enigma's
+                        GStreamer and exteplayer3.</span><span class="lang-pl">Trzeci odtwarzacz do wyboru: GStreamer z
+                        ServiceApp, obok GStreamera Enigmy i exteplayer3.</span></li>
+                <li><span class="lang-en">Adjustable GStreamer (ServiceApp) buffer size and time, helpful when the
+                        picture stutters.</span><span class="lang-pl">Ustawienie rozmiaru i czasu bufora GStreamera
+                        (ServiceApp), pomocne przy rwącym się obrazie.</span></li>
+                <li><span class="lang-en">A per-channel player: a channel that stutters on one player can be
+                        permanently assigned to another (MENU while watching or MENU in the channel list). When a
+                        channel's picture freezes often, the plugin suggests switching the player.</span><span
+                        class="lang-pl">Własny odtwarzacz dla wybranego kanału: kanał, który na jednym odtwarzaczu się
+                        zacina, możesz na stałe przypisać do innego (MENU podczas oglądania albo MENU na liście
+                        kanałów). Gdy obraz kanału często staje, plugin sam podpowiada zmianę odtwarzacza.</span></li>
+                <li><span class="lang-en">Faster detection of a frozen picture: the plugin recognises that the player
+                        has stopped receiving data even though the playback clock keeps running, and restarts the
+                        channel after a dozen or so seconds rather than after a few minutes.</span><span
+                        class="lang-pl">Szybsze wykrywanie zawieszonego obrazu: plugin rozpoznaje, że odtwarzacz
+                        przestał pobierać dane, choć zegar odtwarzania wciąż biegnie, i sam wznawia kanał po
+                        kilkunastu, a nie po kilku minutach.</span></li>
+                <li><span class="lang-en">Gentler recovery: successive attempts to restart the channel at increasing
+                        intervals. When the attempts are exhausted and there is no backup source, the plugin shows a
+                        message instead of restarting endlessly.</span><span class="lang-pl">Spokojniejsze wznawianie:
+                        kolejne próby ponownego uruchomienia kanału w rosnących odstępach. Gdy próby się wyczerpią, a
+                        nie ma łącza zapasowego, plugin pokazuje komunikat zamiast restartować bez końca.</span></li>
+                <li><span class="lang-en">More accurate checking of whether ServiceApp actually works (previously the
+                        mere presence of the plugin was enough). When exteplayer3 is selected but ServiceApp hasn't
+                        loaded, the channel plays through GStreamer with a message instead of a black screen.</span><span
+                        class="lang-pl">Dokładniejsze sprawdzanie, czy ServiceApp naprawdę działa (dawniej wystarczyła
+                        sama obecność wtyczki). Gdy wybrany jest exteplayer3, a ServiceApp się nie wczytał, kanał gra
+                        przez GStreamer z komunikatem zamiast czarnego ekranu.</span></li>
+                <li><span class="lang-en">Lighter downloading of posters and logos (fewer simultaneous downloads, a
+                        size limit): less load on the receiver.</span><span class="lang-pl">Lżejsze pobieranie plakatów
+                        i logo (mniej równoczesnych pobrań, limit rozmiaru): mniejsze obciążenie dekodera.</span></li>
+                <li><span class="lang-en">Channel selection by number from the remote, in the player and in the channel
+                        list.</span><span class="lang-pl">Wybór kanału numerem z pilota, w odtwarzaczu i na liście
+                        kanałów.</span></li>
+                <li><span class="lang-en">Startup option: on opening the plugin it immediately plays the last-watched
+                        channel.</span><span class="lang-pl">Opcja startu: po otwarciu pluginu od razu gra ostatnio
+                        oglądany kanał.</span></li>
+                <li><span class="lang-en">In the player MENU, “Save a problem report”: saves technical data from the
+                        last few minutes when something goes wrong.</span><span class="lang-pl">W MENU odtwarzacza
+                        „Zapisz raport z problemu”: zapisuje dane techniczne z ostatnich minut, gdy coś działa
+                        źle.</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Recording</span><span class="lang-pl">Nagrywanie</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">Recording programmes from the EPG guide (BLUE in the channel guide, MENU in
+                        the player, or the “Record” button in the web panel). The plugin records even when it is
+                        closed.</span><span class="lang-pl">Nagrywanie audycji z przewodnika EPG (NIEBIESKI w
+                        przewodniku kanału, MENU w odtwarzaczu albo przycisk „Nagraj” w panelu WWW). Plugin nagrywa
+                        także wtedy, gdy jest zamknięty.</span></li>
+                <li><span class="lang-en">Recordings go to the receiver's disk (<code>/media/hdd/movie</code>) and are
+                        visible in the plugin (EPG and reminders - Recordings) and in the receiver's recordings
+                        list.</span><span class="lang-pl">Nagrania trafiają na dysk dekodera
+                        (<code>/media/hdd/movie</code>), są widoczne w pluginie (EPG i przypomnienia - Nagrania) i na
+                        liście nagrań dekodera.</span></li>
+                <li><span class="lang-en">Note: many IPTV providers allow only one connection at a time. Watching
+                        another channel during a recording may interrupt it. HLS streams (.m3u8) are not
+                        recorded.</span><span class="lang-pl">Uwaga: wielu dostawców IPTV pozwala tylko na jedno
+                        połączenie naraz. Oglądanie innego kanału w trakcie nagrywania może je przerwać. Strumienie HLS
+                        (.m3u8) nie są nagrywane.</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">PIN lock</span><span class="lang-pl">Blokada PIN</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">Selected channel bouquets can be locked with a 4-digit PIN (MENU on a channel
+                        - Lock bouquet with PIN). A locked bouquet opens only after entering the PIN, and its channels
+                        are hidden from search and favourites.</span><span class="lang-pl">Wybrane bukiety kanałów można
+                        zablokować 4-cyfrowym PIN-em (MENU na kanale - Zablokuj bukiet PIN-em). Zablokowany bukiet
+                        otwiera się dopiero po wpisaniu PIN-u, a jego kanałów nie widać w wyszukiwaniu ani w
+                        ulubionych.</span></li>
+                <li><span class="lang-en">You can set or change the PIN in the web panel too, including when you've
+                        forgotten it.</span><span class="lang-pl">PIN ustawisz albo zmienisz także w panelu WWW,
+                        również wtedy, gdy wypadł z pamięci.</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Appearance (OSD &amp; menus)</span><span class="lang-pl">Wygląd (OSD i
+                    menu)</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">A new bottom OSD bar:</span><span class="lang-pl">Nowy dolny pasek OSD:</span>
+                    <ul>
+                        <li><span class="lang-en">programme progress;</span><span class="lang-pl">postęp
+                                audycji;</span></li>
+                        <li><span class="lang-en">a full line with the next programme;</span><span class="lang-pl">pełna
+                                linia z następną audycją;</span></li>
+                        <li><span class="lang-en">stream parameters (resolution, codec, audio, subtitles);</span><span
+                                class="lang-pl">parametry strumienia (rozdzielczość, kodek, dźwięk, napisy);</span></li>
+                        <li><span class="lang-en">the name of the active playlist and the player currently in
+                                use;</span><span class="lang-pl">nazwa aktywnej listy i odtwarzacza, który właśnie
+                                gra;</span></li>
+                        <li><span class="lang-en">remote-key hints.</span><span class="lang-pl">podpowiedzi klawiszy
+                                pilota.</span></li>
+                    </ul>
+                </li>
+                <li><span class="lang-en">In menus that don't fit on screen, a note “N more items below / above” and
+                        the item number appear under the list, so no option is missed.</span><span class="lang-pl">W
+                        menu, które nie mieszczą się w oknie, pod listą widać informację „jeszcze N pozycji niżej /
+                        wyżej” i numer pozycji, więc żadna opcja nie umknie.</span></li>
+                <li><span class="lang-en">A custom plugin icon in the plugin list.</span><span class="lang-pl">Własna
+                        ikona pluginu na liście wtyczek.</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Web panel</span><span class="lang-pl">Panel WWW</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">One-click backup: playlists (including those uploaded from a computer),
+                        favourites, history, reminders, settings, manual EPG matches. Restore from a file, e.g. after
+                        flashing new receiver software.</span><span class="lang-pl">Kopia zapasowa jednym kliknięciem:
+                        listy (także wgrane z komputera), ulubione, historia, przypomnienia, ustawienia, ręczne
+                        dopasowania EPG. Przywracanie z pliku, np. po wgraniu nowego oprogramowania dekodera.</span>
+                </li>
+                <li><span class="lang-en">Install a new plugin version straight from the panel (an .ipk file from your
+                        computer), with no terminal, plus a “Restart GUI” button.</span><span class="lang-pl">Instalacja
+                        nowej wersji pluginu prosto z panelu (plik .ipk z komputera), bez terminala, i przycisk „Restart
+                        GUI”.</span></li>
+                <li><span class="lang-en">TV bar: the next programme on a separate, clear line.</span><span
+                        class="lang-pl">Pasek telewizora: następna audycja w osobnym, czytelnym wierszu.</span></li>
+                <li><span class="lang-en">New settings: GStreamer ServiceApp player, buffer, start with the last
+                        channel, PIN lock.</span><span class="lang-pl">Nowe ustawienia: odtwarzacz GStreamer ServiceApp,
+                        bufor, start z ostatnim kanałem, blokada PIN.</span></li>
+            </ul>
+        </section>
+
+        <section class="section changelog-section">
+            <h2><span class="lang-en">Requirements &amp; compatibility</span><span class="lang-pl">Wymagania i
+                    zgodność</span></h2>
+            <ul class="feature-list">
+                <li><span class="lang-en">OpenBH 5.x and 6.0 (Python 3). On OpenBH 6.0 the required python3-sqlite3
+                        module is installed together with the plugin (run <code>opkg update</code> before installing
+                        from a file).</span><span class="lang-pl">OpenBH 5.x i 6.0 (Python 3). Na OpenBH 6.0 potrzebny
+                        moduł python3-sqlite3 instaluje się razem z pluginem (przed instalacją z pliku wykonaj
+                        <code>opkg update</code>).</span></li>
+                <li><span class="lang-en">The version for OpenATV 6.1 (Python 2.7) is no longer developed.</span><span
+                        class="lang-pl">Wersja dla OpenATV 6.1 (Python 2.7) nie jest już rozwijana.</span></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">© HPL ink Software — <span class="lang-en">all rights reserved</span><span
+            class="lang-pl">wszelkie prawa zastrzeżone</span>
+        <div class="visit-counter"><span class="lang-en">Site visits:</span><span class="lang-pl">Odwiedziny
+                strony:</span>
+            <img class="visit-badge"
+                src="https://visitor-badge.laobi.icu/badge?page_id=hplspam1-jpg.HPL-ink-Software&color=9a42ff&v=1"
+                alt="Licznik odwiedzin strony / Site visit counter">
+        </div>
+    </footer>
+    <script src="lang.js"></script>
+    <script src="coffee.js"></script>
+</body>
+
+</html>
